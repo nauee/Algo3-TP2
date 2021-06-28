@@ -1,4 +1,4 @@
-![tp2](https://github.com/nauee/Algo3-TP2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/nauee/Algo3-TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+![tp2](https://github.com/nauee/Algo3-TP2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/nauee/Algo3-TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/nauee/Algo3-TP2)
 
 # TP2 Algoritmos 3: {nombre} 
 
