@@ -8,7 +8,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Nahuel Castro** - [nauee](https://github.com/nauee)
 * **Fernando Balmaceda** - [ferbalmaceda23](https://github.com/ferbalmaceda23)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
+* **María del Rosario Presedo** - [mrosariopresedo](https://github.com/mrosariopresedo)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
 
 Corrector: **{Corrector}**
