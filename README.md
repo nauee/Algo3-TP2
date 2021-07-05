@@ -4,14 +4,14 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo {1}
 
 * **Nahuel Castro** - [nauee](https://github.com/nauee)
 * **Fernando Balmaceda** - [ferbalmaceda23](https://github.com/ferbalmaceda23)
 * **María del Rosario Presedo** - [mrosariopresedo](https://github.com/mrosariopresedo)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Nicolas Pinto** - [nicopinto22](https://github.com/nicopinto22)
 
-Corrector: **{Corrector}**
+Corrector: **{Joaquin Gomez}**
 
 ## Aplicación
 
