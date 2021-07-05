@@ -10,6 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Fernando Balmaceda** - [ferbalmaceda23](https://github.com/ferbalmaceda23)
 * **María del Rosario Presedo** - [mrosariopresedo](https://github.com/mrosariopresedo)
 * **Nicolas Pinto** - [nicopinto22](https://github.com/nicopinto22)
+* **Agustina Bocaccio** - [agusbocaccio](https://github.com/agusbocaccio)
 
 Corrector: **{Joaquin Gomez}**
 
