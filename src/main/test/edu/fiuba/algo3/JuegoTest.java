@@ -20,7 +20,7 @@ public class JuegoTest{
         Juego juego = new Juego();
 
         juego.agregarJugador(new Jugador("Nicolas", "Azul"));
-        juego.agregarJugador(new Jugador("Balmedo", "Verde"));
+        juego.agregarJugador(new Jugador("Fernando", "Verde"));
 
         assertEquals(2, juego.getCantidadJugadores());
     }
@@ -30,7 +30,7 @@ public class JuegoTest{
         Juego juego = new Juego();
 
         Jugador jugador1 = new Jugador("Nicolas", "Azul");
-        Jugador jugador2 = new Jugador("Balmedo", "Verde");
+        Jugador jugador2 = new Jugador("Fernando", "Verde");
 
         juego.agregarJugador(jugador1);
         juego.agregarJugador(jugador2);
