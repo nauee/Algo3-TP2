@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JuegoTest{
 
     @Test
-    public void seAgregaSatisfactoriamenteUnJugadorAlJuego(){
+    public void seAgregaSatisfactoriamenteUnJugadorAlJuego() throws SeAlcanzoLaCantidadMaximaException {
         Juego juego = new Juego();
-        Jugador jugador = new Jugador("Rosario", "Negro");
+        Jugador jugador = new Jugador("Rosario", 1);
 
         juego.agregarJugador(jugador);
 
@@ -16,21 +16,21 @@ public class JuegoTest{
     }
 
     @Test
-    public void seAgreganCorrectamenteDosJugadores(){
+    public void seAgreganCorrectamenteDosJugadores() throws SeAlcanzoLaCantidadMaximaException {
         Juego juego = new Juego();
 
-        juego.agregarJugador(new Jugador("Nicolas", "Azul"));
-        juego.agregarJugador(new Jugador("Fernando", "Verde"));
+        juego.agregarJugador(new Jugador("Nicolas", 1));
+        juego.agregarJugador(new Jugador("Fernando", 2));
 
         assertEquals(2, juego.getCantidadJugadores());
     }
 
     @Test
-    public void seAgreganCorrectamenteDosJugadoresYSonLosEsperados(){
+    public void seAgreganCorrectamenteDosJugadoresYSonLosEsperados() throws SeAlcanzoLaCantidadMaximaException {
         Juego juego = new Juego();
 
-        Jugador jugador1 = new Jugador("Nicolas", "Azul");
-        Jugador jugador2 = new Jugador("Fernando", "Verde");
+        Jugador jugador1 = new Jugador("Nicolas", 1);
+        Jugador jugador2 = new Jugador("Fernando", 2);
 
         juego.agregarJugador(jugador1);
         juego.agregarJugador(jugador2);

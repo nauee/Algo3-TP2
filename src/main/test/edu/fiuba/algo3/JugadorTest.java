@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JugadorTest {
     @Test
     public void creoUnJugadorYElNombreEsElCorrecto(){
-        Jugador jugador = new Jugador("Nahuel", "Magenta");
+        Jugador jugador = new Jugador("Nahuel", 1);
 
         assertEquals("Nahuel", jugador.getNombre());
     }
 
     @Test
     public void creoUnJugadorYElColorEsElCorrecto(){
-        Jugador jugador = new Jugador("Nahuel", "Magenta");
+        Jugador jugador = new Jugador("Nahuel", 1);
 
-        assertEquals("Magenta", jugador.getColor());
+        assertEquals(1, jugador.getID());
     }
 }

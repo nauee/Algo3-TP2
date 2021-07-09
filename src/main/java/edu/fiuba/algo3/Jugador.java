@@ -3,18 +3,18 @@ package edu.fiuba.algo3;
 public class Jugador{
 
     private String nombre;
-    private String color;
+    private int id;
 
-    public Jugador(String nombre, String color) {
+    public Jugador(String nombre, int id) {
         this.nombre = nombre;
-        this.color = color;
+        this.id = id;
     }
 
     public String getNombre(){
         return this.nombre;
     }
 
-    public String getColor(){
-        return this.color;
+    public int getID(){
+        return this.id;
     }
 }
