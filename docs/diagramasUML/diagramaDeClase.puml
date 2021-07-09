@@ -1,0 +1,51 @@
+@startuml diagramaDeClase
+
+class Juego{
+    -jugadorDeTurno: Integer
+    -fase: Integer
+
+    +reagruparEjercito(cantidadEjercitos:Integer, paisOrigen:String, paisDestino:String):void
+    +atacarPais(paisAtacante:String, paisAtacado:String, cantidadEjercitos:Integer):void
+    +pasarFase(): void
+    -pasarTurno(): void
+    -obtenerPais(unPais:String):Pais
+    -agregarFichas():Void
+}
+
+class Batalla{
+
+    -lanzarDados(): Integer
+    -determinarPerdedor(): Pais
+}
+
+class Pais{
+    -nombre : String
+
+    +serAtacadoPor(unPais:Pais):void
+    +lePerteneceA(colorJugador:String):void
+}
+
+class Objetivo{
+    -descripcion:String
+
+    +getDescripcion():String
+    +cumplido(jugadorDeTurno, ejercitos):void
+}
+
+class Jugador{
+    -nombre : String
+    -id: Integer
+
+    +reagruparEjercito(cantidadEjercitos, paisOrigen, paisDestino):void
+    +autorizarBatalla(paisAtacado: Pais): void
+    +objetivoCumplido(jugadorDeTurno):void
+}
+
+Juego "1"-down->"2..6" Jugador
+Juego "1" -down-> "1..50" Pais
+Jugador "1"-down-"*" Pais
+Jugador "1"-down->"1" Objetivo
+Juego ..> Batalla
+Batalla "1"-right->"2" Pais
+
+@enduml
