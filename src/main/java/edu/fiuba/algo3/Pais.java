@@ -17,4 +17,8 @@ public class Pais{
         return (this.idJugador == idJugador);
     }
 
+    public String getNombre(){
+        return (this.nombre);
+    }
+
 }

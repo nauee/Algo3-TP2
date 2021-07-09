@@ -14,7 +14,7 @@ public class BatallaTest {
         Pais paisAtacado = new Pais("Brasil");
         paisAtacante.asignarJugador(1);
         paisAtacado.asignarJugador(2);
-        Batalla batalla = new Batalla(paisAtacado, paisAtacante, 1);
+        Batalla batalla = new Batalla(paisAtacado, paisAtacante,3, 1);
         assertTrue(batalla instanceof Batalla);
     }
 
@@ -25,7 +25,7 @@ public class BatallaTest {
         paisAtacante.asignarJugador(1);
         paisAtacado.asignarJugador(2);
         assertThrows(NoTePerteneceException.class, () -> {
-            Batalla batalla = new Batalla(paisAtacado, paisAtacante, 4);
+            Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3, 4);
         });
     }
 
@@ -36,7 +36,7 @@ public class BatallaTest {
         paisAtacante.asignarJugador(1);
         paisAtacado.asignarJugador(1);
         assertThrows(AtaqueAPaisPropioException.class, () -> {
-            Batalla batalla = new Batalla(paisAtacado, paisAtacante, 1);
+            Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3, 1);
         });
     }
 }
