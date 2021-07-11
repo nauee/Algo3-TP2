@@ -1,9 +1,12 @@
 package edu.fiuba.algo3;
 
+import java.util.ArrayList;
+
 public class Jugador{
 
-    private String nombre;
-    private int id;
+    private final String nombre;
+    private final int id;
+    private final ArrayList<Pais> paises = new ArrayList<Pais>();
 
     public Jugador(String nombre, int id) {
         this.nombre = nombre;
@@ -16,5 +19,14 @@ public class Jugador{
 
     public int getID(){
         return this.id;
+    }
+
+    public void agregarPais(Pais nuevoPais){
+        this.paises.add(nuevoPais);
+        nuevoPais.asignarJugador(this);
+    }
+
+    public void perderPais(Pais paisAPerder){
+        paises.remove(paisAPerder);
     }
 }

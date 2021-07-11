@@ -2,12 +2,14 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.min;
+
 public class Juego{
 
     private int jugadorDeTurno;
     static private final int JUGADORES_MAX = 6;
-    private ArrayList<Pais> paises = new ArrayList<Pais>();
-    private ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+    private final ArrayList<Pais> paises = new ArrayList<Pais>();
+    private final ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 
     public void agregarJugador(Jugador nuevoJugador) throws SeAlcanzoLaCantidadMaximaException {
 
@@ -25,11 +27,11 @@ public class Juego{
         return this.jugadores.size();
     }
 
-    private Pais buscarPais(String pais) throws PaisNoExisteException{
+    private Pais buscarPais(String unPais) throws PaisNoExisteException{
         int pos = -1;
-        for (Pais p : paises) {
-            if (p.getNombre().equals(pais)) {
-                pos = paises.indexOf(p);
+        for (Pais pais : paises) {
+            if (pais.getNombre().equals(unPais)) {
+                pos = paises.indexOf(pais);
             }
         }
         if (pos == -1)
@@ -37,9 +39,13 @@ public class Juego{
         return paises.get(pos);
     }
 
-    public void atacarPais(String paisAtacante, String paisAtacado, int cantidadEjercitos) throws NoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException {
+    public void atacarPais(String paisAtacante, String paisAtacado, int cantidadEjercitos) throws NoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException, AtaqueConCantidadInvalidaException {
         Pais atacante = this.buscarPais(paisAtacante);
         Pais atacado = this.buscarPais(paisAtacado);
-        Batalla batalla = new Batalla (atacado, atacante, cantidadEjercitos, this.jugadorDeTurno);
+        Batalla batalla = new Batalla (atacado, atacante, cantidadEjercitos, jugadores.get(jugadorDeTurno-1));
+
+        ArrayList<Integer> resultadosDadosAtacante = batalla.lanzarDados(min(cantidadEjercitos,3));
+        ArrayList<Integer> resultadosDadosAtacado = batalla.lanzarDados(min(atacado.getCantidadEjercitos(), 3));
+        batalla.batallar(resultadosDadosAtacado, resultadosDadosAtacante);
     }
 }
