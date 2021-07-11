@@ -14,15 +14,21 @@ class Juego{
 
 class Batalla{
 
-    -lanzarDados(): Integer
-    -determinarPerdedor(): Pais
+    +batallar(resultadosDadosAtacado,resultadosDadosAtacante): void
+    -lanzarDados(cantidad): ArrayList
+    -determinarPerdedor(dadoAtacante, dadoAtacado): Pais
+    -ataqueEntrePaises(resultadosDadosAtacado,resultadosDadosAtacante): void
+    -conquista(): void
 }
 
 class Pais{
     -nombre : String
 
-    +serAtacadoPor(unPais:Pais):void
-    +lePerteneceA(colorJugador:String):void
+    +serAtacadoPor(unPais):void
+    +lePerteneceA(jugador):void
+    +serConquistadoPor(conquistador):void
+    +moverEjercitos(cantidadEjercitos,destino): void
+    +agregarEjercitos(cantidad):void
 }
 
 class Objetivo{

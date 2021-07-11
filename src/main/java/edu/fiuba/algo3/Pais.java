@@ -11,14 +11,13 @@ public class Pais{
         this.cantidadEjercitos = 0;
     }
 
-    public void asignarJugador(Jugador nuevoDuenio) {
+    public void asignarDuenio(Jugador nuevoDuenio) {
         this.duenio = nuevoDuenio;
     }
 
     public void serConquistadoPor(Jugador conquistador) {
         this.duenio.perderPais(this);
-        this.duenio = conquistador;
-        this.duenio.agregarPais(this);
+        conquistador.agregarPais(this);
     }
 
     public void agregarEjercitos(int cantidadEjercitos) {

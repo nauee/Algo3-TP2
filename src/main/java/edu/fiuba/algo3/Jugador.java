@@ -23,7 +23,7 @@ public class Jugador{
 
     public void agregarPais(Pais nuevoPais){
         this.paises.add(nuevoPais);
-        nuevoPais.asignarJugador(this);
+        nuevoPais.asignarDuenio(this);
     }
 
     public void perderPais(Pais paisAPerder){
