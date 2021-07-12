@@ -30,7 +30,7 @@ public class BatallaTest {
         paisAtacante.asignarDuenio(new Jugador("Angel Di Maria",1));
         paisAtacado.asignarDuenio(new Jugador("Richarlison",2));
         assertThrows(NoTePerteneceException.class, () ->
-                new Batalla(paisAtacado, paisAtacante, 3, paisAtacado.getDuenio()));
+            new Batalla(paisAtacado, paisAtacante, 3, paisAtacado.getDuenio()));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class BatallaTest {
         paisAtacante.asignarDuenio(jugadorAtacante);
         paisAtacado.asignarDuenio(jugadorAtacante);
         assertThrows(AtaqueAPaisPropioException.class, () ->
-                new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio()));
+            new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio()));
     }
 
     @Test
@@ -102,5 +102,4 @@ public class BatallaTest {
         batalla.batallar(dadosAtacado, dadosAtacante);
         assertEquals(3, paisAtacado.getCantidadEjercitos());
     }
-
 }
