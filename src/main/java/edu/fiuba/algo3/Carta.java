@@ -11,10 +11,10 @@ public class Carta {
     }
 
     public String getPais(){
-        return this.pais;
+        return pais;
     }
 
     public String getSimbolo(){
-        return this.simbolo;
+        return simbolo;
     }
 }

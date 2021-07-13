@@ -14,15 +14,15 @@ public class Pais{
         this.nombre = nombre;
         this.continente= continente;
         this.limitrofes= limitrofes;
-        this.cantidadEjercitos = 0;
+        cantidadEjercitos = 0;
     }
 
     public void asignarDuenio(Jugador nuevoDuenio) {
-        this.duenio = nuevoDuenio;
+        duenio = nuevoDuenio;
     }
 
     public void serConquistadoPor(Jugador conquistador) {
-        this.duenio.perderPais(this);
+        duenio.perderPais(this);
         conquistador.agregarPais(this);
     }
 
@@ -31,27 +31,31 @@ public class Pais{
     }
 
     public String getNombre(){
-        return (this.nombre);
+        return (nombre);
     }
 
     public String getContinente(){
-        return this.continente;
+        return continente;
     }
 
     public Jugador getDuenio(){
-        return this.duenio;
+        return duenio;
+    }
+
+    public ArrayList<String> getLimitrofes(){
+        return limitrofes;
     }
 
     public boolean lePerteneceA(Jugador unJugador) {
-        return (this.duenio.equals(unJugador));
+        return (duenio.equals(unJugador));
     }
 
     public int getCantidadEjercitos(){
-        return this.cantidadEjercitos;
+        return cantidadEjercitos;
     }
 
     public void serAtacado(){
-        this.cantidadEjercitos--;
+        cantidadEjercitos--;
     }
 
     public void moverEjercitos(int cantidadEjercitos, Pais destino){

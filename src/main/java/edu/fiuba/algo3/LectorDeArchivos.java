@@ -2,7 +2,9 @@ package edu.fiuba.algo3;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
+
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,7 +19,8 @@ public class LectorDeArchivos {
     private final JSONParser parser;
 
     public LectorDeArchivos(String nombreArchivo) throws FileNotFoundException{
-        this.lector = new FileReader(nombreArchivo);
+        File archivo = new File(nombreArchivo);
+        this.lector = new FileReader(archivo);
         this.parser = new JSONParser();
     }
 

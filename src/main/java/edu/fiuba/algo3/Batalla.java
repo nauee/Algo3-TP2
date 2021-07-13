@@ -17,13 +17,11 @@ public class Batalla{
         else if(atacado.lePerteneceA(jugadorAtacante))
             throw new AtaqueAPaisPropioException();
 
-        /*El pais que ataca no puede atacar con todo lo que tiene, al menos le debe sobrar
-        * un ejercito*/
         if(atacante.getCantidadEjercitos() <= cantidadEjercito)
             throw new AtaqueConCantidadInvalidaException();
 
-        this.paisAtacado = atacado;
-        this.paisAtacante = atacante;
+        paisAtacado = atacado;
+        paisAtacante = atacante;
     }
 
     public ArrayList<Integer> lanzarDados(int cantidad) {
@@ -49,7 +47,6 @@ public class Batalla{
     private void conquista() {
         if(paisAtacado.getCantidadEjercitos() <= 0){
             paisAtacado.serConquistadoPor(paisAtacante.getDuenio());
-            /*Más adelante habría que pedirle al usuario cuantos ejercitos quiere mover*/
             paisAtacante.moverEjercitos(1, paisAtacado);
         }
     }

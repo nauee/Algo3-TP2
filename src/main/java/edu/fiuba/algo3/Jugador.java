@@ -6,7 +6,7 @@ public class Jugador{
 
     private final String nombre;
     private final int id;
-    private final ArrayList<Pais> paises = new ArrayList<Pais>();
+    private final ArrayList<Pais> paises = new ArrayList<>();
 
     public Jugador(String nombre, int id) {
         this.nombre = nombre;
@@ -14,15 +14,15 @@ public class Jugador{
     }
 
     public String getNombre(){
-        return this.nombre;
+        return nombre;
     }
 
     public int getID(){
-        return this.id;
+        return id;
     }
 
     public void agregarPais(Pais nuevoPais){
-        this.paises.add(nuevoPais);
+        paises.add(nuevoPais);
         nuevoPais.asignarDuenio(this);
     }
 

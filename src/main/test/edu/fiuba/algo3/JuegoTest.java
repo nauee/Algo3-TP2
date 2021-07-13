@@ -1,41 +1,41 @@
 package edu.fiuba.algo3;
 
+import org.json.simple.parser.ParseException;
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class JuegoTest{
+public class JuegoTest {
 
     @Test
-    public void seAgregaSatisfactoriamenteUnJugadorAlJuego() throws SeAlcanzoLaCantidadMaximaException {
-        Juego juego = new Juego();
-        Jugador jugador = new Jugador("Rosario", 1);
-
-        juego.agregarJugador(jugador);
-
-        assertEquals(jugador, juego.getJugador(0));
+    public void seAgregaSatisfactoriamenteUnJugadorAlJuego() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException {
+        Juego juego = new Juego(new ArrayList<String>(Arrays.asList("Rosario")));
+        assertEquals("Rosario", juego.getJugador(0).getNombre());
     }
 
     @Test
-    public void seAgreganCorrectamenteDosJugadores() throws SeAlcanzoLaCantidadMaximaException {
-        Juego juego = new Juego();
-
-        juego.agregarJugador(new Jugador("Nicolas", 1));
-        juego.agregarJugador(new Jugador("Fernando", 2));
-
+    public void seAgreganCorrectamenteDosJugadores() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException {
+        Juego juego = new Juego(new ArrayList<String>(Arrays.asList("Fernando", "Nicolas")));
         assertEquals(2, juego.getCantidadJugadores());
     }
 
     @Test
-    public void seAgreganCorrectamenteDosJugadoresYSonLosEsperados() throws SeAlcanzoLaCantidadMaximaException {
-        Juego juego = new Juego();
+    public void seAgreganCorrectamenteDosJugadoresYSonLosEsperados() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException {
+        Juego juego = new Juego(new ArrayList<String>(Arrays.asList("Fernando", "Nicolas")));
+        assertEquals("Nicolas", juego.getJugador(1).getNombre());
+    }
 
-        Jugador jugador1 = new Jugador("Nicolas", 1);
-        Jugador jugador2 = new Jugador("Fernando", 2);
+    @Test
+    public void seCreaUnJuegoCon50Paises() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException{
+        Juego juego = new Juego(new ArrayList<String>(Arrays.asList("Agustina", "Rosario")));
+        assertEquals(50, juego.getCantidadPaises());
+    }
 
-        juego.agregarJugador(jugador1);
-        juego.agregarJugador(jugador2);
-
-        assertEquals(jugador1, juego.getJugador(0));
-        assertEquals(jugador2, juego.getJugador(1));
+    @Test
+    public void seCreaUnJuegoCon50Cartas() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException{
+        Juego juego = new Juego(new ArrayList<String>(Arrays.asList("Agustina", "Rosario")));
+        assertEquals(50, juego.getCantidadCartas());
     }
 }

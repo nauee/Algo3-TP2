@@ -10,7 +10,7 @@ public abstract class Objetivo {
     }
 
     public String getDescripcion(){
-        return this.descripcion;
+        return descripcion;
     }
 
 }
