@@ -1,13 +1,19 @@
 package edu.fiuba.algo3;
 
+import java.util.ArrayList;
+
 public class Pais{
 
     private final String nombre;
     private Jugador duenio;
     private int cantidadEjercitos;
+    private final ArrayList<String> limitrofes;
+    private final String continente;
 
-    public Pais(String nombre){
+    public Pais(String nombre, String continente, ArrayList<String> limitrofes){
         this.nombre = nombre;
+        this.continente= continente;
+        this.limitrofes= limitrofes;
         this.cantidadEjercitos = 0;
     }
 
@@ -26,6 +32,10 @@ public class Pais{
 
     public String getNombre(){
         return (this.nombre);
+    }
+
+    public String getContinente(){
+        return this.continente;
     }
 
     public Jugador getDuenio(){

@@ -8,8 +8,9 @@ public class Juego{
 
     private int jugadorDeTurno;
     static private final int JUGADORES_MAX = 6;
-    private final ArrayList<Pais> paises = new ArrayList<Pais>();
-    private final ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+    private final ArrayList<Pais> paises = new ArrayList<>();
+    private final ArrayList<Jugador> jugadores = new ArrayList<>();
+    private final ArrayList<Pais> mapa = new ArrayList<>();
 
     public void agregarJugador(Jugador nuevoJugador) throws SeAlcanzoLaCantidadMaximaException {
 

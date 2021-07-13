@@ -14,8 +14,8 @@ public class BatallaTest {
     @Test
     public void crearUnaBatallaConPaisesValidos() throws NoTePerteneceException, AtaqueAPaisPropioException, AtaqueConCantidadInvalidaException {
 
-        Pais paisAtacante = new Pais("Argentina");
-        Pais paisAtacado = new Pais("Brasil");
+        Pais paisAtacante = new Pais("Argentina", "America", new ArrayList<String>());
+        Pais paisAtacado = new Pais("Brasil", "America", new ArrayList<String>());
         paisAtacante.asignarDuenio(new Jugador("Angel Di Maria",1));
         paisAtacado.asignarDuenio(new Jugador("Richarlison",2));
         paisAtacante.agregarEjercitos(4);
@@ -25,8 +25,8 @@ public class BatallaTest {
 
     @Test
     public void crearUnaBatallaConUnPaisQueNoLePerteneceAlJugadorLevantaUnaExcepcion() {
-        Pais paisAtacante = new Pais("Portugal");
-        Pais paisAtacado = new Pais("España");
+        Pais paisAtacante = new Pais("Portugal", "Europa", new ArrayList<String>());
+        Pais paisAtacado = new Pais("España", "Europa", new ArrayList<String>());
         paisAtacante.asignarDuenio(new Jugador("Angel Di Maria",1));
         paisAtacado.asignarDuenio(new Jugador("Richarlison",2));
         assertThrows(NoTePerteneceException.class, () ->
@@ -35,8 +35,8 @@ public class BatallaTest {
 
     @Test
     public void crearUnaBatallaParaAtacarAUnPaisPropioLevantaUnaExcepcion() {
-        Pais paisAtacante = new Pais("España");
-        Pais paisAtacado = new Pais("Italia");
+        Pais paisAtacante = new Pais("España", "Europa", new ArrayList<String>());
+        Pais paisAtacado = new Pais("Italia", "Europa", new ArrayList<String>());
         paisAtacante.agregarEjercitos(4);
         Jugador jugadorAtacante = new Jugador("Angel Di Maria",1);
         paisAtacante.asignarDuenio(jugadorAtacante);
@@ -47,8 +47,8 @@ public class BatallaTest {
 
     @Test
     public void batallaEntreDosPaisesTerminaConConquista() throws AtaqueConCantidadInvalidaException, NoTePerteneceException, AtaqueAPaisPropioException {
-        Pais paisAtacante = new Pais("Argentina");
-        Pais paisAtacado = new Pais("Brasil");
+        Pais paisAtacante = new Pais("Argentina", "America", new ArrayList<String>());
+        Pais paisAtacado = new Pais("Brasil", "America", new ArrayList<String>());
         paisAtacante.asignarDuenio(new Jugador("Angel Di Maria",1));
         paisAtacado.asignarDuenio(new Jugador("Richarlison",2));
         paisAtacante.agregarEjercitos(4);
@@ -62,8 +62,8 @@ public class BatallaTest {
 
     @Test
     public void batallaEntreDosPaisesNoTerminaConConquista() throws AtaqueConCantidadInvalidaException, NoTePerteneceException, AtaqueAPaisPropioException {
-        Pais paisAtacante= new Pais("Estados Unidos");
-        Pais paisAtacado= new Pais("China");
+        Pais paisAtacante= new Pais("Estados Unidos", "America", new ArrayList<String>());
+        Pais paisAtacado= new Pais("China", "Asia", new ArrayList<String>());
         Jugador jugadorAtacado = new Jugador("Richarlison",2);
         paisAtacante.asignarDuenio(new Jugador("Angel Di Maria",1));
         paisAtacado.asignarDuenio(jugadorAtacado);
@@ -78,8 +78,8 @@ public class BatallaTest {
 
     @Test
     public void AtacarUnPaisConMasEjercitosDeLosQueTieneElPaisLevantaUnaExcepcion() {
-        Pais paisAtacante = new Pais("Argentina");
-        Pais paisAtacado = new Pais("Brasil");
+        Pais paisAtacante = new Pais("Argentina", "America", new ArrayList<String>());
+        Pais paisAtacado = new Pais("Brasil", "America", new ArrayList<String>());
         paisAtacante.asignarDuenio(new Jugador("Angel Di Maria",1));
         paisAtacado.asignarDuenio(new Jugador("Richarlison",2));
         paisAtacado.agregarEjercitos(3);
@@ -90,8 +90,8 @@ public class BatallaTest {
 
     @Test
     public void batallaEntreDosPaisesPierdeLaCantidadDeEjercitosCorrecta() throws AtaqueConCantidadInvalidaException, NoTePerteneceException, AtaqueAPaisPropioException {
-        Pais paisAtacante = new Pais("Argentina");
-        Pais paisAtacado = new Pais("Brasil");
+        Pais paisAtacante = new Pais("Argentina", "America", new ArrayList<String>());
+        Pais paisAtacado = new Pais("Brasil", "America", new ArrayList<String>());
         paisAtacante.asignarDuenio(new Jugador("Angel Di Maria",1));
         paisAtacado.asignarDuenio(new Jugador("Richarlison",2));
         paisAtacante.agregarEjercitos(10);
