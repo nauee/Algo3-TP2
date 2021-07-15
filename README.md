@@ -26,6 +26,10 @@ $ java -jar <archivo.jar>
 
 Aquellos que deseen colaborar con el proyecto pueden consultar la [guía de desarrollo](./docs/Desarrollo.md).
 
+##Informe 
+
+El informe del trabajo, que se actualizara en cada entrega, puede encontrarse en este [link](https://www.overleaf.com/read/zncfpbsxvkfk). 
+
 ## Licencia
 
 Este repositorio se encuentra bajo la Licencia MIT.
