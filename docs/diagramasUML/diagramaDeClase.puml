@@ -31,11 +31,11 @@ class Pais{
     +agregarEjercitos(cantidad):void
 }
 
-class Objetivo{
+abstract class Objetivo{
     -descripcion:String
 
     +getDescripcion():String
-    +cumplido(jugadorDeTurno, ejercitos):void
+    +{abstract}cumplido(jugadorDeTurno, ejercitos):void
 }
 
 class Jugador{
@@ -47,16 +47,12 @@ class Jugador{
     +objetivoCumplido(jugadorDeTurno):void
 }
 
-class LectorDeArchivos{
-    -lector: FileReader
-    -parser: JSONParser
+abstract class LectorDeArchivos{
+    #lector: FileReader
+    #parser: JSONParser
 
     +{static}LectorDeArchivos(nombreArchivo:String):LectorDeArchivos
-    +getContinentes():Hashtable
-    +getCartas():ArrayList
-    -getPaises():ArrayList
-    -parsearPais(pais:JSONObject):Pais
-    -parsearCarta(carta:JSONObject):Carta
+    +{abstract}obtener():Object
 }
 
 class Continente{
@@ -71,9 +67,8 @@ Juego "1"-down->"2..6" Jugador
 Jugador "1"-down-"*" Pais
 Jugador "1"-down->"1" Objetivo
 Juego ..> Batalla
-Batalla "1"-right->"2" Pais
-Juego "1"-left->"1" LectorDeArchivos
+Batalla "1"-->"2" Pais
+Juego "1".left.>"1" LectorDeArchivos
 Juego "1"-right->"6" Continente
 Continente "1"-->"*"Pais
-
 @enduml

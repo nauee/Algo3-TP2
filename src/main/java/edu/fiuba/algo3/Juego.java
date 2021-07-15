@@ -2,7 +2,6 @@ package edu.fiuba.algo3;
 
 import org.json.simple.parser.ParseException;
 
-import java.io.FileNotFoundException;
 import java.util.*;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -29,11 +28,11 @@ public class Juego {
             this.agregarJugador(new Jugador(nombres.get(i), i + 1));
         }
 
-        LectorDeArchivos lectorDeArchivos = new LectorDeArchivos("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
-        continentes = lectorDeArchivos.getContinentes();
+        LectorDeArchivos lectorDeArchivos = new LectorDePaises("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
+        continentes = (Hashtable<String, Continente>) lectorDeArchivos.obtener();
 
-        LectorDeArchivos lector = new LectorDeArchivos("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
-        cartas = lector.getCartas();
+        LectorDeArchivos lector = new LectorDeCartas("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
+        cartas = (ArrayList<Carta>) lector.obtener();
 
         jugadorDeTurno = 1;
         fase = COLOCACION;
@@ -79,7 +78,7 @@ public class Juego {
         return jugadores.size();
     }
 
-    private Pais buscarPais(String unPais) throws PaisNoExisteException{
+    public Pais buscarPais(String unPais) throws PaisNoExisteException{
 
         Pais paisBuscado = null;
 
@@ -95,8 +94,11 @@ public class Juego {
 
     public void atacarPais(String continente, String paisAtacante, String paisAtacado, int cantidadEjercitos)
             throws PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException,
-            AtaqueConCantidadInvalidaException, PaisNoLimitrofeException, ContinenteNoExisteException{
+            AtaqueConCantidadInvalidaException, PaisNoLimitrofeException, AtaqueEnFaseErroneaException{
 
+        if (fase != ATAQUE) {
+            throw new AtaqueEnFaseErroneaException();
+        }
         Pais atacante = buscarPais(paisAtacante);
         Pais atacado = buscarPais(paisAtacado);
         Batalla batalla = new Batalla (atacado, atacante, cantidadEjercitos, jugadores.get(jugadorDeTurno-1));
@@ -108,11 +110,11 @@ public class Juego {
 
     public int getCantidadPaises(){
 
-        AtomicInteger cantidadPaises = new AtomicInteger();
-        continentes.forEach((nombreContinente, continente) -> {
-            cantidadPaises.addAndGet(continente.getCantidadPaises());
-        });
-        return cantidadPaises.get();
+        int cantidadPaises = 0;
+        for (Map.Entry<String, Continente> entry : continentes.entrySet()) {
+            cantidadPaises += entry.getValue().getCantidadPaises();
+        }
+        return cantidadPaises;
     }
 
     public int getCantidadFichas() {
@@ -124,12 +126,24 @@ public class Juego {
         return fichas;
     }
 
-    public void agregarEjercitos(String unPais, int cantidad) throws PaisNoExisteException, PaisNoTePerteneceException {
+    public void agregarEjercitos(String unPais, int cantidad) throws PaisNoExisteException, PaisNoTePerteneceException, ColocacionEnFaseErroneaException {
+        if (fase != COLOCACION) {
+            throw new ColocacionEnFaseErroneaException();
+        }
         Pais pais = buscarPais(unPais);
         pais.agregarEjercitos(cantidad, jugadores.get(jugadorDeTurno - 1));
     }
 
     public int getCantidadCartas() {
         return cartas.size();
+    }
+
+    public void reagruparEjercitos(String origen, String destino, int cantidad) throws PaisNoExisteException, PaisNoTePerteneceException, ReagruparEnFaseErroneaException, PaisNoLimitrofeException{
+        if (fase != REAGRUPACION) {
+            throw new ReagruparEnFaseErroneaException();
+        }
+        Pais paisOrigen = buscarPais(origen);
+        Pais paisDestino = buscarPais(destino);
+        paisOrigen.moverEjercitos(cantidad, paisDestino);
     }
 }

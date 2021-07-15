@@ -51,7 +51,7 @@ public class Batalla{
         }
     }
 
-    private void conquista() throws PaisNoTePerteneceException{
+    private void conquista() throws PaisNoTePerteneceException, PaisNoLimitrofeException{
 
         if(paisAtacado.getCantidadEjercitos() <= 0){
             paisAtacado.serConquistadoPor(paisAtacante.getDuenio());
@@ -59,7 +59,7 @@ public class Batalla{
         }
     }
 
-    public void batallar(ArrayList<Integer> resultadosDadosAtacado, ArrayList<Integer> resultadosDadosAtacante) throws PaisNoTePerteneceException{
+    public void batallar(ArrayList<Integer> resultadosDadosAtacado, ArrayList<Integer> resultadosDadosAtacante) throws PaisNoTePerteneceException, PaisNoLimitrofeException{
 
         ataqueEntrePaises(resultadosDadosAtacado, resultadosDadosAtacante);
         conquista();

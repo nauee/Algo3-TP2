@@ -51,8 +51,9 @@ public class Pais{
         cantidadEjercitos--;
     }
 
-    public void moverEjercitos(int cantidadEjercitos, Pais destino) throws  PaisNoTePerteneceException{
-
+    public void moverEjercitos(int cantidadEjercitos, Pais destino) throws  PaisNoTePerteneceException, PaisNoLimitrofeException{
+        if (!destino.esLimitrofeCon(nombre))
+            throw new PaisNoLimitrofeException();
         destino.agregarEjercitos(cantidadEjercitos, duenio);
         this.cantidadEjercitos -= cantidadEjercitos;
     }
