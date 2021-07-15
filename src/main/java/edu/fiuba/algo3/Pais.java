@@ -8,11 +8,10 @@ public class Pais{
     private Jugador duenio;
     private int cantidadEjercitos;
     private final ArrayList<String> limitrofes;
-    private final String continente;
 
-    public Pais(String nombre, String continente, ArrayList<String> limitrofes){
+    public Pais(String nombre, ArrayList<String> limitrofes) {
+
         this.nombre = nombre;
-        this.continente= continente;
         this.limitrofes= limitrofes;
         cantidadEjercitos = 0;
     }
@@ -21,21 +20,15 @@ public class Pais{
         duenio = nuevoDuenio;
     }
 
-    public void serConquistadoPor(Jugador conquistador) {
-        duenio.perderPais(this);
-        conquistador.agregarPais(this);
-    }
-
-    public void agregarEjercitos(int cantidadEjercitos) {
+    public void agregarEjercitos(int cantidadEjercitos, Jugador jugador) throws PaisNoTePerteneceException {
+        if (!duenio.equals(jugador)) {
+            throw new PaisNoTePerteneceException();
+        }
         this.cantidadEjercitos += cantidadEjercitos;
     }
 
     public String getNombre(){
-        return (nombre);
-    }
-
-    public String getContinente(){
-        return continente;
+        return nombre;
     }
 
     public Jugador getDuenio(){
@@ -47,7 +40,7 @@ public class Pais{
     }
 
     public boolean lePerteneceA(Jugador unJugador) {
-        return (duenio.equals(unJugador));
+        return duenio.equals(unJugador);
     }
 
     public int getCantidadEjercitos(){
@@ -58,8 +51,19 @@ public class Pais{
         cantidadEjercitos--;
     }
 
-    public void moverEjercitos(int cantidadEjercitos, Pais destino){
-        destino.agregarEjercitos(cantidadEjercitos);
+    public void moverEjercitos(int cantidadEjercitos, Pais destino) throws  PaisNoTePerteneceException{
+
+        destino.agregarEjercitos(cantidadEjercitos, duenio);
         this.cantidadEjercitos -= cantidadEjercitos;
+    }
+
+    public Boolean esLimitrofeCon(String unPais){
+        return limitrofes.contains(unPais);
+    }
+
+    public void serConquistadoPor(Jugador conquistador){
+
+        duenio.perderPais(this);
+        conquistador.agregarPais(this);
     }
 }

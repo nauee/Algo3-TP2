@@ -6,6 +6,7 @@ public class Carta {
     private final String simbolo;
 
     public Carta(String pais, String simbolo) {
+
         this.pais = pais;
         this.simbolo = simbolo;
     }

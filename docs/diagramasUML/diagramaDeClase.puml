@@ -15,7 +15,7 @@ class Juego{
 class Batalla{
 
     +batallar(resultadosDadosAtacado,resultadosDadosAtacante): void
-    -lanzarDados(cantidad): ArrayList
+    +lanzarDados(cantidad): ArrayList
     -determinarPerdedor(dadoAtacante, dadoAtacado): Pais
     -ataqueEntrePaises(resultadosDadosAtacado,resultadosDadosAtacante): void
     -conquista(): void
@@ -47,11 +47,33 @@ class Jugador{
     +objetivoCumplido(jugadorDeTurno):void
 }
 
+class LectorDeArchivos{
+    -lector: FileReader
+    -parser: JSONParser
+
+    +{static}LectorDeArchivos(nombreArchivo:String):LectorDeArchivos
+    +getContinentes():Hashtable
+    +getCartas():ArrayList
+    -getPaises():ArrayList
+    -parsearPais(pais:JSONObject):Pais
+    -parsearCarta(carta:JSONObject):Carta
+}
+
+class Continente{
+    -nombre:String
+    -recompensa:Integer
+
+    +agregarPais(pais:Pais):void
+    +getRecompensa():Integer
+}
+
 Juego "1"-down->"2..6" Jugador
-Juego "1" -down-> "1..50" Pais
 Jugador "1"-down-"*" Pais
 Jugador "1"-down->"1" Objetivo
 Juego ..> Batalla
 Batalla "1"-right->"2" Pais
+Juego "1"-left->"1" LectorDeArchivos
+Juego "1"-right->"6" Continente
+Continente "1"-->"*"Pais
 
 @enduml

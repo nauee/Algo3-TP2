@@ -3,37 +3,67 @@ package edu.fiuba.algo3;
 import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.Math.min;
 
 public class Juego {
 
-    private int jugadorDeTurno;
-    private int fase;
+    static private final int COLOCACION = 0;
     static private final int ATAQUE = 1;
     static private final int REAGRUPACION = 2;
     static private final int JUGADORES_MAX = 6;
-    private final ArrayList<Pais> paises;
+
+    private final int jugadorDeTurno;
+    private final int fase;
+    private final Hashtable<String, Continente> continentes;
     private final ArrayList<Jugador> jugadores = new ArrayList<>();
     private final ArrayList<Carta> cartas;
+    private final Hashtable<String, Integer> recompensasPorContinente = new Hashtable<>();
 
-    public Juego(ArrayList<String> nombres) throws SeAlcanzoLaCantidadMaximaException,
-            ParseException, IOException{
+    public Juego(ArrayList<String> nombres) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException{
+
         for (int i = 0; i < nombres.size(); i++) {
             this.agregarJugador(new Jugador(nombres.get(i), i + 1));
         }
-        LectorDeArchivos lectorDeArchivos = new LectorDeArchivos("src\\main\\java\\edu\\fiuba\\algo3\\archivos\\Teg - Fronteras.json");
-        paises = lectorDeArchivos.getPaises();
 
-        LectorDeArchivos lector = new LectorDeArchivos("src\\main\\java\\edu\\fiuba\\algo3\\archivos\\Teg - Cartas.json");
+        LectorDeArchivos lectorDeArchivos = new LectorDeArchivos("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
+        continentes = lectorDeArchivos.getContinentes();
+
+        LectorDeArchivos lector = new LectorDeArchivos("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
         cartas = lector.getCartas();
+
         jugadorDeTurno = 1;
-        fase = ATAQUE;
+        fase = COLOCACION;
+
+        distribuirPaises();
     }
 
-    public void agregarJugador(Jugador nuevoJugador) throws SeAlcanzoLaCantidadMaximaException {
+    private void distribuirPaises() throws PaisNoTePerteneceException{
+
+        ArrayList<Pais> paises = new ArrayList<>();
+        continentes.forEach((nombreContinente, continente) -> {
+            paises.addAll(continente.getPaises().values());
+        });
+
+        ArrayList<Integer> numeros = new ArrayList<>();
+        for (int i = 0; i < paises.size(); i++){
+            numeros.add(i);
+        }
+        Collections.shuffle(numeros);
+
+        for (int i = 0; i < numeros.size(); i++){
+            int numeroJugador = i % jugadores.size();
+            Pais pais = paises.get(i);
+            Jugador jugador = jugadores.get(numeroJugador);
+            jugador.agregarPais(pais);
+            pais.agregarEjercitos(1, jugador);
+        }
+    }
+
+    private void agregarJugador(Jugador nuevoJugador) throws SeAlcanzoLaCantidadMaximaException {
 
         if(jugadores.size() >= JUGADORES_MAX)
             throw new SeAlcanzoLaCantidadMaximaException();
@@ -50,22 +80,22 @@ public class Juego {
     }
 
     private Pais buscarPais(String unPais) throws PaisNoExisteException{
-        int pos = -1, i = 0;
 
-        while(i < paises.size() && pos == -1){
-            if (unPais.equals(paises.get(i).getNombre())) {
-                pos = i;
-            }
-            i++;
+        Pais paisBuscado = null;
+
+        Enumeration<Continente> continentes = this.continentes.elements();
+        while (continentes.hasMoreElements() && paisBuscado == null) {
+            paisBuscado = continentes.nextElement().getPais(unPais);
         }
 
-        if (pos == -1) throw new PaisNoExisteException();
-        return paises.get(pos);
+        if (paisBuscado == null) throw new PaisNoExisteException();
+
+        return paisBuscado;
     }
 
-    public void atacarPais(String paisAtacante, String paisAtacado, int cantidadEjercitos)
-            throws NoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException,
-            AtaqueConCantidadInvalidaException {
+    public void atacarPais(String continente, String paisAtacante, String paisAtacado, int cantidadEjercitos)
+            throws PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException,
+            AtaqueConCantidadInvalidaException, PaisNoLimitrofeException, ContinenteNoExisteException{
 
         Pais atacante = buscarPais(paisAtacante);
         Pais atacado = buscarPais(paisAtacado);
@@ -77,10 +107,29 @@ public class Juego {
     }
 
     public int getCantidadPaises(){
-        return (paises.size());
+
+        AtomicInteger cantidadPaises = new AtomicInteger();
+        continentes.forEach((nombreContinente, continente) -> {
+            cantidadPaises.addAndGet(continente.getCantidadPaises());
+        });
+        return cantidadPaises.get();
     }
-    
-    public int getCantidadCartas(){
-        return (cartas.size());
+
+    public int getCantidadFichas() {
+        Jugador jugadorDeTurno = jugadores.get(this.jugadorDeTurno - 1);
+        int fichas = jugadorDeTurno.getCantidadFichas();
+        for (Map.Entry<String, Continente> entry : continentes.entrySet()) {
+            fichas += entry.getValue().getRecompensa(jugadorDeTurno);
+        }
+        return fichas;
+    }
+
+    public void agregarEjercitos(String unPais, int cantidad) throws PaisNoExisteException, PaisNoTePerteneceException {
+        Pais pais = buscarPais(unPais);
+        pais.agregarEjercitos(cantidad, jugadores.get(jugadorDeTurno - 1));
+    }
+
+    public int getCantidadCartas() {
+        return cartas.size();
     }
 }
