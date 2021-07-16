@@ -10,13 +10,10 @@ import static java.lang.Math.min;
 
 public class Juego {
 
-    static private final int COLOCACION = 0;
-    static private final int ATAQUE = 1;
-    static private final int REAGRUPACION = 2;
     static private final int JUGADORES_MAX = 6;
 
     private final int jugadorDeTurno;
-    private final int fase;
+    private final Fase fase;
     private final Hashtable<String, Continente> continentes;
     private final ArrayList<Jugador> jugadores = new ArrayList<>();
     private final ArrayList<Carta> cartas;
@@ -35,7 +32,7 @@ public class Juego {
         cartas = (ArrayList<Carta>) lector.obtener();
 
         jugadorDeTurno = 1;
-        fase = COLOCACION;
+        fase = new FaseColocacion;
 
         distribuirPaises();
     }
@@ -96,9 +93,6 @@ public class Juego {
             throws PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException,
             AtaqueConCantidadInvalidaException, PaisNoLimitrofeException, AtaqueEnFaseErroneaException{
 
-        if (fase != ATAQUE) {
-            throw new AtaqueEnFaseErroneaException();
-        }
         Pais atacante = buscarPais(paisAtacante);
         Pais atacado = buscarPais(paisAtacado);
         Batalla batalla = new Batalla (atacado, atacante, cantidadEjercitos, jugadores.get(jugadorDeTurno-1));
