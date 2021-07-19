@@ -13,7 +13,7 @@ public class Juego {
     static private final int JUGADORES_MAX = 6;
 
     private final int jugadorDeTurno;
-    private final Fase fase;
+    private Fase fase;
     private final Hashtable<String, Continente> continentes;
     private final ArrayList<Jugador> jugadores = new ArrayList<>();
     private final ArrayList<Carta> cartas;
@@ -32,7 +32,7 @@ public class Juego {
         cartas = (ArrayList<Carta>) lector.obtener();
 
         jugadorDeTurno = 1;
-        fase = new FaseColocacion;
+        fase = new FaseAtaque;
 
         distribuirPaises();
     }
@@ -87,6 +87,14 @@ public class Juego {
         if (paisBuscado == null) throw new PaisNoExisteException();
 
         return paisBuscado;
+    }
+
+    public void jugar(int cantidadEjercitos, Pais... paises){
+        fase.jugar(cantidadEjercitos, jugadores.get(jugadorDeTurno-1), paises);
+    }
+
+    public void pasarDeFase(){
+        fase = fase.siguienteEtapa(jugadorDeTurno, jugadores.size());
     }
 
     public void atacarPais(String continente, String paisAtacante, String paisAtacado, int cantidadEjercitos)
