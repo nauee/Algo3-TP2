@@ -2,23 +2,25 @@ package edu.fiuba.algo3;
 
 class FaseColocacion implements Fase{
     private int fichasColocadas;
-    @Override
+    private Jugador jugadorDeTurno;
 
-    public FaseColocacion(){
+    public FaseColocacion(Jugador jugadorDeTurno){
         fichasColocadas = 0;
+        this.jugadorDeTurno = jugadorDeTurno;
     }
 
-    public void jugar(int cantidadEjercitos, Jugador jugador, Pais... paises) throws PaisNoTePerteneceException {
-        if (jugador.getCantidadFichas() <= fichasColocadas + cantidadEjercitos) {
+    @Override
+    public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoTePerteneceException, FichasInsuficientesException {
+        if (jugadorDeTurno.getCantidadFichas() <= fichasColocadas + cantidadEjercitos) {
             throw new FichasInsuficientesException();
         }
-        paises[0].agregarEjercitos(cantidadEjercitos, jugador);
+        paises[0].agregarEjercitos(cantidadEjercitos, jugadorDeTurno);
         fichasColocadas += cantidadEjercitos;
     }
-    @Override
-    public Fase siguienteEtapa(int jugadorActual, int cantidadDeJugadores){
 
-        return (new FaseAtaque());
+    @Override
+    public Fase siguienteFase(Jugador siguienteJugador){
+        return (new FaseColocacion(siguienteJugador));
     }
 
 }

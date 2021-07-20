@@ -86,4 +86,20 @@ public class Pais{
         return min(cantidadEjercitos,3);
     }
 
+    public void atacarPais(Pais paisAtacado, int cantidadEjercitos, Jugador jugador) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException {
+        Batalla batalla = new Batalla (paisAtacado, this, cantidadEjercitos, jugador);
+        batalla.batallar();
+    }
+
+    public boolean fueVencido(){
+        return cantidadEjercitos <= 0;
+    }
+
+    public void conquistar(Pais paisConquistado) throws PaisNoLimitrofeException, PaisNoTePerteneceException {
+        if (paisConquistado.fueVencido()) {
+            paisConquistado.serConquistadoPor(this);
+            moverEjercitos(1, paisConquistado);
+        }
+    }
+
 }

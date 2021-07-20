@@ -5,15 +5,20 @@ import java.util.ArrayList;
 import static java.lang.Math.min;
 
 class FaseAtaque implements Fase{
+    private final Jugador jugadorDeTurno;
+
+    public FaseAtaque(Jugador jugadorDeTurno){
+        this.jugadorDeTurno = jugadorDeTurno;
+    }
 
     @Override
-    public void jugar(int cantidadEjercitos,Jugador jugador, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException {
-        Batalla batalla = new Batalla (paises[0], paises[1], cantidadEjercitos);
-        batalla.batallar();
+    public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException {
+        paises[0].atacarPais(paises[1],cantidadEjercitos, jugadorDeTurno);
     }
+
     @Override
-    public Fase siguienteEtapa(int jugadorActual, int cantidadDeJugadores){
-        return (new FaseAgrupamiento());
+    public Fase siguienteFase(Jugador siguienteJugador){
+        return (new FaseAgrupamiento(siguienteJugador));
     }
 }
 

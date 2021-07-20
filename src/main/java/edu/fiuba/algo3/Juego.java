@@ -13,11 +13,10 @@ public class Juego {
     static private final int JUGADORES_MAX = 6;
 
     private final int jugadorDeTurno;
-    private Fase fase;
+    private Etapa etapa;
     private final Hashtable<String, Continente> continentes;
     private final ArrayList<Jugador> jugadores = new ArrayList<>();
     private final ArrayList<Carta> cartas;
-    private final Hashtable<String, Integer> recompensasPorContinente = new Hashtable<>();
 
     public Juego(ArrayList<String> nombres) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException{
 
@@ -32,7 +31,7 @@ public class Juego {
         cartas = (ArrayList<Carta>) lector.obtener();
 
         jugadorDeTurno = 1;
-        fase = new FaseAtaque;
+        etapa = new EtapaReagrupacion(jugadores);
 
         distribuirPaises();
     }
@@ -89,25 +88,14 @@ public class Juego {
         return paisBuscado;
     }
 
-    public void jugar(int cantidadEjercitos, Pais... paises){
-        fase.jugar(cantidadEjercitos, jugadores.get(jugadorDeTurno-1), paises);
+    public void jugar(int cantidadEjercitos, String... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, PaisNoExisteException {
+        Pais pais1 = buscarPais(paises[0]);
+        Pais pais2 = (paises.length > 1) ? buscarPais(paises[1]) : null;
+        etapa.jugar(cantidadEjercitos, pais1, pais2);
     }
 
     public void pasarDeFase(){
-        fase = fase.siguienteEtapa(jugadorDeTurno, jugadores.size());
-    }
-
-    public void atacarPais(String continente, String paisAtacante, String paisAtacado, int cantidadEjercitos)
-            throws PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException,
-            AtaqueConCantidadInvalidaException, PaisNoLimitrofeException, AtaqueEnFaseErroneaException{
-
-        Pais atacante = buscarPais(paisAtacante);
-        Pais atacado = buscarPais(paisAtacado);
-        Batalla batalla = new Batalla (atacado, atacante, cantidadEjercitos, jugadores.get(jugadorDeTurno-1));
-
-        ArrayList<Integer> resultadosDadosAtacante = batalla.lanzarDados(min(cantidadEjercitos,3));
-        ArrayList<Integer> resultadosDadosAtacado = batalla.lanzarDados(min(atacado.getCantidadEjercitos(), 3));
-        batalla.batallar(resultadosDadosAtacado, resultadosDadosAtacante);
+        etapa = etapa.siguienteFase();
     }
 
     public int getCantidadPaises(){
@@ -128,6 +116,25 @@ public class Juego {
         return fichas;
     }
 
+    public int getCantidadCartas() {
+        return cartas.size();
+    }
+
+    /*
+    public void atacarPais(String continente, String paisAtacante, String paisAtacado, int cantidadEjercitos)
+            throws PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException,
+            AtaqueConCantidadInvalidaException, PaisNoLimitrofeException, AtaqueEnFaseErroneaException{
+
+        Pais atacante = buscarPais(paisAtacante);
+        Pais atacado = buscarPais(paisAtacado);
+        Batalla batalla = new Batalla (atacado, atacante, cantidadEjercitos, jugadores.get(jugadorDeTurno-1));
+
+        ArrayList<Integer> resultadosDadosAtacante = batalla.lanzarDados(min(cantidadEjercitos,3));
+        ArrayList<Integer> resultadosDadosAtacado = batalla.lanzarDados(min(atacado.getCantidadEjercitos(), 3));
+        batalla.batallar(resultadosDadosAtacado, resultadosDadosAtacante);
+    }
+    */
+    /*
     public void agregarEjercitos(String unPais, int cantidad) throws PaisNoExisteException, PaisNoTePerteneceException, ColocacionEnFaseErroneaException {
         if (fase != COLOCACION) {
             throw new ColocacionEnFaseErroneaException();
@@ -139,13 +146,12 @@ public class Juego {
     public int getCantidadCartas() {
         return cartas.size();
     }
-
+    */
+    /*
     public void reagruparEjercitos(String origen, String destino, int cantidad) throws PaisNoExisteException, PaisNoTePerteneceException, ReagruparEnFaseErroneaException, PaisNoLimitrofeException{
-        if (fase != REAGRUPACION) {
-            throw new ReagruparEnFaseErroneaException();
-        }
         Pais paisOrigen = buscarPais(origen);
         Pais paisDestino = buscarPais(destino);
         paisOrigen.moverEjercitos(cantidad, paisDestino);
     }
+    */
 }

@@ -65,7 +65,7 @@ public class BatallaTest {
         Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio());
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(6, 5, 4));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(5));
-        batalla.batallar(dadosAtacado, dadosAtacante);
+        batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
         assertEquals(paisAtacante.getDuenio(), paisAtacado.getDuenio());
     }
 
@@ -84,8 +84,7 @@ public class BatallaTest {
         Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio());
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(3, 2, 1));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(6, 5, 4));
-
-        batalla.batallar(dadosAtacado, dadosAtacante);
+        batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
         assertEquals(jugadorAtacado, paisAtacado.getDuenio());
     }
 
@@ -119,8 +118,7 @@ public class BatallaTest {
         Batalla batalla = new Batalla(paisAtacado, paisAtacante, 5, paisAtacante.getDuenio());
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(6, 6, 1));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(4,4,2));
-
-        batalla.batallar(dadosAtacado, dadosAtacante);
+        batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
         assertEquals(3, paisAtacado.getCantidadEjercitos());
     }
 
