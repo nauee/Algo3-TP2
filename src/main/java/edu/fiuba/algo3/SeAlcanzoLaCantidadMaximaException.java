@@ -5,5 +5,4 @@ public class SeAlcanzoLaCantidadMaximaException extends Exception {
     public SeAlcanzoLaCantidadMaximaException(){
         super();
     }
-
 }

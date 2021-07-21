@@ -4,12 +4,8 @@ import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.io.IOException;
-import java.util.Hashtable;
-//import java.util.Arrays;
-//import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,45 +14,45 @@ public class LectorDeArchivosTest {
     @Test
     public void seLeenCorrectamenteLosNombresDeLosPaises() throws ParseException, IOException{
         LectorDeArchivos lector = new LectorDePaises("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        Hashtable<String, Continente> continentes = (Hashtable<String, Continente>) lector.obtener();
+        ArrayList<Continente> continentes = (ArrayList<Continente>) lector.obtener();
         ArrayList<Pais> paises = new ArrayList<>();
 
-        continentes.forEach((nombreContinente, continente) -> {
-            paises.addAll(continente.getPaises().values());
+        continentes.forEach((continente) -> {
+            paises.addAll(continente.getPaises());
         });
 
         assertEquals("Tartaria", (paises.get(0)).getNombre());
-        assertEquals("Gran Bretaña", (paises.get(1)).getNombre());
-        assertEquals("Francia", (paises.get(2)).getNombre());
+        assertEquals("Francia", (paises.get(1)).getNombre());
+        assertEquals("Gran Bretaña", (paises.get(2)).getNombre());
     }
 
     @Test
     public void seLeenLasFronterasDeTresPaisesCorrectamente() throws ParseException, IOException{
         LectorDeArchivos lector = new LectorDePaises("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        Hashtable<String, Continente> continentes = (Hashtable<String, Continente>) lector.obtener();
+        ArrayList<Continente> continentes = (ArrayList<Continente>) lector.obtener();
         ArrayList<Pais> paises = new ArrayList<>();
 
-        continentes.forEach((nombreContinente, continente) -> {
-            paises.addAll(continente.getPaises().values());
+        continentes.forEach((continente) -> {
+            paises.addAll(continente.getPaises());
         });
 
-        String[] fronterasFrancia = {"Alemania","España","Italia"};
         String[] fronterasGB = {"Islandia","Alemania","España"};
+        String[] fronterasFrancia = {"Alemania","España","Italia"};
         String[] fronterasTartaria = {"Aral","Taymir","Siberia"};
 
         assertArrayEquals((paises.get(0).getLimitrofes()).toArray(), fronterasTartaria);
-        assertArrayEquals((paises.get(1).getLimitrofes()).toArray(), fronterasGB);
-        assertArrayEquals((paises.get(2).getLimitrofes()).toArray(), fronterasFrancia);
+        assertArrayEquals((paises.get(1).getLimitrofes()).toArray(), fronterasFrancia);
+        assertArrayEquals((paises.get(2).getLimitrofes()).toArray(), fronterasGB);
     }
 
     @Test
     public void seLeenCorrectamenteLaCantidadDePaises() throws ParseException, IOException{
         LectorDeArchivos lector = new LectorDePaises("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        Hashtable<String, Continente> continentes = (Hashtable<String, Continente>) lector.obtener();
+        ArrayList<Continente> continentes = (ArrayList<Continente>) lector.obtener();
         ArrayList<Pais> paises = new ArrayList<>();
 
-        continentes.forEach((nombreContinente, continente) -> {
-            paises.addAll(continente.getPaises().values());
+        continentes.forEach((continente) -> {
+            paises.addAll(continente.getPaises());
         });
         assertEquals(3, paises.size());
     }
@@ -64,11 +60,11 @@ public class LectorDeArchivosTest {
     @Test
     public void seLeenCorrectamenteLaCantidadDeFronterasDeUnPais() throws ParseException, IOException{
         LectorDeArchivos lector = new LectorDePaises("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        Hashtable<String, Continente> continentes = (Hashtable<String, Continente>) lector.obtener();
+        ArrayList<Continente> continentes = (ArrayList<Continente>) lector.obtener();
         ArrayList<Pais> paises = new ArrayList<>();
 
-        continentes.forEach((nombreContinente, continente) -> {
-            paises.addAll(continente.getPaises().values());
+        continentes.forEach((continente) -> {
+            paises.addAll(continente.getPaises());
         });
 
         assertEquals(3, ((paises.get(0)).getLimitrofes()).size());
@@ -93,7 +89,6 @@ public class LectorDeArchivosTest {
 
         assertEquals(3, cartas.size());
     }
-
 
     @Test
     public void seLeenCorrectamenteElSimboloDeUnaCarta() throws ParseException, IOException{

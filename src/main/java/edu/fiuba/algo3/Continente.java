@@ -1,13 +1,13 @@
 package edu.fiuba.algo3;
 
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Continente {
 
     private final String nombre;
     private final int recompensa;
-    private final Hashtable<String,Pais> paises = new Hashtable<>();
+    private final ArrayList<Pais> paises = new ArrayList<>();
 
     public Continente(String nombre, int recompensa){
         this.nombre = nombre;
@@ -20,20 +20,28 @@ public class Continente {
 
     public int getRecompensa(Jugador jugador){
         int recompensa = this.recompensa;
-        for (Map.Entry<String, Pais> entry : paises.entrySet()) {
-            recompensa = entry.getValue().getDuenio().equals(jugador) ? recompensa : 0;
+        for (Pais pais : paises) {
+            recompensa = pais.getDuenio().equals(jugador) ? recompensa : 0;
         }
         return recompensa;
     }
 
 
     public void agregarPais(Pais pais){
-        paises.putIfAbsent(pais.getNombre(), pais);
+        paises.add(pais);
     }
 
-    public Pais getPais(String unPais) { return paises.get(unPais); }
+    public Pais getPais(String unPais) {
+        Pais paisBuscado = null;
 
-    public Hashtable<String, Pais> getPaises(){
+        for (Pais pais : paises)
+            if (pais.getNombre().equals(unPais))
+                paisBuscado = pais;
+
+        return paisBuscado;
+    }
+
+    public ArrayList<Pais> getPaises(){
         return paises;
     }
 

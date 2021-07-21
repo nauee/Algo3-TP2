@@ -1,9 +1,5 @@
 package edu.fiuba.algo3;
 
-import java.util.ArrayList;
-
-import static java.lang.Math.min;
-
 class FaseAtaque implements Fase{
     private final Jugador jugadorDeTurno;
 

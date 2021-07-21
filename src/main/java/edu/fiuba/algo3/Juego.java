@@ -4,9 +4,7 @@ import org.json.simple.parser.ParseException;
 
 import java.util.*;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import static java.lang.Math.min;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Juego {
 
@@ -14,7 +12,7 @@ public class Juego {
 
     private final int jugadorDeTurno;
     private Etapa etapa;
-    private final Hashtable<String, Continente> continentes;
+    private final ArrayList<Continente> continentes;
     private final ArrayList<Jugador> jugadores = new ArrayList<>();
     private final ArrayList<Carta> cartas;
 
@@ -25,7 +23,7 @@ public class Juego {
         }
         
         LectorDeArchivos lectorDeArchivos = new LectorDePaises("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
-        continentes = (Hashtable<String, Continente>) lectorDeArchivos.obtener();
+        continentes = (ArrayList<Continente>) lectorDeArchivos.obtener();
 
         LectorDeArchivos lector = new LectorDeCartas("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
         cartas = (ArrayList<Carta>) lector.obtener();
@@ -39,8 +37,8 @@ public class Juego {
     private void distribuirPaises() throws PaisNoTePerteneceException{
 
         ArrayList<Pais> paises = new ArrayList<>();
-        continentes.forEach((nombreContinente, continente) -> {
-            paises.addAll(continente.getPaises().values());
+        continentes.forEach((continente) -> {
+            paises.addAll(continente.getPaises());
         });
 
         ArrayList<Integer> numeros = new ArrayList<>();
@@ -78,9 +76,10 @@ public class Juego {
 
         Pais paisBuscado = null;
 
-        Enumeration<Continente> continentes = this.continentes.elements();
-        while (continentes.hasMoreElements() && paisBuscado == null) {
-            paisBuscado = continentes.nextElement().getPais(unPais);
+        for (Continente continente : continentes){
+            Pais posiblePais = continente.getPais(unPais);
+            if (posiblePais != null)
+                paisBuscado = posiblePais;
         }
 
         if (paisBuscado == null) throw new PaisNoExisteException();
@@ -101,8 +100,8 @@ public class Juego {
     public int getCantidadPaises(){
 
         int cantidadPaises = 0;
-        for (Map.Entry<String, Continente> entry : continentes.entrySet()) {
-            cantidadPaises += entry.getValue().getCantidadPaises();
+        for (Continente continente : continentes) {
+            cantidadPaises += continente.getCantidadPaises();
         }
         return cantidadPaises;
     }
@@ -110,8 +109,8 @@ public class Juego {
     public int getCantidadFichas() {
         Jugador jugadorDeTurno = jugadores.get(this.jugadorDeTurno - 1);
         int fichas = jugadorDeTurno.getCantidadFichas();
-        for (Map.Entry<String, Continente> entry : continentes.entrySet()) {
-            fichas += entry.getValue().getRecompensa(jugadorDeTurno);
+        for (Continente continente : continentes) {
+            fichas += continente.getRecompensa(jugadorDeTurno);
         }
         return fichas;
     }
