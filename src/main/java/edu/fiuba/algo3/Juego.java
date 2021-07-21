@@ -20,10 +20,10 @@ public class Juego {
 
     public Juego(ArrayList<String> nombres) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException{
 
-        for (int i = 0; i < nombres.size(); i++) {
-            this.agregarJugador(new Jugador(nombres.get(i), i + 1));
+        for(String nombre: nombres){
+            agregarJugador(new Jugador(nombre));
         }
-
+        
         LectorDeArchivos lectorDeArchivos = new LectorDePaises("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
         continentes = (Hashtable<String, Continente>) lectorDeArchivos.obtener();
 
