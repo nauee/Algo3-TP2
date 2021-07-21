@@ -60,12 +60,4 @@ public class JuegoTest {
            juego.jugar(1, "Chipre");
         });
     }
-
-    @Test
-    public void seAgreganEjercitosAUnPaisCorrectamente() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoExisteException, PaisNoTePerteneceException, PaisNoLimitrofeException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException {
-        Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nahuel", "Fernando")));
-        juego.jugar(1, "Argentina");
-        Pais unPais = juego.buscarPais("Argentina");
-        assertEquals(2, unPais.getCantidadEjercitos());
-    }
 }

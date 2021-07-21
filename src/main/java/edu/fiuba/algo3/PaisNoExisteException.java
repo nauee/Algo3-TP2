@@ -5,5 +5,4 @@ public class PaisNoExisteException extends Exception{
     public PaisNoExisteException() {
         super();
     }
-
 }

@@ -1,10 +1,7 @@
 package edu.fiuba.algo3;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
 import static java.lang.Math.min;
-import static java.lang.Math.random;
 
 public class Batalla{
 
@@ -29,12 +26,6 @@ public class Batalla{
         paisAtacado = atacado;
         paisAtacante = atacante;
         cantidadEjercitoAtacante = cantidadEjercito;
-
-    }
-
-    private ArrayList<Integer> lanzarDados(int cantidad){
-        Dados dados = new Dados();
-        return dados.lanzar(cantidad);
     }
 
     private Pais determinarPerdedor(int dadoAtacante, int dadoAtacado){
@@ -51,8 +42,8 @@ public class Batalla{
     }
 
     public void batallar() throws PaisNoTePerteneceException, PaisNoLimitrofeException, AtaqueConCantidadInvalidaException {
-        ArrayList<Integer> resultadosDadosAtacante = lanzarDados(paisAtacante.atacantes(cantidadEjercitoAtacante));
-        ArrayList<Integer> resultadosDadosAtacado = lanzarDados(paisAtacado.defensores());
+        ArrayList<Integer> resultadosDadosAtacante = Dados.lanzar(paisAtacante.atacantes(cantidadEjercitoAtacante));
+        ArrayList<Integer> resultadosDadosAtacado = Dados.lanzar(paisAtacado.defensores());
         ataqueEntrePaises(resultadosDadosAtacado, resultadosDadosAtacante);
     }
 }

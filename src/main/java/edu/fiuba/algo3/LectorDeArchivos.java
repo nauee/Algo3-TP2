@@ -1,24 +1,25 @@
 package edu.fiuba.algo3;
 
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
-
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 public abstract class LectorDeArchivos {
 
     protected final FileReader lector;
     protected final JSONParser parser;
+    protected final String tipoArchivo;
 
-    public LectorDeArchivos(String nombreArchivo) throws FileNotFoundException{
+    public LectorDeArchivos(String rutaArchivo) throws FileNotFoundException{
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            nombreArchivo = nombreArchivo.replace("/","\\");
+            rutaArchivo = rutaArchivo.replace("/","\\");
         }
-        this.lector = new FileReader(nombreArchivo);
+        this.lector = new FileReader(rutaArchivo);
         this.parser = new JSONParser();
+        this.tipoArchivo = rutaArchivo.split("\\.")[1];
     }
 
     public abstract Object obtener() throws ParseException, IOException;
