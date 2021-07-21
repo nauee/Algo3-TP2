@@ -2,6 +2,8 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.min;
+
 public class Pais{
 
     private final String nombre;
@@ -51,6 +53,8 @@ public class Pais{
         cantidadEjercitos--;
     }
 
+
+
     public void moverEjercitos(int cantidadEjercitos, Pais destino) throws  PaisNoTePerteneceException, PaisNoLimitrofeException{
         if (!destino.esLimitrofeCon(nombre))
             throw new PaisNoLimitrofeException();
@@ -62,9 +66,40 @@ public class Pais{
         return limitrofes.contains(unPais);
     }
 
-    public void serConquistadoPor(Jugador conquistador){
+    public void serConquistadoPor(Pais paisConquistador){
 
         duenio.perderPais(this);
-        conquistador.agregarPais(this);
+        paisConquistador.ganarleAPais(this);
     }
+
+    public void ganarleAPais(Pais pais){
+        duenio.agregarPais(pais);
+    }
+
+    public int defensores(){
+        return min(cantidadEjercitos,3);
+    }
+
+    public int atacantes(int cantidadAtacantes) throws AtaqueConCantidadInvalidaException{
+        if(cantidadEjercitos <= cantidadAtacantes)
+            throw new AtaqueConCantidadInvalidaException();
+        return min(cantidadEjercitos,3);
+    }
+
+    public void atacarPais(Pais paisAtacado, int cantidadEjercitos, Jugador jugador) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException {
+        Batalla batalla = new Batalla (paisAtacado, this, cantidadEjercitos, jugador);
+        batalla.batallar();
+    }
+
+    public boolean fueVencido(){
+        return cantidadEjercitos <= 0;
+    }
+
+    public void conquistar(Pais paisConquistado) throws PaisNoLimitrofeException, PaisNoTePerteneceException {
+        if (paisConquistado.fueVencido()) {
+            paisConquistado.serConquistadoPor(this);
+            moverEjercitos(1, paisConquistado);
+        }
+    }
+
 }

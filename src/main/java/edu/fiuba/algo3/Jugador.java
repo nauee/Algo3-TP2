@@ -4,14 +4,17 @@ import java.util.Hashtable;
 
 public class Jugador{
 
+    private static int proximoId = 1;
+
     private final String nombre;
     private final int id;
     private final Hashtable<String, Pais> paises = new Hashtable<>();
 
-    public Jugador(String nombre, int id){
+    public Jugador(String nombre){
 
         this.nombre = nombre;
-        this.id = id;
+        id = proximoId;
+        proximoId++;
     }
 
     public String getNombre(){

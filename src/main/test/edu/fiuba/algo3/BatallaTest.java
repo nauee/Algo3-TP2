@@ -16,9 +16,9 @@ public class BatallaTest {
 
         Pais paisAtacante = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina")));
-        Jugador jugador = new Jugador("Angel Di Maria", 1);
+        Jugador jugador = new Jugador("Angel Di Maria");
         paisAtacante.asignarDuenio(jugador);
-        paisAtacado.asignarDuenio(new Jugador("Richarlison",2));
+        paisAtacado.asignarDuenio(new Jugador("Richarlison"));
         paisAtacante.agregarEjercitos(4, jugador);
         Batalla batalla = new Batalla(paisAtacado, paisAtacante,3, paisAtacante.getDuenio());
 
@@ -30,8 +30,8 @@ public class BatallaTest {
 
         Pais paisAtacante = new Pais("Portugal", new ArrayList<String>(Arrays.asList("España")));
         Pais paisAtacado = new Pais("España", new ArrayList<String>(Arrays.asList("Portugal")));
-        paisAtacante.asignarDuenio(new Jugador("Angel Di Maria",1));
-        paisAtacado.asignarDuenio(new Jugador("Richarlison",2));
+        paisAtacante.asignarDuenio(new Jugador("Angel Di Maria"));
+        paisAtacado.asignarDuenio(new Jugador("Richarlison"));
 
         assertThrows(PaisNoTePerteneceException.class, () ->
             new Batalla(paisAtacado, paisAtacante, 3, paisAtacado.getDuenio()));
@@ -42,7 +42,7 @@ public class BatallaTest {
 
         Pais paisAtacante = new Pais("España", new ArrayList<String>(Arrays.asList("Italia")));
         Pais paisAtacado = new Pais("Italia", new ArrayList<String>(Arrays.asList("España")));
-        Jugador jugadorAtacante = new Jugador("Angel Di Maria",1);
+        Jugador jugadorAtacante = new Jugador("Angel Di Maria");
         paisAtacante.asignarDuenio(jugadorAtacante);
         paisAtacado.asignarDuenio(jugadorAtacante);
         paisAtacante.agregarEjercitos(4, jugadorAtacante);
@@ -56,8 +56,8 @@ public class BatallaTest {
 
         Pais paisAtacante = new Pais("Argentina", new ArrayList<String>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<String>(Arrays.asList("Argentina")));
-        Jugador jugadorAtacante = new Jugador("Angel Di Maria", 1);
-        Jugador jugadorAtacado = new Jugador("Richarlison",2);
+        Jugador jugadorAtacante = new Jugador("Angel Di Maria");
+        Jugador jugadorAtacado = new Jugador("Richarlison");
         paisAtacante.asignarDuenio(jugadorAtacante);
         paisAtacado.asignarDuenio(jugadorAtacado);
         paisAtacante.agregarEjercitos(4, jugadorAtacante);
@@ -65,7 +65,7 @@ public class BatallaTest {
         Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio());
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(6, 5, 4));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(5));
-        batalla.batallar(dadosAtacado, dadosAtacante);
+        batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
         assertEquals(paisAtacante.getDuenio(), paisAtacado.getDuenio());
     }
 
@@ -75,8 +75,8 @@ public class BatallaTest {
         Pais paisAtacante= new Pais("Estados Unidos", new ArrayList<String>(Arrays.asList("Canada")));
         Pais paisAtacado= new Pais("Canada", new ArrayList<String>(Arrays.asList("Estados Unidos")));
 
-        Jugador jugadorAtacante = new Jugador("Angel Di Maria", 1);
-        Jugador jugadorAtacado = new Jugador("Richarlison",2);
+        Jugador jugadorAtacante = new Jugador("Angel Di Maria");
+        Jugador jugadorAtacado = new Jugador("Richarlison");
         paisAtacante.asignarDuenio(jugadorAtacante);
         paisAtacado.asignarDuenio(jugadorAtacado);
         paisAtacante.agregarEjercitos(10, jugadorAtacante);
@@ -84,8 +84,7 @@ public class BatallaTest {
         Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio());
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(3, 2, 1));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(6, 5, 4));
-
-        batalla.batallar(dadosAtacado, dadosAtacante);
+        batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
         assertEquals(jugadorAtacado, paisAtacado.getDuenio());
     }
 
@@ -94,8 +93,8 @@ public class BatallaTest {
 
         Pais paisAtacante = new Pais("Argentina", new ArrayList<String>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<String>(Arrays.asList("Argentina")));
-        Jugador jugadorAtacante = new Jugador("Angel Di Maria",1);
-        Jugador jugadorAtacado = new Jugador("Richarlison",2);
+        Jugador jugadorAtacante = new Jugador("Angel Di Maria");
+        Jugador jugadorAtacado = new Jugador("Richarlison");
         paisAtacante.asignarDuenio(jugadorAtacante);
         paisAtacado.asignarDuenio(jugadorAtacado);
         paisAtacante.agregarEjercitos(4,jugadorAtacante);
@@ -110,8 +109,8 @@ public class BatallaTest {
 
         Pais paisAtacante = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina")));
-        Jugador jugadorAtacante = new Jugador("Angel Di Maria",1);
-        Jugador jugadorAtacado = new Jugador("Richarlison",2);
+        Jugador jugadorAtacante = new Jugador("Angel Di Maria");
+        Jugador jugadorAtacado = new Jugador("Richarlison");
         paisAtacante.asignarDuenio(jugadorAtacante);
         paisAtacado.asignarDuenio(jugadorAtacado);
         paisAtacante.agregarEjercitos(10, jugadorAtacante);
@@ -119,8 +118,7 @@ public class BatallaTest {
         Batalla batalla = new Batalla(paisAtacado, paisAtacante, 5, paisAtacante.getDuenio());
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(6, 6, 1));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(4,4,2));
-
-        batalla.batallar(dadosAtacado, dadosAtacante);
+        batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
         assertEquals(3, paisAtacado.getCantidadEjercitos());
     }
 
@@ -130,12 +128,12 @@ public class BatallaTest {
         ArrayList<String> limitrofesArgentina = new ArrayList<>(Arrays.asList("Bolivia", "Uruguay", "Brasil"));
         ArrayList<String> limitrofesEspania = new ArrayList<>(Arrays.asList("Sahara", "Francia", "Gran Bretaña"));
 
-        Jugador jugadorAtacante = new Jugador("Fernando", 2);
+        Jugador jugadorAtacante = new Jugador("Fernando");
         Pais atacante = new Pais("Argentina", limitrofesArgentina);
         atacante.asignarDuenio(jugadorAtacante);
         atacante.agregarEjercitos(10, jugadorAtacante);
 
-        Jugador jugadorAtacado = new Jugador("Rosario", 1);
+        Jugador jugadorAtacado = new Jugador("Rosario");
         Pais atacado = new Pais("España", limitrofesEspania);
         atacado.asignarDuenio(jugadorAtacado);
         atacado.agregarEjercitos(5, jugadorAtacado);
