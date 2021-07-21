@@ -32,7 +32,7 @@ public class Batalla{
         return (dadoAtacante <= dadoAtacado ? paisAtacante : paisAtacado);
     }
 
-    public void ataqueEntrePaises(ArrayList<Integer> resultadosDadosAtacado, ArrayList<Integer> resultadosDadosAtacante) throws PaisNoLimitrofeException, PaisNoTePerteneceException {
+    public void ataqueEntrePaises(ArrayList<Integer> resultadosDadosAtacado, ArrayList<Integer> resultadosDadosAtacante) throws PaisNoLimitrofeException, PaisNoTePerteneceException, MovimientoConCantidadInvalidaException {
 
         for(int i = 0; i < min(resultadosDadosAtacado.size(), resultadosDadosAtacante.size()); i++){
             Pais perdedor = determinarPerdedor(resultadosDadosAtacante.get(i), resultadosDadosAtacado.get(i));
@@ -41,7 +41,7 @@ public class Batalla{
         paisAtacante.conquistar(paisAtacado);
     }
 
-    public void batallar() throws PaisNoTePerteneceException, PaisNoLimitrofeException, AtaqueConCantidadInvalidaException {
+    public void batallar() throws PaisNoTePerteneceException, PaisNoLimitrofeException, AtaqueConCantidadInvalidaException, MovimientoConCantidadInvalidaException {
         ArrayList<Integer> resultadosDadosAtacante = Dados.lanzar(paisAtacante.atacantes(cantidadEjercitoAtacante));
         ArrayList<Integer> resultadosDadosAtacado = Dados.lanzar(paisAtacado.defensores());
         ataqueEntrePaises(resultadosDadosAtacado, resultadosDadosAtacante);

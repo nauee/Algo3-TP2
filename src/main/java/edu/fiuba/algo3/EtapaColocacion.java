@@ -2,15 +2,11 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 
-public class EtapaReagrupacion implements Etapa{
+public class EtapaColocacion extends Etapa{
 
-    private ArrayList<Jugador> jugadores;
-    private Fase fase;
-    private int jugadorDeTurno;
+    private FaseColocacion fase;
 
-    public EtapaReagrupacion(ArrayList<Jugador> jugadores){
-        jugadorDeTurno = 1;
-        this.jugadores = jugadores;
+    public EtapaColocacion(){
         fase = new FaseColocacion(jugadores.get(jugadorDeTurno-1));
     }
 
@@ -22,10 +18,14 @@ public class EtapaReagrupacion implements Etapa{
     @Override
     public Etapa siguienteFase(){
         if (jugadorDeTurno == jugadores.size())
-            return new EtapaBatalla(jugadores);
-        fase = fase.siguienteFase(jugadores.get(jugadorDeTurno));
-        jugadorDeTurno++;
+            return new EtapaBatalla();
+        fase = (FaseColocacion) fase.siguienteFase(jugadores.get(jugadorDeTurno), cartas);
         return this;
+    }
+
+    @Override
+    public void activarCarta(Carta unaCarta){
+        fase.activarCarta(unaCarta);
     }
 
 }

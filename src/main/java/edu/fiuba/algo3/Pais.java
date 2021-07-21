@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static java.lang.Math.min;
 
@@ -53,11 +54,12 @@ public class Pais{
         cantidadEjercitos--;
     }
 
-
-
-    public void moverEjercitos(int cantidadEjercitos, Pais destino) throws  PaisNoTePerteneceException, PaisNoLimitrofeException{
+    public void moverEjercitos(int cantidadEjercitos, Pais destino) throws PaisNoTePerteneceException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException {
         if (!destino.esLimitrofeCon(nombre))
             throw new PaisNoLimitrofeException();
+        if (cantidadEjercitos >= this.cantidadEjercitos) {
+            throw new MovimientoConCantidadInvalidaException();
+        }
         destino.agregarEjercitos(cantidadEjercitos, duenio);
         this.cantidadEjercitos -= cantidadEjercitos;
     }
@@ -86,7 +88,7 @@ public class Pais{
         return min(cantidadEjercitos,3);
     }
 
-    public void atacarPais(Pais paisAtacado, int cantidadEjercitos, Jugador jugador) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException {
+    public void atacarPais(Pais paisAtacado, int cantidadEjercitos, Jugador jugador) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, MovimientoConCantidadInvalidaException {
         Batalla batalla = new Batalla (paisAtacado, this, cantidadEjercitos, jugador);
         batalla.batallar();
     }
@@ -95,11 +97,14 @@ public class Pais{
         return cantidadEjercitos <= 0;
     }
 
-    public void conquistar(Pais paisConquistado) throws PaisNoLimitrofeException, PaisNoTePerteneceException {
+    public void conquistar(Pais paisConquistado) throws PaisNoLimitrofeException, PaisNoTePerteneceException, MovimientoConCantidadInvalidaException {
         if (paisConquistado.fueVencido()) {
             paisConquistado.serConquistadoPor(this);
             moverEjercitos(1, paisConquistado);
         }
     }
 
+    public boolean equals(String nombre) {
+        return this.nombre.equals(nombre);
+    }
 }

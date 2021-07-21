@@ -4,7 +4,6 @@ import org.json.simple.parser.ParseException;
 
 import java.util.*;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Juego {
 
@@ -29,7 +28,8 @@ public class Juego {
         cartas = (ArrayList<Carta>) lector.obtener();
 
         jugadorDeTurno = 1;
-        etapa = new EtapaReagrupacion(jugadores);
+        Etapa.asignarValores(continentes, jugadores, cartas);
+        etapa = new EtapaColocacion();
 
         distribuirPaises();
     }
@@ -87,7 +87,7 @@ public class Juego {
         return paisBuscado;
     }
 
-    public void jugar(int cantidadEjercitos, String... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, PaisNoExisteException {
+    public void jugar(int cantidadEjercitos, String... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, PaisNoExisteException, MovimientoConCantidadInvalidaException {
         Pais pais1 = buscarPais(paises[0]);
         Pais pais2 = (paises.length > 1) ? buscarPais(paises[1]) : null;
         etapa.jugar(cantidadEjercitos, pais1, pais2);
@@ -106,51 +106,12 @@ public class Juego {
         return cantidadPaises;
     }
 
-    public int getCantidadFichas() {
-        Jugador jugadorDeTurno = jugadores.get(this.jugadorDeTurno - 1);
-        int fichas = jugadorDeTurno.getCantidadFichas();
-        for (Continente continente : continentes) {
-            fichas += continente.getRecompensa(jugadorDeTurno);
-        }
-        return fichas;
-    }
-
     public int getCantidadCartas() {
         return cartas.size();
     }
 
-    /*
-    public void atacarPais(String continente, String paisAtacante, String paisAtacado, int cantidadEjercitos)
-            throws PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoExisteException,
-            AtaqueConCantidadInvalidaException, PaisNoLimitrofeException, AtaqueEnFaseErroneaException{
-
-        Pais atacante = buscarPais(paisAtacante);
-        Pais atacado = buscarPais(paisAtacado);
-        Batalla batalla = new Batalla (atacado, atacante, cantidadEjercitos, jugadores.get(jugadorDeTurno-1));
-
-        ArrayList<Integer> resultadosDadosAtacante = batalla.lanzarDados(min(cantidadEjercitos,3));
-        ArrayList<Integer> resultadosDadosAtacado = batalla.lanzarDados(min(atacado.getCantidadEjercitos(), 3));
-        batalla.batallar(resultadosDadosAtacado, resultadosDadosAtacante);
-    }
-    */
-    /*
-    public void agregarEjercitos(String unPais, int cantidad) throws PaisNoExisteException, PaisNoTePerteneceException, ColocacionEnFaseErroneaException {
-        if (fase != COLOCACION) {
-            throw new ColocacionEnFaseErroneaException();
-        }
-        Pais pais = buscarPais(unPais);
-        pais.agregarEjercitos(cantidad, jugadores.get(jugadorDeTurno - 1));
+    public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException {
+        etapa.activarCarta(unaCarta);
     }
 
-    public int getCantidadCartas() {
-        return cartas.size();
-    }
-    */
-    /*
-    public void reagruparEjercitos(String origen, String destino, int cantidad) throws PaisNoExisteException, PaisNoTePerteneceException, ReagruparEnFaseErroneaException, PaisNoLimitrofeException{
-        Pais paisOrigen = buscarPais(origen);
-        Pais paisDestino = buscarPais(destino);
-        paisOrigen.moverEjercitos(cantidad, paisDestino);
-    }
-    */
 }

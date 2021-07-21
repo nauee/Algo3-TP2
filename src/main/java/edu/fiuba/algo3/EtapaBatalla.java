@@ -1,30 +1,28 @@
 package edu.fiuba.algo3;
 
-import java.util.ArrayList;
+public class EtapaBatalla extends Etapa{
 
-public class EtapaBatalla implements Etapa{
-
-    private ArrayList<Jugador> jugadores;
     private Fase fase;
-    private int jugadorDeTurno;
 
-    public EtapaBatalla(ArrayList<Jugador> jugadores){
-        jugadorDeTurno = 1;
-        this.jugadores = jugadores;
-        fase = new FaseAtaque(jugadores.get(jugadorDeTurno-1));
+    public EtapaBatalla(){
+        fase = new FaseAtaque(jugadores.get(jugadorDeTurno-1), cartas);
     }
 
     @Override
-    public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException {
+    public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, MovimientoConCantidadInvalidaException {
         fase.jugar(cantidadEjercitos, paises);
     }
 
     @Override
     public Etapa siguienteFase(){
         if (jugadorDeTurno == jugadores.size())
-            return new EtapaReagrupacion(jugadores);
-        fase = fase.siguienteFase(jugadores.get(jugadorDeTurno));
-        jugadorDeTurno++;
+            return new EtapaColocacion();
+        fase = fase.siguienteFase(jugadores.get(jugadorDeTurno), cartas);
         return this;
+    }
+
+    @Override
+    public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException {
+        throw new NoSePuedeActivarCartaEnLaBatallaException();
     }
 }

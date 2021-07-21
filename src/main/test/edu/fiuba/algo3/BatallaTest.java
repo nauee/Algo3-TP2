@@ -52,7 +52,7 @@ public class BatallaTest {
     }
 
     @Test
-    public void batallaEntreDosPaisesTerminaConConquista() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoLimitrofeException {
+    public void batallaEntreDosPaisesTerminaConConquista() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException {
 
         Pais paisAtacante = new Pais("Argentina", new ArrayList<String>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<String>(Arrays.asList("Argentina")));
@@ -70,7 +70,7 @@ public class BatallaTest {
     }
 
     @Test
-    public void batallaEntreDosPaisesNoTerminaConConquista() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoLimitrofeException {
+    public void batallaEntreDosPaisesNoTerminaConConquista() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException {
 
         Pais paisAtacante= new Pais("Estados Unidos", new ArrayList<String>(Arrays.asList("Canada")));
         Pais paisAtacado= new Pais("Canada", new ArrayList<String>(Arrays.asList("Estados Unidos")));
@@ -105,7 +105,7 @@ public class BatallaTest {
     }
 
     @Test
-    public void batallaEntreDosPaisesPierdeLaCantidadDeEjercitosCorrecta() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoLimitrofeException {
+    public void batallaEntreDosPaisesPierdeLaCantidadDeEjercitosCorrecta() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException {
 
         Pais paisAtacante = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina")));
