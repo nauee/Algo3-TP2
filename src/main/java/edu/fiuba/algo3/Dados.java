@@ -12,7 +12,7 @@ public class Dados {
         for (int i = 0; i < cantidad; i++)
             dados.add((int) (1 + random() * 6));
 
-        Collections.sort(dados);
+        Collections.sort(dados, Collections.reverseOrder());
         return dados;
     }
 }
