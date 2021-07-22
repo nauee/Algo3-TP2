@@ -188,14 +188,12 @@ public class JuegoTest {
        juego.pasarDeFase();
 
        // Ataque primer jugador
-       juego.jugar(10,"Argentina","Brasil");
-       if(brasil.lePerteneceA(juego.getJugador(1))){
-           juego.jugar(9,"Argentina","Brasil");
-       }
-       juego.jugar(8,"Argentina","Chile");
-       if(chile.lePerteneceA(juego.getJugador(1))){
-           juego.jugar(5,"Argentina","Chile");
-       }
+       Batalla batalla1= new Batalla(brasil, argentina, 10);
+       ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(6, 6, 3));
+       ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(4,4,2));
+       batalla1.ataqueEntrePaises(dadosAtacado, dadosAtacante);
+       Batalla batalla2= new Batalla(chile, argentina, 10);
+       batalla2.ataqueEntrePaises(dadosAtacado, dadosAtacante);
 
        assertEquals(cantidadPaisesPrevioAtacar+2, juego.getJugador(0).getCantidadPaises());
    }
