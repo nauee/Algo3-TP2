@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class LectorDeCartasCSV implements Lector{
-
-    private final FileReader lector;
+public class LectorDeCartasCSV extends LectorDeCartas{
 
     public LectorDeCartasCSV(String rutaArchivo) throws FileNotFoundException {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -40,7 +38,10 @@ public class LectorDeCartasCSV implements Lector{
         return cartas;
     }
 
-    private Carta obtenerCarta(String[] datosCarta){
-        return (new Carta(datosCarta[0], datosCarta[1]));
+    @Override
+    protected Carta obtenerCarta(Object carta){
+        String pais = ((String[])carta)[0];
+        String simbolo = ((String[])carta)[1];
+        return (new Carta(pais, simbolo));
     }
 }

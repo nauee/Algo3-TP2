@@ -4,7 +4,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {1}
+## Grupo 1
 
 * **Nahuel Castro** - [nauee](https://github.com/nauee)
 * **Fernando Balmaceda** - [ferbalmaceda23](https://github.com/ferbalmaceda23)
@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Nicolas Pinto** - [nicopinto22](https://github.com/nicopinto22)
 * **Agustina Bocaccio** - [agusbocaccio](https://github.com/agusbocaccio)
 
-Corrector: **{Joaquin Gomez}**
+Corrector: **Joaquin Gomez**
 
 ## Aplicación
 
@@ -26,7 +26,7 @@ $ java -jar <archivo.jar>
 
 Aquellos que deseen colaborar con el proyecto pueden consultar la [guía de desarrollo](./docs/Desarrollo.md).
 
-##Informe 
+## Informe 
 
 El informe del trabajo, que se actualizara en cada entrega, puede encontrarse en este [link](https://www.overleaf.com/read/zncfpbsxvkfk). 
 
