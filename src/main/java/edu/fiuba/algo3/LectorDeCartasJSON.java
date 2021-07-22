@@ -10,10 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class LectorDeCartasJSON implements Lector{
-
-    private final FileReader lector;
-    private final JSONParser parser;
+public class LectorDeCartasJSON extends LectorDeCartas{
 
     public LectorDeCartasJSON(String rutaArchivo) throws FileNotFoundException {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -38,9 +35,10 @@ public class LectorDeCartasJSON implements Lector{
         return cartas;
     }
 
-    private Carta obtenerCarta(JSONObject carta){
-        String pais = (String) carta.get("Pais");
-        String simbolo = (String) carta.get("Simbolo");
+    @Override
+    protected Carta obtenerCarta(Object carta){
+        String pais = (String)((JSONObject)carta).get("Pais");
+        String simbolo = (String)((JSONObject)carta).get("Simbolo");
         return (new Carta(pais, simbolo));
     }
 }

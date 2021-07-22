@@ -7,15 +7,13 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class LectorDePaisesCSV implements Lector{
-
-    private final FileReader lector;
+public class LectorDePaisesCSV extends LectorDePaises{
 
     public LectorDePaisesCSV(String rutaArchivo) throws FileNotFoundException {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             rutaArchivo = rutaArchivo.replace("/","\\");
         }
-        this.lector = new FileReader(rutaArchivo);
+        lector = new FileReader(rutaArchivo);
     }
 
     @Override
@@ -29,18 +27,9 @@ public class LectorDePaisesCSV implements Lector{
         organizarContinentes(continentes);
         return continentes;
     }
-    private ArrayList<Continente> inicializarContinentes(){
-        ArrayList<Continente> continentes = new ArrayList<>();
-        continentes.add(new Continente("Asia", 7));
-        continentes.add(new Continente("Europa", 5));
-        continentes.add(new Continente("America del Norte", 5));
-        continentes.add(new Continente("America del Sur", 3));
-        continentes.add(new Continente("Africa", 3));
-        continentes.add(new Continente("Oceania", 2));
-        return continentes;
-    }
 
-    public void organizarContinentes(ArrayList<Continente> continentes){
+    @Override
+    protected void organizarContinentes(ArrayList<Continente> continentes){
         Scanner scanner = new Scanner(lector);
 
         try{
