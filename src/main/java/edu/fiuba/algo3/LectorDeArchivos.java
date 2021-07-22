@@ -6,6 +6,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public abstract class LectorDeArchivos {
 
@@ -21,6 +22,4 @@ public abstract class LectorDeArchivos {
         this.parser = new JSONParser();
         this.tipoArchivo = rutaArchivo.split("\\.")[1];
     }
-
-    public abstract Object obtener() throws ParseException, IOException;
 }
