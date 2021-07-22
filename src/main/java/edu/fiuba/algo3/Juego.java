@@ -21,11 +21,11 @@ public class Juego {
             agregarJugador(new Jugador(nombre));
         }
         
-        LectorDeArchivos lectorDeArchivos = new LectorDePaises("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
-        continentes = (ArrayList<Continente>) lectorDeArchivos.obtener();
+        FachadaLector lector = new FachadaLector("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
+        continentes = (ArrayList<Continente>) lector.obtenerPaises();
 
-        LectorDeArchivos lector = new LectorDeCartas("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
-        cartas = (ArrayList<Carta>) lector.obtener();
+        lector.setTipoYRuta("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
+        cartas = (ArrayList<Carta>) lector.obtenerCartas();
 
         jugadorDeTurno = 1;
         Etapa.asignarValores(continentes, jugadores, cartas);
