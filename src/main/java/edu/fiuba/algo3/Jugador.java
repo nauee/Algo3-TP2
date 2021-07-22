@@ -23,10 +23,6 @@ public class Jugador{
 
     public int getCantidadPaises() { return paises.size(); }
 
-    public int getID(){
-        return id;
-    }
-
     public void agregarPais(Pais nuevoPais){
         paises.add(nuevoPais);
         nuevoPais.asignarDuenio(this);

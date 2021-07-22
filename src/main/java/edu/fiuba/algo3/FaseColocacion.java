@@ -38,5 +38,4 @@ class FaseColocacion implements Fase{
     public void activarCarta(Carta unaCarta) {
         jugadorDeTurno.activarCarta(unaCarta);
     }
-
 }

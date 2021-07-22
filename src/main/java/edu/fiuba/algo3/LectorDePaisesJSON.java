@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -32,7 +31,7 @@ public class LectorDePaisesJSON implements Lector{
     }
 
     @Override
-    public Object obtener() throws IOException, ParseException {
+    public ArrayList<Continente> obtener() throws IOException, ParseException {
         ArrayList<Continente> continentes = inicializarContinentes();
         organizarContinentes(continentes);
         return continentes;

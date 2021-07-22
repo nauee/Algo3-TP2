@@ -1,7 +1,6 @@
 package edu.fiuba.algo3;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Continente {
 

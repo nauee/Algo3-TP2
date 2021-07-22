@@ -3,7 +3,6 @@ package edu.fiuba.algo3;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -24,7 +23,7 @@ public class LectorDeCartasCSV implements Lector{
     }
 
     @Override
-    public Object obtener() {
+    public ArrayList<Carta> obtener() {
         ArrayList<Carta> cartas = new ArrayList<>();
         Scanner scanner = new Scanner(lector);
 

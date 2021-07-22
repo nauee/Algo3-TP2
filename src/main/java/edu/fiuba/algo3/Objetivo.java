@@ -9,9 +9,4 @@ public abstract class Objetivo {
     public Objetivo(String descripcion){
         this.descripcion = descripcion;
     }
-
-    public String getDescripcion(){
-        return descripcion;
-    }
-
 }

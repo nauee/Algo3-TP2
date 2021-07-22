@@ -1,7 +1,5 @@
 package edu.fiuba.algo3;
 
-import java.util.ArrayList;
-
 public class EtapaColocacion extends Etapa{
 
     private FaseColocacion fase;

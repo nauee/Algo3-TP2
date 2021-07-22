@@ -9,7 +9,6 @@ class FaseAtaque implements Fase{
     private final int posAtacado= 1;
     private boolean huboConquista= false;
 
-
     public FaseAtaque(Jugador jugadorDeTurno, ArrayList<Carta> cartas){
         this.jugadorDeTurno = jugadorDeTurno;
         this.cartas = cartas;
@@ -21,7 +20,7 @@ class FaseAtaque implements Fase{
         Pais paisAtacado = paises[posAtacado];
         paisAtacante.atacarPais(paisAtacado,cantidadEjercitos, jugadorDeTurno);
         if (paisAtacado.lePerteneceA(jugadorDeTurno))
-            huboConquista=true;
+            huboConquista = true;
     }
 
     @Override

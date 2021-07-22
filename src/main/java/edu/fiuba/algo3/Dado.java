@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import static java.lang.Math.random;
 
-public class Dados {
+public class Dado{
 
     public static ArrayList<Integer> lanzar(int cantidad){
 
@@ -12,7 +12,7 @@ public class Dados {
         for (int i = 0; i < cantidad; i++)
             dados.add((int) (1 + random() * 6));
 
-        Collections.sort(dados, Collections.reverseOrder());
+        dados.sort(Collections.reverseOrder());
         return dados;
     }
 }

@@ -174,16 +174,20 @@ public class JuegoTest {
        Pais argentina = juego.buscarPais("Argentina");
        Pais brasil = juego.buscarPais("Brasil");
        Pais chile = juego.buscarPais("Chile");
+
        argentina.asignarDuenio(juego.getJugador(0));
        int cantidadPaisesPrevioAtacar = juego.getJugador(0).getCantidadPaises();
        brasil.asignarDuenio(juego.getJugador(1));
        chile.asignarDuenio(juego.getJugador(1));
-       //fase colocacion primer jguador
+
+       // Fase colocacion primer jugador
        juego.jugar(11, "Argentina");
        juego.pasarDeFase();
-       //colocacion segundo
+
+       // Fase colocacion segundo jugador
        juego.pasarDeFase();
-       //ataque primero
+
+       // Ataque primer jugador
        juego.jugar(10,"Argentina","Brasil");
        if(brasil.lePerteneceA(juego.getJugador(1))){
            juego.jugar(9,"Argentina","Brasil");
@@ -192,6 +196,7 @@ public class JuegoTest {
        if(chile.lePerteneceA(juego.getJugador(1))){
            juego.jugar(5,"Argentina","Chile");
        }
+
        assertEquals(cantidadPaisesPrevioAtacar+2, juego.getJugador(0).getCantidadPaises());
    }
 }

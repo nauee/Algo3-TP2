@@ -115,6 +115,5 @@ public class Pais {
     public boolean equals(String nombre) {
         return this.nombre.equals(nombre);
     }
-
 }
 

@@ -35,8 +35,8 @@ public class Batalla{
     }
 
     public void batallar() throws PaisNoTePerteneceException, PaisNoLimitrofeException, AtaqueConCantidadInvalidaException, MovimientoConCantidadInvalidaException {
-        ArrayList<Integer> resultadosDadosAtacante = Dados.lanzar(paisAtacante.atacantes(cantidadEjercitoAtacante));
-        ArrayList<Integer> resultadosDadosAtacado = Dados.lanzar(paisAtacado.defensores());
+        ArrayList<Integer> resultadosDadosAtacante = Dado.lanzar(paisAtacante.atacantes(cantidadEjercitoAtacante));
+        ArrayList<Integer> resultadosDadosAtacado = Dado.lanzar(paisAtacado.defensores());
         ataqueEntrePaises(resultadosDadosAtacado, resultadosDadosAtacante);
     }
 }

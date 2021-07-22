@@ -29,7 +29,7 @@ public class LectorDeCartasJSON implements Lector{
     }
 
     @Override
-    public Object obtener() throws IOException, ParseException {
+    public ArrayList<Carta> obtener() throws IOException, ParseException {
         JSONArray listaCartas = (JSONArray) parser.parse(lector);
         ArrayList<Carta> cartas = new ArrayList<>();
         for (Object carta : listaCartas) {

@@ -24,7 +24,7 @@ public class LectorDePaisesCSV implements Lector{
     }
 
     @Override
-    public Object obtener(){
+    public ArrayList<Continente> obtener(){
         ArrayList<Continente> continentes = inicializarContinentes();
         organizarContinentes(continentes);
         return continentes;

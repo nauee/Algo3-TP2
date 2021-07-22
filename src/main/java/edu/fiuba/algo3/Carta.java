@@ -38,8 +38,7 @@ public class Carta {
             activada = true;
             try {
                 pais.agregarEjercitos(2, jugador);
-            } catch(PaisNoTePerteneceException ignored){};
+            } catch(PaisNoTePerteneceException ignored){}
         }
     }
-
 }

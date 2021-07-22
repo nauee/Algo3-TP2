@@ -21,10 +21,10 @@ public class Juego {
         }
         
         FachadaLector lector = new FachadaLector("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
-        continentes = (ArrayList<Continente>) lector.obtenerPaises();
+        continentes = lector.obtenerPaises();
 
         lector.setTipoYRuta("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
-        cartas = (ArrayList<Carta>) lector.obtenerCartas();
+        cartas = lector.obtenerCartas();
 
         jugadorDeTurno = 1;
         Etapa.asignarValores(continentes, jugadores, cartas);
@@ -35,9 +35,7 @@ public class Juego {
 
     private void distribuirPaises() throws PaisNoTePerteneceException{
         ArrayList<Pais> paises = new ArrayList<>();
-        continentes.forEach((continente) -> {
-            paises.addAll(continente.getPaises());
-        });
+        continentes.forEach((continente) -> paises.addAll(continente.getPaises()));
 
         ArrayList<Integer> numeros = new ArrayList<>();
         for (int i = 0; i < paises.size(); i++){
@@ -108,6 +106,4 @@ public class Juego {
     public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException {
         etapa.activarCarta(unaCarta);
     }
-
-
 }

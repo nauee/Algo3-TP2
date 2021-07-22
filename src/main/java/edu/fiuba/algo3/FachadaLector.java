@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class FachadaLector {
 
@@ -17,7 +18,7 @@ public class FachadaLector {
         this.rutaArchivo = rutaArchivo;
     }
 
-    public Object obtenerPaises() throws IOException, ParseException {
+    public ArrayList<Continente> obtenerPaises() throws IOException, ParseException {
         LectorDePaisesCSV lpcsv = new LectorDePaisesCSV(rutaArchivo);
         LectorDePaisesJSON lpjson = new LectorDePaisesJSON(rutaArchivo);
 
@@ -26,7 +27,7 @@ public class FachadaLector {
         return lpjson.obtener();
     }
 
-    public Object obtenerCartas() throws IOException, ParseException {
+    public ArrayList<Carta> obtenerCartas() throws IOException, ParseException {
         LectorDeCartasCSV lccsv = new LectorDeCartasCSV(rutaArchivo);
         LectorDeCartasJSON lcjson = new LectorDeCartasJSON(rutaArchivo);
 
