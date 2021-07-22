@@ -143,7 +143,7 @@ public class JuegoTest {
 
        juego.jugar(3, "Brasil");
        juego.pasarDeFase();
-       juego.jugar(0, "China");
+       juego.jugar(2, "China");
        juego.pasarDeFase();
        juego.jugar(1, "Alemania");
        juego.pasarDeFase();
@@ -163,9 +163,35 @@ public class JuegoTest {
        juego.pasarDeFase();
 
        //jugador 2 puede agregar mas ejercitos debido a la recompensa por tener Asia
-       juego.jugar((juego.getJugador(1).getCantidadCartas())+7, "China");
-       assertEquals(juego.getJugador(1).getCantidadCartas()+8 ,china.getCantidadEjercitos());
+       juego.jugar((juego.getJugador(1).getCantidadFichas())+7, "China");
+       assertEquals(juego.getJugador(1).getCantidadFichas()+10 ,china.getCantidadEjercitos());
 
    }
 
+   @Test
+   public void juegoDeUnaRondaDe2JugadoresJugador1Conquista2PaisesDeJugador2() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException {
+       Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nicolas", "Felipe")));
+       Pais argentina = juego.buscarPais("Argentina");
+       Pais brasil = juego.buscarPais("Brasil");
+       Pais chile = juego.buscarPais("Chile");
+       argentina.asignarDuenio(juego.getJugador(0));
+       int cantidadPaisesPrevioAtacar = juego.getJugador(0).getCantidadPaises();
+       brasil.asignarDuenio(juego.getJugador(1));
+       chile.asignarDuenio(juego.getJugador(1));
+       //fase colocacion primer jguador
+       juego.jugar(11, "Argentina");
+       juego.pasarDeFase();
+       //colocacion segundo
+       juego.pasarDeFase();
+       //ataque primero
+       juego.jugar(10,"Argentina","Brasil");
+       if(brasil.lePerteneceA(juego.getJugador(1))){
+           juego.jugar(9,"Argentina","Brasil");
+       }
+       juego.jugar(8,"Argentina","Chile");
+       if(chile.lePerteneceA(juego.getJugador(1))){
+           juego.jugar(5,"Argentina","Chile");
+       }
+       assertEquals(cantidadPaisesPrevioAtacar+2, juego.getJugador(0).getCantidadPaises());
+   }
 }

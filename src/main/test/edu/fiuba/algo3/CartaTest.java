@@ -31,4 +31,5 @@ public class CartaTest {
         assertNotEquals(2, pais.getCantidadEjercitos());
     }
 
+
 }
