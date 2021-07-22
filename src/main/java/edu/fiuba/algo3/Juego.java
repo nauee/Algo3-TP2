@@ -16,7 +16,6 @@ public class Juego {
     private final ArrayList<Carta> cartas;
 
     public Juego(ArrayList<String> nombres) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException{
-
         for(String nombre: nombres){
             agregarJugador(new Jugador(nombre));
         }
@@ -35,7 +34,6 @@ public class Juego {
     }
 
     private void distribuirPaises() throws PaisNoTePerteneceException{
-
         ArrayList<Pais> paises = new ArrayList<>();
         continentes.forEach((continente) -> {
             paises.addAll(continente.getPaises());
@@ -57,7 +55,6 @@ public class Juego {
     }
 
     private void agregarJugador(Jugador nuevoJugador) throws SeAlcanzoLaCantidadMaximaException {
-
         if(jugadores.size() >= JUGADORES_MAX)
             throw new SeAlcanzoLaCantidadMaximaException();
 
@@ -73,7 +70,6 @@ public class Juego {
     }
 
     public Pais buscarPais(String unPais) throws PaisNoExisteException{
-
         Pais paisBuscado = null;
 
         for (Continente continente : continentes){
@@ -98,7 +94,6 @@ public class Juego {
     }
 
     public int getCantidadPaises(){
-
         int cantidadPaises = 0;
         for (Continente continente : continentes) {
             cantidadPaises += continente.getCantidadPaises();

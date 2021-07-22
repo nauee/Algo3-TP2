@@ -5,6 +5,10 @@ import java.util.ArrayList;
 class FaseAtaque implements Fase{
     private final Jugador jugadorDeTurno;
     private ArrayList<Carta> cartas;
+    private final int posAtacante = 0;
+    private final int posAtacado= 1;
+    private boolean huboConquista= false;
+
 
     public FaseAtaque(Jugador jugadorDeTurno, ArrayList<Carta> cartas){
         this.jugadorDeTurno = jugadorDeTurno;
@@ -13,16 +17,18 @@ class FaseAtaque implements Fase{
 
     @Override
     public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, MovimientoConCantidadInvalidaException {
-        Pais paisAtacante = paises[0];
-        Pais paisAtacado = paises[1];
+        Pais paisAtacante = paises[posAtacante];
+        Pais paisAtacado = paises[posAtacado];
         paisAtacante.atacarPais(paisAtacado,cantidadEjercitos, jugadorDeTurno);
         if (paisAtacado.lePerteneceA(jugadorDeTurno))
-            jugadorDeTurno.darleCarta(cartas.get(0));
-            cartas.remove(0);
+            huboConquista=true;
     }
 
     @Override
     public Fase siguienteFase(Jugador siguienteJugador, ArrayList<Carta> cartas){
+        if(huboConquista)
+            jugadorDeTurno.darleCarta(cartas.get(0));
+            cartas.remove(0);
         return (new FaseAgrupamiento(jugadorDeTurno));
     }
 }

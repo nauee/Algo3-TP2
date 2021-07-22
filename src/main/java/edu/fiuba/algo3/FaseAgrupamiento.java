@@ -5,14 +5,16 @@ import java.util.ArrayList;
 class FaseAgrupamiento implements Fase{
 
     private Jugador jugadorDeTurno;
+    private final int origen=0;
+    private final int destino=1;
 
     public FaseAgrupamiento(Jugador jugadorDeTurno){
         this.jugadorDeTurno = jugadorDeTurno;
     }
     @Override
     public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, MovimientoConCantidadInvalidaException {
-        Pais paisOrigen = paises[0];
-        Pais paisDestino = paises[1];
+        Pais paisOrigen = paises[origen];
+        Pais paisDestino = paises[destino];
         paisOrigen.moverEjercitos(cantidadEjercitos, paisDestino);
     }
     @Override

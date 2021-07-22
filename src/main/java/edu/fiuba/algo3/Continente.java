@@ -21,7 +21,7 @@ public class Continente {
     public int getRecompensa(Jugador jugador){
         int recompensa = this.recompensa;
         for (Pais pais : paises) {
-            recompensa = pais.getDuenio().equals(jugador) ? recompensa : 0;
+            recompensa = pais.lePerteneceA(jugador) ? recompensa : 0;
         }
         return recompensa;
     }

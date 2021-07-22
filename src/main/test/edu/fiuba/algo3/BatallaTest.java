@@ -20,7 +20,7 @@ public class BatallaTest {
         paisAtacante.asignarDuenio(jugador);
         paisAtacado.asignarDuenio(new Jugador("Richarlison"));
         paisAtacante.agregarEjercitos(4, jugador);
-        Batalla batalla = new Batalla(paisAtacado, paisAtacante,3, paisAtacante.getDuenio());
+        Batalla batalla = new Batalla(paisAtacado, paisAtacante,3);
 
         assertTrue(batalla instanceof Batalla);
     }
@@ -30,11 +30,12 @@ public class BatallaTest {
 
         Pais paisAtacante = new Pais("Portugal", new ArrayList<String>(Arrays.asList("España")));
         Pais paisAtacado = new Pais("España", new ArrayList<String>(Arrays.asList("Portugal")));
-        paisAtacante.asignarDuenio(new Jugador("Angel Di Maria"));
-        paisAtacado.asignarDuenio(new Jugador("Richarlison"));
+        paisAtacante.asignarDuenio(new Jugador("Carlos"));
+        paisAtacado.asignarDuenio(new Jugador("Fernando"));
+        Jugador jugador = new Jugador("Rodrigo");
 
         assertThrows(PaisNoTePerteneceException.class, () ->
-            new Batalla(paisAtacado, paisAtacante, 3, paisAtacado.getDuenio()));
+                paisAtacante.atacarPais(paisAtacado,3, jugador));
     }
 
     @Test
@@ -48,7 +49,7 @@ public class BatallaTest {
         paisAtacante.agregarEjercitos(4, jugadorAtacante);
 
         assertThrows(AtaqueAPaisPropioException.class, () ->
-            new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio()));
+            new Batalla(paisAtacado, paisAtacante, 3));
     }
 
     @Test
@@ -62,7 +63,7 @@ public class BatallaTest {
         paisAtacado.asignarDuenio(jugadorAtacado);
         paisAtacante.agregarEjercitos(4, jugadorAtacante);
         paisAtacado.agregarEjercitos(1, jugadorAtacado);
-        Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio());
+        Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3);
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(6, 5, 4));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(5));
         batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
@@ -81,7 +82,7 @@ public class BatallaTest {
         paisAtacado.asignarDuenio(jugadorAtacado);
         paisAtacante.agregarEjercitos(10, jugadorAtacante);
         paisAtacado.agregarEjercitos(4, jugadorAtacado);
-        Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3, paisAtacante.getDuenio());
+        Batalla batalla = new Batalla(paisAtacado, paisAtacante, 3);
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(3, 2, 1));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(6, 5, 4));
         batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
@@ -89,7 +90,7 @@ public class BatallaTest {
     }
 
     @Test
-    public void AtacarUnPaisConMasEjercitosDeLosQueTieneElPaisLevantaUnaExcepcion() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException {
+    public void AtacarUnPaisConMasEjercitosDeLosQueTieneElPaisLevantaUnaExcepcion() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException{
 
         Pais paisAtacante = new Pais("Argentina", new ArrayList<String>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<String>(Arrays.asList("Argentina")));
@@ -101,7 +102,7 @@ public class BatallaTest {
         paisAtacado.agregarEjercitos(3, jugadorAtacado);
 
         assertThrows(AtaqueConCantidadInvalidaException.class, () ->
-                new Batalla(paisAtacado, paisAtacante, 5, paisAtacante.getDuenio()));
+                new Batalla(paisAtacado, paisAtacante, 5));
     }
 
     @Test
@@ -115,7 +116,7 @@ public class BatallaTest {
         paisAtacado.asignarDuenio(jugadorAtacado);
         paisAtacante.agregarEjercitos(10, jugadorAtacante);
         paisAtacado.agregarEjercitos(5, jugadorAtacado);
-        Batalla batalla = new Batalla(paisAtacado, paisAtacante, 5, paisAtacante.getDuenio());
+        Batalla batalla = new Batalla(paisAtacado, paisAtacante, 5);
         ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(6, 6, 1));
         ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(4,4,2));
         batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
@@ -139,7 +140,7 @@ public class BatallaTest {
         atacado.agregarEjercitos(5, jugadorAtacado);
 
         assertThrows(PaisNoLimitrofeException.class, () -> {
-            new Batalla(atacado, atacante, 5, atacante.getDuenio());
+            new Batalla(atacado, atacante, 5);
         });
     }
 }
