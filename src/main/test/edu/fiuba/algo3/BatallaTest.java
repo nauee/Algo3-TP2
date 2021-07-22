@@ -90,22 +90,6 @@ public class BatallaTest {
     }
 
     @Test
-    public void AtacarUnPaisConMasEjercitosDeLosQueTieneElPaisLevantaUnaExcepcion() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException{
-
-        Pais paisAtacante = new Pais("Argentina", new ArrayList<String>(Arrays.asList("Brasil")));
-        Pais paisAtacado = new Pais("Brasil", new ArrayList<String>(Arrays.asList("Argentina")));
-        Jugador jugadorAtacante = new Jugador("Angel Di Maria");
-        Jugador jugadorAtacado = new Jugador("Richarlison");
-        paisAtacante.asignarDuenio(jugadorAtacante);
-        paisAtacado.asignarDuenio(jugadorAtacado);
-        paisAtacante.agregarEjercitos(4,jugadorAtacante);
-        paisAtacado.agregarEjercitos(3, jugadorAtacado);
-
-        assertThrows(AtaqueConCantidadInvalidaException.class, () ->
-                new Batalla(paisAtacado, paisAtacante, 5));
-    }
-
-    @Test
     public void batallaEntreDosPaisesPierdeLaCantidadDeEjercitosCorrecta() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException {
 
         Pais paisAtacante = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));

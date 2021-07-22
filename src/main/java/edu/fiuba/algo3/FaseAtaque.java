@@ -25,7 +25,7 @@ class FaseAtaque implements Fase{
     }
 
     @Override
-    public Fase siguienteFase(Jugador siguienteJugador, ArrayList<Carta> cartas){
+    public Fase siguienteFase(ArrayList<Carta> cartas){
         if(huboConquista)
             jugadorDeTurno.darleCarta(cartas.get(0));
             cartas.remove(0);

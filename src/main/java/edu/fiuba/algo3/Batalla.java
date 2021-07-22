@@ -10,7 +10,6 @@ public class Batalla{
     private final int cantidadEjercitoAtacante;
 
     public Batalla(Pais atacado, Pais atacante, int cantidadEjercito) throws AtaqueAPaisPropioException, PaisNoLimitrofeException{
-
         if(!atacado.esLimitrofeCon(atacante.getNombre()))
             throw new PaisNoLimitrofeException();
 

@@ -7,6 +7,7 @@ public class EtapaColocacion extends Etapa{
     private FaseColocacion fase;
 
     public EtapaColocacion(){
+        jugadorDeTurno = 1;
         fase = new FaseColocacion(jugadores.get(jugadorDeTurno-1));
     }
 
@@ -19,7 +20,7 @@ public class EtapaColocacion extends Etapa{
     public Etapa siguienteFase(){
         if (jugadorDeTurno == jugadores.size())
             return new EtapaBatalla();
-        fase = (FaseColocacion) fase.siguienteFase(jugadores.get(jugadorDeTurno), cartas);
+        fase = (FaseColocacion) fase.siguienteFase(cartas);
         return this;
     }
 

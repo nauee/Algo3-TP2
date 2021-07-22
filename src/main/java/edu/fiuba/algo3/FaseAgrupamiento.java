@@ -18,9 +18,11 @@ class FaseAgrupamiento implements Fase{
         paisOrigen.moverEjercitos(cantidadEjercitos, paisDestino);
     }
     @Override
-    public Fase siguienteFase(Jugador siguienteJugador, ArrayList<Carta> cartas){
-        Etapa.siguienteJugador();
+    public Fase siguienteFase(ArrayList<Carta> cartas){
+        Jugador siguienteJugador= Etapa.siguienteJugador();
         return new FaseAtaque(siguienteJugador, cartas);
     }
+
+
 }
 

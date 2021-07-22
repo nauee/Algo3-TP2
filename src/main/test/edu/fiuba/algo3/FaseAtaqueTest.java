@@ -15,6 +15,8 @@ public class FaseAtaqueTest {
         Jugador jugadorAtacante = new Jugador("Pepe");
         Jugador jugadorAtacado = new Jugador("Mefishto");
         Carta carta = new Carta("Mongolia", "Barco");
+        ArrayList<Carta> cartas= new ArrayList<>();
+        cartas.add(carta);
         FaseAtaque fase = new FaseAtaque(jugadorAtacante, new ArrayList<>(Arrays.asList(carta)));
         Pais paisAtacante = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina")));
@@ -23,7 +25,7 @@ public class FaseAtaqueTest {
         jugadorAtacado.agregarPais(paisAtacado);
         paisAtacante.agregarEjercitos(2, jugadorAtacante);
         fase.jugar(1, paisAtacante, paisAtacado);
-
+        fase.siguienteFase(cartas);
         assertEquals(1, jugadorAtacante.getCantidadCartas());
     }
 
