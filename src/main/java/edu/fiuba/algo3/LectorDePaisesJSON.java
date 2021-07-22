@@ -12,17 +12,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LectorDePaisesJSON implements Lector{
-
-    private final FileReader lector;
-    private final JSONParser parser;
+public class LectorDePaisesJSON extends LectorDePaises{
 
     public LectorDePaisesJSON(String rutaArchivo) throws FileNotFoundException {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             rutaArchivo = rutaArchivo.replace("/","\\");
         }
-        this.lector = new FileReader(rutaArchivo);
-        this.parser = new JSONParser();
+        lector = new FileReader(rutaArchivo);
+        parser = new JSONParser();
     }
 
     @Override
@@ -37,22 +34,12 @@ public class LectorDePaisesJSON implements Lector{
         return continentes;
     }
 
-    private ArrayList<Continente> inicializarContinentes(){
-        ArrayList<Continente> continentes = new ArrayList<>();
-        continentes.add(new Continente("Asia", 7));
-        continentes.add(new Continente("Europa", 5));
-        continentes.add(new Continente("America del Norte", 5));
-        continentes.add(new Continente("America del Sur", 3));
-        continentes.add(new Continente("Africa", 3));
-        continentes.add(new Continente("Oceania", 2));
-        return continentes;
-    }
-
-    private void organizarContinentes(ArrayList<Continente> continentes) throws IOException, ParseException {
+    @Override
+    protected void organizarContinentes(ArrayList<Continente> continentes) throws IOException, ParseException {
         JSONArray listaPaises = (JSONArray) parser.parse(lector);
         for (Object pais : listaPaises) {
             String nombreContinente = (String)((JSONObject)pais).get("Continente");
-            Pais nuevoPais = obtenerPaisJSON((JSONObject)pais);
+            Pais nuevoPais = obtenerPais((JSONObject)pais);
             for (Continente continente : continentes){
                 if (continente.getNombre().equals(nombreContinente)){
                     continente.agregarPais(nuevoPais);
@@ -61,7 +48,7 @@ public class LectorDePaisesJSON implements Lector{
         }
     }
 
-    private Pais obtenerPaisJSON(JSONObject pais){
+    private Pais obtenerPais(JSONObject pais){
         String nombre = (String) pais.get("Pais");
         String[] arrayPaises = ((String) pais.get("Limita con")).split(",");
         ArrayList<String> fronteras = new ArrayList<>(Arrays.asList(arrayPaises));

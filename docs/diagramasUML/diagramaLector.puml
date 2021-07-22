@@ -1,27 +1,41 @@
 @startuml
 
-abstract class LectorDeArchivos{
-    #lector: FileReader
-    #parser: JSONParser
-
-    +{static}LectorDeArchivos(nombreArchivo:String):LectorDeArchivos
-    +{abstract}obtener():Object
-}
-
-class LectorDeCartas {
-    +obtener(): ArrayList<Carta> 
-    -obtenerCarta(carta: JSONObject): Carta
+class FachadaLector{
 
 }
+interface Lector{
+    +{abstract}obtener():ArrayList
+    +{abstract}esDeTipo():boolean
+}
+class LectorDeCartasJSON {
 
-class LectorDePaises {
-    + obtener(): Hashtable<String, Continente>
-    -obtenerPais(pais:JSONObject):Pais
-    -organizarContinentes(continentes: Hashtable<String, Continente>):void
+}
+class LectorDePaisesJSON {
+    -obtenerPais():Pais
+}
+class LectorDeCartasCSV {
+
 }
 
-LectorDeArchivos ^-- LectorDeCartas
-LectorDeArchivos ^-- LectorDePaises
+class LectorDePaisesCSV {
 
+}
+
+abstract class LectorDePaises{
+    +inicializarContinentes():ArrayList
+    +{abstract}organizarContinentes():void
+}
+
+abstract class LectorDeCartas{
+    +{abstract}obtenerCarta:Carta
+}
+
+FachadaLector ..> Lector
+Lector <|.. LectorDePaises
+Lector <|.. LectorDeCartas
+LectorDeCartas <|-- LectorDeCartasJSON
+LectorDeCartas <|-- LectorDeCartasCSV
+LectorDePaises <|-- LectorDePaisesJSON
+LectorDePaises <|-- LectorDePaisesCSV
 
 @enduml

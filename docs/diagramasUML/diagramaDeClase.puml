@@ -47,12 +47,13 @@ class Jugador{
     +objetivoCumplido(jugadorDeTurno):void
 }
 
-abstract class LectorDeArchivos{
-    #lector: FileReader
-    #parser: JSONParser
+class FachadaLector{
+    -tipoArchivo: String
+    -rutaArchivo: String
 
-    +{static}LectorDeArchivos(nombreArchivo:String):LectorDeArchivos
-    +{abstract}obtener():Object
+    +obtenerPaises():ArrayList
+    +obtenerCartas():ArrayList
+    +setTipoYRuta():void
 }
 
 class Continente{
@@ -68,7 +69,7 @@ Jugador "1"-down-"*" Pais
 Jugador "1"-down->"1" Objetivo
 Juego ..> Batalla
 Batalla "1"-->"2" Pais
-Juego "1".left.>"1" LectorDeArchivos
+Juego "1".left.>"1" FachadaLector
 Juego "1"-right->"6" Continente
 Continente "1"-->"*"Pais
 @enduml
