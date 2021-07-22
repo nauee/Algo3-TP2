@@ -5,6 +5,7 @@ public class EtapaBatalla extends Etapa{
     private Fase fase;
 
     public EtapaBatalla(){
+        jugadorDeTurno = 1;
         fase = new FaseAtaque(jugadores.get(jugadorDeTurno-1), cartas);
     }
 
@@ -15,9 +16,9 @@ public class EtapaBatalla extends Etapa{
 
     @Override
     public Etapa siguienteFase(){
-        if (jugadorDeTurno == jugadores.size())
+        fase = fase.siguienteFase(cartas);
+        if (jugadorDeTurno > jugadores.size())
             return new EtapaColocacion();
-        fase = fase.siguienteFase(jugadores.get(jugadorDeTurno), cartas);
         return this;
     }
 
@@ -25,4 +26,5 @@ public class EtapaBatalla extends Etapa{
     public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException {
         throw new NoSePuedeActivarCartaEnLaBatallaException();
     }
+
 }

@@ -9,19 +9,12 @@ public class Batalla{
     private final Pais paisAtacante;
     private final int cantidadEjercitoAtacante;
 
-    public Batalla(Pais atacado, Pais atacante, int cantidadEjercito, Jugador jugadorAtacante) throws PaisNoTePerteneceException, AtaqueAPaisPropioException, AtaqueConCantidadInvalidaException, PaisNoLimitrofeException{
-
+    public Batalla(Pais atacado, Pais atacante, int cantidadEjercito) throws AtaqueAPaisPropioException, PaisNoLimitrofeException{
         if(!atacado.esLimitrofeCon(atacante.getNombre()))
             throw new PaisNoLimitrofeException();
 
-        if(!atacante.lePerteneceA(jugadorAtacante))
-            throw new PaisNoTePerteneceException();
-
-        if(atacado.lePerteneceA(jugadorAtacante))
+        if(atacado.mismoDuenio(atacante))
             throw new AtaqueAPaisPropioException();
-
-        if(atacante.getCantidadEjercitos() <= cantidadEjercito)
-            throw new AtaqueConCantidadInvalidaException();
 
         paisAtacado = atacado;
         paisAtacante = atacante;

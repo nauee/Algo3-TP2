@@ -12,7 +12,6 @@ public class Jugador{
     private final ArrayList<Carta> cartas = new ArrayList<>();
 
     public Jugador(String nombre){
-
         this.nombre = nombre;
         id = proximoId;
         proximoId++;
@@ -29,7 +28,6 @@ public class Jugador{
     }
 
     public void agregarPais(Pais nuevoPais){
-
         paises.add(nuevoPais);
         nuevoPais.asignarDuenio(this);
     }

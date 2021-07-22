@@ -16,8 +16,11 @@ public abstract class Etapa {
         continentes = unosContinentes;
         jugadorDeTurno = 1;
     }
-    public static void siguienteJugador(){
+    public static Jugador siguienteJugador(){
         jugadorDeTurno ++;
+        if(jugadorDeTurno>jugadores.size())
+            return null;
+        return(jugadores.get(jugadorDeTurno-1));
     }
     public abstract void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, MovimientoConCantidadInvalidaException;
     public abstract Etapa siguienteFase();

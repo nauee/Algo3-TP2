@@ -30,8 +30,8 @@ class FaseColocacion implements Fase{
     }
 
     @Override
-    public Fase siguienteFase(Jugador siguienteJugador, ArrayList<Carta> cartas){
-        Etapa.siguienteJugador();
+    public Fase siguienteFase(ArrayList<Carta> cartas){
+        Jugador siguienteJugador= Etapa.siguienteJugador();
         return (new FaseColocacion(siguienteJugador));
     }
 

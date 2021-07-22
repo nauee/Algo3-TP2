@@ -5,7 +5,7 @@ import java.util.Objects;
 
 import static java.lang.Math.min;
 
-public class Pais{
+public class Pais {
 
     private final String nombre;
     private Jugador duenio;
@@ -15,7 +15,7 @@ public class Pais{
     public Pais(String nombre, ArrayList<String> limitrofes) {
 
         this.nombre = nombre;
-        this.limitrofes= limitrofes;
+        this.limitrofes = limitrofes;
         cantidadEjercitos = 0;
     }
 
@@ -24,21 +24,21 @@ public class Pais{
     }
 
     public void agregarEjercitos(int cantidadEjercitos, Jugador jugador) throws PaisNoTePerteneceException {
-        if (!duenio.equals(jugador)) {
+        if (!lePerteneceA(jugador)) {
             throw new PaisNoTePerteneceException();
         }
         this.cantidadEjercitos += cantidadEjercitos;
     }
 
-    public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
 
-    public Jugador getDuenio(){
+    public Jugador getDuenio() {
         return duenio;
     }
 
-    public ArrayList<String> getLimitrofes(){
+    public ArrayList<String> getLimitrofes() {
         return limitrofes;
     }
 
@@ -46,11 +46,11 @@ public class Pais{
         return duenio.equals(unJugador);
     }
 
-    public int getCantidadEjercitos(){
+    public int getCantidadEjercitos() {
         return cantidadEjercitos;
     }
 
-    public void serAtacado(){
+    public void serAtacado() {
         cantidadEjercitos--;
     }
 
@@ -64,36 +64,40 @@ public class Pais{
         this.cantidadEjercitos -= cantidadEjercitos;
     }
 
-    public Boolean esLimitrofeCon(String unPais){
+    public Boolean esLimitrofeCon(String unPais) {
         return limitrofes.contains(unPais);
     }
 
-    public void serConquistadoPor(Pais paisConquistador){
+    public void serConquistadoPor(Pais paisConquistador) {
 
         duenio.perderPais(this);
         paisConquistador.ganarleAPais(this);
     }
 
-    public void ganarleAPais(Pais pais){
+    public void ganarleAPais(Pais pais) {
         duenio.agregarPais(pais);
     }
 
-    public int defensores(){
-        return min(cantidadEjercitos,3);
+    public int defensores() {
+        return min(cantidadEjercitos, 3);
     }
 
-    public int atacantes(int cantidadAtacantes) throws AtaqueConCantidadInvalidaException{
-        if(cantidadEjercitos <= cantidadAtacantes)
+    public int atacantes(int cantidadAtacantes) throws AtaqueConCantidadInvalidaException {
+        if (cantidadEjercitos <= cantidadAtacantes)
             throw new AtaqueConCantidadInvalidaException();
-        return min(cantidadEjercitos,3);
+        return min(cantidadEjercitos, 3);
     }
 
-    public void atacarPais(Pais paisAtacado, int cantidadEjercitos, Jugador jugador) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, MovimientoConCantidadInvalidaException {
-        Batalla batalla = new Batalla (paisAtacado, this, cantidadEjercitos, jugador);
+    public void atacarPais(Pais paisAtacado, int cantidadEjercito, Jugador jugador) throws PaisNoLimitrofeException, AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, MovimientoConCantidadInvalidaException {
+        if (!lePerteneceA(jugador))
+            throw new PaisNoTePerteneceException();
+        if (cantidadEjercitos <= cantidadEjercito)
+            throw new AtaqueConCantidadInvalidaException();
+        Batalla batalla = new Batalla(paisAtacado, this, cantidadEjercito);
         batalla.batallar();
     }
 
-    public boolean fueVencido(){
+    public boolean fueVencido() {
         return cantidadEjercitos <= 0;
     }
 
@@ -104,7 +108,13 @@ public class Pais{
         }
     }
 
+    public boolean mismoDuenio(Pais pais) {
+        return (pais.lePerteneceA(duenio));
+    }
+
     public boolean equals(String nombre) {
         return this.nombre.equals(nombre);
     }
+
 }
+
