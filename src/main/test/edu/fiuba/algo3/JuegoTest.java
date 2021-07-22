@@ -2,15 +2,22 @@ package edu.fiuba.algo3;
 
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyInt;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(Dado.class)
 public class JuegoTest {
 
     @Test
@@ -170,31 +177,25 @@ public class JuegoTest {
 
    @Test
    public void juegoDeUnaRondaDe2JugadoresJugador1Conquista2PaisesDeJugador2() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException {
+       PowerMockito.mockStatic(Dado.class);
+       PowerMockito.when(Dado.lanzar(anyInt())).thenReturn(new ArrayList<>(Arrays.asList(6,6,6)),new ArrayList<>(Arrays.asList(1,1,1)),new ArrayList<>(Arrays.asList(6,6,6)),new ArrayList<>(Arrays.asList(1,1,1)));
+
        Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nicolas", "Felipe")));
        Pais argentina = juego.buscarPais("Argentina");
        Pais brasil = juego.buscarPais("Brasil");
        Pais chile = juego.buscarPais("Chile");
-
        argentina.asignarDuenio(juego.getJugador(0));
        int cantidadPaisesPrevioAtacar = juego.getJugador(0).getCantidadPaises();
        brasil.asignarDuenio(juego.getJugador(1));
        chile.asignarDuenio(juego.getJugador(1));
-
-       // Fase colocacion primer jugador
+       //fase colocacion primer jguador
        juego.jugar(11, "Argentina");
        juego.pasarDeFase();
-
-       // Fase colocacion segundo jugador
+       //colocacion segundo
        juego.pasarDeFase();
-
-       // Ataque primer jugador
-       Batalla batalla1= new Batalla(brasil, argentina, 10);
-       ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(6, 6, 3));
-       ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(4,4,2));
-       batalla1.ataqueEntrePaises(dadosAtacado, dadosAtacante);
-       Batalla batalla2= new Batalla(chile, argentina, 10);
-       batalla2.ataqueEntrePaises(dadosAtacado, dadosAtacante);
-
+       //ataque primero
+       juego.jugar(10,"Argentina","Brasil");
+       juego.jugar(8,"Argentina","Chile");
        assertEquals(cantidadPaisesPrevioAtacar+2, juego.getJugador(0).getCantidadPaises());
    }
 }
