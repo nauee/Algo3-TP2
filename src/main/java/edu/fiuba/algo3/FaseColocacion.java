@@ -5,15 +5,17 @@ import java.util.ArrayList;
 class FaseColocacion implements Fase{
     private int fichasColocadas;
     private Jugador jugadorDeTurno;
+    private int fichasDelJugador;
 
     public FaseColocacion(Jugador jugadorDeTurno){
         fichasColocadas = 0;
         this.jugadorDeTurno = jugadorDeTurno;
+        fichasDelJugador = getCantidadFichas();
     }
 
     @Override
     public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoTePerteneceException, FichasInsuficientesException {
-        if (getCantidadFichas() < fichasColocadas + cantidadEjercitos) {
+        if (fichasDelJugador < fichasColocadas + cantidadEjercitos) {
             throw new FichasInsuficientesException();
         }
         Pais pais = paises[0];
@@ -22,10 +24,10 @@ class FaseColocacion implements Fase{
     }
 
     private int getCantidadFichas() {
-        int fichas = jugadorDeTurno.getCantidadFichas();
         for (Continente continente : Etapa.continentes) {
-            fichas += continente.getRecompensa(jugadorDeTurno);
+            jugadorDeTurno.agregarEjercitos(continente.getRecompensa(jugadorDeTurno));
         }
+        int fichas = jugadorDeTurno.getCantidadFichas();
         return fichas;
     }
 

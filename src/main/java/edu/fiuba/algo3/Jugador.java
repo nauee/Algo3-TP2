@@ -10,11 +10,16 @@ public class Jugador{
     private final int id;
     private final ArrayList<Pais> paises = new ArrayList<>();
     private final ArrayList<Carta> cartas = new ArrayList<>();
+    private Canje canje;
+    private int cantidadDeCanjes;
+    private int ejercitosAcumulados;
 
     public Jugador(String nombre){
         this.nombre = nombre;
         id = proximoId;
         proximoId++;
+        this.cantidadDeCanjes =0;
+        this.ejercitosAcumulados = 0;
     }
 
     public String getNombre(){
@@ -33,7 +38,12 @@ public class Jugador{
     }
 
     public int getCantidadFichas(){
-        return paises.size()/2;
+        agregarEjercitos(paises.size()/2);
+        return (ejercitosAcumulados);      //podriamos hacer que las fichas que se guarde de continente tambien le queden por convencion
+    }
+
+    public void agregarEjercitos(int unosEjercitos){
+        ejercitosAcumulados += unosEjercitos;
     }
 
     public void darleCarta(Carta carta) {
@@ -46,6 +56,16 @@ public class Jugador{
 
     public int getCantidadCartas(){
         return cartas.size();
+    }
+
+    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3, ArrayList<Carta> cartas){
+        cantidadDeCanjes++;
+        agregarEjercitos(canje.realizarCanje());
+        canje = canje.siguienteCanje();
+        cartas.add(carta1);
+        cartas.add(carta2);
+        cartas.add(carta3);
+
     }
 
 }

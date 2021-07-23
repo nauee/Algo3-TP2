@@ -90,6 +90,10 @@ public class Juego {
     public void pasarDeFase(){
         etapa = etapa.siguienteFase();
     }
+    //faltan exceptions, pruebas, y ver que solo canjea al principio del turno y no mg
+    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearException {
+        etapa.canjearCartas(carta1, carta2, carta3);
+    }
 
     public int getCantidadPaises(){
         int cantidadPaises = 0;
