@@ -2,17 +2,14 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 
-public class Carta {
+public abstract class Carta {
 
-    private final String pais;
-    private final String simbolo;
-    private boolean activada;
+    protected final String pais;
+    protected final String simbolo;
 
     public Carta(String pais, String simbolo) {
-
         this.pais = pais;
         this.simbolo = simbolo;
-        activada = false;
     }
 
     public static boolean canjeables(Carta carta1, Carta carta2, Carta carta3){
@@ -35,8 +32,6 @@ public class Carta {
         return simbolo.equals("Comodin");
     }
 
-
-
     public String getPais(){
         return pais;
     }
@@ -45,24 +40,13 @@ public class Carta {
         return simbolo;
     }
 
-    private Pais buscarPais (ArrayList <Pais> paises) {
-        for (Pais p : paises) {
-            if (p.equals(this.pais))
-                return p;
+    protected Pais buscarPais (ArrayList <Pais> paises) {
+        for (Pais paisBuscado : paises) {
+            if (paisBuscado.equals(this.pais))
+                return paisBuscado;
         }
         return null;
     }
 
-
-
-    public void activarse(ArrayList<Pais> paises, Jugador jugador){
-        if (activada) return;
-        Pais pais = buscarPais(paises);
-        if (pais != null) {
-            activada = true;
-            try {
-                pais.agregarEjercitos(2, jugador);
-            } catch(PaisNoTePerteneceException ignored){}
-        }
-    }
+    public abstract Carta activarse(ArrayList<Pais> paises, Jugador jugador) throws CartaYaActivadaException;
 }

@@ -199,4 +199,17 @@ public class JuegoTest {
        juego.jugar(8,"Argentina","Chile");
        assertEquals(cantidadPaisesPrevioAtacar+2, juego.getJugador(0).getCantidadPaises());
    }
+
+   @Test
+    public void realizarUnCanjeConDosCartasIgualesYUnaDistintaLevantaUnaExcepcion() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException {
+        Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nicolas", "Felipe")));
+        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
+        Carta carta2 = new CartaNoActivada("Brasil", "Globo");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Globo");
+        juego.getJugador(0).darleCarta(carta1);
+        juego.getJugador(0).darleCarta(carta2);
+        juego.getJugador(0).darleCarta(carta3);
+
+        assertThrows(SimbolosInvalidosException.class, () -> juego.canjearCartas(carta1, carta2, carta3) );
+   }
 }

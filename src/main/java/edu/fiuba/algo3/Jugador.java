@@ -41,14 +41,21 @@ public class Jugador{
         return paises.size()/2;
     }
 
-
-
     public void darleCarta(Carta carta) {
         cartas.add(carta);
     }
 
-    public void activarCarta(Carta carta){
-        carta.activarse(paises, this);
+    public void activarCarta(Carta carta) throws CartaYaActivadaException {
+        /*
+        Carta cartaJugador = cartas.get(cartas.indexOf(carta));
+        if (cartaJugador != null){
+            Carta cartaActuazliada = cartaJugador.activarse(paises, this);
+            cartas.remove(carta);
+            cartas.add(cartaActuazliada);
+        }*/
+        if (cartas.contains(carta))
+            carta = carta.activarse(paises, this);
+        //no guarda la instamcia de CartaActivada
     }
 
     public int getCantidadCartas(){
@@ -72,7 +79,4 @@ public class Jugador{
         devolverCartasAlMazo(carta1, carta2, carta3, mazo);
         return fichas;
     }
-
-
 }
-

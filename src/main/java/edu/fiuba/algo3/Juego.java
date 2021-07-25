@@ -37,13 +37,9 @@ public class Juego {
         ArrayList<Pais> paises = new ArrayList<>();
         continentes.forEach((continente) -> paises.addAll(continente.getPaises()));
 
-        ArrayList<Integer> numeros = new ArrayList<>();
-        for (int i = 0; i < paises.size(); i++){
-            numeros.add(i);
-        }
-        Collections.shuffle(numeros);
+        Collections.shuffle(paises);
 
-        for (int i = 0; i < numeros.size(); i++){
+        for (int i = 0; i < paises.size(); i++){
             int numeroJugador = i % jugadores.size();
             Pais pais = paises.get(i);
             Jugador jugador = jugadores.get(numeroJugador);
@@ -91,7 +87,6 @@ public class Juego {
         etapa = etapa.siguienteFase();
     }
 
-
     public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException, SimbolosInvalidosException {
         if(!Carta.canjeables(carta1, carta2, carta3))
             throw new SimbolosInvalidosException();
@@ -110,7 +105,7 @@ public class Juego {
         return cartas.size();
     }
 
-    public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException {
+    public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException, CartaYaActivadaException {
         etapa.activarCarta(unaCarta);
     }
 }

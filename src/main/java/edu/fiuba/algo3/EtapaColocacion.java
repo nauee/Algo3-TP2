@@ -32,7 +32,7 @@ public class EtapaColocacion extends Etapa{
     }
 
     @Override
-    public void activarCarta(Carta unaCarta){
+    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
         fase.activarCarta(unaCarta);
     }
 

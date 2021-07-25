@@ -22,51 +22,50 @@ public class CanjeTest {
 
     @Test
     public void PuedoCanjearTresCartasConDistintoSimbolo(){
-        Carta carta1 = new Carta("Argentina", "Fiat Palio");
-        Carta carta2 = new Carta("Brasil", "Globo");
-        Carta carta3 = new Carta("Ecuador", "Barco");
+        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
+        Carta carta2 = new CartaNoActivada("Brasil", "Globo");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Barco");
         assertTrue(Carta.canjeables(carta1, carta2,carta3));
     }
 
     @Test
     public void PuedoCanjearTresCartasConMismoSimbolo(){
-        Carta carta1 = new Carta("Argentina", "Buenarda moto");
-        Carta carta2 = new Carta("Brasil", "Buenarda moto");
-        Carta carta3 = new Carta("Ecuador", "Buenarda moto");
+        Carta carta1 = new CartaNoActivada("Argentina", "Buenarda moto");
+        Carta carta2 = new CartaNoActivada("Brasil", "Buenarda moto");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Buenarda moto");
         assertTrue(Carta.canjeables(carta1, carta2,carta3));
     }
 
     @Test
     public void NoPuedoCanjearDosCartasIgualesYUnaDistinta(){
-        Carta carta1 = new Carta("Argentina", "Fiat Palio");
-        Carta carta2 = new Carta("Brasil", "Buenarda moto");
-        Carta carta3 = new Carta("Ecuador", "Buenarda moto");
+        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
+        Carta carta2 = new CartaNoActivada("Brasil", "Buenarda moto");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Buenarda moto");
         assertFalse(Carta.canjeables(carta1, carta2,carta3));
     }
 
     @Test
     public void PuedoCanjearDosCartasIgualesYUnComodin(){
-        Carta carta1 = new Carta("Argentina", "Comodin");
-        Carta carta2 = new Carta("Brasil", "Buenarda moto");
-        Carta carta3 = new Carta("Ecuador", "Buenarda moto");
+        Carta carta1 = new CartaNoActivada("Argentina", "Comodin");
+        Carta carta2 = new CartaNoActivada("Brasil", "Buenarda moto");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Buenarda moto");
         assertTrue(Carta.canjeables(carta1, carta2,carta3));
     }
 
     @Test
     public void PuedoCanjearDosCartasDistintasYUnComodin(){
-        Carta carta1 = new Carta("Argentina", "Comodin");
-        Carta carta2 = new Carta("Brasil", "Fiat Palio");
-        Carta carta3 = new Carta("Ecuador", "Buenarda moto");
+        Carta carta1 = new CartaNoActivada("Argentina", "Comodin");
+        Carta carta2 = new CartaNoActivada("Brasil", "Fiat Palio");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Buenarda moto");
         assertTrue(Carta.canjeables(carta1, carta2,carta3));
     }
-
 
     @Test
     public void PrimerCanjeDevuelveCantidadCorrectaDeFichas() throws NoSePuedeCanjearEnEtapaBatallaException, PaisNoTePerteneceException, FichasInsuficientesException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException {
         Etapa etapa;
-        Carta carta1 = new Carta("Argentina", "Fiat Palio");
-        Carta carta2 = new Carta("Brasil", "Globo");
-        Carta carta3 = new Carta("Ecuador", "Barco");
+        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
+        Carta carta2 = new CartaNoActivada("Brasil", "Globo");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Barco");
         Pais argentina = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil", "Uruguay", "Bolivia")));
         Pais brasil = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina", "Uruguay", "Bolivia")));
         Jugador jugador1 = new Jugador("Nicolas");
@@ -85,12 +84,12 @@ public class CanjeTest {
     @Test
     public void SegundoCanjeDevuelveCantidadCorrectaDeFichas() throws NoSePuedeCanjearEnEtapaBatallaException, PaisNoTePerteneceException, FichasInsuficientesException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException {
         Etapa etapa;
-        Carta carta1 = new Carta("Argentina", "Fiat Palio");
-        Carta carta2 = new Carta("Brasil", "Globo");
-        Carta carta3 = new Carta("Ecuador", "Barco");
-        Carta carta4 = new Carta("Peru", "Fiat Palio");
-        Carta carta5 = new Carta("Uruguay", "Globo");
-        Carta carta6 = new Carta("Colombia", "Barco");
+        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
+        Carta carta2 = new CartaNoActivada("Brasil", "Globo");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Barco");
+        Carta carta4 = new CartaNoActivada("Peru", "Fiat Palio");
+        Carta carta5 = new CartaNoActivada("Uruguay", "Globo");
+        Carta carta6 = new CartaNoActivada("Colombia", "Barco");
         Pais argentina = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil", "Uruguay", "Bolivia")));
         Pais brasil = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina", "Uruguay", "Bolivia")));
         Jugador jugador1 = new Jugador("Nicolas");
@@ -113,18 +112,18 @@ public class CanjeTest {
     @Test
     public void NCanjesDevuelveCantidadCorrectaDeFichas() throws NoSePuedeCanjearEnEtapaBatallaException, PaisNoTePerteneceException, FichasInsuficientesException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException {
         Etapa etapa;
-        Carta carta1 = new Carta("Argentina", "Fiat Palio");
-        Carta carta2 = new Carta("Brasil", "Globo");
-        Carta carta3 = new Carta("Ecuador", "Barco");
-        Carta carta4 = new Carta("Peru", "Fiat Palio");
-        Carta carta5 = new Carta("Uruguay", "Globo");
-        Carta carta6 = new Carta("Colombia", "Barco");
-        Carta carta7 = new Carta("Italia", "Fiat Palio");
-        Carta carta8 = new Carta("Francia", "Globo");
-        Carta carta9 = new Carta("Canada", "Barco");
-        Carta carta10 = new Carta("EEUU", "Fiat Palio");
-        Carta carta11 = new Carta("Mexico", "Globo");
-        Carta carta12 = new Carta("Alemania", "Barco");
+        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
+        Carta carta2 = new CartaNoActivada("Brasil", "Globo");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Barco");
+        Carta carta4 = new CartaNoActivada("Peru", "Fiat Palio");
+        Carta carta5 = new CartaNoActivada("Uruguay", "Globo");
+        Carta carta6 = new CartaNoActivada("Colombia", "Barco");
+        Carta carta7 = new CartaNoActivada("Italia", "Fiat Palio");
+        Carta carta8 = new CartaNoActivada("Francia", "Globo");
+        Carta carta9 = new CartaNoActivada("Canada", "Barco");
+        Carta carta10 = new CartaNoActivada("EEUU", "Fiat Palio");
+        Carta carta11 = new CartaNoActivada("Mexico", "Globo");
+        Carta carta12 = new CartaNoActivada("Alemania", "Barco");
         Pais argentina = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil", "Uruguay", "Bolivia")));
         Pais brasil = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina", "Uruguay", "Bolivia")));
         Jugador jugador1 = new Jugador("Nicolas");
@@ -151,12 +150,13 @@ public class CanjeTest {
         etapa.jugar(37, argentina);
         assertEquals(37, argentina.getCantidadEjercitos());
     }
+
     @Test
     public void CanjeConContinenteConquistadoDevuelveCantidadCorrectaDeFichas() throws NoSePuedeCanjearEnEtapaBatallaException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException {
         Etapa etapa;
-        Carta carta1 = new Carta("Argentina", "Fiat Palio");
-        Carta carta2 = new Carta("Brasil", "Globo");
-        Carta carta3 = new Carta("Ecuador", "Barco");
+        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
+        Carta carta2 = new CartaNoActivada("Brasil", "Globo");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Barco");
         Pais argentina = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil", "Uruguay", "Bolivia")));
         Pais brasil = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina", "Uruguay", "Bolivia")));
         Continente america = new Continente("America", 5);
@@ -175,5 +175,4 @@ public class CanjeTest {
         etapa.jugar(10, argentina);
         assertEquals(10, argentina.getCantidadEjercitos());
     }
-
 }

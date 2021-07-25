@@ -42,7 +42,7 @@ class FaseColocacion implements Fase{
         return (new FaseColocacion(siguienteJugador));
     }
 
-    public void activarCarta(Carta unaCarta) {
+    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
         jugadorDeTurno.activarCarta(unaCarta);
     }
 }
