@@ -39,6 +39,6 @@ public class LectorDeCartasJSON extends LectorDeCartas{
     protected Carta obtenerCarta(Object carta){
         String pais = (String)((JSONObject)carta).get("Pais");
         String simbolo = (String)((JSONObject)carta).get("Simbolo");
-        return (new Carta(pais, simbolo));
+        return (new CartaNoActivada(pais, simbolo));
     }
 }

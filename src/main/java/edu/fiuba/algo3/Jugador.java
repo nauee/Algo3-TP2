@@ -10,11 +10,16 @@ public class Jugador{
     private final int id;
     private final ArrayList<Pais> paises = new ArrayList<>();
     private final ArrayList<Carta> cartas = new ArrayList<>();
+    private Canje canje;
+    private int cantidadDeCanjes;
+    private int ejercitosAcumulados;
 
     public Jugador(String nombre){
         this.nombre = nombre;
+        cantidadDeCanjes = 0;
         id = proximoId;
         proximoId++;
+        canje = new CanjeEstatico();
     }
 
     public String getNombre(){
@@ -32,7 +37,7 @@ public class Jugador{
         paises.remove(paisAPerder);
     }
 
-    public int getCantidadFichas(){
+    public int getCantidadFichasPorPais(){
         return paises.size()/2;
     }
 
@@ -40,13 +45,38 @@ public class Jugador{
         cartas.add(carta);
     }
 
-    public void activarCarta(Carta carta){
-        carta.activarse(paises, this);
+    public void activarCarta(Carta carta) throws CartaYaActivadaException {
+        /*
+        Carta cartaJugador = cartas.get(cartas.indexOf(carta));
+        if (cartaJugador != null){
+            Carta cartaActuazliada = cartaJugador.activarse(paises, this);
+            cartas.remove(carta);
+            cartas.add(cartaActuazliada);
+        }*/
+        if (cartas.contains(carta))
+            carta = carta.activarse(paises, this);
+        //no guarda la instamcia de CartaActivada
     }
 
     public int getCantidadCartas(){
         return cartas.size();
     }
 
-}
+    private void devolverCartasAlMazo(Carta carta1, Carta carta2, Carta carta3, ArrayList<Carta> mazo){
+        cartas.remove(carta1);
+        cartas.remove(carta2);
+        cartas.remove(carta3);
+        mazo.add(carta1);
+        mazo.add(carta2);
+        mazo.add(carta3);
+    }
 
+    public int canjearCartas(Carta carta1, Carta carta2, Carta carta3, ArrayList<Carta> mazo){
+        int fichas =0;
+        cantidadDeCanjes++;
+        fichas = canje.realizarCanje(cantidadDeCanjes);
+        canje = canje.siguienteCanje(cantidadDeCanjes);
+        devolverCartasAlMazo(carta1, carta2, carta3, mazo);
+        return fichas;
+    }
+}

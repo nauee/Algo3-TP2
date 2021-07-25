@@ -42,6 +42,6 @@ public class LectorDeCartasCSV extends LectorDeCartas{
     protected Carta obtenerCarta(Object carta){
         String pais = ((String[])carta)[0];
         String simbolo = ((String[])carta)[1];
-        return (new Carta(pais, simbolo));
+        return (new CartaNoActivada(pais, simbolo));
     }
 }

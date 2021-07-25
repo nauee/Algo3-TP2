@@ -27,4 +27,8 @@ public class EtapaBatalla extends Etapa{
         throw new NoSePuedeActivarCartaEnLaBatallaException();
     }
 
+    @Override
+    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException {
+        throw new NoSePuedeCanjearEnEtapaBatallaException();
+    }
 }

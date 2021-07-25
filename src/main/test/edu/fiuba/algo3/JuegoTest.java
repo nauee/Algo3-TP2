@@ -44,6 +44,7 @@ public class JuegoTest {
         assertEquals(50, juego.getCantidadCartas());
     }
 
+
     @Test
     public void seDistribuyenCorrectamenteLosPaisesEntreJugadores() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException {
 
@@ -170,8 +171,8 @@ public class JuegoTest {
        juego.pasarDeFase();
 
        //jugador 2 puede agregar mas ejercitos debido a la recompensa por tener Asia
-       juego.jugar((juego.getJugador(1).getCantidadFichas())+7, "China");
-       assertEquals(juego.getJugador(1).getCantidadFichas()+10 ,china.getCantidadEjercitos());
+       juego.jugar((juego.getJugador(1).getCantidadFichasPorPais())+7, "China");
+       assertEquals(juego.getJugador(1).getCantidadFichasPorPais()+10 ,china.getCantidadEjercitos());
 
    }
 
@@ -197,5 +198,18 @@ public class JuegoTest {
        juego.jugar(10,"Argentina","Brasil");
        juego.jugar(8,"Argentina","Chile");
        assertEquals(cantidadPaisesPrevioAtacar+2, juego.getJugador(0).getCantidadPaises());
+   }
+
+   @Test
+    public void realizarUnCanjeConDosCartasIgualesYUnaDistintaLevantaUnaExcepcion() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException {
+        Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nicolas", "Felipe")));
+        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
+        Carta carta2 = new CartaNoActivada("Brasil", "Globo");
+        Carta carta3 = new CartaNoActivada("Ecuador", "Globo");
+        juego.getJugador(0).darleCarta(carta1);
+        juego.getJugador(0).darleCarta(carta2);
+        juego.getJugador(0).darleCarta(carta3);
+
+        assertThrows(SimbolosInvalidosException.class, () -> juego.canjearCartas(carta1, carta2, carta3) );
    }
 }
