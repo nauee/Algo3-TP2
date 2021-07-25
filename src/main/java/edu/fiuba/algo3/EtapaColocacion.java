@@ -14,8 +14,12 @@ public class EtapaColocacion extends Etapa{
         fase.jugar(cantidadEjercitos, paises);
     }
 
+
+    @Override
     public void canjearCartas(Carta carta1, Carta carta2, Carta carta3){
-        jugadores.get(jugadorDeTurno-1).canjearCartas(carta1, carta2, carta3, cartas);
+
+        int fichas = jugadores.get(jugadorDeTurno-1).canjearCartas(carta1, carta2, carta3, cartas);
+        fase.agregarFichasDelCanje(fichas);
     }
 
 

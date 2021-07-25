@@ -23,12 +23,17 @@ class FaseColocacion implements Fase{
         fichasColocadas += cantidadEjercitos;
     }
 
+
     private int getCantidadFichas() {
+        int fichasDelJugador = jugadorDeTurno.getCantidadFichasPorPais();
         for (Continente continente : Etapa.continentes) {
-            jugadorDeTurno.agregarEjercitos(continente.getRecompensa(jugadorDeTurno));
+            fichasDelJugador += continente.getRecompensa(jugadorDeTurno);
         }
-        int fichas = jugadorDeTurno.getCantidadFichas();
-        return fichas;
+        return fichasDelJugador;
+    }
+
+    public void agregarFichasDelCanje(int fichas){
+        fichasDelJugador += fichas;
     }
 
     @Override

@@ -1,7 +1,5 @@
 package edu.fiuba.algo3;
 
-import java.util.ArrayList;
-
 public class EtapaBatalla extends Etapa{
 
     private Fase fase;
@@ -28,7 +26,9 @@ public class EtapaBatalla extends Etapa{
     public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException {
         throw new NoSePuedeActivarCartaEnLaBatallaException();
     }
-    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearException {
-        throw new NoSePuedeCanjearException();
+
+    @Override
+    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException {
+        throw new NoSePuedeCanjearEnEtapaBatallaException();
     }
 }

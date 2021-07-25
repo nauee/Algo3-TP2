@@ -16,10 +16,10 @@ public class Jugador{
 
     public Jugador(String nombre){
         this.nombre = nombre;
+        cantidadDeCanjes = 0;
         id = proximoId;
         proximoId++;
-        this.cantidadDeCanjes =0;
-        this.ejercitosAcumulados = 0;
+        canje = new CanjeEstatico();
     }
 
     public String getNombre(){
@@ -37,14 +37,11 @@ public class Jugador{
         paises.remove(paisAPerder);
     }
 
-    public int getCantidadFichas(){
-        agregarEjercitos(paises.size()/2);
-        return (ejercitosAcumulados);      //podriamos hacer que las fichas que se guarde de continente tambien le queden por convencion
+    public int getCantidadFichasPorPais(){
+        return paises.size()/2;
     }
 
-    public void agregarEjercitos(int unosEjercitos){
-        ejercitosAcumulados += unosEjercitos;
-    }
+
 
     public void darleCarta(Carta carta) {
         cartas.add(carta);
@@ -58,15 +55,24 @@ public class Jugador{
         return cartas.size();
     }
 
-    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3, ArrayList<Carta> cartas){
-        cantidadDeCanjes++;
-        agregarEjercitos(canje.realizarCanje());
-        canje = canje.siguienteCanje();
-        cartas.add(carta1);
-        cartas.add(carta2);
-        cartas.add(carta3);
-
+    private void devolverCartasAlMazo(Carta carta1, Carta carta2, Carta carta3, ArrayList<Carta> mazo){
+        cartas.remove(carta1);
+        cartas.remove(carta2);
+        cartas.remove(carta3);
+        mazo.add(carta1);
+        mazo.add(carta2);
+        mazo.add(carta3);
     }
+
+    public int canjearCartas(Carta carta1, Carta carta2, Carta carta3, ArrayList<Carta> mazo){
+        int fichas =0;
+        cantidadDeCanjes++;
+        fichas = canje.realizarCanje(cantidadDeCanjes);
+        canje = canje.siguienteCanje(cantidadDeCanjes);
+        devolverCartasAlMazo(carta1, carta2, carta3, mazo);
+        return fichas;
+    }
+
 
 }
 

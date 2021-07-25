@@ -2,15 +2,13 @@ package edu.fiuba.algo3;
 
 class CanjeDinamico implements Canje {
 
-    private static int cantidadDeCanjes = 2;
     @Override
-    public Canje siguienteCanje(){
+    public Canje siguienteCanje(int cantidadDeCanjes){
         return this;
     }
 
     @Override
-    public int realizarCanje(){
-        cantidadDeCanjes++;
+    public int realizarCanje(int cantidadDeCanjes){
         return ((cantidadDeCanjes-1)*5);
     }
 }

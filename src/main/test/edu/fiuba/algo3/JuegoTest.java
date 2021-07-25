@@ -44,6 +44,7 @@ public class JuegoTest {
         assertEquals(50, juego.getCantidadCartas());
     }
 
+
     @Test
     public void seDistribuyenCorrectamenteLosPaisesEntreJugadores() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException {
 
@@ -170,8 +171,8 @@ public class JuegoTest {
        juego.pasarDeFase();
 
        //jugador 2 puede agregar mas ejercitos debido a la recompensa por tener Asia
-       juego.jugar((juego.getJugador(1).getCantidadFichas())+7, "China");
-       assertEquals(juego.getJugador(1).getCantidadFichas()+10 ,china.getCantidadEjercitos());
+       juego.jugar((juego.getJugador(1).getCantidadFichasPorPais())+7, "China");
+       assertEquals(juego.getJugador(1).getCantidadFichasPorPais()+10 ,china.getCantidadEjercitos());
 
    }
 

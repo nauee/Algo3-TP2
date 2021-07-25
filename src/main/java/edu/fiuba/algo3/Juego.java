@@ -90,8 +90,11 @@ public class Juego {
     public void pasarDeFase(){
         etapa = etapa.siguienteFase();
     }
-    //faltan exceptions, pruebas, y ver que solo canjea al principio del turno y no mg
-    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearException {
+
+
+    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException, SimbolosInvalidosException {
+        if(!Carta.canjeables(carta1, carta2, carta3))
+            throw new SimbolosInvalidosException();
         etapa.canjearCartas(carta1, carta2, carta3);
     }
 

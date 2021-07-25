@@ -2,10 +2,9 @@ package edu.fiuba.algo3;
 
 class CanjeEstatico implements Canje {
 
-    private static int cantidadDeCanjes = 0;
 
     @Override
-    public Canje siguienteCanje(){
+    public Canje siguienteCanje(int cantidadDeCanjes){
         if(cantidadDeCanjes>1){
             return new CanjeDinamico();
         }
@@ -13,8 +12,7 @@ class CanjeEstatico implements Canje {
     }
 
     @Override
-    public int realizarCanje(){
-        cantidadDeCanjes++;
-        return 4 + (3*(cantidadDeCanjes-1));
+    public int realizarCanje(int cantidadDeCanjes){
+        return 4 + ((3*(cantidadDeCanjes-1)));
     }
 }
