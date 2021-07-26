@@ -1,7 +1,9 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.elementos;
+
+import edu.fiuba.algo3.Batalla;
+import edu.fiuba.algo3.excepciones.*;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import static java.lang.Math.min;
 

@@ -1,5 +1,13 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.elementos.Carta;
+import edu.fiuba.algo3.elementos.Continente;
+import edu.fiuba.algo3.elementos.Jugador;
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.CartaYaActivadaException;
+import edu.fiuba.algo3.excepciones.FichasInsuficientesException;
+import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
+
 import java.util.ArrayList;
 
 class FaseColocacion implements Fase{

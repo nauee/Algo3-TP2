@@ -1,9 +1,9 @@
 package edu.fiuba.algo3;
-import org.json.simple.parser.ParseException;
+import edu.fiuba.algo3.elementos.*;
+import edu.fiuba.algo3.excepciones.*;
 import org.junit.jupiter.api.Test;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 

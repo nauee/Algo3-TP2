@@ -1,4 +1,7 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.lectura;
+
+import edu.fiuba.algo3.elementos.Carta;
+import edu.fiuba.algo3.elementos.CartaNoActivada;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

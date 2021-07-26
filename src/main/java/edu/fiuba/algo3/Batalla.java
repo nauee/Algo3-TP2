@@ -1,5 +1,9 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.elementos.Dado;
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.*;
+
 import java.util.ArrayList;
 import static java.lang.Math.min;
 
@@ -9,7 +13,7 @@ public class Batalla{
     private final Pais paisAtacante;
     private final int cantidadEjercitoAtacante;
 
-    public Batalla(Pais atacado, Pais atacante, int cantidadEjercito) throws AtaqueAPaisPropioException, PaisNoLimitrofeException{
+    public Batalla(Pais atacado, Pais atacante, int cantidadEjercito) throws AtaqueAPaisPropioException, PaisNoLimitrofeException {
         if(!atacado.esLimitrofeCon(atacante.getNombre()))
             throw new PaisNoLimitrofeException();
 

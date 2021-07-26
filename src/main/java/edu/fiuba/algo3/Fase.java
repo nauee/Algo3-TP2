@@ -1,5 +1,9 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.elementos.Carta;
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.*;
+
 import java.util.ArrayList;
 
 public interface Fase {

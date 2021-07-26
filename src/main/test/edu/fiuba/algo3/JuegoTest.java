@@ -1,5 +1,10 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.elementos.Carta;
+import edu.fiuba.algo3.elementos.CartaNoActivada;
+import edu.fiuba.algo3.elementos.Dado;
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.*;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import org.junit.Test;

@@ -1,5 +1,11 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.elementos.Carta;
+import edu.fiuba.algo3.elementos.Continente;
+import edu.fiuba.algo3.elementos.Jugador;
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.*;
+import edu.fiuba.algo3.lectura.FachadaLector;
 import org.json.simple.parser.ParseException;
 
 import java.util.*;

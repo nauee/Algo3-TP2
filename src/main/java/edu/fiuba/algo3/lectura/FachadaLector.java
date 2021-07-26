@@ -1,5 +1,7 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.lectura;
 
+import edu.fiuba.algo3.elementos.Carta;
+import edu.fiuba.algo3.elementos.Continente;
 import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;

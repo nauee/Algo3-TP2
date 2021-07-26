@@ -1,5 +1,7 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.lectura;
 
+import edu.fiuba.algo3.elementos.Continente;
+import edu.fiuba.algo3.elementos.Pais;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

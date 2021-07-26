@@ -1,5 +1,10 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.elementos.Continente;
+import edu.fiuba.algo3.elementos.Jugador;
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.FichasInsuficientesException;
+import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

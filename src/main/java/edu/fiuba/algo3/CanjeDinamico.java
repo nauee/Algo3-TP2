@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-class CanjeDinamico implements Canje {
+public class CanjeDinamico implements Canje {
 
     @Override
     public Canje siguienteCanje(int cantidadDeCanjes){
