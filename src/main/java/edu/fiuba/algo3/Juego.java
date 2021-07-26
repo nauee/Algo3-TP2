@@ -36,15 +36,13 @@ public class Juego {
     private void distribuirPaises() throws PaisNoTePerteneceException{
         ArrayList<Pais> paises = new ArrayList<>();
         continentes.forEach((continente) -> paises.addAll(continente.getPaises()));
-
         Collections.shuffle(paises);
 
-        for (int i = 0; i < paises.size(); i++){
-            int numeroJugador = i % jugadores.size();
+        for(int i = 0; i < paises.size(); i++){
+            Jugador jugador = jugadores.get(i % jugadores.size());
             Pais pais = paises.get(i);
-            Jugador jugador = jugadores.get(numeroJugador);
             jugador.agregarPais(pais);
-            pais.agregarEjercitos(1, jugador);
+            pais.agregarEjercitos(1, jugadores.get(i % jugadores.size()));
         }
     }
 
