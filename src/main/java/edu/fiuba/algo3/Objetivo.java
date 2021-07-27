@@ -1,12 +1,12 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.elementos.Jugador;
+
 public abstract class Objetivo {
 
-    private String descripcion;
-
-    public abstract void cumplido();
-
-    public Objetivo(String descripcion){
-        this.descripcion = descripcion;
+    protected boolean objetivoComunCumplido (Jugador jugador) {
+        return (jugador.conquistoMundo());
     }
+
+    public abstract boolean cumplido(Jugador jugador);
 }
