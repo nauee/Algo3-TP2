@@ -20,7 +20,7 @@ public class FaseAtaqueTest {
 
         Jugador jugadorAtacante = new Jugador("Pepe");
         Jugador jugadorAtacado = new Jugador("Mefishto");
-        Carta carta = new CartaNoActivada("Mongolia", "Barco");
+        Carta carta = new Carta("Mongolia", "Barco");
         ArrayList<Carta> cartas= new ArrayList<>();
         cartas.add(carta);
         FaseAtaque fase = new FaseAtaque(jugadorAtacante, new ArrayList<>(Arrays.asList(carta)));
@@ -40,7 +40,7 @@ public class FaseAtaqueTest {
 
         Jugador jugadorAtacante = new Jugador("Pepe");
         Jugador jugadorAtacado = new Jugador("Mefishto");
-        Carta carta = new CartaNoActivada("Mongolia", "Barco");
+        Carta carta = new Carta("Mongolia", "Barco");
         FaseAtaque fase = new FaseAtaque(jugadorAtacante, new ArrayList<>(Arrays.asList(carta)));
         Pais paisAtacante = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
         Pais paisAtacado = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina")));
