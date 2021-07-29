@@ -15,6 +15,7 @@ public class Juego {
 
     static private final int JUGADORES_MAX = 6;
 
+    private final int jugadorDeTurno;
     private Etapa etapa;
     private final ArrayList<Continente> continentes;
     private final ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -24,7 +25,7 @@ public class Juego {
         for(String nombre: nombres){
             agregarJugador(new Jugador(nombre));
         }
-        
+
         FachadaLector lector = new FachadaLector("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
         continentes = lector.obtenerPaises();
 
@@ -33,6 +34,7 @@ public class Juego {
 
         distribuirPaises();
 
+        jugadorDeTurno = 1;
         Etapa.asignarValores(continentes, jugadores, cartas);
         etapa = new EtapaColocacion();
     }
