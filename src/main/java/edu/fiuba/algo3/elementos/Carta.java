@@ -45,7 +45,7 @@ public class Carta {
         return simbolo;
     }
 
-    public void activarse(ArrayList<Pais> paises, Jugador jugador) throws CartaYaActivadaException{
+    public void activarse(ArrayList<Pais> paises, Jugador jugador) throws CartaYaActivadaException {
         estado = estado.activarse(paises, jugador, pais);
     }
 }
