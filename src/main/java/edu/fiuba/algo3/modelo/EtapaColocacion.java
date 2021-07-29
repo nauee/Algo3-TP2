@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Pais;
@@ -9,8 +9,8 @@ public class EtapaColocacion extends Etapa{
     private FaseColocacion fase;
 
     public EtapaColocacion(){
-        jugadorDeTurno = 1;
-        fase = new FaseColocacion(jugadores.get(jugadorDeTurno-1));
+        jugadorDeTurno = 0;
+        fase = new FaseColocacion(jugadores.get(jugadorDeTurno));
     }
 
     @Override
@@ -21,16 +21,15 @@ public class EtapaColocacion extends Etapa{
 
     @Override
     public void canjearCartas(Carta carta1, Carta carta2, Carta carta3){
-
-        int fichas = jugadores.get(jugadorDeTurno-1).canjearCartas(carta1, carta2, carta3, cartas);
+        int fichas = jugadores.get(jugadorDeTurno).canjearCartas(carta1, carta2, carta3, cartas);
         fase.agregarFichasDelCanje(fichas);
     }
-
 
     @Override
     public Etapa siguienteFase(){
         if (jugadorDeTurno == jugadores.size())
             return new EtapaBatalla();
+
         fase = (FaseColocacion) fase.siguienteFase(cartas);
         return this;
     }
@@ -39,5 +38,4 @@ public class EtapaColocacion extends Etapa{
     public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
         fase.activarCarta(unaCarta);
     }
-
 }

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.elementos;
 
-import edu.fiuba.algo3.Batalla;
+import edu.fiuba.algo3.modelo.Batalla;
 import edu.fiuba.algo3.excepciones.*;
 
 import java.util.ArrayList;
@@ -15,7 +15,6 @@ public class Pais {
     private final ArrayList<String> limitrofes;
 
     public Pais(String nombre, ArrayList<String> limitrofes) {
-
         this.nombre = nombre;
         this.limitrofes = limitrofes;
         cantidadEjercitos = 0;
@@ -29,6 +28,7 @@ public class Pais {
         if (!lePerteneceA(jugador)) {
             throw new PaisNoTePerteneceException();
         }
+
         this.cantidadEjercitos += cantidadEjercitos;
     }
 
@@ -59,9 +59,9 @@ public class Pais {
     public void moverEjercitos(int cantidadEjercitos, Pais destino) throws PaisNoTePerteneceException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException {
         if (!destino.esLimitrofeCon(nombre))
             throw new PaisNoLimitrofeException();
-        if (cantidadEjercitos >= this.cantidadEjercitos) {
+        if (cantidadEjercitos >= this.cantidadEjercitos)
             throw new MovimientoConCantidadInvalidaException();
-        }
+
         destino.agregarEjercitos(cantidadEjercitos, duenio);
         this.cantidadEjercitos -= cantidadEjercitos;
     }
@@ -71,7 +71,6 @@ public class Pais {
     }
 
     public void serConquistadoPor(Pais paisConquistador) {
-
         duenio.perderPais(this);
         paisConquistador.ganarleAPais(this);
     }
@@ -87,14 +86,16 @@ public class Pais {
     public int atacantes(int cantidadAtacantes) throws AtaqueConCantidadInvalidaException {
         if (cantidadEjercitos <= cantidadAtacantes)
             throw new AtaqueConCantidadInvalidaException();
+
         return min(cantidadEjercitos, 3);
     }
 
-    public void atacarPais(Pais paisAtacado, int cantidadEjercito, Jugador jugador) throws PaisNoLimitrofeException, AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, MovimientoConCantidadInvalidaException {
+    public void atacarPais(Pais paisAtacado, int cantidadEjercito, Jugador jugador) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, MovimientoConCantidadInvalidaException {
         if (!lePerteneceA(jugador))
             throw new PaisNoTePerteneceException();
         if (cantidadEjercitos <= cantidadEjercito)
             throw new AtaqueConCantidadInvalidaException();
+
         Batalla batalla = new Batalla(paisAtacado, this, cantidadEjercito);
         batalla.batallar();
     }

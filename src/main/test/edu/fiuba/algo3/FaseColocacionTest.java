@@ -5,6 +5,8 @@ import edu.fiuba.algo3.elementos.Jugador;
 import edu.fiuba.algo3.elementos.Pais;
 import edu.fiuba.algo3.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
+import edu.fiuba.algo3.modelo.Etapa;
+import edu.fiuba.algo3.modelo.FaseColocacion;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

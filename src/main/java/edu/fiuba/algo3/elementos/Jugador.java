@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.elementos;
 
-import edu.fiuba.algo3.*;
 import edu.fiuba.algo3.excepciones.CartaYaActivadaException;
+import edu.fiuba.algo3.modelo.*;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,6 @@ public class Jugador{
     private final ArrayList<Carta> cartas = new ArrayList<>();
     private Canje canje;
     private int cantidadDeCanjes;
-    private int ejercitosAcumulados;
     private EstadoJugador estado;
     private Objetivo objetivo;
 
@@ -26,10 +25,6 @@ public class Jugador{
         proximoId++;
         canje = new CanjeEstatico();
         estado = new EstadoVivo();
-    }
-
-    public String getNombre(){
-        return nombre;
     }
 
     public int getCantidadPaises() { return paises.size(); }
@@ -72,29 +67,30 @@ public class Jugador{
         cartas.remove(carta1);
         cartas.remove(carta2);
         cartas.remove(carta3);
+
         mazo.add(carta1);
         mazo.add(carta2);
         mazo.add(carta3);
     }
 
     public int canjearCartas(Carta carta1, Carta carta2, Carta carta3, ArrayList<Carta> mazo){
-        int fichas =0;
         cantidadDeCanjes++;
-        fichas = canje.realizarCanje(cantidadDeCanjes);
+        int fichas = canje.realizarCanje(cantidadDeCanjes);
         canje = canje.siguienteCanje(cantidadDeCanjes);
         devolverCartasAlMazo(carta1, carta2, carta3, mazo);
+
         return fichas;
     }
 
-    public boolean tienePais (Pais unPais) {
+    public boolean tienePais(Pais unPais) {
         return paises.contains(unPais);
     }
 
-    public boolean conquistoMundo (){
+    public boolean conquistoMundo(){
         return paises.size() == 50;
     }
 
-    public boolean derrotadoPor (Jugador jugador){
+    public boolean derrotadoPor(Jugador jugador){
         return estado.derrotadoPor(jugador);
     }
 
@@ -114,8 +110,7 @@ public class Jugador{
         estado = new EstadoDerrotado(jugador);
     }
 
-    public void agregarObjetivo (Objetivo objetivo) {
+    public void agregarObjetivo(Objetivo objetivo) {
         this.objetivo = objetivo;
     }
-
 }

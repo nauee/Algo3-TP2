@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Pais;
@@ -9,8 +9,8 @@ public class EtapaBatalla extends Etapa{
     private Fase fase;
 
     public EtapaBatalla(){
-        jugadorDeTurno = 1;
-        fase = new FaseAtaque(jugadores.get(jugadorDeTurno-1), cartas);
+        jugadorDeTurno = 0;
+        fase = new FaseAtaque(jugadores.get(jugadorDeTurno), cartas);
     }
 
     @Override
@@ -23,6 +23,7 @@ public class EtapaBatalla extends Etapa{
         fase = fase.siguienteFase(cartas);
         if (jugadorDeTurno > jugadores.size())
             return new EtapaColocacion();
+
         return this;
     }
 

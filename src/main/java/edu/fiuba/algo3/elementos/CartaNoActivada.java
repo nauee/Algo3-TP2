@@ -11,13 +11,12 @@ public class CartaNoActivada extends Carta{
 
     @Override
     public Carta activarse(ArrayList<Pais> paises, Jugador jugador){
-        Pais pais = buscarPais(paises);
-        if (pais != null) {
-            try {
-                pais.agregarEjercitos(2, jugador);
-            } catch(PaisNoTePerteneceException ignored){}
-            return new CartaActivada(this.pais, this.simbolo);
+        try{
+            Pais pais = buscarPais(paises);
+            pais.agregarEjercitos(2, jugador);
+            return new CartaActivada(this.pais, simbolo);
+        }catch(PaisNoTePerteneceException exception){
+            return this;
         }
-        return this;
     }
 }

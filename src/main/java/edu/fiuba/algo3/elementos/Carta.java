@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.elementos;
 
 import edu.fiuba.algo3.excepciones.CartaYaActivadaException;
+import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 
 import java.util.ArrayList;
 
@@ -42,12 +43,14 @@ public abstract class Carta {
         return simbolo;
     }
 
-    protected Pais buscarPais (ArrayList <Pais> paises) {
-        for (Pais paisBuscado : paises) {
-            if (paisBuscado.equals(this.pais))
-                return paisBuscado;
+    protected Pais buscarPais (ArrayList <Pais> paises) throws PaisNoTePerteneceException {
+        Pais pais = null;
+        for(Pais paisBuscado : paises) {
+            if (paisBuscado.equals(this.pais)) pais = paisBuscado;
         }
-        return null;
+
+        if(pais == null) throw new PaisNoTePerteneceException();
+        return pais;
     }
 
     public abstract Carta activarse(ArrayList<Pais> paises, Jugador jugador) throws CartaYaActivadaException;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Jugador;
@@ -7,7 +7,8 @@ import edu.fiuba.algo3.excepciones.*;
 
 import java.util.ArrayList;
 
-class FaseAtaque implements Fase{
+public class FaseAtaque implements Fase{
+
     private final Jugador jugadorDeTurno;
     private ArrayList<Carta> cartas;
     private final int posAtacante = 0;
@@ -24,15 +25,16 @@ class FaseAtaque implements Fase{
         Pais paisAtacante = paises[posAtacante];
         Pais paisAtacado = paises[posAtacado];
         paisAtacante.atacarPais(paisAtacado,cantidadEjercitos, jugadorDeTurno);
-        if (paisAtacado.lePerteneceA(jugadorDeTurno))
-            huboConquista = true;
+
+        if (paisAtacado.lePerteneceA(jugadorDeTurno)) huboConquista = true;
     }
 
     @Override
     public Fase siguienteFase(ArrayList<Carta> cartas){
-        if(huboConquista)
+        if(huboConquista) {
             jugadorDeTurno.darleCarta(cartas.get(0));
             cartas.remove(0);
+        }
         return (new FaseAgrupamiento(jugadorDeTurno));
     }
 }

@@ -1,6 +1,8 @@
 package edu.fiuba.algo3;
 import edu.fiuba.algo3.elementos.*;
 import edu.fiuba.algo3.excepciones.*;
+import edu.fiuba.algo3.modelo.Etapa;
+import edu.fiuba.algo3.modelo.EtapaColocacion;
 import org.junit.jupiter.api.Test;
 
 
