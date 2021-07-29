@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.lectura;
 
 import edu.fiuba.algo3.elementos.Continente;
+import edu.fiuba.algo3.elementos.CreadorDeElementos;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -12,6 +13,7 @@ public abstract class LectorDePaises implements Lector{
 
     protected FileReader lector;
     protected JSONParser parser;
+    protected CreadorDeElementos creador = new CreadorDeElementos("pais");
 
     protected ArrayList<Continente> inicializarContinentes(){
         ArrayList<Continente> continentes = new ArrayList<>();

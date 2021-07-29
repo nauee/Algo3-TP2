@@ -15,7 +15,6 @@ public class Juego {
 
     static private final int JUGADORES_MAX = 6;
 
-    private final int jugadorDeTurno;
     private Etapa etapa;
     private final ArrayList<Continente> continentes;
     private final ArrayList<Jugador> jugadores = new ArrayList<>();
@@ -26,17 +25,16 @@ public class Juego {
             agregarJugador(new Jugador(nombre));
         }
         
-        FachadaLector lector = new FachadaLector("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
+        FachadaLector lector = new FachadaLector("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
         continentes = lector.obtenerPaises();
 
-        lector.setTipoYRuta("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
+        lector.setRuta("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
         cartas = lector.obtenerCartas();
 
-        jugadorDeTurno = 1;
+        distribuirPaises();
+
         Etapa.asignarValores(continentes, jugadores, cartas);
         etapa = new EtapaColocacion();
-
-        distribuirPaises();
     }
 
     private void distribuirPaises() throws PaisNoTePerteneceException{

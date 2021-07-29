@@ -44,7 +44,7 @@ public class LectorDePaisesCSV extends LectorDePaises{
                 String[] fronteras = infoPais[1].split(",");
                 String continente = paisYContinente[1];
 
-                Pais nuevoPais = new Pais(paisYContinente[0], new ArrayList<String>(Arrays.asList(fronteras)));
+                Pais nuevoPais = (Pais)creador.crearElemento(paisYContinente[0], fronteras);
 
                 continentes.forEach((continenteEnLista)->{
                     if (continenteEnLista.getNombre().equals(continente))
