@@ -47,16 +47,8 @@ public class Jugador{
     }
 
     public void activarCarta(Carta carta) throws CartaYaActivadaException {
-        /*
-        Carta cartaJugador = cartas.get(cartas.indexOf(carta));
-        if (cartaJugador != null){
-            Carta cartaActuazliada = cartaJugador.activarse(paises, this);
-            cartas.remove(carta);
-            cartas.add(cartaActuazliada);
-        }*/
         if (cartas.contains(carta))
-            carta = carta.activarse(paises, this);
-        //no guarda la instamcia de CartaActivada
+            carta.activarse(paises, this);
     }
 
     public int getCantidadCartas(){

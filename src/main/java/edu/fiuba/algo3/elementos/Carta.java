@@ -5,14 +5,16 @@ import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 
 import java.util.ArrayList;
 
-public abstract class Carta {
+public class Carta {
 
     protected final String pais;
     protected final String simbolo;
+    private EstadoCarta estado;
 
     public Carta(String pais, String simbolo) {
         this.pais = pais;
         this.simbolo = simbolo;
+        estado = new CartaNoActivada();
     }
 
     public static boolean canjeables(Carta carta1, Carta carta2, Carta carta3){
@@ -43,15 +45,7 @@ public abstract class Carta {
         return simbolo;
     }
 
-    protected Pais buscarPais (ArrayList <Pais> paises) throws PaisNoTePerteneceException {
-        Pais pais = null;
-        for(Pais paisBuscado : paises) {
-            if (paisBuscado.equals(this.pais)) pais = paisBuscado;
-        }
-
-        if(pais == null) throw new PaisNoTePerteneceException();
-        return pais;
+    public void activarse(ArrayList<Pais> paises, Jugador jugador) throws CartaYaActivadaException {
+        estado = estado.activarse(paises, jugador, pais);
     }
-
-    public abstract Carta activarse(ArrayList<Pais> paises, Jugador jugador) throws CartaYaActivadaException;
 }

@@ -4,7 +4,7 @@ public class CreadorDeCartas implements Creador{
 
     @Override
     public Object crear(String pais, String[] datos){
-        return new CartaNoActivada(pais,datos[0]);
+        return new Carta(pais,datos[0]);
     }
 
     @Override

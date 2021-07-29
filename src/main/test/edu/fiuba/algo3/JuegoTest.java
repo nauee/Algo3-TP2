@@ -173,9 +173,9 @@ public class JuegoTest {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nicolas"), new Jugador("Felipe")));
         Juego juego = new Juego(jugadores);
 
-        Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
-        Carta carta2 = new CartaNoActivada("Brasil", "Globo");
-        Carta carta3 = new CartaNoActivada("Ecuador", "Globo");
+        Carta carta1 = new Carta("Argentina", "Fiat Palio");
+        Carta carta2 = new Carta("Brasil", "Globo");
+        Carta carta3 = new Carta("Ecuador", "Globo");
 
         jugadores.get(0).darleCarta(carta1);
         jugadores.get(0).darleCarta(carta2);
@@ -188,9 +188,7 @@ public class JuegoTest {
     public void intentarActivarUnaCartaYaActivadaLanzaUnaExcepcion() throws CartaYaActivadaException, PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePuedeActivarCartaEnLaBatallaException, PaisNoExisteException {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nicolas"), new Jugador("Felipe")));
         Juego juego = new Juego(jugadores);
-
-        Carta carta = new CartaNoActivada("Argentina", "Fiat Palio");
-
+        Carta carta = new Carta("Argentina", "Fiat Palio");
         Pais argentina = juego.buscarPais("Argentina");
         argentina.asignarDuenio(jugadores.get(0));
 

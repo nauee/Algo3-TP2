@@ -18,7 +18,7 @@ public class CartaTest {
     public void ActivarUnaCartaDeUnPaisQueTePerteneceFuncionaCorrectamente() throws CartaYaActivadaException {
         Jugador jugador = new Jugador("Pepe");
         Pais pais = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
-        Carta carta = new CartaNoActivada("Argentina", "Comodin");
+        Carta carta = new Carta("Argentina", "Comodin");
         jugador.agregarPais(pais);
         jugador.darleCarta(carta);
         carta.activarse(new ArrayList<Pais>(Arrays.asList(pais)), jugador);
@@ -29,7 +29,7 @@ public class CartaTest {
     public void NoSePuedeActivarUnaCartaDeUnPaisQueNoTePertenece() throws CartaYaActivadaException {
         Jugador jugador = new Jugador("Pepe");
         Pais pais = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina")));
-        Carta carta = new CartaNoActivada("Argentina", "Comodin");
+        Carta carta = new Carta("Argentina", "Comodin");
         jugador.agregarPais(pais);
         jugador.darleCarta(carta);
         assertNotEquals(2, pais.getCantidadEjercitos());
@@ -39,12 +39,12 @@ public class CartaTest {
     public void intentarActivarUnaCartaYaActivadaLanzaUnaExcepcion() throws CartaYaActivadaException {
         Jugador jugador = new Jugador("Pepe");
         Pais pais = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
-        Carta carta = new CartaNoActivada("Argentina", "Comodin");
+        Carta carta = new Carta("Argentina", "Comodin");
         jugador.agregarPais(pais);
         jugador.darleCarta(carta);
-        Carta cartaActualizada = carta.activarse(new ArrayList<Pais>(Arrays.asList(pais)), jugador);
+        carta.activarse(new ArrayList<Pais>(Arrays.asList(pais)), jugador);
         assertThrows(CartaYaActivadaException.class, ()->{
-            cartaActualizada.activarse(new ArrayList<Pais>(Arrays.asList(pais)), jugador);
+            carta.activarse(new ArrayList<Pais>(Arrays.asList(pais)), jugador);
         });
     }
 }
