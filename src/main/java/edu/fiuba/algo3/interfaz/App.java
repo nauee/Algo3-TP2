@@ -1,10 +1,7 @@
 package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.SystemInfo;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -14,11 +11,27 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
+        /*Image image = new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/interfaz/tableroteg.jpg");
+        ImageView vista = new ImageView(image);
+        vista.setCache(true);
+        vista.setPreserveRatio(true);
 
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
+        BorderPane pane = new BorderPane();
+
+        VBox opciones = new VBox();
+        Button colocar = new Button("Colocar");
+        Button batalla = new Button("Batalla");
+        Button reagrupar = new Button("Reagrupar");
+
+        opciones.getChildren().addAll(colocar, batalla, reagrupar);
+        pane.setRight(opciones);
+
+        vista.fitWidthProperty().bind(stage.widthProperty());
+        vista.fitHeightProperty().bind(stage.heightProperty());
+        pane.setCenter(vista);*/
+
+        VistaInicio inicio = new VistaInicio(stage);
+        Scene scene = new Scene(inicio, 640, 480);
         stage.setScene(scene);
         stage.show();
     }
@@ -26,5 +39,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
