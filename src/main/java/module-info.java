@@ -5,4 +5,6 @@ module edu.fiuba {
     exports edu.fiuba.algo3.excepciones;
     exports edu.fiuba.algo3.lectura;
     exports edu.fiuba.algo3.elementos;
+    exports edu.fiuba.algo3.interfaz;
+    exports edu.fiuba.algo3.modelo;
 }

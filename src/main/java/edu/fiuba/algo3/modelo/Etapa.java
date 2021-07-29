@@ -1,4 +1,4 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Continente;
@@ -19,16 +19,21 @@ public abstract class Etapa {
         jugadores = unosJugadores;
         cartas = unasCartas;
         continentes = unosContinentes;
-        jugadorDeTurno = 1;
+        jugadorDeTurno = 0;
     }
+
     public static Jugador siguienteJugador(){
-        jugadorDeTurno ++;
-        if(jugadorDeTurno>jugadores.size())
-            return null;
-        return(jugadores.get(jugadorDeTurno-1));
+        jugadorDeTurno++;
+        if(jugadorDeTurno > jugadores.size()) return jugadores.get(0);
+
+        return (jugadores.get(jugadorDeTurno));
     }
+
     public abstract void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, MovimientoConCantidadInvalidaException;
+
     public abstract Etapa siguienteFase();
+
     public abstract void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException, CartaYaActivadaException;
+
     public abstract void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException;
 }

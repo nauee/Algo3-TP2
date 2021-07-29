@@ -3,6 +3,7 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.elementos.Jugador;
 import edu.fiuba.algo3.elementos.Pais;
 import edu.fiuba.algo3.excepciones.*;
+import edu.fiuba.algo3.modelo.Batalla;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -25,7 +25,6 @@ public class Continente {
         return recompensa;
     }
 
-
     public void agregarPais(Pais pais){
         paises.add(pais);
     }
@@ -42,9 +41,5 @@ public class Continente {
 
     public ArrayList<Pais> getPaises(){
         return paises;
-    }
-
-    public int getCantidadPaises(){
-        return paises.size();
     }
 }

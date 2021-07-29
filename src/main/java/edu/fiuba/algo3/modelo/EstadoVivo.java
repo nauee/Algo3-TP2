@@ -1,8 +1,8 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.elementos.Jugador;
 
-public class EstadoGanador implements EstadoJugador {
+public class EstadoVivo implements EstadoJugador{
     @Override
     public boolean derrotadoPor(Jugador unJugador) {
         return false;
@@ -10,7 +10,7 @@ public class EstadoGanador implements EstadoJugador {
 
     @Override
     public boolean gano() {
-        return true;
+        return false;
     }
 
     @Override
