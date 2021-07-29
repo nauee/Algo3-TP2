@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.elementos;
 
-import edu.fiuba.algo3.Canje;
-import edu.fiuba.algo3.CanjeEstatico;
+import edu.fiuba.algo3.*;
 import edu.fiuba.algo3.excepciones.CartaYaActivadaException;
 
 import java.util.ArrayList;
@@ -17,6 +16,8 @@ public class Jugador{
     private Canje canje;
     private int cantidadDeCanjes;
     private int ejercitosAcumulados;
+    private EstadoJugador estado;
+    private Objetivo objetivo;
 
     public Jugador(String nombre){
         this.nombre = nombre;
@@ -24,6 +25,7 @@ public class Jugador{
         id = proximoId;
         proximoId++;
         canje = new CanjeEstatico();
+        estado = new EstadoVivo();
     }
 
     public String getNombre(){
@@ -83,4 +85,37 @@ public class Jugador{
         devolverCartasAlMazo(carta1, carta2, carta3, mazo);
         return fichas;
     }
+
+    public boolean tienePais (Pais unPais) {
+        return paises.contains(unPais);
+    }
+
+    public boolean conquistoMundo (){
+        return paises.size() == 50;
+    }
+
+    public boolean derrotadoPor (Jugador jugador){
+        return estado.derrotadoPor(jugador);
+    }
+
+    public boolean gano() {
+        return estado.gano();
+    }
+
+    public boolean perdio(){
+        return estado.perdio();
+    }
+
+    public void ganar(){
+        estado = new EstadoGanador();
+    }
+
+    public void serDerrotadoPor(Jugador jugador) {
+        estado = new EstadoDerrotado(jugador);
+    }
+
+    public void agregarObjetivo (Objetivo objetivo) {
+        this.objetivo = objetivo;
+    }
+
 }
