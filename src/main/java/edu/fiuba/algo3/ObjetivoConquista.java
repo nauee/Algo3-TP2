@@ -20,6 +20,6 @@ public class ObjetivoConquista extends Objetivo{
             if (!jugador.tienePais(pais))
                 cumplido = false;
         }
-        return cumplido && objetivoComunCumplido(jugador);
+        return cumplido || objetivoComunCumplido(jugador);
     }
 }

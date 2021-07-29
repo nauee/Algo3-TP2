@@ -12,6 +12,6 @@ public class ObjetivoDestruccion extends Objetivo{
 
     @Override
     public boolean cumplido(Jugador jugador) {
-        return objetivoComunCumplido(jugador) && jugadorADestruir.derrotadoPor(jugador);
+        return objetivoComunCumplido(jugador) || jugadorADestruir.derrotadoPor(jugador);
     }
 }

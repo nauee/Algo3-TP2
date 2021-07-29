@@ -32,11 +32,11 @@ public class Juego {
         lector.setTipoYRuta("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
         cartas = lector.obtenerCartas();
 
+        distribuirPaises();
+
         jugadorDeTurno = 1;
         Etapa.asignarValores(continentes, jugadores, cartas);
         etapa = new EtapaColocacion();
-
-        distribuirPaises();
     }
 
     private void distribuirPaises() throws PaisNoTePerteneceException{
