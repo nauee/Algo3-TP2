@@ -6,19 +6,18 @@ import edu.fiuba.algo3.elementos.Pais;
 import edu.fiuba.algo3.lectura.FachadaLector;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.ArrayList;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LectorDeArchivosTest {
 
     @Test
     public void seLeenCorrectamenteLosNombresDeLosPaises() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("json", "src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        ArrayList<Continente> continentes = (ArrayList<Continente>) lector.obtenerPaises();
+        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lector.obtenerPaises();
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -32,8 +31,8 @@ public class LectorDeArchivosTest {
 
     @Test
     public void seLeenLasFronterasDeTresPaisesCorrectamente() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("json", "src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        ArrayList<Continente> continentes = (ArrayList<Continente>) lector.obtenerPaises();
+        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lector.obtenerPaises();
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -51,8 +50,8 @@ public class LectorDeArchivosTest {
 
     @Test
     public void seLeenCorrectamenteLaCantidadDePaises() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("json", "src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        ArrayList<Continente> continentes = (ArrayList<Continente>) lector.obtenerPaises();
+        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lector.obtenerPaises();
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -63,8 +62,8 @@ public class LectorDeArchivosTest {
 
     @Test
     public void seLeenCorrectamenteLaCantidadDeFronterasDeUnPais() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("json", "src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        ArrayList<Continente> continentes = (ArrayList<Continente>) lector.obtenerPaises();
+        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lector.obtenerPaises();
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -78,8 +77,8 @@ public class LectorDeArchivosTest {
 
     @Test
     public void seLeenCorrectamenteLosPaisesDeLasCartas() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("json", "src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
-        ArrayList<Carta> cartas = (ArrayList<Carta>) lector.obtenerCartas();
+        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
+        ArrayList<Carta> cartas = lector.obtenerCartas();
 
         assertEquals("Francia", (cartas.get(0)).getPais());
         assertEquals("Gran Bretaña", (cartas.get(1)).getPais());
@@ -88,16 +87,16 @@ public class LectorDeArchivosTest {
 
     @Test
     public void seLeeLaCantidadCorrectaDeCartas() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("json", "src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
-        ArrayList<Carta> cartas = (ArrayList<Carta>) lector.obtenerCartas();
+        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
+        ArrayList<Carta> cartas = lector.obtenerCartas();
 
         assertEquals(3, cartas.size());
     }
 
     @Test
     public void seLeenCorrectamenteElSimboloDeUnaCarta() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("json", "src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
-        ArrayList<Carta> cartas = (ArrayList<Carta>) lector.obtenerCartas();
+        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
+        ArrayList<Carta> cartas = lector.obtenerCartas();
 
         assertEquals("Globo", (cartas.get(0)).getSimbolo());
         assertEquals("Barco", (cartas.get(1)).getSimbolo());

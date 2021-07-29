@@ -32,7 +32,7 @@ public class LectorDeCartasJSON extends LectorDeCartas{
         JSONArray listaCartas = (JSONArray) parser.parse(lector);
         ArrayList<Carta> cartas = new ArrayList<>();
         for (Object carta : listaCartas) {
-            cartas.add(obtenerCarta((JSONObject) carta));
+            cartas.add(obtenerCarta(carta));
         }
         return cartas;
     }
@@ -40,7 +40,8 @@ public class LectorDeCartasJSON extends LectorDeCartas{
     @Override
     protected Carta obtenerCarta(Object carta){
         String pais = (String)((JSONObject)carta).get("Pais");
-        String simbolo = (String)((JSONObject)carta).get("Simbolo");
-        return (new CartaNoActivada(pais, simbolo));
+        String[] simbolo = new String[1];
+        simbolo[0] = (String)((JSONObject)carta).get("Simbolo");
+        return ((Carta)creador.crearElemento(pais, simbolo));
     }
 }

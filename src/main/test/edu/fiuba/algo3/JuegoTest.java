@@ -186,26 +186,26 @@ public class JuegoTest {
        PowerMockito.mockStatic(Dado.class);
        PowerMockito.when(Dado.lanzar(anyInt())).thenReturn(new ArrayList<>(Arrays.asList(6,6,6)),new ArrayList<>(Arrays.asList(1,1,1)),new ArrayList<>(Arrays.asList(6,6,6)),new ArrayList<>(Arrays.asList(1,1,1)));
 
-       Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nicolas", "Felipe")));
-       Pais argentina = juego.buscarPais("Argentina");
-       Pais brasil = juego.buscarPais("Brasil");
-       Pais chile = juego.buscarPais("Chile");
-       argentina.asignarDuenio(juego.getJugador(0));
-       int cantidadPaisesPrevioAtacar = juego.getJugador(0).getCantidadPaises();
-       brasil.asignarDuenio(juego.getJugador(1));
-       chile.asignarDuenio(juego.getJugador(1));
-       //fase colocacion primer jguador
-       juego.jugar(11, "Argentina");
-       juego.pasarDeFase();
-       //colocacion segundo
-       juego.pasarDeFase();
-       //ataque primero
-       juego.jugar(10,"Argentina","Brasil");
-       juego.jugar(8,"Argentina","Chile");
-       assertEquals(cantidadPaisesPrevioAtacar+2, juego.getJugador(0).getCantidadPaises());
-   }
+        Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nicolas", "Felipe")));
+        Pais argentina = juego.buscarPais("Argentina");
+        Pais brasil = juego.buscarPais("Brasil");
+        Pais chile = juego.buscarPais("Chile");
+        argentina.asignarDuenio(juego.getJugador(0));
+        int cantidadPaisesPrevioAtacar = juego.getJugador(0).getCantidadPaises();
+        brasil.asignarDuenio(juego.getJugador(1));
+        chile.asignarDuenio(juego.getJugador(1));
+        //fase colocacion primer jguador
+        juego.jugar(11, "Argentina");
+        juego.pasarDeFase();
+        //colocacion segundo
+        juego.pasarDeFase();
+        //ataque primero
+        juego.jugar(10,"Argentina","Brasil");
+        juego.jugar(8,"Argentina","Chile");
+        assertEquals(cantidadPaisesPrevioAtacar+2, juego.getJugador(0).getCantidadPaises());
+    }
 
-   @Test
+    @Test
     public void realizarUnCanjeConDosCartasIgualesYUnaDistintaLevantaUnaExcepcion() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException {
         Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nicolas", "Felipe")));
         Carta carta1 = new CartaNoActivada("Argentina", "Fiat Palio");
@@ -217,4 +217,17 @@ public class JuegoTest {
 
         assertThrows(SimbolosInvalidosException.class, () -> juego.canjearCartas(carta1, carta2, carta3) );
    }
+
+    @Test
+    public void intentarActivarUnaCartaYaActivadaLanzaUnaExcepcion() throws CartaYaActivadaException, PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePuedeActivarCartaEnLaBatallaException, PaisNoExisteException {
+        Juego juego = new Juego(new ArrayList<>(Arrays.asList("Nicolas", "Felipe")));
+        Carta carta = new CartaNoActivada("Argentina", "Fiat Palio");
+        Pais argentina = juego.buscarPais("Argentina");
+        argentina.asignarDuenio(juego.getJugador(0));
+        juego.getJugador(0).darleCarta(carta);
+        juego.activarCarta(carta);
+        assertThrows(CartaYaActivadaException.class, ()->{
+            juego.activarCarta(carta);
+        });
+    }
 }

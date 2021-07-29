@@ -25,11 +25,11 @@ public class Juego {
         for(String nombre: nombres){
             agregarJugador(new Jugador(nombre));
         }
-        
-        FachadaLector lector = new FachadaLector("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
+
+        FachadaLector lector = new FachadaLector("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
         continentes = lector.obtenerPaises();
 
-        lector.setTipoYRuta("json", "src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
+        lector.setRuta("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
         cartas = lector.obtenerCartas();
 
         distribuirPaises();

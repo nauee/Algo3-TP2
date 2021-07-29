@@ -31,7 +31,10 @@ public class LectorDeCartasCSV extends LectorDeCartas{
         try{
             String linea = scanner.nextLine();
             while (linea != null){
-                cartas.add(obtenerCarta(linea.split(",")));
+                String[] simbolo = new String[0];
+                simbolo[0] = linea.split(",")[1];
+                Carta carta = (Carta)creador.crearElemento(linea.split(",")[0], simbolo);
+                cartas.add(carta);
                 linea = scanner.nextLine();
             }
         }
