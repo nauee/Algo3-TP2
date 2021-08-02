@@ -21,7 +21,7 @@ public class Juego {
     private final ArrayList<Carta> cartas;
 
     public Juego(ArrayList<Jugador> jugadores) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException{
-        if(jugadores.size() >= JUGADORES_MAX)
+        if(jugadores.size() > JUGADORES_MAX)
             throw new SeAlcanzoLaCantidadMaximaException();
 
         this.jugadores = jugadores;
