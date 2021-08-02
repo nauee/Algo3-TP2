@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.elementos;
 
 public interface Creador {
-    Object crear(String pais, String[] datos);
+    Object crear(Object... datos);
     boolean esDeTipo(String tipo);
 }

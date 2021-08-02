@@ -13,7 +13,15 @@ public abstract class LectorDePaises implements Lector{
 
     protected FileReader lector;
     protected JSONParser parser;
+    protected String rutaArchivo;
     protected CreadorDeElementos creador = new CreadorDeElementos("pais");
+
+    public LectorDePaises(String rutaArchivo){
+        this.rutaArchivo = rutaArchivo;
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            this.rutaArchivo = rutaArchivo.replace("/","\\");
+        }
+    }
 
     protected ArrayList<Continente> inicializarContinentes(){
         ArrayList<Continente> continentes = new ArrayList<>();

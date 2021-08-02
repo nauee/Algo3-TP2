@@ -15,10 +15,8 @@ import java.util.ArrayList;
 public class LectorDeCartasJSON extends LectorDeCartas{
 
     public LectorDeCartasJSON(String rutaArchivo) throws FileNotFoundException {
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            rutaArchivo = rutaArchivo.replace("/","\\");
-        }
-        this.lector = new FileReader(rutaArchivo);
+        super(rutaArchivo);
+        this.lector = new FileReader(this.rutaArchivo);
         this.parser = new JSONParser();
     }
 
@@ -31,17 +29,15 @@ public class LectorDeCartasJSON extends LectorDeCartas{
     public ArrayList<Carta> obtener() throws IOException, ParseException {
         JSONArray listaCartas = (JSONArray) parser.parse(lector);
         ArrayList<Carta> cartas = new ArrayList<>();
-        for (Object carta : listaCartas) {
-            cartas.add(obtenerCarta(carta));
-        }
+        for (Object carta : listaCartas)
+            cartas.add(obtenerCarta((JSONObject)carta));
         return cartas;
     }
 
-    @Override
-    protected Carta obtenerCarta(Object carta){
-        String pais = (String)((JSONObject)carta).get("Pais");
+    private Carta obtenerCarta(JSONObject carta){
+        String pais = (String)carta.get("Pais");
         String[] simbolo = new String[1];
-        simbolo[0] = (String)((JSONObject)carta).get("Simbolo");
+        simbolo[0] = (String)carta.get("Simbolo");
         return ((Carta)creador.crearElemento(pais, simbolo));
     }
 }

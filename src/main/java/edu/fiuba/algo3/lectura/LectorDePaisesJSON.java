@@ -17,10 +17,8 @@ import java.util.Arrays;
 public class LectorDePaisesJSON extends LectorDePaises{
 
     public LectorDePaisesJSON(String rutaArchivo) throws FileNotFoundException {
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            rutaArchivo = rutaArchivo.replace("/","\\");
-        }
-        lector = new FileReader(rutaArchivo);
+        super(rutaArchivo);
+        lector = new FileReader(this.rutaArchivo);
         parser = new JSONParser();
     }
 

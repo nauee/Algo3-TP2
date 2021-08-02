@@ -11,12 +11,13 @@ public class CreadorDeElementos{
         this.tipoElemento = tipoElemento;
         creadores.add(new CreadorDeCartas());
         creadores.add(new CreadorDePaises());
+        creadores.add(new CreadorDeObjetivos());
     }
 
-    public Object crearElemento(String pais, String[] datos){
+    public Object crearElemento(Object... datos){
         for (Creador creador : creadores){
             if (creador.esDeTipo(tipoElemento))
-                return creador.crear(pais, datos);
+                return creador.crear(datos);
         }
         return null;
     }

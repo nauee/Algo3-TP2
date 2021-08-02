@@ -12,10 +12,8 @@ import java.util.Scanner;
 public class LectorDeCartasCSV extends LectorDeCartas{
 
     public LectorDeCartasCSV(String rutaArchivo) throws FileNotFoundException {
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            rutaArchivo = rutaArchivo.replace("/","\\");
-        }
-        this.lector = new FileReader(rutaArchivo);
+        super(rutaArchivo);
+        this.lector = new FileReader(this.rutaArchivo);
     }
 
     @Override
@@ -42,12 +40,5 @@ public class LectorDeCartasCSV extends LectorDeCartas{
 
         scanner.close();
         return cartas;
-    }
-
-    @Override
-    protected Carta obtenerCarta(Object carta){
-        String pais = ((String[])carta)[0];
-        String simbolo = ((String[])carta)[1];
-        return (new Carta(pais, simbolo));
     }
 }

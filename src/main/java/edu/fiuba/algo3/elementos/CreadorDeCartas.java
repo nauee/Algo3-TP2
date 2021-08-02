@@ -3,8 +3,10 @@ package edu.fiuba.algo3.elementos;
 public class CreadorDeCartas implements Creador{
 
     @Override
-    public Object crear(String pais, String[] datos){
-        return new Carta(pais,datos[0]);
+    public Object crear(Object... datos){
+        String pais = (String)datos[0];
+        String simbolo = (String)datos[1];
+        return new Carta(pais,simbolo);
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class CreadorDePaises implements Creador{
 
     @Override
-    public Object crear(String pais, String[] datos){
+    public Object crear(Object... datos){
         ArrayList<String> fronteras = new ArrayList<>(Arrays.asList(datos));
         return new Pais(pais, fronteras);
     }
