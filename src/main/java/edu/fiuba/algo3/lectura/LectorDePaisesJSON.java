@@ -1,24 +1,22 @@
 package edu.fiuba.algo3.lectura;
 
 import edu.fiuba.algo3.elementos.Continente;
+import edu.fiuba.algo3.elementos.CreadorDePaises;
 import edu.fiuba.algo3.elementos.Pais;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LectorDePaisesJSON extends LectorDePaises{
+public class LectorDePaisesJSON extends LectorDePaises implements Lector{
 
-    public LectorDePaisesJSON(String rutaArchivo) throws FileNotFoundException {
-        super(rutaArchivo);
-        lector = new FileReader(this.rutaArchivo);
+    public LectorDePaisesJSON() throws FileNotFoundException {
+        lector = new FileReader(rutaArchivo);
         parser = new JSONParser();
     }
 
@@ -34,17 +32,17 @@ public class LectorDePaisesJSON extends LectorDePaises{
         return continentes;
     }
 
-    @Override
-    protected void organizarContinentes(ArrayList<Continente> continentes) throws IOException, ParseException {
+    private void organizarContinentes(ArrayList<Continente> continentes) throws IOException, ParseException {
         JSONArray listaPaises = (JSONArray) parser.parse(lector);
+
         for (Object pais : listaPaises) {
+
             String nombreContinente = (String)((JSONObject)pais).get("Continente");
             Pais nuevoPais = obtenerPais((JSONObject)pais);
-            for (Continente continente : continentes){
-                if (continente.getNombre().equals(nombreContinente)){
+
+            for (Continente continente : continentes)
+                if (continente.getNombre().equals(nombreContinente))
                     continente.agregarPais(nuevoPais);
-                }
-            }
         }
     }
 
@@ -52,6 +50,6 @@ public class LectorDePaisesJSON extends LectorDePaises{
         String nombre = (String) pais.get("Pais");
         String[] arrayPaises = ((String) pais.get("Limita con")).split(",");
         ArrayList<String> fronteras = new ArrayList<>(Arrays.asList(arrayPaises));
-        return (new Pais(nombre, fronteras));
+        return (CreadorDePaises.crear(nombre, fronteras));
     }
 }

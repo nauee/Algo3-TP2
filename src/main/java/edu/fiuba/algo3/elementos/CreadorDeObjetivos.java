@@ -1,15 +1,37 @@
 package edu.fiuba.algo3.elementos;
 
-public class CreadorDeObjetivos implements Creador{
+import edu.fiuba.algo3.modelo.Objetivo;
+import edu.fiuba.algo3.modelo.ObjetivoConquista;
+import edu.fiuba.algo3.modelo.ObjetivoDestruccion;
 
+import java.util.ArrayList;
 
-    @Override
-    public Object crear(Object... datos) {
-        return null;
+public class CreadorDeObjetivos{
+
+    public static Objetivo crear(String[] continentesObjetivo, String[] cantidadPorPais, ArrayList<Continente> continentes) {
+
+        ArrayList<Continente> continentesParaObjetivo = new ArrayList<>();
+        for (Continente continente : continentes){
+            for (String continenteString : continentesObjetivo) {
+                if (continente.getNombre().equals(continenteString))
+                    continentesParaObjetivo.add(continente);
+            }
+        }
+
+        ArrayList<Integer> cantidadPaisesAConquistarPorContinente = new ArrayList<>();
+        for (String cantidad : cantidadPorPais)
+            cantidadPaisesAConquistarPorContinente.add(Integer.parseInt(cantidad));
+
+        return new ObjetivoConquista(continentesParaObjetivo, cantidadPaisesAConquistarPorContinente);
     }
 
-    @Override
-    public boolean esDeTipo(String tipo) {
-        return tipo.equals("objetivo");
+    public static Objetivo crear(int numeroJugador, ArrayList<Jugador> jugadores){
+        Jugador jugador;
+        if (numeroJugador > jugadores.size())
+            jugador = jugadores.get(0);
+        else
+            jugador = jugadores.get(numeroJugador-1);
+
+        return new ObjetivoDestruccion(jugador);
     }
 }

@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.lectura;
 
 import edu.fiuba.algo3.elementos.Continente;
-import edu.fiuba.algo3.elementos.CreadorDeElementos;
+import edu.fiuba.algo3.elementos.CreadorDePaises;
+import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -9,19 +10,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class LectorDePaises implements Lector{
+public class LectorDePaises{
 
     protected FileReader lector;
     protected JSONParser parser;
-    protected String rutaArchivo;
-    protected CreadorDeElementos creador = new CreadorDeElementos("pais");
-
-    public LectorDePaises(String rutaArchivo){
-        this.rutaArchivo = rutaArchivo;
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            this.rutaArchivo = rutaArchivo.replace("/","\\");
-        }
-    }
+    protected static String rutaArchivo;
+    private final ArrayList<Lector> lectores = new ArrayList<>();
 
     protected ArrayList<Continente> inicializarContinentes(){
         ArrayList<Continente> continentes = new ArrayList<>();
@@ -34,5 +28,24 @@ public abstract class LectorDePaises implements Lector{
         return continentes;
     }
 
-    protected abstract void organizarContinentes(ArrayList<Continente> continentes) throws IOException, ParseException;
+    private String getTipoArchivo(String rutaArchivo){
+        String[] infoRuta = rutaArchivo.split("\\.");
+        return infoRuta[infoRuta.length-1];
+    }
+
+    public ArrayList<Continente> leer(String unaRutaArchivo) throws NoSePudoLeerExcepcion, IOException, ParseException {
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            rutaArchivo = unaRutaArchivo.replace("/","\\");
+        }
+        rutaArchivo = unaRutaArchivo;
+
+        lectores.add(new LectorDePaisesJSON());
+
+        for (Lector lector : lectores){
+            if (lector.esDeTipo(getTipoArchivo(rutaArchivo)))
+                return (ArrayList<Continente>)lector.obtener();
+        }
+
+        throw new NoSePudoLeerExcepcion();
+    }
 }

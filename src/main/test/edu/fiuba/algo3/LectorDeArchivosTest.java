@@ -3,7 +3,9 @@ package edu.fiuba.algo3;
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Continente;
 import edu.fiuba.algo3.elementos.Pais;
-import edu.fiuba.algo3.lectura.FachadaLector;
+import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
+import edu.fiuba.algo3.lectura.LectorDeCartas;
+import edu.fiuba.algo3.lectura.LectorDePaises;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LectorDeArchivosTest {
 
     @Test
-    public void seLeenCorrectamenteLosNombresDeLosPaises() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        ArrayList<Continente> continentes = lector.obtenerPaises();
+    public void seLeenCorrectamenteLosNombresDeLosPaises() throws ParseException, IOException, NoSePudoLeerExcepcion {
+        LectorDePaises lector = new LectorDePaises();
+        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -30,9 +32,9 @@ public class LectorDeArchivosTest {
     }
 
     @Test
-    public void seLeenLasFronterasDeTresPaisesCorrectamente() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        ArrayList<Continente> continentes = lector.obtenerPaises();
+    public void seLeenLasFronterasDeTresPaisesCorrectamente() throws ParseException, IOException, NoSePudoLeerExcepcion {
+        LectorDePaises lector = new LectorDePaises();
+        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -49,9 +51,9 @@ public class LectorDeArchivosTest {
     }
 
     @Test
-    public void seLeenCorrectamenteLaCantidadDePaises() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        ArrayList<Continente> continentes = lector.obtenerPaises();
+    public void seLeenCorrectamenteLaCantidadDePaises() throws ParseException, IOException, NoSePudoLeerExcepcion {
+        LectorDePaises lector = new LectorDePaises();
+        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -61,9 +63,9 @@ public class LectorDeArchivosTest {
     }
 
     @Test
-    public void seLeenCorrectamenteLaCantidadDeFronterasDeUnPais() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        ArrayList<Continente> continentes = lector.obtenerPaises();
+    public void seLeenCorrectamenteLaCantidadDeFronterasDeUnPais() throws ParseException, IOException, NoSePudoLeerExcepcion {
+        LectorDePaises lector = new LectorDePaises();
+        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -76,9 +78,11 @@ public class LectorDeArchivosTest {
     }
 
     @Test
-    public void seLeenCorrectamenteLosPaisesDeLasCartas() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
-        ArrayList<Carta> cartas = lector.obtenerCartas();
+    public void seLeenCorrectamenteLosPaisesDeLasCartas() throws ParseException, IOException, NoSePudoLeerExcepcion {
+        LectorDePaises lector1 = new LectorDePaises();
+        ArrayList<Continente> continentes = lector1.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        LectorDeCartas lector2 = new LectorDeCartas(continentes);
+        ArrayList<Carta> cartas = lector2.leer("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
 
         assertEquals("Francia", (cartas.get(0)).getPais());
         assertEquals("Gran Bretaña", (cartas.get(1)).getPais());
@@ -86,17 +90,21 @@ public class LectorDeArchivosTest {
     }
 
     @Test
-    public void seLeeLaCantidadCorrectaDeCartas() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
-        ArrayList<Carta> cartas = lector.obtenerCartas();
+    public void seLeeLaCantidadCorrectaDeCartas() throws ParseException, IOException, NoSePudoLeerExcepcion {
+        LectorDePaises lector1 = new LectorDePaises();
+        ArrayList<Continente> continentes = lector1.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        LectorDeCartas lector2 = new LectorDeCartas(continentes);
+        ArrayList<Carta> cartas = lector2.leer("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
 
         assertEquals(3, cartas.size());
     }
 
     @Test
-    public void seLeenCorrectamenteElSimboloDeUnaCarta() throws ParseException, IOException{
-        FachadaLector lector = new FachadaLector("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
-        ArrayList<Carta> cartas = lector.obtenerCartas();
+    public void seLeenCorrectamenteElSimboloDeUnaCarta() throws ParseException, IOException, NoSePudoLeerExcepcion {
+        LectorDePaises lector1 = new LectorDePaises();
+        ArrayList<Continente> continentes = lector1.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        LectorDeCartas lector2 = new LectorDeCartas(continentes);
+        ArrayList<Carta> cartas = lector2.leer("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
 
         assertEquals("Globo", (cartas.get(0)).getSimbolo());
         assertEquals("Barco", (cartas.get(1)).getSimbolo());

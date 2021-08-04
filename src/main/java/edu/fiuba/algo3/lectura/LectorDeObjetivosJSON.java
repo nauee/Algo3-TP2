@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.lectura;
 
+import edu.fiuba.algo3.elementos.CreadorDeObjetivos;
 import edu.fiuba.algo3.modelo.Objetivo;
 import edu.fiuba.algo3.modelo.Objetivo;
 import org.json.simple.JSONArray;
@@ -12,12 +13,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class LectorDeObjetivosJSON extends LectorDeObjetivos{
+public class LectorDeObjetivosJSON extends LectorDeObjetivos implements Lector{
 
-    public LectorDeObjetivosJSON(String rutaArchivo) throws FileNotFoundException {
-        super(rutaArchivo);
-        this.lector = new FileReader(this.rutaArchivo);
+    public LectorDeObjetivosJSON() throws FileNotFoundException {
+        this.lector = new FileReader(rutaArchivo);
         this.parser = new JSONParser();
+    }
+
+    @Override
+    public boolean esDeTipo(String tipoArchivo) {
+        return tipoArchivo.equals("json");
     }
 
     @Override
@@ -31,11 +36,15 @@ public class LectorDeObjetivosJSON extends LectorDeObjetivos{
     }
 
     private Objetivo obtenerObjetivo(JSONObject objetivo){
-        return null;
-    }
+        String tipo = (String)objetivo.get("tipo");
 
-    @Override
-    public boolean esDeTipo(String tipoArchivo) {
-        return tipoArchivo.equals("json");
+        if (tipo.equals("Conquista")){
+            String[] continentesString = ((String)objetivo.get("continentes")).split(",");
+            String[] cantidadPorContinente = ((String)objetivo.get("cantidad")).split(",");
+            return CreadorDeObjetivos.crear(continentesString, cantidadPorContinente, continentes);
+        }
+
+        int numeroJugador = Integer.parseInt((String)objetivo.get("jugador"));
+        return CreadorDeObjetivos.crear(numeroJugador, jugadores);
     }
 }
