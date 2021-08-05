@@ -1,6 +1,6 @@
 ![tp2](https://github.com/nauee/Algo3-TP2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/nauee/Algo3-TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/nauee/Algo3-TP2)
 
-# TP2 Algoritmos 3: {nombre} 
+# TP2 Algoritmos 3: T.E.G.
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 

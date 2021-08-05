@@ -48,7 +48,7 @@ public class Jugador{
 
     public void activarCarta(Carta carta) throws CartaYaActivadaException {
         if (cartas.contains(carta))
-            carta.activarse(paises, this);
+            carta.activarse(this);
     }
 
     public int getCantidadCartas(){
@@ -70,7 +70,6 @@ public class Jugador{
         int fichas = canje.realizarCanje(cantidadDeCanjes);
         canje = canje.siguienteCanje(cantidadDeCanjes);
         devolverCartasAlMazo(carta1, carta2, carta3, mazo);
-
         return fichas;
     }
 
@@ -79,11 +78,25 @@ public class Jugador{
     }
 
     public boolean conquistoMundo(){
-        return paises.size() == 50;
+        return paises.size() == 30;
     }
 
     public boolean derrotadoPor(Jugador jugador){
         return estado.derrotadoPor(jugador);
+    }
+
+    public boolean conquisto(Continente continente, int cantidadPaises){
+        int cantidadConquistada = 0;
+
+        for (Pais pais : paises) {
+            if (continente.tiene(pais))
+                cantidadConquistada++;
+        }
+
+        if (cantidadPaises == 0)
+            return cantidadConquistada == continente.getCantidadPaises();
+
+        return cantidadPaises <= cantidadConquistada;
     }
 
     public boolean gano() {

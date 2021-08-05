@@ -1,0 +1,66 @@
+[
+  {
+    "tipo": "Conquista",
+    "continentes": "Africa,America del Norte,Europa",
+    "cantidad": "0,5,4"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "America del Sur,Europa",
+    "cantidad": "0,7"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "Asia,America del Sur",
+    "cantidad": "0,2"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "Europa,Asia,America del Sur",
+    "cantidad": "0,4,2"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "America del Norte,Oceania,Asia",
+    "cantidad": "0,2,4"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "Oceania,Africa,America del Sur,Europa,America del Norte,Asia",
+    "cantidad": "2,2,2,3,4,3"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "Oceania,America del Norte,Europa",
+    "cantidad": "0,0,2"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "America del Sur,Africa,America del Norte",
+    "cantidad": "0,0,5"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "1"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "2"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "3"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "4"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "5"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "6"
+  }
+]

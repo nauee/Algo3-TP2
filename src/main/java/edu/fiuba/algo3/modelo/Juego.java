@@ -5,7 +5,9 @@ import edu.fiuba.algo3.elementos.Continente;
 import edu.fiuba.algo3.elementos.Jugador;
 import edu.fiuba.algo3.elementos.Pais;
 import edu.fiuba.algo3.excepciones.*;
-import edu.fiuba.algo3.lectura.FachadaLector;
+import edu.fiuba.algo3.lectura.LectorDeCartas;
+import edu.fiuba.algo3.lectura.LectorDeObjetivos;
+import edu.fiuba.algo3.lectura.LectorDePaises;
 import org.json.simple.parser.ParseException;
 
 import java.util.*;
@@ -19,23 +21,35 @@ public class Juego {
     private final ArrayList<Continente> continentes;
     private final ArrayList<Jugador> jugadores;
     private final ArrayList<Carta> cartas;
+    private final ArrayList<Objetivo> objetivos;
 
-    public Juego(ArrayList<Jugador> jugadores) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException{
-        if(jugadores.size() > JUGADORES_MAX)
+    public Juego(ArrayList<Jugador> jugadores) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException, NoSePudoLeerExcepcion, PaisNoExisteException {
+
+        if(jugadores.size() >= JUGADORES_MAX)
             throw new SeAlcanzoLaCantidadMaximaException();
 
         this.jugadores = jugadores;
 
-        FachadaLector lector = new FachadaLector("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
-        continentes = lector.obtenerPaises();
+        LectorDePaises lectorPaises = new LectorDePaises();
+        continentes = lectorPaises.leer("src/main/java/edu/fiuba/algo3/archivos/Teg - Fronteras.json");
 
-        lector.setRuta("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
-        cartas = lector.obtenerCartas();
+        LectorDeCartas lectorCartas = new LectorDeCartas(continentes);
+        cartas = lectorCartas.leer("src/main/java/edu/fiuba/algo3/archivos/Teg - Cartas.json");
+
+        LectorDeObjetivos lectorObjetivos = new LectorDeObjetivos(continentes, jugadores);
+        objetivos = lectorObjetivos.leer("src/main/java/edu/fiuba/algo3/archivos/Teg - Objetivos.json");
 
         distribuirPaises();
+        distribuirObjetivos();
 
         Etapa.asignarValores(continentes, jugadores, cartas);
         etapa = new EtapaColocacion();
+    }
+
+    private void distribuirObjetivos(){
+        Collections.shuffle(objetivos);
+        for (int i = 0; i < jugadores.size(); i++)
+            jugadores.get(i).agregarObjetivo(objetivos.get(i));
     }
 
     private void distribuirPaises() throws PaisNoTePerteneceException{

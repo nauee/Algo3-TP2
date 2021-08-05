@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.lectura;
 
 import edu.fiuba.algo3.elementos.Carta;
-import edu.fiuba.algo3.elementos.CartaNoActivada;
+import edu.fiuba.algo3.elementos.CreadorDeCartas;
+import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,12 +13,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class LectorDeCartasJSON extends LectorDeCartas{
+public class LectorDeCartasJSON extends LectorDeCartas implements Lector {
 
-    public LectorDeCartasJSON(String rutaArchivo) throws FileNotFoundException {
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            rutaArchivo = rutaArchivo.replace("/","\\");
-        }
+    public LectorDeCartasJSON() throws FileNotFoundException {
         this.lector = new FileReader(rutaArchivo);
         this.parser = new JSONParser();
     }
@@ -28,20 +26,17 @@ public class LectorDeCartasJSON extends LectorDeCartas{
     }
 
     @Override
-    public ArrayList<Carta> obtener() throws IOException, ParseException {
+    public ArrayList<Carta> obtener() throws IOException, ParseException, PaisNoExisteException {
         JSONArray listaCartas = (JSONArray) parser.parse(lector);
         ArrayList<Carta> cartas = new ArrayList<>();
-        for (Object carta : listaCartas) {
-            cartas.add(obtenerCarta(carta));
-        }
+        for (Object carta : listaCartas)
+            cartas.add(obtenerCarta((JSONObject)carta));
         return cartas;
     }
 
-    @Override
-    protected Carta obtenerCarta(Object carta){
-        String pais = (String)((JSONObject)carta).get("Pais");
-        String[] simbolo = new String[1];
-        simbolo[0] = (String)((JSONObject)carta).get("Simbolo");
-        return ((Carta)creador.crearElemento(pais, simbolo));
+    private Carta obtenerCarta(JSONObject carta) throws PaisNoExisteException {
+        String pais = (String)carta.get("Pais");
+        String simbolo = (String)carta.get("Simbolo");
+        return CreadorDeCartas.crear(pais, simbolo, continentes);
     }
 }

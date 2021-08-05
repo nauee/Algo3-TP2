@@ -42,4 +42,12 @@ public class Continente {
     public ArrayList<Pais> getPaises(){
         return paises;
     }
+
+    public boolean tiene(Pais pais) {
+        return paises.contains(pais);
+    }
+
+    public int getCantidadPaises(){
+        return paises.size();
+    }
 }

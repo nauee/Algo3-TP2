@@ -114,9 +114,5 @@ public class Pais {
     public boolean mismoDuenio(Pais pais) {
         return (pais.lePerteneceA(duenio));
     }
-
-    public boolean equals(String nombre) {
-        return this.nombre.equals(nombre);
-    }
 }
 
