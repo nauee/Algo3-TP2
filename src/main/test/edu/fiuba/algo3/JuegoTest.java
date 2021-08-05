@@ -50,13 +50,19 @@ public class JuegoTest {
     public void rondaDosJugadoresColocarEjercitosNuevos() throws PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nahuel"), new Jugador("Fernando")));
         Juego juego = new Juego(jugadores);
-
+        Jugador jugador0 = jugadores.get(0);
+        Jugador jugador1 = jugadores.get(1);
         Pais argentina = juego.buscarPais("Argentina");
         Pais brasil = juego.buscarPais("Brasil");
 
-        argentina.asignarDuenio(jugadores.get(0));
-        brasil.asignarDuenio(jugadores.get(1));
-
+        if (argentina.lePerteneceA(jugador1)){
+            jugador1.perderPais(argentina);
+            jugador0.agregarPais(argentina);
+        }
+        if (brasil.lePerteneceA(jugador0)){
+            jugador0.perderPais(brasil);
+            jugador1.agregarPais(brasil);
+        }
         juego.jugar(3, argentina);
         juego.pasarDeFase();
         juego.jugar(3, brasil);
@@ -141,7 +147,6 @@ public class JuegoTest {
        assertEquals(jugadores.get(1).getCantidadFichasPorPais() + 10 , china.getCantidadEjercitos());
    }
 
-   @SuppressWarnings("unchecked")
    @Test
    public void juegoDeUnaRondaDe2JugadoresJugador1Conquista2PaisesDeJugador2() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, NoSePudoLeerExcepcion {
        PowerMockito.mockStatic(Dado.class);
