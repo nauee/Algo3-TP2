@@ -118,4 +118,12 @@ public class Jugador{
     public void agregarObjetivo(Objetivo objetivo) {
         this.objetivo = objetivo;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public ArrayList<Carta> getCartas() {
+        return cartas;
+    }
 }

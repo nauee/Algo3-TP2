@@ -36,4 +36,8 @@ public abstract class Etapa {
     public abstract void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException, CartaYaActivadaException;
 
     public abstract void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException;
+
+    public int getJugadorDeTurno() {
+        return jugadorDeTurno;
+    }
 }

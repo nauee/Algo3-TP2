@@ -25,7 +25,7 @@ public class Juego {
 
     public Juego(ArrayList<Jugador> jugadores) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException, NoSePudoLeerExcepcion, PaisNoExisteException {
 
-        if(jugadores.size() >= JUGADORES_MAX)
+        if(jugadores.size() > JUGADORES_MAX)
             throw new SeAlcanzoLaCantidadMaximaException();
 
         this.jugadores = jugadores;
@@ -41,7 +41,6 @@ public class Juego {
 
         distribuirPaises();
         distribuirObjetivos();
-
         Etapa.asignarValores(continentes, jugadores, cartas);
         etapa = new EtapaColocacion();
     }
@@ -105,5 +104,13 @@ public class Juego {
 
     public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException, CartaYaActivadaException {
         etapa.activarCarta(unaCarta);
+    }
+
+    public int getJugadorDeTurno() {
+        return etapa.getJugadorDeTurno();
+    }
+
+    public Jugador getJugador(int index) {
+        return jugadores.get(index);
     }
 }

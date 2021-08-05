@@ -17,6 +17,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ControladorInicio implements EventHandler<ActionEvent> {
 
@@ -44,9 +45,12 @@ public class ControladorInicio implements EventHandler<ActionEvent> {
 
     private ArrayList<Jugador> nombresJugadores(){
         ArrayList<Jugador> jugadores= new ArrayList<>();
-        for (TextField nombresJugadore : nombresJugadores) {
-            Jugador nuevoJugador = new Jugador(nombresJugadore.getText());
-            jugadores.add(nuevoJugador);
+        for(int i=0; i< nombresJugadores.size(); i++) {
+            String nombre = nombresJugadores.get(i).getText();
+            if (!nombre.isEmpty()){
+                Jugador nuevoJugador = new Jugador(nombre);
+                jugadores.add(nuevoJugador);
+            }
         }
         return jugadores;
     }
