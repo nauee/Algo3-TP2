@@ -30,11 +30,24 @@ public class VistaJuego extends VBox{
         this.juego = juego;
 
         MenuBar menuBar = new MenuBar();
-        Menu salchicha = new Menu("salchicha");
-        menuBar.getMenus().add(salchicha);
-        MenuItem sopapo = new MenuItem("sopapo");
-        MenuItem sarandipia = new MenuItem("sarandipia");
-        salchicha.getItems().addAll(sopapo,sarandipia);
+        MenuItem ayuda = new MenuItem("Ayuda");
+        MenuItem salir = new MenuItem("Salir");
+        Menu opciones = new Menu("Opciones");
+        opciones.getItems().addAll(ayuda, salir);
+
+        salir.setOnAction(e->{stage.close();});
+        ayuda.setOnAction(new ControladorMenuInicioInstrucciones(stage));
+        Menu musica = new Menu("Musica");
+        RadioMenuItem cancion1 = new RadioMenuItem("Track 1");
+        RadioMenuItem cancion2 = new RadioMenuItem("Track 2");
+        RadioMenuItem cancion3 = new RadioMenuItem("Track 3");
+        ToggleGroup toggleGroup= new ToggleGroup();
+        toggleGroup.getToggles().addAll(cancion1, cancion2, cancion3);
+
+        musica.getItems().addAll(cancion1, cancion2, cancion3);
+
+        menuBar.getMenus().addAll(opciones, musica);
+
         AnchorPane pane = new AnchorPane();
         Image image = new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/interfaz/tableroteg.jpg");
         ImageView vista = new ImageView(image);
