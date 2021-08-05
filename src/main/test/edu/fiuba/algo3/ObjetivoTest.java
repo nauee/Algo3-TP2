@@ -127,7 +127,7 @@ public class ObjetivoTest {
     }
 
     @Test
-    public void seVencioAlJugadorADestruirYElObjetivoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion {
+    public void seVencioAlJugadorADestruirYElObjetivoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion, PaisNoExisteException {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Pepe"), new Jugador("Carlos")));
         Juego juego = new Juego(jugadores);
 
@@ -141,7 +141,7 @@ public class ObjetivoTest {
     }
 
     @Test
-    public void noSeVencioAlJugadorADestruirYElObjetivoNoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion {
+    public void noSeVencioAlJugadorADestruirYElObjetivoNoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion, PaisNoExisteException {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Pepe"), new Jugador("Carlos")));
         Juego juego = new Juego(jugadores);
 

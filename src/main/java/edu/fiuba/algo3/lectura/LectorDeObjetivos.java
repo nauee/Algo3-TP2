@@ -3,6 +3,7 @@ package edu.fiuba.algo3.lectura;
 import edu.fiuba.algo3.elementos.Continente;
 import edu.fiuba.algo3.elementos.Jugador;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
+import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.modelo.Objetivo;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -31,7 +32,7 @@ public class LectorDeObjetivos{
         return infoRuta[infoRuta.length-1];
     }
 
-    public ArrayList<Objetivo> leer(String unaRutaArchivo) throws IOException, ParseException, NoSePudoLeerExcepcion {
+    public ArrayList<Objetivo> leer(String unaRutaArchivo) throws IOException, ParseException, NoSePudoLeerExcepcion, PaisNoExisteException {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             rutaArchivo = unaRutaArchivo.replace("/","\\");
         }

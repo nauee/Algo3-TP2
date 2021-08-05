@@ -2,8 +2,8 @@ package edu.fiuba.algo3.lectura;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Continente;
-import edu.fiuba.algo3.elementos.CreadorDeCartas;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
+import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -18,7 +18,6 @@ public class LectorDeCartas{
     protected static String rutaArchivo;
     protected static ArrayList<Continente> continentes;
     private final ArrayList<Lector> lectores = new ArrayList<>();
-    protected CreadorDeCartas creador = new CreadorDeCartas();
 
     protected LectorDeCartas(){}
 
@@ -31,7 +30,7 @@ public class LectorDeCartas{
         return infoRuta[infoRuta.length-1];
     }
 
-    public ArrayList<Carta> leer(String unaRutaArchivo) throws IOException, ParseException, NoSePudoLeerExcepcion {
+    public ArrayList<Carta> leer(String unaRutaArchivo) throws IOException, ParseException, NoSePudoLeerExcepcion, PaisNoExisteException {
         rutaArchivo = unaRutaArchivo;
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             rutaArchivo = unaRutaArchivo.replace("/","\\");

@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -20,12 +22,12 @@ public class FaseAtaqueTest {
 
         Jugador jugadorAtacante = new Jugador("Pepe");
         Jugador jugadorAtacado = new Jugador("Mefishto");
-        Carta carta = new Carta("Mongolia", "Barco");
+        Carta carta = new Carta(new Pais("Mongolia", new ArrayList<>(List.of("China"))), "Barco");
         ArrayList<Carta> cartas= new ArrayList<>();
         cartas.add(carta);
-        FaseAtaque fase = new FaseAtaque(jugadorAtacante, new ArrayList<>(Arrays.asList(carta)));
-        Pais paisAtacante = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
-        Pais paisAtacado = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina")));
+        FaseAtaque fase = new FaseAtaque(jugadorAtacante, new ArrayList<>(List.of(carta)));
+        Pais paisAtacante = new Pais("Argentina", new ArrayList<>(List.of("Brasil")));
+        Pais paisAtacado = new Pais("Brasil", new ArrayList<>(List.of("Argentina")));
 
         jugadorAtacante.agregarPais(paisAtacante);
         jugadorAtacado.agregarPais(paisAtacado);
@@ -40,10 +42,10 @@ public class FaseAtaqueTest {
 
         Jugador jugadorAtacante = new Jugador("Pepe");
         Jugador jugadorAtacado = new Jugador("Mefishto");
-        Carta carta = new Carta("Mongolia", "Barco");
-        FaseAtaque fase = new FaseAtaque(jugadorAtacante, new ArrayList<>(Arrays.asList(carta)));
-        Pais paisAtacante = new Pais("Argentina", new ArrayList<>(Arrays.asList("Brasil")));
-        Pais paisAtacado = new Pais("Brasil", new ArrayList<>(Arrays.asList("Argentina")));
+        Carta carta = new Carta(new Pais("Mongolia", new ArrayList<>(List.of("China"))), "Barco");
+        FaseAtaque fase = new FaseAtaque(jugadorAtacante, new ArrayList<>(List.of(carta)));
+        Pais paisAtacante = new Pais("Argentina", new ArrayList<>(List.of("Brasil")));
+        Pais paisAtacado = new Pais("Brasil", new ArrayList<>(List.of("Argentina")));
 
         jugadorAtacante.agregarPais(paisAtacante);
         jugadorAtacado.agregarPais(paisAtacado);

@@ -24,7 +24,7 @@ public abstract class Etapa {
 
     public static Jugador siguienteJugador(){
         jugadorDeTurno++;
-        if(jugadorDeTurno > jugadores.size()) return jugadores.get(0);
+        if(jugadorDeTurno >= jugadores.size()) return jugadores.get(0);
 
         return (jugadores.get(jugadorDeTurno));
     }

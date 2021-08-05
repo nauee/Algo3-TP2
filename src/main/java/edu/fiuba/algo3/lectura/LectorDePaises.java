@@ -3,6 +3,7 @@ package edu.fiuba.algo3.lectura;
 import edu.fiuba.algo3.elementos.Continente;
 import edu.fiuba.algo3.elementos.CreadorDePaises;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
+import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -33,7 +34,7 @@ public class LectorDePaises{
         return infoRuta[infoRuta.length-1];
     }
 
-    public ArrayList<Continente> leer(String unaRutaArchivo) throws NoSePudoLeerExcepcion, IOException, ParseException {
+    public ArrayList<Continente> leer(String unaRutaArchivo) throws NoSePudoLeerExcepcion, IOException, ParseException, PaisNoExisteException {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             rutaArchivo = unaRutaArchivo.replace("/","\\");
         }
