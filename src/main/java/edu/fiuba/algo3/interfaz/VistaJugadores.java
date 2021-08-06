@@ -5,10 +5,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -16,11 +15,11 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class VistaInicio extends VBox {
+public class VistaJugadores extends VBox {
 
     Stage stage;
 
-    public VistaInicio(Stage stage){
+    public VistaJugadores(Stage stage){
         super();
         this.stage = stage;
 
@@ -109,6 +108,19 @@ public class VistaInicio extends VBox {
         inicioButton.setOnAction(controladorInicio);
         inicioButton.setAlignment(Pos.CENTER);
         inicioButton.setStyle("-fx-background-color: #DBDBDF; -fx-font-size: 25px; -fx-text-fill: #3c3c3c; -fx-padding: 10px;");
+
+        Image image = new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/interfaz/fondoTEG.jpg");
+        ImageView vista = new ImageView(image);
+        AnchorPane imagenFondo = new AnchorPane();
+        imagenFondo.getChildren().addAll(vista);
+        vista.setFitHeight(695);
+        vista.setFitWidth(1149);
+        vista.setLayoutX(154);
+        vista.setCache(true);
+        vista.setPreserveRatio(true);
+        BackgroundImage fondoConImagen= new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background fondo= new Background(fondoConImagen);
+        this.setBackground(fondo);
 
         BorderPane border = new BorderPane();
         border.setTop(tituloDeCuadroNombres);
