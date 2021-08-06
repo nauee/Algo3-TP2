@@ -1,41 +1,34 @@
 @startuml
 
-class FachadaLector{
-
-}
 interface Lector{
-    +{abstract}obtener():ArrayList
-    +{abstract}esDeTipo():boolean
-}
-class LectorDeCartasJSON {
-
-}
-class LectorDePaisesJSON {
-    -obtenerPais():Pais
-}
-class LectorDeCartasCSV {
-
-}
-
-class LectorDePaisesCSV {
-
+    +obtener():ArrayList
+    +esDeTipo():boolean
 }
 
 abstract class LectorDePaises{
-    +inicializarContinentes():ArrayList
-    +{abstract}organizarContinentes():void
 }
 
 abstract class LectorDeCartas{
-    +{abstract}obtenerCarta:Carta
+}
+
+class LectorDeCartasJSON {
+}
+
+class LectorDePaisesJSON {
+}
+
+class LectorDeObjetivos {
+}
+
+class LectorDeObjetivosJSON{
 }
 
 FachadaLector ..> Lector
-Lector <|.. LectorDePaises
-Lector <|.. LectorDeCartas
+Lector <|.right.LectorDePaisesJSON
+Lector <|.left. LectorDeCartasJSON
+Lector <|.. LectorDeObjetivosJSON
 LectorDeCartas <|-- LectorDeCartasJSON
-LectorDeCartas <|-- LectorDeCartasCSV
 LectorDePaises <|-- LectorDePaisesJSON
-LectorDePaises <|-- LectorDePaisesCSV
+LectorDeObjetivos <|-- LectorDeObjetivosJSON
 
 @enduml

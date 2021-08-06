@@ -64,10 +64,6 @@ public class Juego {
         }
     }
 
-    public Jugador get(int posicion){
-        return jugadores.get(posicion);
-    }
-
     public int getCantidadJugadores(){
         return jugadores.size();
     }

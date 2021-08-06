@@ -1,59 +1,70 @@
 @startuml diagramaDeClase
 
 class Juego{
-    -jugadorDeTurno: Integer
-    -fase: Integer
 
-    +reagruparEjercito(cantidadEjercitos:Integer, paisOrigen:String, paisDestino:String):void
-    +atacarPais(paisAtacante:String, paisAtacado:String, cantidadEjercitos:Integer):void
-    +pasarFase(): void
-    -pasarTurno(): void
-    -obtenerPais(unPais:String):Pais
-    -agregarFichas():Void
+    +jugar(cantidadEjercitos:Integer, paises:Pais[])
+    +pasarDeFase(): void
+    -distribuirPaises():void
+    -distribuirObjetivos():void
+    +buscarPais(pais:String):Pais
+    +canjearCartas(carta1:Carta,carta2:Carta,carta3:Carta):void
+    +activarCarta(carta:Carta):void
+}
+
+abstract class Etapa{
+    -continentes:ArrayList
+    -cartas:ArrayList
+    -jugadores:ArrayList
+
+    +{static}asignarValores(continentes,cartas,jugadores):void
+    +{static}siguienteJugador():Jugador
+    +jugar(cantidadEjercitos:Integer,paises:Pais[])
+    +{abstract}siguienteFase():Etapa
+}
+
+class Dado{
+    +{static}lanzar():ArrayList
 }
 
 class Batalla{
+    -atacado:Pais
+    -atacante:Pais
+    -cantidadEjercitos:Integer
 
     +batallar(resultadosDadosAtacado,resultadosDadosAtacante): void
-    +lanzarDados(cantidad): ArrayList
     -determinarPerdedor(dadoAtacante, dadoAtacado): Pais
     -ataqueEntrePaises(resultadosDadosAtacado,resultadosDadosAtacante): void
-    -conquista(): void
 }
 
 class Pais{
     -nombre : String
 
-    +serAtacadoPor(unPais):void
+    +atacarPais(pais:Pais,cantidadEjercitos:Integer,jugador:Jugador):void
+    +serAtacado(unPais):void
     +lePerteneceA(jugador):void
     +serConquistadoPor(conquistador):void
+    +conquistar(pais:Pais):void
     +moverEjercitos(cantidadEjercitos,destino): void
     +agregarEjercitos(cantidad):void
+    +fueVencido():boolean;
 }
 
 abstract class Objetivo{
-    -descripcion:String
 
-    +getDescripcion():String
-    +{abstract}cumplido(jugadorDeTurno, ejercitos):void
+    #objetivoCumplido():boolean
+    +{abstract}cumplido(jugadorDeTurno):boolean
 }
 
 class Jugador{
     -nombre : String
     -id: Integer
 
-    +reagruparEjercito(cantidadEjercitos, paisOrigen, paisDestino):void
-    +autorizarBatalla(paisAtacado: Pais): void
     +objetivoCumplido(jugadorDeTurno):void
 }
 
-class FachadaLector{
-    -tipoArchivo: String
-    -rutaArchivo: String
-
-    +obtenerPaises():ArrayList
-    +obtenerCartas():ArrayList
-    +setTipoYRuta():void
+interface Lector{
+    +obtener():ArrayList
+    +esDeTipo():boolean
 }
 
 class Continente{
@@ -64,12 +75,14 @@ class Continente{
     +getRecompensa():Integer
 }
 
-Juego "1"-down->"2..6" Jugador
-Jugador "1"-down-"*" Pais
-Jugador "1"-down->"1" Objetivo
-Juego ..> Batalla
-Batalla "1"-->"2" Pais
-Juego "1".left.>"1" FachadaLector
-Juego "1"-right->"6" Continente
+Juego "1"-->"2..6" Jugador
+Jugador "1"-->"*" Pais
+Jugador "1"-->"1" Objetivo
+Batalla "1"<.."1" Pais
+Juego "1".left.>"3" Lector
+Juego "1"-->"6" Continente
 Continente "1"-->"*"Pais
+Juego "1"-->"*"Objetivo
+Juego "1"-right->"1" Etapa
+Batalla "1".down.>"1" Dado
 @enduml
