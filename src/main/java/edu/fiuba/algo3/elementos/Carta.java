@@ -18,20 +18,27 @@ public class Carta {
     }
 
     public static boolean canjeables(Carta carta1, Carta carta2, Carta carta3){
-        return carta1.esCanjeable(carta2, carta3) || (carta1.esComodin() || carta2.esComodin() || carta3.esComodin());
+        boolean sonIguales = carta1.canjearConIguales(carta2, carta3) && carta2.canjearConIguales(carta1, carta3);
+        boolean sonDistintas = carta1.canjearConDiferentes(carta2, carta3) && carta2.canjearConDiferentes(carta1, carta3);
+        return (sonIguales || sonDistintas || carta1.esComodin() || carta2.esComodin() || carta3.esComodin());
     }
 
-    private boolean simbolosIguales(Carta carta1, Carta carta2){
-        return (!simbolo.equals(carta1.getSimbolo())) && (!carta1.getSimbolo().equals(carta2.getSimbolo())) && (!carta2.getSimbolo().equals(simbolo));
+    private boolean canjearConIguales(Carta carta1, Carta carta2){
+        return ((carta1.simbolosIguales(simbolo) && carta2.simbolosIguales(simbolo)));
     }
 
-    private boolean simbolosDistintos(Carta carta1, Carta carta2){
-        return (simbolo.equals(carta1.getSimbolo()))&&(carta1.getSimbolo().equals(carta2.getSimbolo()) && (simbolo.equals (carta2.getSimbolo())));
+    private boolean simbolosIguales(String simboloCarta){
+        return (simbolo.equals(simboloCarta));
     }
 
-    private boolean esCanjeable(Carta carta1, Carta carta2){
-        return simbolosIguales(carta1, carta2) || simbolosDistintos(carta1, carta2);
+    private boolean canjearConDiferentes(Carta carta1, Carta carta2){
+        return ((carta1.simbolosDiferentes(simbolo) && carta2.simbolosDiferentes(simbolo)));
     }
+
+    private boolean simbolosDiferentes(String simboloCarta){
+        return (!simbolo.equals(simboloCarta));
+    }
+
 
     private boolean esComodin(){
         return simbolo.equals("Comodin");
