@@ -21,7 +21,7 @@ public class EtapaBatalla extends Etapa{
     @Override
     public Etapa siguienteFase(){
         fase = fase.siguienteFase(cartas);
-        if (jugadorDeTurno > jugadores.size())
+        if (jugadorDeTurno >= jugadores.size())
             return new EtapaColocacion();
 
         return this;

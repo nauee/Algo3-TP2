@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class FaseColocacion implements Fase{
     private int fichasColocadas;
-    private Jugador jugadorDeTurno;
+    private final Jugador jugadorDeTurno;
     private int fichasDelJugador;
 
     public FaseColocacion(Jugador jugadorDeTurno){

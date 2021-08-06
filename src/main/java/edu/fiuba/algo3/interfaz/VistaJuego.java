@@ -1,21 +1,28 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.elementos.Carta;
+import edu.fiuba.algo3.elementos.Jugador;
 import edu.fiuba.algo3.modelo.Juego;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class VistaJuego extends VBox{
 
     Stage stage;
     Juego juego;
+    private final ArrayList<String> colores = new ArrayList<>(Arrays.asList("#0077bb", "#cc3311", "#ee7733", "#009988", "#ee3377", "#000000"));
 
     public VistaJuego(Stage stage, Juego juego){
         super();
@@ -139,101 +146,101 @@ public class VistaJuego extends VBox{
         chile.setRotate(-77);
         pane.getChildren().add(chile);
 
-        Button groenlandia = new Button("groenlandia");
+        Button groenlandia = new Button("Groenlandia");
         groenlandia.setLayoutX(444);
         groenlandia.setLayoutY(150);
         groenlandia.setPrefSize(83,25);
         groenlandia.setRotate(39);
         pane.getChildren().add(groenlandia);
 
-        Button islandia = new Button("islandia");
+        Button islandia = new Button("Islandia");
         islandia.setLayoutX(557);
         islandia.setLayoutY(268);
         islandia.setPrefSize(44,25);
         islandia.setRotate(-29.4);
         pane.getChildren().add(islandia);
 
-        Button granBretania = new Button("granBretania");
+        Button granBretania = new Button("Gran Bretania");
         granBretania.setLayoutX(646);
         granBretania.setLayoutY(289);
         granBretania.setPrefSize(67,25);
         granBretania.setRotate(-45);
         pane.getChildren().add(granBretania);
 
-        Button espania = new Button("espania");
+        Button espania = new Button("España");
         espania.setLayoutX(636);
         espania.setLayoutY(387);
         espania.setPrefSize(56,25);
         espania.setRotate(-23.2);
         pane.getChildren().add(espania);
 
-        Button francia = new Button("francia");
+        Button francia = new Button("Francia");
         francia.setLayoutX(696);
         francia.setLayoutY(345);
         francia.setPrefSize(61,25);
         francia.setRotate(-39.1);
         pane.getChildren().add(francia);
 
-        Button suecia = new Button("suecia");
+        Button suecia = new Button("Suecia");
         suecia.setLayoutX(721);
         suecia.setLayoutY(186);
         suecia.setPrefSize(56,25);
         suecia.setRotate(-34.7);
         pane.getChildren().add(suecia);
 
-        Button rusia = new Button("rusia");
+        Button rusia = new Button("Rusia");
         rusia.setLayoutX(798);
         rusia.setLayoutY(234);
         rusia.setPrefSize(60,25);
         pane.getChildren().add(rusia);
 
-        Button alemania = new Button("alemania");
+        Button alemania = new Button("Alemania");
         alemania.setLayoutX(760);
         alemania.setLayoutY(337);
         alemania.setPrefSize(46,25);
         alemania.setRotate(26.6);
         pane.getChildren().add(alemania);
 
-        Button italia = new Button("italia");
+        Button italia = new Button("Italia");
         italia.setLayoutX(756);
         italia.setLayoutY(395);
         italia.setPrefSize(46,25);
         italia.setRotate(48.2);
         pane.getChildren().add(italia);
 
-        Button polonia = new Button("polonia");
+        Button polonia = new Button("Polonia");
         polonia.setLayoutX(812);
         polonia.setLayoutY(312);
         polonia.setPrefSize(46,25);
         pane.getChildren().add(polonia);
 
-        Button sahara = new Button("sahara");
+        Button sahara = new Button("Sahara");
         sahara.setLayoutX(723);
         sahara.setLayoutY(479);
         sahara.setPrefSize(56,25);
         pane.getChildren().add(sahara);
 
-        Button zaire = new Button("zaire");
+        Button zaire = new Button("Zaire");
         zaire.setLayoutX(774);
         zaire.setLayoutY(515);
         zaire.setPrefSize(49,25);
         pane.getChildren().add(zaire);
 
-        Button etiopia = new Button("etiopia");
+        Button etiopia = new Button("Etiopia");
         etiopia.setLayoutX(809);
         etiopia.setLayoutY(487);
         etiopia.setPrefSize(56,25);
         etiopia.setRotate(18.4);
         pane.getChildren().add(etiopia);
 
-        Button egipto = new Button("egipto");
+        Button egipto = new Button("Egipto");
         egipto.setLayoutX(842);
         egipto.setLayoutY(458);
         egipto.setPrefSize(51,25);
         egipto.setRotate(22.6);
         pane.getChildren().add(egipto);
 
-        Button sudafrica = new Button("sudafrica");
+        Button sudafrica = new Button("Sudafrica");
         sudafrica.setLayoutX(814);
         sudafrica.setLayoutY(547);
         sudafrica.setPrefSize(57,25);
@@ -254,126 +261,156 @@ public class VistaJuego extends VBox{
         aral.setRotate(-69.4);
         pane.getChildren().add(aral);
 
-        Button tartaria = new Button("tartaria");
+        Button tartaria = new Button("Tartaria");
         tartaria.setLayoutX(868);
         tartaria.setLayoutY(130);
         tartaria.setPrefSize(48,25);
         tartaria.setRotate(-77);
         pane.getChildren().add(tartaria);
 
-        Button taymir = new Button("taymir");
+        Button taymir = new Button("Taymir");
         taymir.setLayoutX(911);
         taymir.setLayoutY(150);
         taymir.setPrefSize(48,25);
         taymir.setRotate(-25.2);
         pane.getChildren().add(taymir);
 
-        Button siberia = new Button("siberia");
+        Button siberia = new Button("Siberia");
         siberia.setLayoutX(910);
         siberia.setLayoutY(181);
         siberia.setPrefSize(54,25);
         siberia.setRotate(-12.1);
         pane.getChildren().add(siberia);
 
-        Button kamchatka = new Button("kamchatka");
+        Button kamchatka = new Button("Kamchatka");
         kamchatka.setLayoutX(971);
         kamchatka.setLayoutY(141);
         kamchatka.setPrefSize(48,25);
         kamchatka.setRotate(-20);
         pane.getChildren().add(kamchatka);
 
-        Button japon = new Button("japon");
+        Button japon = new Button("Japon");
         japon.setLayoutX(1051);
         japon.setLayoutY(172);
         japon.setPrefSize(48,25);
         japon.setRotate(43.6);
         pane.getChildren().add(japon);
 
-        Button mongolia = new Button("mongolia");
+        Button mongolia = new Button("Mongolia");
         mongolia.setLayoutX(913);
         mongolia.setLayoutY(222);
         mongolia.setPrefSize(66,25);
         pane.getChildren().add(mongolia);
 
-        Button china = new Button("china");
+        Button china = new Button("China");
         china.setLayoutX(1006);
         china.setLayoutY(268);
         china.setPrefSize(55,25);
         pane.getChildren().add(china);
 
-        Button malasia = new Button("malasia");
+        Button malasia = new Button("Malasia");
         malasia.setLayoutX(1041);
         malasia.setLayoutY(325);
         malasia.setPrefSize(48,25);
         malasia.setRotate(-22.8);
         pane.getChildren().add(malasia);
 
-        Button india = new Button("india");
+        Button india = new Button("India");
         india.setLayoutX(981);
         india.setLayoutY(360);
         india.setPrefSize(48,25);
         india.setRotate(-40.2);
         pane.getChildren().add(india);
 
-        Button gobi = new Button("gobi");
+        Button gobi = new Button("Gobi");
         gobi.setLayoutX(940);
         gobi.setLayoutY(267);
         gobi.setPrefSize(48,25);
         pane.getChildren().add(gobi);
 
-        Button iran = new Button("iran");
+        Button iran = new Button("Iran");
         iran.setLayoutX(890);
         iran.setLayoutY(270);
         iran.setPrefSize(48,25);
         iran.setRotate(43.2);
         pane.getChildren().add(iran);
 
-        Button turquia = new Button("turquia");
+        Button turquia = new Button("Turquia");
         turquia.setLayoutX(872);
         turquia.setLayoutY(334);
         turquia.setPrefSize(66,25);
         pane.getChildren().add(turquia);
 
-        Button israel = new Button("israel");
+        Button israel = new Button("Israel");
         israel.setLayoutX(862);
         israel.setLayoutY(374);
         israel.setPrefSize(48,25);
         israel.setRotate(-28.3);
         pane.getChildren().add(israel);
 
-        Button arabia = new Button("arabia");
+        Button arabia = new Button("Arabia");
         arabia.setLayoutX(901);
         arabia.setLayoutY(385);
         arabia.setPrefSize(55,25);
         arabia.setRotate(-43.2);
         pane.getChildren().add(arabia);
 
-        Button sumatra = new Button("sumatra");
+        Button sumatra = new Button("Sumatra");
         sumatra.setLayoutX(953);
         sumatra.setLayoutY(445);
         sumatra.setPrefSize(48,25);
         sumatra.setRotate(42.4);
         pane.getChildren().add(sumatra);
 
-        Button borneo = new Button("borneo");
+        Button borneo = new Button("Borneo");
         borneo.setLayoutX(1020);
         borneo.setLayoutY(402);
         borneo.setPrefSize(48,25);
         borneo.setRotate(56.3);
         pane.getChildren().add(borneo);
 
-        Button java = new Button("java");
+        Button java = new Button("Java");
         java.setLayoutX(1067);
         java.setLayoutY(403);
         java.setPrefSize(41,25);
         java.setRotate(-68.7);
         pane.getChildren().add(java);
 
-        Button australia = new Button("australia");
+        Button australia = new Button("Australia");
         australia.setLayoutX(1034);
         australia.setLayoutY(502);
         australia.setPrefSize(71,25);
         pane.getChildren().add(australia);
+
+        for (int i = 0; i < juego.getCantidadJugadores(); i++) {
+            HBox jugador = new HBox();
+            Label jugadorNombre = new Label(juego.getJugador(i).getNombre());
+            jugadorNombre.setStyle("-fx-border-color: " + colores.get(i) + "; -fx-border-radius: 10%; -fx-font-size: 18px");
+            jugadorNombre.setPadding(new Insets(0,0,0,10));
+            jugadorNombre.setPrefSize(118, 52);
+            jugador.setPrefSize(118, 52);
+            jugador.setLayoutY(50 + i*75);
+            jugador.getChildren().add(jugadorNombre);
+            pane.getChildren().add(jugador);
+            AnchorPane.setRightAnchor(jugador, 0.0);
+        }
+
+        int jugadorDeTurnoIndex = juego.getJugadorDeTurno();
+        Jugador jugadorDeTurno = juego.getJugador(jugadorDeTurnoIndex);
+        ArrayList<Carta> cartasJugador = jugadorDeTurno.getCartas();
+        for (int i = 0; i < cartasJugador.size(); i++) {
+            Carta carta = cartasJugador.get(i);
+            HBox cartaBox = new HBox();
+            Label contenidoCarta = new Label(carta.getPais().getNombre() +"\n"+ carta.getSimbolo());
+            contenidoCarta.setAlignment(Pos.CENTER);
+            contenidoCarta.setPrefSize(156, 76);
+            contenidoCarta.setStyle("-fx-border-radius: 25% 25% 0 0; -fx-border-color: red; -fx-border-width: 2px 2px 0 2px;-fx-text-alignment: center");
+            cartaBox.getChildren().add(contenidoCarta);
+            cartaBox.setPrefSize(156, 76);
+            pane.getChildren().add(cartaBox);
+            AnchorPane.setBottomAnchor(cartaBox, (double) i*55);
+            AnchorPane.setLeftAnchor(cartaBox, 0.0);
+        }
 
         this.getChildren().addAll(menuBar, pane);
 

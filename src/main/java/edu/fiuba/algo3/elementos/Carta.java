@@ -1,17 +1,14 @@
 package edu.fiuba.algo3.elementos;
 
 import edu.fiuba.algo3.excepciones.CartaYaActivadaException;
-import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
-
-import java.util.ArrayList;
 
 public class Carta {
 
-    protected final String pais;
-    protected final String simbolo;
+    private final Pais pais;
+    private final String simbolo;
     private EstadoCarta estado;
 
-    public Carta(String pais, String simbolo) {
+    public Carta(Pais pais, String simbolo) {
         this.pais = pais;
         this.simbolo = simbolo;
         estado = new CartaNoActivada();
@@ -44,7 +41,7 @@ public class Carta {
         return simbolo.equals("Comodin");
     }
 
-    public String getPais(){
+    public Pais getPais(){
         return pais;
     }
 
@@ -52,7 +49,7 @@ public class Carta {
         return simbolo;
     }
 
-    public void activarse(ArrayList<Pais> paises, Jugador jugador) throws CartaYaActivadaException {
-        estado = estado.activarse(paises, jugador, pais);
+    public void activarse(Jugador jugador) throws CartaYaActivadaException {
+        estado = estado.activarse(jugador, pais);
     }
 }

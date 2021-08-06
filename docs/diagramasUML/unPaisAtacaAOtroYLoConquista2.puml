@@ -1,0 +1,42 @@
+@startuml
+
+title Un pais ataca a otro y lo conquista
+
+Actor atacante
+atacante++
+
+Batalla++
+
+atacante -> Batalla **: << create>>
+atacante -> Batalla: batallar()
+
+Dado++
+
+Batalla -> atacante: atacantes(cantidadEjercitoAtacante)
+atacante --> Batalla: ejercitosAtacantes: int
+Batalla -> Dado: lanzar(ejercitosAtacantes)
+Dado --> Batalla: dadosAtacante: ArrayList<Integer>
+
+Participant "Pais: atacado" as atacado
+atacado++
+
+Batalla -> atacado: defensores()
+atacado --> Batalla: ejercitosDefensores: int
+
+atacado--
+
+Batalla -> Dado: lanzar(ejercitosDefensores)
+Dado --> Batalla: dadosDefensor: ArrayList<Integer>
+
+Dado--
+
+Batalla -> Batalla: ataqueEntrePaises(dadosDefensor, dadosAtacante)
+note left: Continua en el siguiente diagrama
+
+atacante--
+
+Batalla--
+
+atacante--
+
+@enduml

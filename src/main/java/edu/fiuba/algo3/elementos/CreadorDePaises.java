@@ -1,18 +1,10 @@
 package edu.fiuba.algo3.elementos;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class CreadorDePaises implements Creador{
+public class CreadorDePaises{
 
-    @Override
-    public Object crear(String pais, String[] datos){
-        ArrayList<String> fronteras = new ArrayList<>(Arrays.asList(datos));
+    public static Pais crear(String pais, ArrayList<String> fronteras){
         return new Pais(pais, fronteras);
-    }
-
-    @Override
-    public boolean esDeTipo(String tipo) {
-        return tipo.equals("pais");
     }
 }

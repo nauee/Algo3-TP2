@@ -1,0 +1,47 @@
+@startuml
+
+title Un pais ataca a otro y lo conquista
+
+Actor Usuario
+
+Usuario++
+
+Juego++
+
+Usuario -> Juego: jugar(cantEjercitos, atacante, atacado)
+
+EtapaBatalla++
+
+Juego -> EtapaBatalla: jugar(cantEjercitos, atacante, atacado)
+EtapaBatalla -> FaseAtaque: jugar(cantEjercitos, paises)
+
+FaseAtaque++
+
+EtapaBatalla--
+
+Participant "Pais: atacante" as atacante
+FaseAtaque -> atacante **: << new >>
+atacante++
+
+Participant "Pais: atacado" as atacado
+FaseAtaque -> atacado **: << new >>
+atacado++
+
+FaseAtaque -> atacante: atacarPais(atacado,cantEjercitos, jugadorDeTurno)
+
+note right: Continua en el siguiente diagrama
+
+FaseAtaque -> atacado: lePerteneceA(jugadorDeTurno)
+atacado --> FaseAtaque: true
+
+FaseAtaque--
+
+atacante--
+
+atacado--
+
+Juego--
+
+Usuario--
+
+@enduml

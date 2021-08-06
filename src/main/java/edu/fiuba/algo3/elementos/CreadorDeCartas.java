@@ -1,14 +1,19 @@
 package edu.fiuba.algo3.elementos;
 
-public class CreadorDeCartas implements Creador{
+import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 
-    @Override
-    public Object crear(String pais, String[] datos){
-        return new Carta(pais,datos[0]);
+import java.util.ArrayList;
+
+public class CreadorDeCartas{
+
+    private static Pais obtenerPais(ArrayList<Continente> continentes, String nombrePais) throws PaisNoExisteException {
+        for (Continente continente : continentes)
+            if (continente.getPais(nombrePais) != null)
+                return continente.getPais(nombrePais);
+        throw new PaisNoExisteException();
     }
 
-    @Override
-    public boolean esDeTipo(String tipo) {
-        return tipo.equals("carta");
+    public static Carta crear(String nombrePais, String simbolo, ArrayList<Continente> continentes) throws PaisNoExisteException {
+        return new Carta(obtenerPais(continentes, nombrePais),simbolo);
     }
 }
