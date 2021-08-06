@@ -17,13 +17,12 @@ class LectorDeCartasJSON {
 class LectorDePaisesJSON {
 }
 
-class LectorDeObjetivos {
+abstract class LectorDeObjetivos {
 }
 
 class LectorDeObjetivosJSON{
 }
 
-FachadaLector ..> Lector
 Lector <|.right.LectorDePaisesJSON
 Lector <|.left. LectorDeCartasJSON
 Lector <|.. LectorDeObjetivosJSON
