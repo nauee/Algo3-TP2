@@ -1,0 +1,51 @@
+@startuml
+
+title Un pais ataca a otro y lo conquista
+
+Actor Batalla
+
+Batalla++
+
+loop ataque entre paises
+
+    Participant "Pais: perdedor" as perdedor
+
+    Batalla -> perdedor **: << create >>
+
+    perdedor++
+
+    Batalla -> Batalla: determinarPerdedor(dadoAtacante, dadoAtacado)
+    Batalla --> Batalla: Pais
+    Batalla -> perdedor: serAtacado()
+
+    perdedor--
+end
+
+Participant "Pais: atacante" as atacante
+atacante++
+
+Batalla -> atacante: conquistar(atacado)
+
+Participant "Pais: atacado" as atacado
+atacado++
+
+atacante -> atacado: fueVencido()
+atacado --> atacante: true
+
+atacante -> atacado: serConquistadoPor(this)
+
+Participant "Jugador: dueño" as dueño
+dueño++
+
+atacado -> dueño: perderPais(this)
+
+dueño--
+
+atacado -> atacante: ganarleAPais(this)
+
+atacado--
+
+atacante--
+
+Batalla--
+@enduml
