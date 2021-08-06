@@ -19,12 +19,12 @@ FaseAtaque++
 
 EtapaBatalla--
 
+Participant "Pais: atacante" as atacante
 FaseAtaque -> atacante **: << new >>
-
 atacante++
 
+Participant "Pais: atacado" as atacado
 FaseAtaque -> atacado **: << new >>
-
 atacado++
 
 FaseAtaque -> atacante: atacarPais(atacado,cantEjercitos, jugadorDeTurno)

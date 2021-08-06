@@ -3,7 +3,6 @@
 title Un pais ataca a otro y lo conquista
 
 Actor atacante
-
 atacante++
 
 Batalla++
@@ -18,6 +17,7 @@ atacante --> Batalla: ejercitosAtacantes: int
 Batalla -> Dado: lanzar(ejercitosAtacantes)
 Dado --> Batalla: dadosAtacante: ArrayList<Integer>
 
+Participant "Pais: atacado" as atacado
 atacado++
 
 Batalla -> atacado: defensores()
