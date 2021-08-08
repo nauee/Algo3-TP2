@@ -1,17 +1,17 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Jugador;
+import edu.fiuba.algo3.interfaz.BotonPais;
+import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
+import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -28,11 +28,19 @@ public class VistaJuego extends VBox{
     private final String colorRosa = "#ee3377";
     private final String colorNegro = "#000000";
     private final ArrayList<String> colores = new ArrayList<>(List.of(colorAzul, colorRojo, colorAmarillo, colorVerde, colorRosa, colorNegro));
+    private final String rutaImagenMapa= "/src/main/java/edu/fiuba/algo3/recursos/tableroteg.jpg";
+    private final String rutaImagenFondoJuego= "/src/main/java/edu/fiuba/algo3/recursos/pergamino.jpg";
 
     public VistaJuego(Stage stage, Juego juego){
         super();
         this.stage = stage;
         this.juego = juego;
+
+        Image imagen = new Image("file:"+System.getProperty("user.dir")+rutaImagenFondoJuego);
+        BackgroundImage fondoConImagen= new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,  new BackgroundSize(1.0, 1.0, true, true, false, false));
+        Background fondo= new Background(fondoConImagen);
+        this.setBackground(fondo);
+
 
         MenuBar menuBar = new MenuBar();
         MenuItem ayuda = new MenuItem("Ayuda");
@@ -40,7 +48,7 @@ public class VistaJuego extends VBox{
         Menu opciones = new Menu("Opciones");
         opciones.getItems().addAll(ayuda, salir);
 
-        salir.setOnAction(e -> stage.close());
+        salir.setOnAction(new ControladorSalir(stage));
         ayuda.setOnAction(new ControladorMenuInicioInstrucciones(stage));
         Menu musica = new Menu("Musica");
         RadioMenuItem cancion1 = new RadioMenuItem("Track 1");
@@ -54,7 +62,7 @@ public class VistaJuego extends VBox{
         menuBar.getMenus().addAll(opciones, musica);
 
         AnchorPane pane = new AnchorPane();
-        Image image = new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/interfaz/tableroteg.jpg");
+        Image image = new Image("file:"+System.getProperty("user.dir")+rutaImagenMapa);
         ImageView vista = new ImageView(image);
         vista.setFitHeight(695);
         vista.setFitWidth(1149);
@@ -244,6 +252,7 @@ public class VistaJuego extends VBox{
         }
 
         this.getChildren().addAll(menuBar, pane);
+
 
     }
 }

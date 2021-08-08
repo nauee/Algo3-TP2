@@ -1,23 +1,21 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.controladores;
 
 import edu.fiuba.algo3.elementos.Jugador;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.excepciones.SeAlcanzoLaCantidadMaximaException;
+import edu.fiuba.algo3.interfaz.vistas.VistaJuego;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ControladorInicio implements EventHandler<ActionEvent> {
 
