@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,7 +30,5 @@ public class ControladorMenuInicioInstrucciones implements EventHandler<ActionEv
         Scene informacionTexto= new Scene(instrucciones, 300, 200);
         ventanaInformacion.setScene(informacionTexto);
         ventanaInformacion.show();
-
     }
-
 }
