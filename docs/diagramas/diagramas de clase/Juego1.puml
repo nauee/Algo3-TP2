@@ -12,7 +12,6 @@ class Juego {
 }
 
 Juego "1" --> "1" Etapa
-Etapa ..> Jugador
 
 class Etapa {
     # {static} jugadores: ArrayList
@@ -33,7 +32,6 @@ class Continente {
 }
 
 Juego "1" --> "*" Jugador
-Jugador ..> Continente
 
 class Jugador {
     - nombre: String

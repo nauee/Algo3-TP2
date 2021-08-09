@@ -28,7 +28,6 @@ class Pais {
 }
 
 Jugador "1" <--> "1..*" Pais
-Jugador ..> Continente
 
 class Jugador {
     + agregarPais(nuevoPais): void
