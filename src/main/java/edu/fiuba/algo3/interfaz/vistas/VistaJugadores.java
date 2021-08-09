@@ -54,7 +54,7 @@ public class VistaJugadores extends VBox {
         inicioButton.setAlignment(Pos.CENTER);
         inicioButton.setStyle("-fx-background-color: #DBDBDF; -fx-font-size: 25px; -fx-text-fill: #3c3c3c; -fx-padding: 10px;");
 
-        Image image = new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/fondoTEG.jpg");
+        Image image = new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/imagenes/fondoTEG.jpg");
         ImageView vista = new ImageView(image);
         AnchorPane imagenFondo = new AnchorPane();
         imagenFondo.getChildren().addAll(vista);

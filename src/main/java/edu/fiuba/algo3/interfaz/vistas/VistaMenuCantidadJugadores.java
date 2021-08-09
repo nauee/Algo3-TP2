@@ -17,8 +17,8 @@ public class VistaMenuCantidadJugadores extends BorderPane {
 
     private final Stage stage;
     private final int MaxJugadores=6;
-    private final String rutaImagenFondoMenu= "/src/main/java/edu/fiuba/algo3/recursos/fondoTEG.jpg";
-    private final String rutaImagenFondoCentro= "/src/main/java/edu/fiuba/algo3/recursos/pergamino.jpg";
+    private final String rutaImagenFondoMenu= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/fondoTEG.jpg";
+    private final String rutaImagenFondoCentro= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergamino.jpg";
 
     public VistaMenuCantidadJugadores(Stage stage) {
         this.stage = stage;

@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class VistaInicio extends BorderPane {
 
     Stage stage;
-    private final String rutaImagenFondoMenu="/src/main/java/edu/fiuba/algo3/recursos/fondoTEG.jpg";
+    private final String rutaImagenFondoMenu="/src/main/java/edu/fiuba/algo3/recursos/imagenes/fondoTEG.jpg";
 
     public VistaInicio(Stage stage){
         super();

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Jugador;
+import edu.fiuba.algo3.interfaz.BotonMusica;
 import edu.fiuba.algo3.interfaz.BotonPais;
 import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
 import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
@@ -13,7 +14,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +32,9 @@ public class VistaJuego extends VBox{
     private final String colorRosa = "#ee3377";
     private final String colorNegro = "#000000";
     private final ArrayList<String> colores = new ArrayList<>(List.of(colorAzul, colorRojo, colorAmarillo, colorVerde, colorRosa, colorNegro));
-    private final String rutaImagenMapa= "/src/main/java/edu/fiuba/algo3/recursos/tableroteg.jpg";
-    private final String rutaImagenFondoJuego= "/src/main/java/edu/fiuba/algo3/recursos/pergamino.jpg";
+    private final String rutaImagenMapa= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/tableroteg.jpg";
+    private final String rutaImagenFondoJuego= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergamino.jpg";
+
 
     public VistaJuego(Stage stage, Juego juego){
         super();
@@ -51,15 +56,20 @@ public class VistaJuego extends VBox{
         salir.setOnAction(new ControladorSalir(stage));
         ayuda.setOnAction(new ControladorMenuInicioInstrucciones(stage));
         Menu musica = new Menu("Musica");
-        RadioMenuItem cancion1 = new RadioMenuItem("Track 1");
-        RadioMenuItem cancion2 = new RadioMenuItem("Track 2");
-        RadioMenuItem cancion3 = new RadioMenuItem("Track 3");
+        Reproductor reproductor = new Reproductor();
+
+        BotonMusica cancion1 = new BotonMusica(reproductor, "Piratas", 1);
+        BotonMusica cancion2 = new BotonMusica(reproductor, "Rockstar", 2);
+        BotonMusica cancion3 = new BotonMusica(reproductor, "No escuches esto", 3);
+
         ToggleGroup toggleGroup= new ToggleGroup();
         toggleGroup.getToggles().addAll(cancion1, cancion2, cancion3);
-
         musica.getItems().addAll(cancion1, cancion2, cancion3);
-
         menuBar.getMenus().addAll(opciones, musica);
+
+
+        cancion1.setSelected(true);
+
 
         AnchorPane pane = new AnchorPane();
         Image image = new Image("file:"+System.getProperty("user.dir")+rutaImagenMapa);
