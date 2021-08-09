@@ -1,0 +1,38 @@
+@startuml
+
+title Etapa
+
+abstract class Etapa {
+    # {static} jugadores: ArrayList
+    # {static} cartas: ArrayList
+    # {static} continentes: ArrayList
+    # {static} jugadorDeTurno: int
+    + {static} siguienteJugador(): Jugador
+    + {abstract} jugar(cantidadEjercitos: int, paises: Array): void
+    + {abstract} siguienteFase(): Etapa
+    + {abstract} activarCarta(unaCarta: Carta): void
+    + {abstract} canjearCartas(carta1, carta2, carta3): void
+}
+
+EtapaBatalla --|> Etapa
+EtapaColocacion --|> Etapa
+
+class EtapaBatalla {
+    - fase: Fase
+    + {static} EtapaBatalla(): EtapaBatalla
+    + jugar(cantidadEjercitos: int, paises: Array): void
+    + siguienteFase(): Etapa
+    + activarCarta(unaCarta: Carta): void
+    + canjearCartas(carta1, carta2, carta3): void
+}
+
+class EtapaColocacion {
+    - fase: FaseColocacion
+    + {static} EtapaColocacion(): EtapaBatalla
+    + jugar(cantidadEjercitos: int, paises: Array): void
+    + siguienteFase(): Etapa
+    + activarCarta(unaCarta: Carta): void
+    + canjearCartas(carta1, carta2, carta3): void
+}
+
+@enduml

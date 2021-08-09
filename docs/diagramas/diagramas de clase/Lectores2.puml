@@ -1,0 +1,55 @@
+@startuml
+
+title Lectores
+
+class LectorDeCartas {
+    # lector: FileReader
+    # parser: JSONParser
+    # {static} rutaArchivo: String
+    # {static} continentes: ArrayList
+    - lectores: ArrayList
+    + {static} LectorDeCartas(): LectorDeCartas
+    + {static} LectorDeCartas(continentes): LectorDeCartas
+    + leer(unaRutaArchivo): ArrayList
+}
+
+class LectorDeObjetivos {
+    # lector: FileReader
+    # parser: JSONParser
+    # {static} rutaArchivo: String
+    # {static} continentes: ArrayList
+    - lectores: ArrayList
+    # {static} jugadores: ArrayList
+    + {static} LectorDeObjetivos(): LectorDeObjetivos
+    + {static} LectorDeObjetivos(unosContinentes, unosJugadores): LectorDeObjetivos
+    + leer(unaRutaArchivo): ArrayList
+}
+
+class LectorDePaises {
+    # lector: FileReader
+    # parser: JSONParser
+    # {static} rutaArchivo: String
+    - lectores: ArrayList
+    + leer(unaRutaArchivo): ArrayList
+}
+
+LectorDeCartasJSON --|> LectorDeCartas
+LectorDeObjetivosJSON --|> LectorDeObjetivos
+LectorDePaisesJSON --|> LectorDePaises
+
+class LectorDeCartasJSON {
+    + {static} LectorDeCartasJSON(): LectorDeCartasJSON
+    - obtenerCarta(carta: JSONObject): Carta
+}
+
+class LectorDeObjetivosJSON {
+    + {static} LectorDeObjetivosJSON(): LectorDeObjetivosJSON
+    - obtenerObjetivo(objetivo: JSONObject): Objetivo
+}
+
+class LectorDePaisesJSON {
+    + {static} LectorDePaisesJSON(): LectorDePaisesJSON
+    - obtenerPais(pais: JSONObject): Pais
+}
+
+@enduml

@@ -35,6 +35,6 @@ public class FaseAtaque implements Fase{
             jugadorDeTurno.darleCarta(cartas.get(0));
             cartas.remove(0);
         }
-        return (new FaseAgrupamiento(jugadorDeTurno));
+        return new FaseAgrupamiento(jugadorDeTurno);
     }
 }

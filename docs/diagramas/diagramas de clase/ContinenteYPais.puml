@@ -1,0 +1,41 @@
+@startuml
+
+title Continente y Pais
+
+class Continente {
+    - recompensa: int
+    + {static} Continente(nombre, recompensa): Continente
+    + tiene(pais): boolean
+    + agregarPais(pais): void
+    + getPais(unPais: String): Pais
+}
+
+Continente "1" --> "*" Pais
+
+class Pais {
+    - nombre: String
+    - cantidadEjercitos: int
+    - limitrofes: ArrayList
+    + {static} Pais(nombre, limitrofes): Pais
+    + lePerteneceA(jugador): boolean
+    + serAtacado(): void
+    + moverEjercitos(cantidadEjercitos: int, destino: Pais): void
+    + serConquistadoPor(paisConquistador: pais): void
+    + ganarleAPais(pais: Pais): void
+    + atacarPais(paisAtacado: pais, cantidadEjercito: int, jugador): void
+    + fueVencido(): boolean
+    + conquistar(paisConquistador: pais): void
+}
+
+Jugador "1" <--> "1..*" Pais
+Jugador ..> Continente
+
+class Jugador {
+    + agregarPais(nuevoPais): void
+    + perderPais(paisAPerder): void
+    + getCantidadFichasPorPais(): int
+    + tienePais(unPais): boolean
+    + conquistoMundo(): boolean
+}
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+
+title Carta y EstadoCarta
+
+class Carta {
+    - pais: Pais;
+    - simbolo: String;
+    + {static} Carta(pais, simbolo): Carta
+    + {static} canjeables(carta1: Carta, carta2: Carta, carta3: Carta): boolean
+    - canjearConIguales(carta1: Carta, carta2: Carta): boolean
+    - simbolosIguales(simboloCarta: String): boolean
+    - canjearConDiferentes(carta1: Carta, carta2: Carta): boolean
+    - simbolosDiferentes(simboloCarta: String): boolean
+    - esComodin(): boolean
+    + activarse(): void
+}
+
+Carta "1" --> "1" EstadoCarta
+
+EstadoCarta ..> Jugador
+
+interface EstadoCarta {
+    + activarse(jugador, pais: Pais): EstadoCarta
+}
+
+CartaActivada ..|> EstadoCarta
+
+class CartaActivada {
+    + activarse(jugador, pais: Pais): CartaYaActivadaException
+}
+
+CartaNoActivada ..|> EstadoCarta
+
+Jugador "1" --> "*" Carta
+
+class Jugador {
+    + darleCarta(carta): void
+    + activarCarta(carta): void
+    - devolverCartasAlMazo(carta1, carta2, carta3, mazo: ArrayList): void
+    - canjearCartas(carta1, carta2, carta3, mazo: ArrayList): int
+}
+
+@enduml

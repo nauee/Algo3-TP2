@@ -1,0 +1,26 @@
+@startuml
+
+title Objetivo
+
+abstract class Objetivo {
+    # objetivoComunCumplido(jugador: Jugador): boolean
+    + {abstract} cumplido(jugador: Jugador): boolean
+}
+
+ObjetivoConquista --|> Objetivo
+ObjetivoDestruccion --|> Objetivo
+
+class ObjetivoConquista {
+    - continentes: ArrayList
+    - cantidadAConquistarPorContinente: ArrayList
+    + {static} ObjetivoConquista(continentes, cantidadAConquistarPorContinente): ObjetivoConquista
+    + cumplido(jugador: Jugador): boolean
+}
+
+class ObjetivoDestruccion {
+    - jugadorADestruir: Jugador
+    + {static} ObjetivoDestruccion(jugadorADestruir): ObjetivoDestruccion
+    + cumplido(jugador: Jugador): boolean
+}
+
+@enduml

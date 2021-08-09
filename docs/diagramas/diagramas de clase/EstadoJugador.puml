@@ -1,0 +1,32 @@
+@startuml
+
+title EstadoJugador
+
+interface EstadoJugador {
+    + derrotadoPor(jugador): boolean
+    + gano(): boolean
+    + perdio(): boolean
+}
+
+EstadoDerrotado ..|> EstadoJugador
+EstadoGanador ..|> EstadoJugador
+EstadoVivo ..|> EstadoJugador
+
+EstadoDerrotado "1" --> "1" Jugador
+
+class EstadoDerrotado {
+    + {static} EstadoDerrotado(conquistador): EstadoDerrotado
+}
+
+class EstadoGanador {
+
+}
+
+Jugador "1" --> "1" EstadoJugador
+
+class Jugador {
+   + serDerrotadoPor(jugador: Jugador): void
+   + derrotadoPor(jugador: Jugador): boolean
+}
+
+@enduml

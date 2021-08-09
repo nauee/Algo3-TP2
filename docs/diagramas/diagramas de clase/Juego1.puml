@@ -1,0 +1,48 @@
+@startuml
+
+title Juego, Etapa, Continente y Jugador
+
+class Juego {
+    - cartas: ArrayList
+    - objetivos: ArrayList
+    + {static} Juego(jugadores: ArrayList): Juego
+    + buscarPais(unPais: String): Pais
+    + jugar(cantidadEjercitos: int, paises: Array): void
+
+}
+
+Juego "1" --> "1" Etapa
+Etapa ..> Jugador
+
+class Etapa {
+    # {static} jugadores: ArrayList
+    # {static} cartas: ArrayList
+    # {static} jugadorDeTurno: int
+    + {abstract} siguienteFase(): Etapa
+    + {abstract} activarCarta(unaCarta: Carta): void
+    + {abstract} canjearCartas(carta1, carta2, carta3): void
+}
+
+Juego "1" --> "*" Continente
+
+class Continente {
+    - nombre: String
+    - recompensa: int
+    - paises: ArrayList
+    + {static} Continente(nombre, recompensa): Continente
+}
+
+Juego "1" --> "*" Jugador
+Jugador ..> Continente
+
+class Jugador {
+    - nombre: String
+    - paises: ArrayList
+    - cartas: ArrayList
+    - canje: Canje
+    - estado: EstadoJugador
+    - objetivo: Objetivo
+    + {static} Jugador(nombre): Jugador
+}
+
+@enduml

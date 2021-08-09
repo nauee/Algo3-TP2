@@ -1,0 +1,31 @@
+@startuml
+
+title Juego, Carta y Objetivo
+
+class Juego {
+    - etapa: Etapa
+    - continente: ArrayList
+    - jugadores: ArrayList
+    + {static} Juego(jugadores: ArrayList): Juego
+    + buscarPais(unPais: String): Pais
+}
+
+Juego "1" --> "*" Carta
+
+class Carta {
+    - pais: Pais;
+    - simbolo: String;
+    - estado: EstadoCarta
+    + {static} Carta(pais: Pais, simbolo: String): Carta
+    + {static} canjeables(carta1, carta2, carta3): boolean
+    + activarse(): void
+}
+
+Juego "1" --> "*" Objetivo
+
+class Objetivo {
+    # objetivoComunCumplido(jugador: Jugador): boolean
+    + {abstract} cumplido(jugador: Jugador): boolean
+}
+
+@enduml

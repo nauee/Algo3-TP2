@@ -1,0 +1,22 @@
+@startuml
+title Canje
+
+interface Canje {
+    + siguienteCanje(cantidadDeCanjes: int): Canje
+    + realizarCanje(cantidadDeCanjes: int): int
+}
+
+CanjeDinamico ..> Canje
+CanjeEstatico ..> Canje
+
+class CanjeDinamico {
+    + siguienteCanje(cantidadDeCanjes: int): CanjeDinamico
+}
+
+Jugador "1" --> "1" Canje
+
+class Jugador {
+    + canjearCartas(carta1, carta2, carta3, mazo: ArrayList): int
+}
+
+@enduml

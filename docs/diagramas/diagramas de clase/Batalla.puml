@@ -1,0 +1,27 @@
+@startuml
+
+title Batalla
+
+class Batalla {
+    - atacado: Pais
+    - atacante: Pais
+    - cantidadEjercitoAtacante: int
+    + {static} Batalla(atacado, atacante, cantidadEjercitoAtacante): Batalla
+    - determinarPerdedor(dadoAtacante: int, dadoAtacado: int): Pais
+    + ataqueEntrePaises(resultadosDadosAtacado: ArrayList, resultadosDadosAtacante: ArrayList): void
+    + batallar(): void
+}
+
+Batalla ..> Dado
+
+class Dado {
+    + {static} lanzar(cantidad: int): ArrayList
+}
+
+Pais ..> Batalla
+
+class Pais {
+    + atacarPais(paisAtacado: Pais, cantidadEjercito: int, jugador: Jugador): void
+}
+
+@enduml

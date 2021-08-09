@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Jugador{
 
     private static int proximoId = 1;
+    private static final int CANTIDAD_MINIMA_PARA_CONQUISTA = 30;
 
     private final String nombre;
     private final int id;
@@ -78,7 +79,7 @@ public class Jugador{
     }
 
     public boolean conquistoMundo(){
-        return paises.size() == 30;
+        return paises.size() == CANTIDAD_MINIMA_PARA_CONQUISTA;
     }
 
     public boolean derrotadoPor(Jugador jugador){
@@ -89,8 +90,7 @@ public class Jugador{
         int cantidadConquistada = 0;
 
         for (Pais pais : paises) {
-            if (continente.tiene(pais))
-                cantidadConquistada++;
+            if (continente.tiene(pais)) cantidadConquistada++;
         }
 
         if (cantidadPaises == 0)
