@@ -3,7 +3,7 @@ package edu.fiuba.algo3.interfaz.controladores;
 import edu.fiuba.algo3.interfaz.Cancion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import edu.fiuba.algo3.interfaz.vistas.Reproductor;
+import edu.fiuba.algo3.interfaz.Reproductor;
 
 public class ControladorMusica implements EventHandler<ActionEvent> {
 

@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
-import edu.fiuba.algo3.interfaz.BotonCantidad;
+import edu.fiuba.algo3.interfaz.botones.BotonCantidad;
 import edu.fiuba.algo3.interfaz.OpcionesCantidad;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-
-import java.util.ArrayList;
 
 public class ControladorDeSeleccion implements EventHandler<ActionEvent> {
 
@@ -15,6 +13,7 @@ public class ControladorDeSeleccion implements EventHandler<ActionEvent> {
     public ControladorDeSeleccion(OpcionesCantidad cantidades, BotonCantidad boton){
         this.cantidades=cantidades;
         this.boton=boton;
+
     }
 
     @Override

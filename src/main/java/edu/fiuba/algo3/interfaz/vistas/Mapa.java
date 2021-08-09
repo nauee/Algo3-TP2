@@ -1,12 +1,7 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.interfaz.BotonPais;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import edu.fiuba.algo3.interfaz.botones.BotonPais;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 
 public class Mapa extends AnchorPane {
 

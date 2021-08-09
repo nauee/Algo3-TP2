@@ -1,16 +1,11 @@
-package edu.fiuba.algo3.interfaz.vistas;
+package edu.fiuba.algo3.interfaz;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import java.util.ArrayList;
-import edu.fiuba.algo3.interfaz.Cancion;
-import java.io.File;
-import java.util.List;
 
 public class Reproductor {
 
     private Cancion cancionActual;
-    private ArrayList<Cancion> canciones= new ArrayList<>();
+    private final ArrayList<Cancion> canciones= new ArrayList<>();
 
     public Reproductor(Cancion cancionInicio){
         cancionActual=cancionInicio;

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.interfaz.BotonMenuInicio;
+import edu.fiuba.algo3.interfaz.botones.BotonMenuInicio;
 import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
 import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioJugar;
 import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;

@@ -1,8 +1,9 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.botones;
 
+import edu.fiuba.algo3.interfaz.Cancion;
 import edu.fiuba.algo3.interfaz.controladores.ControladorMusica;
 import javafx.scene.control.RadioMenuItem;
-import edu.fiuba.algo3.interfaz.vistas.Reproductor;
+import edu.fiuba.algo3.interfaz.Reproductor;
 
 public class BotonMusica extends RadioMenuItem {
 

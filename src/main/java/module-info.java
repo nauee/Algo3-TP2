@@ -10,4 +10,5 @@ module edu.fiuba {
     exports edu.fiuba.algo3.modelo;
     exports edu.fiuba.algo3.interfaz.controladores;
     exports edu.fiuba.algo3.interfaz.vistas;
+    exports edu.fiuba.algo3.interfaz.botones;
 }

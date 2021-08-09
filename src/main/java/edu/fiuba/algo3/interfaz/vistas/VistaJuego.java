@@ -2,8 +2,7 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.interfaz.BotonMusica;
-import edu.fiuba.algo3.interfaz.BotonPais;
+import edu.fiuba.algo3.interfaz.ImagenFondo;
 import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
 import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
 import edu.fiuba.algo3.modelo.Juego;
@@ -11,13 +10,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +34,10 @@ public class VistaJuego extends VBox{
         this.stage = stage;
         this.juego = juego;
 
-        Image imagen = new Image("file:"+System.getProperty("user.dir")+rutaImagenFondoJuego);
-        BackgroundImage fondoConImagen= new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,  new BackgroundSize(1.0, 1.0, true, true, false, false));
-        Background fondo= new Background(fondoConImagen);
-        this.setBackground(fondo);
+        //Image imagen = new Image("file:"+System.getProperty("user.dir")+rutaImagenFondoJuego);
+        //BackgroundImage fondoConImagen= new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,  new BackgroundSize(1.0, 1.0, true, true, false, false));
+        //Background fondo= new Background(fondoConImagen);
+        this.setBackground(ImagenFondo.fondoParcial(rutaImagenFondoJuego));
 
 
         MenuBar menuBar = new MenuBar();

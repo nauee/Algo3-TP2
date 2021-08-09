@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.interfaz.BotonMusica;
+import edu.fiuba.algo3.interfaz.Reproductor;
+import edu.fiuba.algo3.interfaz.botones.BotonMusica;
 import edu.fiuba.algo3.interfaz.Cancion;
 import javafx.scene.control.Menu;
 import javafx.scene.control.RadioMenuItem;

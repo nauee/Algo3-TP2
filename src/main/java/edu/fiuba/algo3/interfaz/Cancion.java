@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.interfaz.vistas.Reproductor;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 
 import java.io.File;
 

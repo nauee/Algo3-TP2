@@ -1,9 +1,8 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.botones;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 public class BotonMenuInicio extends Button{
 

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.interfaz.botones.BotonCantidad;
 import edu.fiuba.algo3.interfaz.controladores.ControladorDeSeleccion;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class OpcionesCantidad extends ArrayList<BotonCantidad>{
             BotonCantidad botonCantidad = new BotonCantidad(i);
             this.add(botonCantidad);
         }
+        this.get(0).setSelected(true);
         this.discriminarOpciones();
     }
 
