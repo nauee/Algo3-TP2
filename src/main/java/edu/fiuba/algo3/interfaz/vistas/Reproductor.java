@@ -9,26 +9,37 @@ import java.util.List;
 
 public class Reproductor {
 
-    private final File archivoRockstar = new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/rockstar.mpeg");
-    private final File archivoPirata = new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/pirates.mp3");
-    private final File archivoQueHaces = new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/queHaces.mpeg");
-
-    private final ArrayList<Cancion> canciones = new ArrayList<>();
     private Cancion cancionActual;
+    private ArrayList<Cancion> canciones= new ArrayList<>();
 
-    public Reproductor(){
-
-        Cancion musicaRockstar = new Cancion(archivoRockstar);
-        Cancion musicaQueHaces= new Cancion(archivoQueHaces);
-        Cancion musicaPirata= new Cancion(archivoPirata);
-        canciones.addAll(List.of(musicaPirata, musicaRockstar, musicaQueHaces));
+    public Reproductor(Cancion cancionInicio){
+        cancionActual=cancionInicio;
+        this.reproducir(cancionActual);
 
     }
 
-    public void reproducir(int numeroCancion){
+    public void reproducir(Cancion cancion){
         cancionActual.detener();
-        Cancion cancion = canciones.get(numeroCancion);
-        cancion.reproducir();
+        cancion.reproducirLoop(this);
         cancionActual = cancion;
+    }
+
+    public void detener(){
+        cancionActual.detener();
+    }
+
+    public void agregar(Cancion cancion){
+        canciones.add(cancion);
+    }
+
+    public void reproducirTodo(){
+        for (int i = 0; i < canciones.size(); i++) {
+            final Cancion cancion = canciones.get(i);
+            final Cancion proximaCancion = canciones.get((i + 1) % canciones.size());
+            cancion.proximaCancion(proximaCancion);
+        }
+
+        cancionActual = canciones.get(0);
+        cancionActual.reproducir();
     }
 }

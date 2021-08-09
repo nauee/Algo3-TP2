@@ -1,7 +1,10 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.interfaz.vistas.Reproductor;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+
 import java.io.File;
 
 public class Cancion {
@@ -15,11 +18,24 @@ public class Cancion {
         musica = new MediaPlayer(audio);
     }
 
-    public void reproducir(){
+    public void reproducirLoop(Reproductor reproductor){
         musica.play();
+        musica.setOnEndOfMedia(() -> {
+            reproductor.reproducir(this);
+        });
     }
 
     public void detener(){
         musica.stop();
+    }
+
+    public void proximaCancion(Cancion cancion){
+        musica.setOnEndOfMedia(() -> {
+            cancion.reproducir();
+        });
+    }
+
+    public void reproducir(){
+        musica.play();
     }
 }

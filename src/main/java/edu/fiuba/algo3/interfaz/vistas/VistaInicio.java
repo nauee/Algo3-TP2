@@ -1,14 +1,20 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
+import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
+import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class VistaInicio extends BorderPane {
+public class VistaInicio extends VBox {
 
     Stage stage;
     private final String rutaImagenFondoMenu="/src/main/java/edu/fiuba/algo3/recursos/imagenes/fondoTEG.jpg";
@@ -17,8 +23,11 @@ public class VistaInicio extends BorderPane {
         super();
         this.stage=stage;
 
-        MenuInicio menu= new MenuInicio(stage);
+        MenuBarra menuArriba= new MenuBarra(stage);
+        MenuInicio menu= new MenuInicio(stage, menuArriba);
 
+
+        BorderPane centro= new BorderPane();
         Label titulo= new Label("   A.L.T.E.G.O");
         titulo.setLayoutX(500);
         titulo.setLayoutY(56.0);
@@ -31,8 +40,11 @@ public class VistaInicio extends BorderPane {
         BackgroundImage fondoConImagen= new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background fondo= new Background(fondoConImagen);
         this.setBackground(fondo);
-        this.setTop(titulo);
-        this.setCenter(menu);
+
+        //centro.setTop(titulo);
+        //centro.setCenter(menu);
+        this.getChildren().addAll(menuArriba, titulo, menu);
+        menu.setPadding(new Insets(30,10,0,10));
         titulo.setAlignment(Pos.TOP_CENTER);
     }
 

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
+import edu.fiuba.algo3.interfaz.vistas.MenuBarra;
 import edu.fiuba.algo3.interfaz.vistas.VistaJugadores;
 import edu.fiuba.algo3.interfaz.vistas.VistaMenuCantidadJugadores;
 import javafx.event.ActionEvent;
@@ -10,14 +11,16 @@ import javafx.stage.Stage;
 public class ControladorMenuInicioJugar implements EventHandler<ActionEvent> {
 
     private final Stage stage;
+    private final MenuBarra menuBarra;
 
-    public ControladorMenuInicioJugar(Stage stage){
+    public ControladorMenuInicioJugar(Stage stage, MenuBarra menuArriba){
         this.stage=stage;
+        this.menuBarra=menuArriba;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        VistaMenuCantidadJugadores menuJugadores = new VistaMenuCantidadJugadores(stage);
+        VistaMenuCantidadJugadores menuJugadores = new VistaMenuCantidadJugadores(stage, menuBarra);
         Scene scene = new Scene(menuJugadores, 1280, 720);
         stage.setScene(scene);
     }

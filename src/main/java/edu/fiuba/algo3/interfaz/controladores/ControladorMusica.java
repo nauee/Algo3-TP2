@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
+import edu.fiuba.algo3.interfaz.Cancion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import edu.fiuba.algo3.interfaz.vistas.Reproductor;
@@ -7,15 +8,15 @@ import edu.fiuba.algo3.interfaz.vistas.Reproductor;
 public class ControladorMusica implements EventHandler<ActionEvent> {
 
     private final Reproductor reproductor;
-    private int numeroCancion;
+    private final Cancion cancion;
 
-    public ControladorMusica(Reproductor reproductor, int numeroCancion){
+    public ControladorMusica(Reproductor reproductor, Cancion cancion){
        this.reproductor=reproductor;
-       this.numeroCancion=numeroCancion;
+       this.cancion = cancion;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        reproductor.reproducir(numeroCancion);
+        reproductor.reproducir(cancion);
     }
 }

@@ -10,10 +10,10 @@ import javafx.stage.Stage;
 
 public class MenuInicio extends VBox {
 
-    public MenuInicio(Stage stage){
+    public MenuInicio(Stage stage, MenuBarra menuArriba){
         super();
 
-        BotonMenuInicio jugar= new BotonMenuInicio("Jugar", "-fx-font-size: 30px", 25, 274, new ControladorMenuInicioJugar(stage));
+        BotonMenuInicio jugar= new BotonMenuInicio("Jugar", "-fx-font-size: 30px", 25, 274, new ControladorMenuInicioJugar(stage, menuArriba));
         BotonMenuInicio salir= new BotonMenuInicio("Salir", "-fx-font-size: 30px", 25, 274, new ControladorSalir(stage));
         BotonMenuInicio instrucciones= new BotonMenuInicio("Instrucciones", "-fx-font-size: 30px", 25, 274, new ControladorMenuInicioInstrucciones(stage));
 
