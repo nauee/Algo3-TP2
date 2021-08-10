@@ -29,7 +29,6 @@ public class ControladorMenuInicioInstrucciones implements EventHandler<ActionEv
         ventanaInformacion.getIcons().add(new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/imagenes/iconoInformacion.jpg"));
         AnchorPane instrucciones= new AnchorPane();
         instrucciones.setBackground(ImagenFondo.fondoJuego("/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergaminoPapel.jpg"));
-        //instrucciones.setStyle("-fx-background-color: #B5884B");
         Text texto= new Text("aca va la informacion del juego");
         texto.setStyle("-fx-font-family: Gabriola; -fx-font-size: 20");
 
