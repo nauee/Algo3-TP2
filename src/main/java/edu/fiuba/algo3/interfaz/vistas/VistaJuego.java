@@ -2,14 +2,10 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.interfaz.ImagenFondo;
-import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
-import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -29,30 +25,12 @@ public class VistaJuego extends VBox{
     private final ArrayList<String> colores = new ArrayList<>(List.of(colorAzul, colorRojo, colorAmarillo, colorVerde, colorRosa, colorNegro));
     private final String rutaImagenFondoJuego= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergamino.jpg";
 
-    public VistaJuego(Stage stage, Juego juego){
+    public VistaJuego(Stage stage, Juego juego, MenuBarra menuArriba){
         super();
         this.stage = stage;
         this.juego = juego;
 
-        //Image imagen = new Image("file:"+System.getProperty("user.dir")+rutaImagenFondoJuego);
-        //BackgroundImage fondoConImagen= new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,  new BackgroundSize(1.0, 1.0, true, true, false, false));
-        //Background fondo= new Background(fondoConImagen);
-        this.setBackground(ImagenFondo.fondoParcial(rutaImagenFondoJuego));
-
-
-        MenuBar menuBar = new MenuBar();
-        MenuItem ayuda = new MenuItem("Ayuda");
-        MenuItem salir = new MenuItem("Salir");
-        Menu opciones = new Menu("Opciones");
-        opciones.getItems().addAll(ayuda, salir);
-
-        salir.setOnAction(new ControladorSalir(stage));
-        ayuda.setOnAction(new ControladorMenuInicioInstrucciones(stage));
-
-
-        MenuMusica musica = new MenuMusica();
-        menuBar.getMenus().addAll(opciones, musica);
-
+        this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondoJuego));
 
         Mapa mapa= new Mapa();
 
@@ -68,6 +46,13 @@ public class VistaJuego extends VBox{
             mapa.getChildren().add(jugador);
             AnchorPane.setRightAnchor(jugador, 0.0);
         }
+
+
+
+
+
+
+
 
         int jugadorDeTurnoIndex = juego.getJugadorDeTurno();
         Jugador jugadorDeTurno = juego.getJugador(jugadorDeTurnoIndex);
@@ -86,7 +71,7 @@ public class VistaJuego extends VBox{
             AnchorPane.setLeftAnchor(cartaBox, 0.0);
         }
 
-        this.getChildren().addAll(menuBar, mapa);
+        this.getChildren().addAll(menuArriba, mapa);
 
 
     }

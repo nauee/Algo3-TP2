@@ -1,14 +1,12 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.interfaz.ImagenFondo;
 import edu.fiuba.algo3.interfaz.controladores.ControladorInicio;
+import edu.fiuba.algo3.interfaz.controladores.ControladorVolver;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
@@ -51,16 +49,26 @@ public class VistaJugadores extends BorderPane {
         tituloDeCuadroNombres.setStyle("-fx-font-size: 25px");
         BorderPane.setMargin(tituloDeCuadroNombres,new Insets(0,0,0,0));
 
-        Button inicioButton = new Button("Iniciar");
-        inicioButton.setStyle("-fx-font-size: 30px");
-        inicioButton.setOnAction(new ControladorInicio(stage, jugadores));
-        inicioButton.setAlignment(Pos.CENTER);
-        inicioButton.setStyle("-fx-background-color: #DBDBDF; -fx-font-size: 25px; -fx-text-fill: #3c3c3c; -fx-padding: 10px;");
+        Button inicioBoton = new Button("Iniciar");
+        inicioBoton.setStyle("-fx-font-size: 30px");
+        inicioBoton.setOnAction(new ControladorInicio(stage, jugadores, menuArriba));
+        inicioBoton.setAlignment(Pos.CENTER);
+        inicioBoton.setStyle("-fx-background-color: #DBDBDF; -fx-font-size: 25px; -fx-text-fill: #3c3c3c; -fx-padding: 10px;");
 
+        Button atrasBoton = new Button("Volver");
+        atrasBoton.setStyle("-fx-font-size: 30px");
+        atrasBoton.setOnAction(new ControladorVolver(stage, menuArriba));
+        atrasBoton.setAlignment(Pos.CENTER);
+        atrasBoton.setStyle("-fx-background-color: #DBDBDF; -fx-font-size: 25px; -fx-text-fill: #3c3c3c; -fx-padding: 10px;");
+
+        HBox opciones= new HBox();
+        opciones.getChildren().addAll(inicioBoton, atrasBoton);
+        opciones.setAlignment(Pos.CENTER);
+        opciones.setSpacing(10);
         this.setBackground(ImagenFondo.fondoTotal(rutaImagenFondo));
 
         VBox nombres= new VBox();
-        nombres.getChildren().addAll(tituloDeCuadroNombres, vboxNombres, inicioButton);
+        nombres.getChildren().addAll(tituloDeCuadroNombres, vboxNombres, opciones);
         nombres.setAlignment(Pos.CENTER);
         nombres.setSpacing(20);
         nombres.setBackground(ImagenFondo.fondoParcial(rutaImagenFondoCentro));

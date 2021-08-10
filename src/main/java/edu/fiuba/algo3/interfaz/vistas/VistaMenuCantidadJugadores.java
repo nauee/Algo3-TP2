@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.interfaz.ImagenFondo;
 import edu.fiuba.algo3.interfaz.controladores.ControladorCantidadJugadores;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

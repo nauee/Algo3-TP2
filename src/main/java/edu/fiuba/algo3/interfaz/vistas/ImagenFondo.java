@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.vistas;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

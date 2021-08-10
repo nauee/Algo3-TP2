@@ -9,9 +9,10 @@ public class Cancion {
 
     private Media audio;
     private MediaPlayer musica;
+    private String nombre;
 
     public Cancion(File rutaCancion){
-
+        nombre= this.obtenerNombre(rutaCancion.getName());
         audio = new Media(rutaCancion.toURI().toString());
         musica = new MediaPlayer(audio);
     }
@@ -27,13 +28,13 @@ public class Cancion {
         musica.stop();
     }
 
-    public void proximaCancion(Cancion cancion){
-        musica.setOnEndOfMedia(() -> {
-            cancion.reproducir();
-        });
+    public String nombre(){
+        return nombre;
     }
 
-    public void reproducir(){
-        musica.play();
+   private String obtenerNombre(String archivoCancion){
+        String[] partes = archivoCancion.split("\\.");
+        return (partes[0]);// 654321
     }
+
 }

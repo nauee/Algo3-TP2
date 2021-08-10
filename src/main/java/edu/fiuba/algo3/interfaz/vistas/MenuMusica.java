@@ -6,34 +6,44 @@ import edu.fiuba.algo3.interfaz.Cancion;
 import javafx.scene.control.Menu;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
-
-import java.io.File;
+import java.util.ArrayList;
 
 public class MenuMusica extends Menu {
 
-    private final File archivoRockstar = new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/rockstar.mpeg");
-    private final File archivoPirata = new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/pirates.mp3");
-    private final File archivoQueHaces = new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/queHaces.mpeg");
     Reproductor reproductor;
+    private final ArrayList<BotonMusica> botonesCanciones= new ArrayList<>();
 
     public MenuMusica(){
         this.setText("Musica");
 
-        reproductor= new Reproductor(new Cancion(archivoPirata));
-        BotonMusica cancion1 = new BotonMusica(reproductor, "Piratas", new Cancion(archivoPirata));
-        BotonMusica cancion2 = new BotonMusica(reproductor, "Rockstar", new Cancion(archivoRockstar));
-        BotonMusica cancion3 = new BotonMusica(reproductor, "No escuches esto", new Cancion(archivoQueHaces));
+        reproductor= new Reproductor();
+        this.obtenerCanciones();
+        this.agregarBotones();
 
+    }
+
+    private void obtenerCanciones(){
+        ArrayList<Cancion> canciones= reproductor.canciones();
+        for(int i=0; i<canciones.size(); i++){
+            botonesCanciones.add(new BotonMusica(reproductor, canciones.get(i)));
+        }
+
+    }
+
+    private void agregarBotones(){
         RadioMenuItem detener= new RadioMenuItem("Parar");
-        RadioMenuItem reproducirTodo= new RadioMenuItem("Reproducir todo");
-        reproducirTodo.setOnAction(e-> reproductor.reproducirTodo());
         detener.setOnAction(e->reproductor.detener());
 
         ToggleGroup toggleGroup= new ToggleGroup();
-        toggleGroup.getToggles().addAll(cancion1, cancion2, cancion3, detener, reproducirTodo);
-        this.getItems().addAll(cancion1, cancion2, cancion3, detener, reproducirTodo);
+        for(int i=0; i<botonesCanciones.size(); i++){
+            toggleGroup.getToggles().add(botonesCanciones.get(i));
+            this.getItems().addAll(botonesCanciones.get(i));
+        }
 
-        cancion1.setSelected(true);
-
+        toggleGroup.getToggles().add(detener);
+        this.getItems().add(detener);
     }
+
+
+
 }

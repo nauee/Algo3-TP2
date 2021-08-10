@@ -5,6 +5,7 @@ import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.excepciones.SeAlcanzoLaCantidadMaximaException;
+import edu.fiuba.algo3.interfaz.vistas.MenuBarra;
 import edu.fiuba.algo3.interfaz.vistas.VistaJuego;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.event.ActionEvent;
@@ -21,10 +22,12 @@ public class ControladorInicio implements EventHandler<ActionEvent> {
 
     private final Stage stage;
     private final ArrayList<TextField> nombresJugadores;
+    private final MenuBarra menuArriba;
 
-    public ControladorInicio(Stage stage, ArrayList<TextField> jugadores) {
+    public ControladorInicio(Stage stage, ArrayList<TextField> jugadores, MenuBarra menuArriba) {
         this.stage = stage;
         this.nombresJugadores=jugadores;
+        this.menuArriba= menuArriba;
     }
 
     @Override
@@ -32,7 +35,7 @@ public class ControladorInicio implements EventHandler<ActionEvent> {
         ArrayList<Jugador> jugadores = this.nombresJugadores();
         try {
             Juego juego = new Juego(jugadores);
-            Scene scene = new Scene(new VistaJuego(stage, juego), 1280, 720);
+            Scene scene = new Scene(new VistaJuego(stage, juego, menuArriba), 1280, 720);
             stage.setScene(scene);
             stage.show();
         } catch (SeAlcanzoLaCantidadMaximaException | IOException | ParseException | PaisNoTePerteneceException | NoSePudoLeerExcepcion | PaisNoExisteException e) {
