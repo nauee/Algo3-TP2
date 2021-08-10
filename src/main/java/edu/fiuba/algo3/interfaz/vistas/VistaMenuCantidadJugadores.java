@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
+import edu.fiuba.algo3.interfaz.botones.BotonGrande;
 import edu.fiuba.algo3.interfaz.controladores.ControladorCantidadJugadores;
+import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioJugar;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -27,17 +30,15 @@ public class VistaMenuCantidadJugadores extends BorderPane {
         fondo.fitWidthProperty().bind(this.widthProperty());
 
         this.setBackground(ImagenFondo.fondoTotal(rutaImagenFondoMenu));
-        Text pregunta= new Text("\n   Por favor, selecciona la cantidad de jugadores:");
+        Text pregunta= new Text("Por favor, selecciona la cantidad de jugadores:");
         pregunta.setTextAlignment(TextAlignment.CENTER);
 
         BorderPane.setAlignment(pregunta, Pos.TOP_CENTER);
         pregunta.setFont(new Font("Gabriola", 60));
 
         MenuOpcionesCantidad menuCantidad = new MenuOpcionesCantidad(pregunta, minJugadores, maxJugadores, "jugadores", 50);
-
-        Button comenzar= new Button("Comenzar partida");
-        comenzar.setOnAction(new ControladorCantidadJugadores(stage, menuCantidad.getOpciones(), menuArriba));
-
+        BotonGrande comenzar= new BotonGrande("Comenzar partida", "Gabriola",new ControladorCantidadJugadores(stage, menuCantidad.getOpciones(), menuArriba));
+        comenzar.setAlignment(Pos.BOTTOM_CENTER);
         menuCantidad.setBackground(ImagenFondo.fondoParcial(rutaImagenFondoCentro));
         menuCantidad.getChildren().add(comenzar);
         menuCantidad.setAlignment(Pos.CENTER);

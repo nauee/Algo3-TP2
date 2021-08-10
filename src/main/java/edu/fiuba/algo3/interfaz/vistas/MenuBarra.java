@@ -35,6 +35,6 @@ public class MenuBarra extends MenuBar {
 
         this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondo));
         this.setStyle("-fx-border-color: #905A02; -fx-border-width: 4px 4px 4px 4px");
-        this.setStyle("-fx-font-family: Gabriola; -fx-font-size: 20px; -fx-font-weight: bold");
+        this.setStyle("-fx-font-family: Gabriola; -fx-font-size: 25px; -fx-font-weight: bold");
     }
 }

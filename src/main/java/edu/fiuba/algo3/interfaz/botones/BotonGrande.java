@@ -9,20 +9,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 
-public class BotonMenuInicio extends Button{
+public class BotonGrande extends Button{
 
     private final String rutaImagenFondo= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergamino.jpg";
 
-    public BotonMenuInicio(String nombre, String fuente, double altura, double ancho , EventHandler<ActionEvent> controlador){
+    public BotonGrande(String nombre, String fuente, EventHandler<ActionEvent> controlador){
         super();
         this.setText(nombre);
         this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondo));
-        this.setFont(new Font("Gabriola", 40));
+        this.setFont(new Font(fuente, 40));
         this.setStyle("-fx-border-color: #905A02; -fx-border-width: 4px 4px 4px 4px;-fx-text-alignment: center");
         this.setOnMouseEntered(e->this.setMinWidth(400.0));
         this.setOnMouseExited(e->this.setMinWidth(300.0));
-        this.prefHeight(25);
-        this.prefWidth(274.0);
         this.setOnAction(controlador);
         this.setMinWidth(300.0);
     }

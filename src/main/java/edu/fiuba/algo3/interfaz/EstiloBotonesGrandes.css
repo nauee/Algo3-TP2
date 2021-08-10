@@ -1,0 +1,5 @@
+.button{
+    -fx-border-color: #905A02;
+    -fx-border-width: 4px 4px 4px 4px;
+    -fx-text-alignment: center;
+}

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.interfaz;
 import edu.fiuba.algo3.interfaz.vistas.VistaInicio;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -10,12 +11,17 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
+    private final double ancho=1280;
+    private final double alto=720;
+
+
     @Override
     public void start(Stage stage) {
         VistaInicio inicio = new VistaInicio(stage);
-        Scene scene = new Scene(inicio, 1280, 720);
+        Scene scene = new Scene(inicio, ancho, alto);
         stage.setScene(scene);
         stage.setTitle("A.L.T.E.G.O");
+        stage.getIcons().add(new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/imagenes/iconoTEG.jpg"));
         stage.show();
     }
 
