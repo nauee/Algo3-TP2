@@ -151,10 +151,31 @@ public class LectorDeArchivosTest {
     }
 
     @Test
-    public void enviarUnArchivoDeUnTipoNoImplementadoLanzaUnaExcepcion(){
+    public void enviarUnArchivoDeUnTipoNoImplementadoAlLectorDePaisesLanzaUnaExcepcion(){
         LectorDePaises lectorPaises = new LectorDePaises();
         assertThrows(NoSePudoLeerExcepcion.class, ()->{
             lectorPaises.leer("src/main/test/edu/fiuba/algo3/archivos/Paises.csv");
+        });
+    }
+
+    @Test
+    public void enviarUnArchivoDeUnTipoNoImplementadoAlLectorDeCartasLanzaUnaExcepcion(){
+        LectorDeCartas lectorCartas = new LectorDeCartas(new ArrayList<>(List.of(new Continente("America", 0))));
+
+        assertThrows(NoSePudoLeerExcepcion.class, ()->{
+            lectorCartas.leer("src/main/test/edu/fiuba/algo3/archivos/Paises.csv");
+        });
+    }
+
+    @Test
+    public void enviarUnArchivoDeUnTipoNoImplementadoAlLectorDeObjetivosLanzaUnaExcepcion(){
+        LectorDeObjetivos lectorObjetivos = new LectorDeObjetivos(
+                new ArrayList<>(List.of(new Continente("America", 0))),
+                new ArrayList<>(List.of(new Jugador("Nicolas")))
+        );
+
+        assertThrows(NoSePudoLeerExcepcion.class, ()->{
+            lectorObjetivos.leer("src/main/test/edu/fiuba/algo3/archivos/Paises.csv");
         });
     }
 }

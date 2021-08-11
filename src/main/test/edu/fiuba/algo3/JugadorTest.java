@@ -20,6 +20,7 @@ public class JugadorTest {
         jugador.ganar();
 
         assertTrue(jugador.gano());
+        assertFalse(jugador.perdio());
     }
 
     @Test
@@ -30,5 +31,13 @@ public class JugadorTest {
 
         assertTrue(nicolas.perdio());
         assertTrue(nicolas.derrotadoPor(fernando));
+    }
+
+    @Test
+    public void unJugadorNoEsDerrotadoPorOtro(){
+        Jugador fernando = new Jugador("Fernando");
+        Jugador nicolas = new Jugador("Nicolas");
+
+        assertFalse(fernando.derrotadoPor(nicolas));
     }
 }

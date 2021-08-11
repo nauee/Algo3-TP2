@@ -28,7 +28,7 @@ import java.util.List;
 public class JuegoTest {
 
     @Test
-    public void seDistribuyenCorrectamenteLosPaisesEntreJugadores() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException, NoSePudoLeerExcepcion, PaisNoExisteException {
+    public void seDistribuyenCorrectamenteLosPaisesEntreJugadores() throws ParseException, IOException, PaisNoTePerteneceException, NoSePudoLeerExcepcion, PaisNoExisteException {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nicolas"), new Jugador("Rosario"), new Jugador("Agustina"), new Jugador("Nahuel"), new Jugador("Fernando")));
         Juego juego = new Juego(jugadores);
         boolean funciona = true;
@@ -43,14 +43,14 @@ public class JuegoTest {
     }
 
     @Test
-    public void agregarEjercitosAUnPaisInexistenteLanzaUnaExcepcion() throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException, NoSePudoLeerExcepcion, PaisNoExisteException {
+    public void agregarEjercitosAUnPaisInexistenteLanzaUnaExcepcion() throws ParseException, IOException, PaisNoTePerteneceException, NoSePudoLeerExcepcion, PaisNoExisteException {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nahuel"), new Jugador("Fernando")));
         Juego juego = new Juego(jugadores);
         assertThrows(PaisNoExisteException.class, () -> juego.jugar(1, juego.buscarPais("Chipre")));
     }
 
     @Test
-    public void rondaDosJugadoresColocarEjercitosNuevos() throws PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion {
+    public void rondaDosJugadoresColocarEjercitosNuevos() throws PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, ParseException, IOException, NoSePudoLeerExcepcion {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nahuel"), new Jugador("Fernando")));
         Juego juego = new Juego(jugadores);
         Jugador jugador0 = jugadores.get(0);
@@ -85,7 +85,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void juegoDeUnaRonda3JugadoresUnoControlaAsiaSeAgreganNuevosEjercitos() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, NoSePudoLeerExcepcion {
+    public void juegoDeUnaRonda3JugadoresUnoControlaAsiaSeAgreganNuevosEjercitos() throws PaisNoTePerteneceException, ParseException, IOException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, NoSePudoLeerExcepcion {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nicolas"), new Jugador("Felipe"), new Jugador("Agustina")));
         Juego juego = new Juego(jugadores);
 
@@ -151,7 +151,7 @@ public class JuegoTest {
    }
 
    @Test
-   public void juegoDeUnaRondaDe2JugadoresJugador1Conquista2PaisesDeJugador2() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, NoSePudoLeerExcepcion {
+   public void juegoDeUnaRondaDe2JugadoresJugador1Conquista2PaisesDeJugador2() throws PaisNoTePerteneceException, ParseException, IOException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, NoSePudoLeerExcepcion {
        PowerMockito.mockStatic(Dado.class);
        PowerMockito.when(Dado.lanzar(anyInt())).thenReturn(new ArrayList<>(Arrays.asList(6,6,6)),new ArrayList<>(Arrays.asList(1,1,1)),new ArrayList<>(Arrays.asList(6,6,6)),new ArrayList<>(Arrays.asList(1,1,1)));
 
@@ -178,7 +178,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void realizarUnCanjeConDosCartasIgualesYUnaDistintaLevantaUnaExcepcion() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion, PaisNoExisteException {
+    public void realizarUnCanjeConDosCartasIgualesYUnaDistintaLevantaUnaExcepcion() throws PaisNoTePerteneceException, ParseException, IOException, NoSePudoLeerExcepcion, PaisNoExisteException {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nicolas"), new Jugador("Felipe")));
         Juego juego = new Juego(jugadores);
 
@@ -194,7 +194,7 @@ public class JuegoTest {
    }
 
     @Test
-    public void intentarActivarUnaCartaYaActivadaLanzaUnaExcepcion() throws CartaYaActivadaException, PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePuedeActivarCartaEnLaBatallaException, PaisNoExisteException, NoSePudoLeerExcepcion {
+    public void intentarActivarUnaCartaYaActivadaLanzaUnaExcepcion() throws CartaYaActivadaException, PaisNoTePerteneceException, ParseException, IOException, NoSePuedeActivarCartaEnLaBatallaException, PaisNoExisteException, NoSePudoLeerExcepcion {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nicolas"), new Jugador("Felipe")));
         Juego juego = new Juego(jugadores);
         Pais argentina = juego.buscarPais("Argentina");
@@ -205,20 +205,5 @@ public class JuegoTest {
         juego.activarCarta(carta);
 
         assertThrows(CartaYaActivadaException.class, ()-> juego.activarCarta(carta));
-    }
-
-    @Test
-    public void enviarUnaCantidadDeJugadoresMayorALaPermitidaLanzaUnaExcepcion(){
-        ArrayList<Jugador> jugadores = new ArrayList<>(List.of(
-                new Jugador("Joaquin"),
-                new Jugador("Nicolas"),
-                new Jugador("Fernando"),
-                new Jugador("Nahuel"),
-                new Jugador("Agustina"),
-                new Jugador("Rosario"),
-                new Jugador("Marcos")
-        ));
-
-        assertThrows(SeAlcanzoLaCantidadMaximaException.class, () -> new Juego(jugadores));
     }
 }

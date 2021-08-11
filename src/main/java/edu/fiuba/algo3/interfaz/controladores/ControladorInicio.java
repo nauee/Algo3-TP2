@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
-import edu.fiuba.algo3.excepciones.SeAlcanzoLaCantidadMaximaException;
 import edu.fiuba.algo3.interfaz.AlertaError;
 import edu.fiuba.algo3.interfaz.vistas.MenuBarra;
 import edu.fiuba.algo3.interfaz.vistas.VistaJuego;
@@ -47,7 +46,7 @@ public class ControladorInicio implements EventHandler<ActionEvent> {
                 Scene scene = new Scene(new VistaJuego(stage, juego, menuArriba), 1280, 720);
                 stage.setScene(scene);
                 stage.show();
-            } catch (SeAlcanzoLaCantidadMaximaException | IOException | ParseException | PaisNoTePerteneceException | NoSePudoLeerExcepcion | PaisNoExisteException e) {
+            } catch (IOException | ParseException | PaisNoTePerteneceException | NoSePudoLeerExcepcion | PaisNoExisteException e) {
                 e.printStackTrace();
             }
         }

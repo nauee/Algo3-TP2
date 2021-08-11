@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
-import edu.fiuba.algo3.excepciones.SeAlcanzoLaCantidadMaximaException;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.objetivo.Objetivo;
 import edu.fiuba.algo3.modelo.objetivo.ObjetivoConquista;
@@ -25,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 public class ObjetivoTest {
 
     @Test
-    public void seTieneTodosLosPaisesYElObjetivoComunSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, NoSePudoLeerExcepcion {
+    public void seTieneTodosLosPaisesYElObjetivoComunSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, PaisNoExisteException, NoSePudoLeerExcepcion {
         ArrayList<Jugador> jugadores = new ArrayList<>(List.of(new Jugador("Pepe")));
         Juego juego = new Juego(jugadores);
         Continente americaDelSur = new Continente("America del Sur", 0);
@@ -33,11 +32,14 @@ public class ObjetivoTest {
         americaDelSur.agregarPais(argentina);
         Objetivo objetivo = new ObjetivoConquista(new ArrayList<>(List.of(americaDelSur)), new ArrayList<>(List.of(1)));
 
-        assertTrue(objetivo.cumplido(jugadores.get(0)));
+        Jugador jugador = jugadores.get(0);
+        jugador.agregarObjetivo(objetivo);
+
+        assertTrue(jugador.objetivoCumplido());
     }
 
     @Test
-    public void noSeTieneTodosLosPaisesYElObjetivoComunNoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, NoSePudoLeerExcepcion {
+    public void noSeTieneTodosLosPaisesYElObjetivoComunNoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, PaisNoExisteException, NoSePudoLeerExcepcion {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Pepe"), new Jugador("Carlos")));
         Juego juego = new Juego(jugadores);
 
@@ -54,12 +56,13 @@ public class ObjetivoTest {
         }
 
         Objetivo objetivo = new ObjetivoConquista(new ArrayList<>(List.of(americaDelSur)), new ArrayList<>(List.of(1)));
+        jugador1.agregarObjetivo(objetivo);
 
-        assertFalse(objetivo.cumplido(jugador1));
+        assertFalse(jugador1.objetivoCumplido());
     }
 
     @Test
-    public void seTieneTodosLosPaisesAConquistarYElObjetivoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, NoSePudoLeerExcepcion {
+    public void seTieneTodosLosPaisesAConquistarYElObjetivoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, PaisNoExisteException, NoSePudoLeerExcepcion {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Pepe"), new Jugador("Carlos")));
         Juego juego = new Juego(jugadores);
 
@@ -88,12 +91,13 @@ public class ObjetivoTest {
         }
 
         Objetivo objetivo = new ObjetivoConquista(new ArrayList<>(List.of(americaDelSur)), new ArrayList<>(List.of(3)));
+        jugador1.agregarObjetivo(objetivo);
 
-        assertTrue(objetivo.cumplido(jugador1));
+        assertTrue(jugador1.objetivoCumplido());
     }
 
     @Test
-    public void noSeTieneTodosLosPaisesAConquistarYElObjetivoNoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, NoSePudoLeerExcepcion {
+    public void noSeTieneTodosLosPaisesAConquistarYElObjetivoNoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, PaisNoExisteException, NoSePudoLeerExcepcion {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Pepe"), new Jugador("Carlos")));
         Juego juego = new Juego(jugadores);
 
@@ -122,34 +126,36 @@ public class ObjetivoTest {
         }
 
         Objetivo objetivo = new ObjetivoConquista(new ArrayList<>(List.of(americaDelSur)), new ArrayList<>(List.of(3)));
+        jugador1.agregarObjetivo(objetivo);
 
-        assertFalse(objetivo.cumplido(jugador1));
+        assertFalse(jugador1.objetivoCumplido());
     }
 
     @Test
-    public void seVencioAlJugadorADestruirYElObjetivoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion, PaisNoExisteException {
+    public void seVencioAlJugadorADestruirYElObjetivoSeCompleta() {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Pepe"), new Jugador("Carlos")));
-        Juego juego = new Juego(jugadores);
 
         Jugador jugador1 = jugadores.get(0);
         Jugador jugador2 = jugadores.get(1);
 
         Objetivo objetivo = new ObjetivoDestruccion(jugador2);
+        jugador1.agregarObjetivo(objetivo);
         jugador2.serDerrotadoPor(jugador1);
 
-        assertTrue(objetivo.cumplido(jugador1));
+        assertTrue(jugador1.objetivoCumplido());
     }
 
     @Test
-    public void noSeVencioAlJugadorADestruirYElObjetivoNoSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion, PaisNoExisteException {
+    public void noSeVencioAlJugadorADestruirYElObjetivoNoSeCompleta(){
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Pepe"), new Jugador("Carlos")));
-        Juego juego = new Juego(jugadores);
 
         Jugador jugador1 = jugadores.get(0);
         Jugador jugador2 = jugadores.get(1);
 
         Objetivo objetivo = new ObjetivoDestruccion(jugador2);
 
-        assertFalse(objetivo.cumplido(jugador1));
+        jugador1.agregarObjetivo(objetivo);
+
+        assertFalse(jugador1.objetivoCumplido());
     }
 }

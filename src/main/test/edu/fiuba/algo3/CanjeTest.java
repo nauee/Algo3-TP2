@@ -1,4 +1,5 @@
 package edu.fiuba.algo3;
+
 import edu.fiuba.algo3.modelo.Continente;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
@@ -20,12 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-// cantidad correcta de fichas con un canje y con 2, que son los estaticos
-// cantidad correcta de fichas con n canjes
-// dos iguales y una distinta levanta una excepcion
-// cantidad correcta de fichas con n canjes y un continente
-
 
 public class CanjeTest {
 
@@ -186,7 +181,7 @@ public class CanjeTest {
     }
 
     @Test
-    public void intentarCanjearDosCartasIgualesYUnaDistintaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException {
+    public void intentarCanjearDosCartasIgualesYUnaDistintaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException{
         Juego juego = new Juego(new ArrayList<>(List.of(new Jugador("Nicolas"))));
 
         Carta carta1 = new Carta(new Pais("Argentina", new ArrayList<>(List.of("Brasil"))), "Fiat Palio");
@@ -197,7 +192,7 @@ public class CanjeTest {
     }
 
     @Test
-    public void intentarCanjearCartasEnEtapaBatallaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException {
+    public void intentarCanjearCartasEnEtapaBatallaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException{
         Juego juego = new Juego(new ArrayList<>(List.of(new Jugador("Nicolas"), new Jugador("Fernando"))));
         Carta carta1 = new Carta(new Pais("Argentina", new ArrayList<>(List.of("Brasil"))), "Fiat Palio");
         Carta carta2 = new Carta(new Pais("Brasil", new ArrayList<>(List.of("Argentina"))), "Globo");

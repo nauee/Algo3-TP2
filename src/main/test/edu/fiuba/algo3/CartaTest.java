@@ -52,7 +52,7 @@ public class CartaTest {
     }
 
     @Test
-    public void intentarActivarUnaCartaEnEtapaBatallaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException {
+    public void intentarActivarUnaCartaEnEtapaBatallaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException{
         Jugador fernando = new Jugador("Fernando");
         Jugador nicolas = new Jugador("Nicolas");
         Juego juego = new Juego(new ArrayList<>(List.of(fernando, nicolas)));
