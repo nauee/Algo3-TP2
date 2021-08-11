@@ -24,4 +24,12 @@ public class ObjetivoConquista extends Objetivo {
         }
         return cumplido || objetivoComunCumplido(jugador);
     }
+
+    public ArrayList<Continente> getContinentes(){
+        return continentes;
+    }
+
+    public ArrayList<Integer> getCantidades(){
+        return cantidadAConquistarPorContinente;
+    }
 }

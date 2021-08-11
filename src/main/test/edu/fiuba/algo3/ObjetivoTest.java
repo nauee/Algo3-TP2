@@ -152,5 +152,4 @@ public class ObjetivoTest {
 
         assertFalse(objetivo.cumplido(jugador1));
     }
-
 }

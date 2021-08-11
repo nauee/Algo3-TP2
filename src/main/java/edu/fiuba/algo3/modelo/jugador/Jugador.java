@@ -14,6 +14,7 @@ public class Jugador{
 
     private static int proximoId = 1;
     private static final int CANTIDAD_MINIMA_PARA_CONQUISTA = 30;
+    private static final int TODOS_LOS_PAISES = 0;
 
     private final String nombre;
     private final int id;
@@ -92,16 +93,7 @@ public class Jugador{
     }
 
     public boolean conquisto(Continente continente, int cantidadPaises){
-        int cantidadConquistada = 0;
-
-        for (Pais pais : paises) {
-            if (continente.tiene(pais)) cantidadConquistada++;
-        }
-
-        if (cantidadPaises == 0)
-            return cantidadConquistada == continente.getCantidadPaises();
-
-        return cantidadPaises <= cantidadConquistada;
+        return continente.fueConquistado(paises, cantidadPaises);
     }
 
     public boolean gano() {
@@ -138,5 +130,9 @@ public class Jugador{
 
     public ArrayList<Pais> getPaises(){
         return paises;
+    }
+
+    public boolean objetivoCumplido(){
+        return objetivo.cumplido(this);
     }
 }
