@@ -1,0 +1,32 @@
+@startuml
+
+title jugador y carta
+
+package modelo {
+
+    package jugador {
+        class Jugador
+        interface EstadoJugador
+        class EstadoGanador
+        class EstadoDerrotado
+        class EstadoVivo
+    }
+
+    package carta {
+        class Carta
+        interface EstadoCarta
+        class CartaActivada
+        class CartaNoActivada
+    }
+
+    CartaActivada ..|> EstadoCarta
+    CartaNoActivada ..|> EstadoCarta
+    Carta --> EstadoCarta
+    Jugador --> EstadoJugador
+    EstadoDerrotado ..|> EstadoJugador
+    EstadoGanador ..|> EstadoJugador
+    EstadoVivo ..|> EstadoJugador
+    EstadoCarta ..> Jugador
+    Jugador --> Carta
+}
+@enduml

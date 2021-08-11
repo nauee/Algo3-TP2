@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.lectura.lector;
 
-import edu.fiuba.algo3.modelo.Continente;
+import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.lectura.creador.CreadorDePaises;
-import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.geografia.Pais;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

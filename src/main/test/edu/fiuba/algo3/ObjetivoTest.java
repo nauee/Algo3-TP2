@@ -1,13 +1,13 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.Continente;
+import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.excepciones.SeAlcanzoLaCantidadMaximaException;
-import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.logica.Juego;
 import edu.fiuba.algo3.modelo.objetivo.Objetivo;
 import edu.fiuba.algo3.modelo.objetivo.ObjetivoConquista;
 import edu.fiuba.algo3.modelo.objetivo.ObjetivoDestruccion;

@@ -1,0 +1,29 @@
+@startuml
+
+title jugador y geografia
+
+package modelo {
+
+    package jugador {
+        class Jugador
+        interface EstadoJugador
+        class EstadoGanador
+        class EstadoDerrotado
+        class EstadoVivo
+    }
+
+    package geografia {
+        class Continente
+        class Pais
+    }
+
+    Jugador --> EstadoJugador
+    EstadoDerrotado ..|> EstadoJugador
+    EstadoGanador ..|> EstadoJugador
+    EstadoVivo ..|> EstadoJugador
+    Continente --> Pais
+    Jugador <--> Pais
+    Continente ..> Jugador
+}
+
+@enduml

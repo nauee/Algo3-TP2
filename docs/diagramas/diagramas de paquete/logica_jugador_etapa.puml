@@ -1,0 +1,43 @@
+@startuml
+title logica, elementos y objetivo
+
+package modelo {
+    package logica {
+        class Batalla
+        class Juego
+    }
+
+    package jugador {
+        class Jugador
+        interface EstadoJugador
+        class EstadoGanador
+        class EstadoDerrotado
+        class EstadoVivo
+    }
+
+    package etapa {
+        abstract class Etapa
+        class EtapaBatalla
+        class EtapaColocacion
+        interface Fase
+        class FaseAgrupamiento
+        class FaseAtaque
+        class FaseColocacion
+    }
+
+    Jugador --> EstadoJugador
+    EstadoDerrotado --> Jugador
+    EstadoDerrotado ..|> EstadoJugador
+    EstadoGanador ..|> EstadoJugador
+    EstadoVivo ..|> EstadoJugador
+    Juego --> Jugador
+    EtapaBatalla --|> Etapa
+    EtapaColocacion --|> Etapa
+    FaseAgrupamiento ..|> Fase
+    FaseAtaque ..|> Fase
+    FaseColocacion ..|> Fase
+    Juego --> Etapa
+    Etapa --> Fase
+    Etapa --> Jugador
+}
+@enduml

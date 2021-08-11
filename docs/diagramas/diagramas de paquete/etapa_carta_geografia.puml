@@ -1,0 +1,45 @@
+@startuml
+
+title etapa, carta y geografia
+
+package modelo {
+    package carta {
+        class Carta
+        interface EstadoCarta
+        class CartaActivada
+        class CartaNoActivada
+    }
+
+    package geografia {
+        class Continente
+        class Pais
+    }
+
+    package etapa {
+        abstract class Etapa
+        class EtapaBatalla
+        class EtapaColocacion
+        interface Fase
+        class FaseAgrupamiento
+        class FaseAtaque
+        class FaseColocacion
+    }
+
+    CartaActivada ..|> EstadoCarta
+    CartaNoActivada ..|> EstadoCarta
+    Carta --> EstadoCarta
+    Continente --> Pais
+    EstadoCarta ..> Pais
+    Carta --> Pais
+    EtapaBatalla --|> Etapa
+    EtapaColocacion --|> Etapa
+    FaseAgrupamiento ..|> Fase
+    FaseAtaque ..|> Fase
+    FaseColocacion ..|> Fase
+    Etapa --> Fase
+    Etapa --> Carta
+    Etapa --> Continente
+    Etapa ..> Pais
+}
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+
+title logica y geografia
+
+package modelo {
+    package logica {
+        class Batalla
+        class Juego
+    }
+
+    package geografia {
+        class Continente
+        class Pais
+    }
+
+    Pais ..> Batalla
+    Juego --> Continente
+    Continente --> Pais
+    Batalla --> Pais
+}
+
+@enduml

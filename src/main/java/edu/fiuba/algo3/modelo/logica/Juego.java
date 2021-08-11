@@ -1,10 +1,12 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.logica;
 
 import edu.fiuba.algo3.interfaz.Observable;
 import edu.fiuba.algo3.interfaz.Observador;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.etapa.Etapa;
 import edu.fiuba.algo3.modelo.etapa.EtapaColocacion;
+import edu.fiuba.algo3.modelo.geografia.Continente;
+import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.excepciones.*;
 import edu.fiuba.algo3.lectura.lector.LectorDeCartas;

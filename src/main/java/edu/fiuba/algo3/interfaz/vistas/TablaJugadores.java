@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.modelo.Juego;
+import edu.fiuba.algo3.modelo.logica.Juego;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 

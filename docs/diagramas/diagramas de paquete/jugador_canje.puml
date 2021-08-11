@@ -1,0 +1,30 @@
+@startuml
+
+title jugador y canje
+
+package modelo {
+
+    package jugador {
+        class Jugador
+        interface EstadoJugador
+        class EstadoGanador
+        class EstadoDerrotado
+        class EstadoVivo
+    }
+
+    package canje {
+        interface Canje
+        class CansjeEstatico
+        class CanjeDinamico
+    }
+
+    CanjeDinamico ..> Canje
+    CanjeEstatico ..> Canje
+    Jugador --> Canje
+    Jugador --> EstadoJugador
+    EstadoDerrotado ..|> EstadoJugador
+    EstadoGanador ..|> EstadoJugador
+    EstadoVivo ..|> EstadoJugador
+}
+
+@enduml

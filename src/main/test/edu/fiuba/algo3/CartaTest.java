@@ -2,7 +2,7 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.excepciones.CartaYaActivadaException;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.interfaz.botones;
 
-import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.geografia.Pais;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

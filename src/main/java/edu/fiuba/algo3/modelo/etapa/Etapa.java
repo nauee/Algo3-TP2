@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo.etapa;
 
 import edu.fiuba.algo3.modelo.carta.Carta;
-import edu.fiuba.algo3.modelo.Continente;
+import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.Pais;
+import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.excepciones.*;
 
 import java.util.ArrayList;

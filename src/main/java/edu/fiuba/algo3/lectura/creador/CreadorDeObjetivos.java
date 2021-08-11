@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.lectura.creador;
 
-import edu.fiuba.algo3.modelo.Continente;
+import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.objetivo.Objetivo;
 import edu.fiuba.algo3.modelo.objetivo.ObjetivoConquista;

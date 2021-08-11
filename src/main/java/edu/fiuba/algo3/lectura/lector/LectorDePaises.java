@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.lectura.lector;
 
-import edu.fiuba.algo3.modelo.Continente;
+import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import org.json.simple.parser.JSONParser;

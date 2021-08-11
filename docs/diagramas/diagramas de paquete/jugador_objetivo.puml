@@ -1,0 +1,30 @@
+@startuml
+
+title jugador y objetivo
+
+package modelo {
+    package jugador {
+        class Jugador
+        interface EstadoJugador
+        class EstadoGanador
+        class EstadoDerrotado
+        class EstadoVivo
+    }
+
+    package objetivo {
+        abstract class Objetivo
+        class ObjetivoConquista
+        class ObjetivoDestruccion
+    }
+
+    Jugador --> EstadoJugador
+    EstadoDerrotado ..|> EstadoJugador
+    EstadoGanador ..|> EstadoJugador
+    EstadoVivo ..|> EstadoJugador
+    ObjetivoConquista --|> Objetivo
+    ObjetivoDestruccion --|> Objetivo
+    Jugador --> Objetivo
+    Objetivo ..> Jugador
+}
+
+@enduml

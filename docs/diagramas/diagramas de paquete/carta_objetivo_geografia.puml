@@ -1,0 +1,35 @@
+@startuml
+
+title carta, objetivo y geografia
+
+package modelo {
+    package carta {
+        class Carta
+        interface EstadoCarta
+        class CartaActivada
+        class CartaNoActivada
+    }
+
+    package geografia {
+        class Continente
+        class Pais
+    }
+
+    package objetivo {
+        abstract class Objetivo
+        class ObjetivoConquista
+        class ObjetivoDestruccion
+    }
+
+    CartaActivada ..|> EstadoCarta
+    CartaNoActivada ..|> EstadoCarta
+    Carta --> EstadoCarta
+    Continente --> Pais
+    EstadoCarta ..> Pais
+    ObjetivoConquista --|> Objetivo
+    ObjetivoDestruccion --|> Objetivo
+    Carta --> Pais
+    ObjetivoConquista --> Continete
+}
+
+@enduml

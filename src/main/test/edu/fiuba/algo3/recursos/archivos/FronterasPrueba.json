@@ -1,0 +1,18 @@
+[
+ {
+   "Pais": "Francia",
+   "Continente": "Europa",
+   "Limita con": "Alemania,España,Italia"
+ },
+ {
+   "Pais": "Gran Bretaña",
+   "Continente": "Europa",
+   "Limita con": "Islandia,Alemania,España"
+ },
+ {
+   "Pais": "Tartaria",
+   "Continente": "Asia",
+   "Limita con": "Aral,Taymir,Siberia"
+ }
+]
+

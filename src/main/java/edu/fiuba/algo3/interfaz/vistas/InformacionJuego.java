@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.modelo.Juego;
-import javafx.scene.control.Button;
+import edu.fiuba.algo3.modelo.logica.Juego;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 

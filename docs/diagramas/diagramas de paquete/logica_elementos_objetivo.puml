@@ -1,0 +1,26 @@
+@startuml
+title logica, elementos y objetivo
+
+package modelo {
+    package logica {
+        class Batalla
+        class Juego
+    }
+
+    package elementos {
+        class Dado
+    }
+
+    package objetivo {
+        abstract class Objetivo
+        class ObjetivoConquista
+        class ObjetivoDestruccion
+    }
+
+    Batalla ..> Dado
+    Juego --> Objetivo
+    ObjetivoConquista --|> Objetivo
+    ObjetivoDestruccion --|> Objetivo
+}
+
+@enduml
