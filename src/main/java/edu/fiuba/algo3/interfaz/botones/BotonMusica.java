@@ -8,8 +8,6 @@ import edu.fiuba.algo3.interfaz.Reproductor;
 public class BotonMusica extends RadioMenuItem {
 
     public BotonMusica(Reproductor reproductor, Cancion cancion){
-       super();
-       //reproductor.agregar(cancion);
        this.setText(cancion.nombre());
        this.setOnAction(new ControladorMusica(reproductor, cancion));
     }

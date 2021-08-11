@@ -113,4 +113,12 @@ public class Juego {
     public String nombreFase(){
         return (etapa.nombreFase());
     }
+
+    public ArrayList<Pais> paisesDeJugadorDeTurno(){
+        return(etapa.paisesDeJugadorDeTurno());
+    }
+
+    public String getNombreJugadorDeTurno(){
+        return (etapa.getNombreJugadorDeTurno());
+    }
 }

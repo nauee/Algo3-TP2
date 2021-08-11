@@ -130,4 +130,8 @@ public class Jugador{
     public int getId(){
         return id;
     }
+
+    public ArrayList<Pais> getPaises(){
+        return paises;
+    }
 }

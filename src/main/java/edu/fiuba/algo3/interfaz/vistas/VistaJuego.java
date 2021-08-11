@@ -2,10 +2,12 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.excepciones.PaisNoExisteException;
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.*;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -33,22 +35,17 @@ public class VistaJuego extends BorderPane{
         this.juego = juego;
 
         this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondoJuego));
+        ArrayList<Pais> paisesSeleccionados = new ArrayList<>();
 
-        Mapa mapa= new Mapa(stage, juego, colores);
+        Mapa mapa= new Mapa(stage, juego, colores, paisesSeleccionados);
         InformacionJuego informacion = new InformacionJuego(juego);
 
-        for (int i = 0; i < juego.getCantidadJugadores(); i++) {
-            HBox jugador = new HBox();
-            Label jugadorNombre = new Label(juego.getJugador(i).getNombre());
-            jugadorNombre.setStyle("-fx-border-color: " + colores.get(i) + "; -fx-border-radius: 10%; -fx-font-size: 18px");
-            jugadorNombre.setPadding(new Insets(0,0,0,10));
-            jugadorNombre.setPrefSize(118, 52);
-            jugador.setPrefSize(118, 52);
-            jugador.setLayoutY(50 + i*75);
-            jugador.getChildren().add(jugadorNombre);
-            mapa.getChildren().add(jugador);
-            AnchorPane.setRightAnchor(jugador, 0.0);
-        }
+
+        JugadoresEnMapa jugadores = new JugadoresEnMapa(juego, colores);
+        mapa.getChildren().add(jugadores);
+        AnchorPane.setRightAnchor(jugadores, 0.0);
+        mapa.getChildren().add(informacion);
+        AnchorPane.setLeftAnchor(informacion, 0.0);
 
 
         int jugadorDeTurnoIndex = juego.getJugadorDeTurno();
@@ -70,7 +67,6 @@ public class VistaJuego extends BorderPane{
 
         this.setTop(menuArriba);
         this.setCenter(mapa);
-        this.setLeft(informacion);
 
     }
 }

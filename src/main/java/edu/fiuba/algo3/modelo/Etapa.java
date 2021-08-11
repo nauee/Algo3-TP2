@@ -41,6 +41,14 @@ public abstract class Etapa {
         return jugadorDeTurno;
     }
 
+    public ArrayList<Pais> paisesDeJugadorDeTurno(){
+        return (jugadores.get(jugadorDeTurno).getPaises());
+    }
+
     public abstract String nombreFase();
+
+    public String getNombreJugadorDeTurno(){
+        return jugadores.get(jugadorDeTurno).getNombre();
+    }
 
 }
