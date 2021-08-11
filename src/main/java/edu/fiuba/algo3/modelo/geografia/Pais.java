@@ -14,6 +14,7 @@ public class Pais {
     private Jugador duenio;
     private int cantidadEjercitos;
     private final ArrayList<String> limitrofes;
+    private final int cantidadMaximaDeEjercitos = 3;
 
     public Pais(String nombre, ArrayList<String> limitrofes) {
         this.nombre = nombre;
@@ -88,7 +89,7 @@ public class Pais {
         if (cantidadEjercitos <= cantidadAtacantes)
             throw new AtaqueConCantidadInvalidaException();
 
-        return min(cantidadEjercitos, 3);
+        return min(cantidadEjercitos, cantidadMaximaDeEjercitos);
     }
 
     public void atacarPais(Pais paisAtacado, int cantidadEjercito, Jugador jugador) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, MovimientoConCantidadInvalidaException {

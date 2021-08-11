@@ -1,0 +1,47 @@
+package edu.fiuba.algo3.modelo.etapa;
+
+import edu.fiuba.algo3.excepciones.FichasInsuficientesException;
+import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
+import edu.fiuba.algo3.excepciones.QuedanFichasPorColocarException;
+import edu.fiuba.algo3.modelo.carta.Carta;
+import edu.fiuba.algo3.modelo.geografia.Pais;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+
+import java.util.ArrayList;
+
+public class FaseInicial implements Fase {
+    private int fichasColocadas;
+    private final Jugador jugadorDeTurno;
+    private final String nombre= "inicial";
+    private final int fichasIniciales;
+    private final int fichasSiguienteFase = 3;
+
+    public FaseInicial(Jugador jugadorDeTurno, int cantidadDeFichas){
+        this.fichasIniciales = cantidadDeFichas;
+        fichasColocadas = 0;
+        this.jugadorDeTurno = jugadorDeTurno;
+    }
+
+    @Override
+    public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoTePerteneceException, FichasInsuficientesException {
+        if(fichasIniciales < fichasColocadas + cantidadEjercitos)
+            throw new FichasInsuficientesException();
+
+        Pais pais = paises[0];
+        pais.agregarEjercitos(cantidadEjercitos, jugadorDeTurno);
+        fichasColocadas += cantidadEjercitos;
+    }
+
+    @Override
+    public Fase siguienteFase(ArrayList<Carta> cartas) throws QuedanFichasPorColocarException {
+        if(fichasIniciales > fichasColocadas)
+            throw new QuedanFichasPorColocarException();
+        Jugador siguienteJugador= Etapa.siguienteJugador();
+        return new FaseInicial(siguienteJugador, fichasSiguienteFase);
+    }
+
+    @Override
+    public String nombre() {
+        return nombre;
+    }
+}

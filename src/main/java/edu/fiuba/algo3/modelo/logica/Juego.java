@@ -4,7 +4,7 @@ import edu.fiuba.algo3.interfaz.Observable;
 import edu.fiuba.algo3.interfaz.Observador;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.etapa.Etapa;
-import edu.fiuba.algo3.modelo.etapa.EtapaColocacion;
+import edu.fiuba.algo3.modelo.etapa.PrimeraEtapaInicial;
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -48,7 +48,7 @@ public class Juego implements Observable {
         distribuirPaises();
         distribuirObjetivos();
         Etapa.asignarValores(continentes, jugadores, cartas);
-        etapa = new EtapaColocacion();
+        etapa = new PrimeraEtapaInicial();
     }
 
     private void distribuirObjetivos(){
@@ -89,13 +89,11 @@ public class Juego implements Observable {
     }
 
     public void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, PaisNoExisteException, MovimientoConCantidadInvalidaException {
-        Pais pais1 = paises[0];
-        Pais pais2 = (paises.length > 1) ? paises[1] : null;
-        etapa.jugar(cantidadEjercitos, pais1, pais2);
+        etapa.jugar(cantidadEjercitos, paises);
         this.notificar();
     }
 
-    public void pasarDeFase(){
+    public void pasarDeFase() throws QuedanFichasPorColocarException {
         etapa = etapa.siguienteFase();
         this.notificar();
     }

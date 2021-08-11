@@ -28,7 +28,7 @@ public class EtapaColocacion extends Etapa {
     public String nombreFase() {
         return fase.nombre();
     }
-
+    
     @Override
     public int getCantidadPaisesNecesarios() {
         return 1;

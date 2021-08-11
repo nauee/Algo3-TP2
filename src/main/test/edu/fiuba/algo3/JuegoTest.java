@@ -50,7 +50,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void rondaDosJugadoresColocarEjercitosNuevos() throws PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion {
+    public void rondaDosJugadoresColocarEjercitosNuevos() throws PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, NoSePudoLeerExcepcion, QuedanFichasPorColocarException {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nahuel"), new Jugador("Fernando")));
         Juego juego = new Juego(jugadores);
         Jugador jugador0 = jugadores.get(0);
@@ -85,7 +85,7 @@ public class JuegoTest {
     }
 
     @Test
-    public void juegoDeUnaRonda3JugadoresUnoControlaAsiaSeAgreganNuevosEjercitos() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, NoSePudoLeerExcepcion {
+    public void juegoDeUnaRonda3JugadoresUnoControlaAsiaSeAgreganNuevosEjercitos() throws PaisNoTePerteneceException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException, PaisNoExisteException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException, NoSePudoLeerExcepcion, QuedanFichasPorColocarException {
         ArrayList<Jugador> jugadores = new ArrayList<>(Arrays.asList(new Jugador("Nicolas"), new Jugador("Felipe"), new Jugador("Agustina")));
         Juego juego = new Juego(jugadores);
 
