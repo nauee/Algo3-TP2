@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.musica;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;

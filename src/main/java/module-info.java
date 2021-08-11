@@ -17,4 +17,6 @@ module edu.fiuba {
     exports edu.fiuba.algo3.modelo.canje;
     exports edu.fiuba.algo3.modelo.etapa;
     exports edu.fiuba.algo3.modelo.objetivo;
+    exports edu.fiuba.algo3.interfaz.vistas.menu;
+    exports edu.fiuba.algo3.interfaz.musica;
 }

@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
 import edu.fiuba.algo3.interfaz.botones.BotonCantidad;
-import edu.fiuba.algo3.interfaz.vistas.MenuBarra;
+import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
 import edu.fiuba.algo3.interfaz.vistas.VistaNombresJugadores;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

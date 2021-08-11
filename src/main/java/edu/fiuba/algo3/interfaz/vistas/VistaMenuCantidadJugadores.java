@@ -2,10 +2,9 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.interfaz.botones.BotonGrande;
 import edu.fiuba.algo3.interfaz.controladores.ControladorCantidadJugadores;
-import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioJugar;
-import javafx.geometry.Insets;
+import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
+import edu.fiuba.algo3.interfaz.vistas.menu.MenuOpcionesCantidad;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;

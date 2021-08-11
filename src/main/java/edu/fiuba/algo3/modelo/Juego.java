@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.interfaz.Observable;
+import edu.fiuba.algo3.interfaz.Observador;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.etapa.Etapa;
 import edu.fiuba.algo3.modelo.etapa.EtapaColocacion;
@@ -14,10 +16,11 @@ import org.json.simple.parser.ParseException;
 import java.util.*;
 import java.io.IOException;
 
-public class Juego {
+public class Juego implements Observable {
 
     static private final int JUGADORES_MAX = 6;
 
+    private ArrayList<Observador> observadores=new ArrayList<>();
     private Etapa etapa;
     private final ArrayList<Continente> continentes;
     private final ArrayList<Jugador> jugadores;
@@ -87,10 +90,12 @@ public class Juego {
         Pais pais1 = paises[0];
         Pais pais2 = (paises.length > 1) ? paises[1] : null;
         etapa.jugar(cantidadEjercitos, pais1, pais2);
+        this.notificar();
     }
 
     public void pasarDeFase(){
         etapa = etapa.siguienteFase();
+        this.notificar();
     }
 
     public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException, SimbolosInvalidosException {
@@ -121,5 +126,18 @@ public class Juego {
 
     public String getNombreJugadorDeTurno(){
         return (etapa.getNombreJugadorDeTurno());
+    }
+
+
+    @Override
+    public void agregarObservador(Observador nuevoObservador) {
+        observadores.add(nuevoObservador);
+    }
+
+    @Override
+    public void notificar() {
+        for(Observador observador: observadores){
+            observador.actualizar();
+        }
     }
 }

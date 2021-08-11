@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Mapa extends AnchorPane {
 
@@ -17,19 +18,27 @@ public class Mapa extends AnchorPane {
     private final double posicionX= 154;
     private final Stage stage;
     private Juego juego;
-    private final ArrayList<String> colores;
+    private final String colorAzul = "#0077bb";
+    private final String colorRojo = "#cc3311";
+    private final String colorAmarillo = "#ee7733";
+    private final String colorVerde = "#009988";
+    private final String colorRosa = "#ee3377";
+    private final String colorNegro = "#000000";
+    private final ArrayList<String> colores = new ArrayList<>(List.of(colorAzul, colorRojo, colorAmarillo, colorVerde, colorRosa, colorNegro));
     private ArrayList<Pais> paisesSeleccionados;
     private ArrayList<BotonPais> botonesPaises = new ArrayList<>();
+    private InformacionJuego informacion;
+    private TablaJugadores jugadores;
 
-
-    public Mapa(Stage stage, Juego juego, ArrayList<String> colores, ArrayList<Pais> paisesSeleccionados) throws PaisNoExisteException {
+    public Mapa(Stage stage, Juego juego, ArrayList<Pais> paisesSeleccionados) throws PaisNoExisteException {
         super();
         Imagen fotoMapa= new Imagen(rutaImagenMapa, altura, ancho, posicionX);
         this.getChildren().add(fotoMapa);
         this.stage=stage;
         this.juego=juego;
-        this.colores= colores;
         this.paisesSeleccionados= paisesSeleccionados;
+        this.informacion = new InformacionJuego(juego);
+        this.jugadores = new TablaJugadores(juego, colores);
 
         this.ponerPaises();
         this.mostrarBotonesJugadorDeTurno(juego.paisesDeJugadorDeTurno());
@@ -42,6 +51,16 @@ public class Mapa extends AnchorPane {
             }
         }
     }
+
+    public void actualizar(){
+        //informacion.actualizar();
+        //jugadores.actualizar();
+        paisesSeleccionados= new ArrayList<>();
+    }
+
+
+
+
 
     private void ponerPaises() throws PaisNoExisteException {
 

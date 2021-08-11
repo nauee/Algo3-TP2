@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz;
+package edu.fiuba.algo3.interfaz.musica;
 
 import java.io.File;
 import java.util.ArrayList;

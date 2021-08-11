@@ -9,11 +9,12 @@ import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 
-public class JugadoresEnMapa extends VBox {
+public class TablaJugadores extends VBox {
 
     private final Juego juego;
 
-    public JugadoresEnMapa(Juego juego, ArrayList<String> colores ) {
+    public TablaJugadores(Juego juego, ArrayList<String> colores ) {
+
         this.juego=juego;
 
         for (int i = 0; i < juego.getCantidadJugadores(); i++) {

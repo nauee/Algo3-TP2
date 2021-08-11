@@ -3,17 +3,13 @@ package edu.fiuba.algo3.interfaz.vistas;
 import edu.fiuba.algo3.interfaz.botones.BotonGrande;
 import edu.fiuba.algo3.interfaz.controladores.ControladorInicio;
 import edu.fiuba.algo3.interfaz.controladores.ControladorVolver;
+import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class VistaNombresJugadores extends BorderPane {
 

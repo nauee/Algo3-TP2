@@ -1,15 +1,11 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
-import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
+import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
+import edu.fiuba.algo3.interfaz.vistas.menu.MenuInicio;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;

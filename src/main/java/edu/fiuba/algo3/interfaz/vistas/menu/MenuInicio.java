@@ -1,9 +1,10 @@
-package edu.fiuba.algo3.interfaz.vistas;
+package edu.fiuba.algo3.interfaz.vistas.menu;
 
 import edu.fiuba.algo3.interfaz.botones.BotonGrande;
 import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
 import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioJugar;
 import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
+import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;

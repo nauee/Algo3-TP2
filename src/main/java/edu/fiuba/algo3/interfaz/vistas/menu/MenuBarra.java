@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.interfaz.vistas;
+package edu.fiuba.algo3.interfaz.vistas.menu;
 
-import edu.fiuba.algo3.interfaz.controladores.ControladorInicio;
 import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
 import edu.fiuba.algo3.interfaz.controladores.ControladorNuevoJuego;
 import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
+import edu.fiuba.algo3.interfaz.vistas.ImagenFondo;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;

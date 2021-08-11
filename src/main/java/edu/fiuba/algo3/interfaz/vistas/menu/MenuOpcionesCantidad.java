@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz.vistas;
+package edu.fiuba.algo3.interfaz.vistas.menu;
 
 import edu.fiuba.algo3.interfaz.OpcionesCantidad;
 import javafx.geometry.Insets;
