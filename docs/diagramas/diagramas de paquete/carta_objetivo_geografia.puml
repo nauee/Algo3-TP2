@@ -29,7 +29,7 @@ package modelo {
     ObjetivoConquista --|> Objetivo
     ObjetivoDestruccion --|> Objetivo
     Carta --> Pais
-    ObjetivoConquista --> Continete
+    ObjetivoConquista --> Continente
 }
 
 @enduml
