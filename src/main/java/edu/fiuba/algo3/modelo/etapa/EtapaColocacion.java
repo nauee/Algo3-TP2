@@ -28,9 +28,14 @@ public class EtapaColocacion extends Etapa {
     public String nombreFase() {
         return fase.nombre();
     }
+    
+    @Override
+    public int getCantidadPaisesNecesarios() {
+        return 1;
+    }
 
     @Override
-    public Etapa siguienteFase() throws QuedanFichasPorColocarException {
+    public Etapa siguienteFase(){
         fase = (FaseColocacion) fase.siguienteFase(cartas);
         if (jugadorDeTurno >= jugadores.size())
             return new EtapaBatalla();

@@ -51,4 +51,5 @@ public abstract class Etapa {
         return jugadores.get(jugadorDeTurno).getNombre();
     }
 
+    public abstract int getCantidadPaisesNecesarios();
 }

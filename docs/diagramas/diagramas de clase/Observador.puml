@@ -1,0 +1,20 @@
+@startuml
+
+title Observador
+
+hide empty members
+
+interface Observador {
+    + actualizar(): void
+}
+
+class ObservadorJuego {
+    - vista: VistaJuego
+    + {static} ObservadorJuego(juego: Observable, vista): ObservadorJuego
+}
+
+ObservadorJuego ..|> Observador
+ObservadorPaisesSeleccionados ..|> Observador
+Juego "1" --> "1...*" Observador
+
+@enduml

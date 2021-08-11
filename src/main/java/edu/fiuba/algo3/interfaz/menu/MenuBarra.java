@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.interfaz.vistas.menu;
+package edu.fiuba.algo3.interfaz.menu;
 
 import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
 import edu.fiuba.algo3.interfaz.controladores.ControladorNuevoJuego;

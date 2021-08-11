@@ -6,7 +6,7 @@ import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.excepciones.SeAlcanzoLaCantidadMaximaException;
 import edu.fiuba.algo3.interfaz.AlertaError;
-import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
+import edu.fiuba.algo3.interfaz.menu.MenuBarra;
 import edu.fiuba.algo3.interfaz.vistas.VistaJuego;
 import edu.fiuba.algo3.interfaz.vistas.VistaNombresJugadores;
 import edu.fiuba.algo3.modelo.logica.Juego;

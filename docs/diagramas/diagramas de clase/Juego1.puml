@@ -8,7 +8,6 @@ class Juego {
     + {static} Juego(jugadores: ArrayList): Juego
     + buscarPais(unPais: String): Pais
     + jugar(cantidadEjercitos: int, paises: Array): void
-
 }
 
 Juego "1" --> "1" Etapa

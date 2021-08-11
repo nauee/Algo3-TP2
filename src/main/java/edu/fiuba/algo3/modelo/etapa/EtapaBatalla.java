@@ -41,4 +41,9 @@ public class EtapaBatalla extends Etapa {
     public String nombreFase(){
         return fase.nombre();
     }
+
+    @Override
+    public int getCantidadPaisesNecesarios() {
+        return 2;
+    }
 }

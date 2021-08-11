@@ -1,6 +1,8 @@
 @startuml
 title Canje
 
+hide empty members
+
 interface Canje {
     + siguienteCanje(cantidadDeCanjes: int): Canje
     + realizarCanje(cantidadDeCanjes: int): int

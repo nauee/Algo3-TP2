@@ -2,6 +2,8 @@
 
 title Continente y Pais
 
+hide empty members
+
 class Continente {
     - recompensa: int
     + {static} Continente(nombre, recompensa): Continente
