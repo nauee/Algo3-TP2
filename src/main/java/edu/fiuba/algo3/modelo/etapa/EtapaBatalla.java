@@ -19,7 +19,7 @@ public class EtapaBatalla extends Etapa {
     }
 
     @Override
-    public Etapa siguienteFase(){
+    public Etapa siguienteFase() throws QuedanFichasPorColocarException {
         fase = fase.siguienteFase(cartas);
         if (jugadorDeTurno >= jugadores.size())
             return new EtapaColocacion();

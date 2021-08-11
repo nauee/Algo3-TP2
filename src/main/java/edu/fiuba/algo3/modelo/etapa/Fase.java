@@ -8,6 +8,6 @@ import java.util.ArrayList;
 
 interface Fase {
     void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, MovimientoConCantidadInvalidaException;
-    Fase siguienteFase(ArrayList<Carta> cartas);
+    Fase siguienteFase(ArrayList<Carta> cartas) throws QuedanFichasPorColocarException;
     String nombre();
 }

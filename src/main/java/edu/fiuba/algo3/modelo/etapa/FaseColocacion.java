@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.etapa;
 
+import edu.fiuba.algo3.excepciones.QuedanFichasPorColocarException;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -44,7 +45,9 @@ public class FaseColocacion implements Fase {
     }
 
     @Override
-    public Fase siguienteFase(ArrayList<Carta> cartas){
+    public Fase siguienteFase(ArrayList<Carta> cartas) throws QuedanFichasPorColocarException {
+        if(fichasDelJugador > fichasColocadas)
+            throw new QuedanFichasPorColocarException();
         Jugador siguienteJugador= Etapa.siguienteJugador();
         return new FaseColocacion(siguienteJugador);
     }

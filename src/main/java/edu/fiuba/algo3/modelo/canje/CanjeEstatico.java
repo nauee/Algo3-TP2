@@ -4,6 +4,8 @@ import edu.fiuba.algo3.modelo.canje.Canje;
 import edu.fiuba.algo3.modelo.canje.CanjeDinamico;
 
 public class CanjeEstatico implements Canje {
+    private final int valorInicial = 4;
+    private final int incremento = 3;
 
     @Override
     public Canje siguienteCanje(int cantidadDeCanjes){
@@ -15,6 +17,6 @@ public class CanjeEstatico implements Canje {
 
     @Override
     public int realizarCanje(int cantidadDeCanjes){
-        return 4 + ((3*(cantidadDeCanjes-1)));
+        return valorInicial + ((incremento*(cantidadDeCanjes-1)));
     }
 }

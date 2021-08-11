@@ -1,16 +1,16 @@
 package edu.fiuba.algo3.modelo.etapa;
 
+import edu.fiuba.algo3.excepciones.*;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.geografia.Pais;
-import edu.fiuba.algo3.excepciones.*;
 
-public class EtapaColocacion extends Etapa {
+public class SegundaEtapaInicial extends Etapa{
+    private FaseInicial fase;
+    private final int fichasIniciales = 3;
 
-    private FaseColocacion fase;
-
-    public EtapaColocacion(){
+    public SegundaEtapaInicial(){
         jugadorDeTurno = 0;
-        fase = new FaseColocacion(jugadores.get(jugadorDeTurno));
+        fase = new FaseInicial(jugadores.get(jugadorDeTurno), fichasIniciales);
     }
 
     @Override
@@ -19,9 +19,8 @@ public class EtapaColocacion extends Etapa {
     }
 
     @Override
-    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3){
-        int fichas = jugadores.get(jugadorDeTurno).canjearCartas(carta1, carta2, carta3, cartas);
-        fase.agregarFichasDelCanje(fichas);
+    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException {
+        throw new NoSePuedeCanjearEnEtapaBatallaException();
     }
 
     @Override
@@ -31,14 +30,14 @@ public class EtapaColocacion extends Etapa {
 
     @Override
     public Etapa siguienteFase() throws QuedanFichasPorColocarException {
-        fase = (FaseColocacion) fase.siguienteFase(cartas);
+        fase = (FaseInicial) fase.siguienteFase(cartas);
         if (jugadorDeTurno >= jugadores.size())
             return new EtapaBatalla();
         return this;
     }
 
     @Override
-    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
-        fase.activarCarta(unaCarta);
+    public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException {
+        throw new NoSePuedeActivarCartaEnLaBatallaException();
     }
 }

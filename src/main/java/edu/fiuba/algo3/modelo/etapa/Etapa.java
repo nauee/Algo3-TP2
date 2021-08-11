@@ -31,7 +31,7 @@ public abstract class Etapa {
 
     public abstract void jugar(int cantidadEjercitos, Pais... paises) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, FichasInsuficientesException, MovimientoConCantidadInvalidaException;
 
-    public abstract Etapa siguienteFase();
+    public abstract Etapa siguienteFase() throws QuedanFichasPorColocarException;
 
     public abstract void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException, CartaYaActivadaException;
 
