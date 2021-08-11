@@ -1,0 +1,27 @@
+@startuml
+
+title Cambio de fases
+
+state inicio as "Inicialización juego"
+[*] --> inicio
+hide empty description
+
+state colocacion as "Fase Colocación"
+colocacion: Etapa Colocacion
+inicio --> colocacion
+colocacion --> colocacion: hasta que todos coloquen
+
+state ataque as "Fase Ataque"
+ataque: Etapa Batalla
+colocacion --> ataque
+
+state agrupamiento as "Fase Agrupamiento"
+agrupamiento: Etapa Batalla
+ataque --> agrupamiento
+agrupamiento --> ataque
+
+agrupamiento --> colocacion: ya jugaron todos la batalla
+
+agrupamiento --> [*]: alguien gana el juego
+
+@enduml
