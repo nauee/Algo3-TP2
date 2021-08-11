@@ -1,14 +1,17 @@
 package edu.fiuba.algo3;
 import edu.fiuba.algo3.modelo.Continente;
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.excepciones.*;
 import edu.fiuba.algo3.modelo.etapa.Etapa;
 import edu.fiuba.algo3.modelo.etapa.EtapaColocacion;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -180,5 +183,29 @@ public class CanjeTest {
         etapa.canjearCartas(carta1, carta2, carta3);
         etapa.jugar(10, argentina);
         assertEquals(10, argentina.getCantidadEjercitos());
+    }
+
+    @Test
+    public void intentarCanjearDosCartasIgualesYUnaDistintaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException {
+        Juego juego = new Juego(new ArrayList<>(List.of(new Jugador("Nicolas"))));
+
+        Carta carta1 = new Carta(new Pais("Argentina", new ArrayList<>(List.of("Brasil"))), "Fiat Palio");
+        Carta carta2 = new Carta(new Pais("Brasil", new ArrayList<>(List.of("Argentina"))), "Buenarda moto");
+        Carta carta3 = new Carta(new Pais("Ecuador", new ArrayList<>(List.of("Brasil"))), "Buenarda moto");
+
+        assertThrows(SimbolosInvalidosException.class, ()-> juego.canjearCartas(carta1, carta2, carta3));
+    }
+
+    @Test
+    public void intentarCanjearCartasEnEtapaBatallaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException, SeAlcanzoLaCantidadMaximaException {
+        Juego juego = new Juego(new ArrayList<>(List.of(new Jugador("Nicolas"), new Jugador("Fernando"))));
+        Carta carta1 = new Carta(new Pais("Argentina", new ArrayList<>(List.of("Brasil"))), "Fiat Palio");
+        Carta carta2 = new Carta(new Pais("Brasil", new ArrayList<>(List.of("Argentina"))), "Globo");
+        Carta carta3 = new Carta(new Pais("Ecuador", new ArrayList<>(List.of("Brasil"))), "Barco");
+
+        juego.pasarDeFase();
+        juego.pasarDeFase();
+
+        assertThrows(NoSePuedeCanjearEnEtapaBatallaException.class, ()-> juego.canjearCartas(carta1, carta2, carta3));
     }
 }

@@ -54,9 +54,20 @@ public class CreadorTest {
     @Test
     public void intentoCrearUnObjetivoDeTipoDestruccionYMeDevuelveLaInstanciaCorrecta(){
         Jugador jugador = new Jugador("Fernando");
-        Objetivo objetivo = CreadorDeObjetivos.crear(1, new ArrayList<>(List.of(jugador)));
+        Objetivo objetivo = CreadorDeObjetivos.crear(2, new ArrayList<>(List.of(jugador)));
 
         assertTrue(objetivo instanceof ObjetivoDestruccion);
         assertEquals(jugador, ((ObjetivoDestruccion) objetivo).getJugador());
+    }
+
+    @Test
+    public void siElCreadorDeCartasRecibeUnContinenteSinElPaisCorrespondienteLanzaUnaExcepcion() throws PaisNoExisteException {
+        Pais argentina = new Pais("Argentina", new ArrayList<>(List.of("Brasil", "Uruguay")));
+        Continente americaDelSur = new Continente("America del Sur", 0);
+        americaDelSur.agregarPais(argentina);
+
+        assertThrows(PaisNoExisteException.class, () -> {
+            CreadorDeCartas.crear("Iran", "Bomba", new ArrayList<>(List.of(americaDelSur)));
+        });
     }
 }

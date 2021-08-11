@@ -206,4 +206,19 @@ public class JuegoTest {
 
         assertThrows(CartaYaActivadaException.class, ()-> juego.activarCarta(carta));
     }
+
+    @Test
+    public void enviarUnaCantidadDeJugadoresMayorALaPermitidaLanzaUnaExcepcion(){
+        ArrayList<Jugador> jugadores = new ArrayList<>(List.of(
+                new Jugador("Joaquin"),
+                new Jugador("Nicolas"),
+                new Jugador("Fernando"),
+                new Jugador("Nahuel"),
+                new Jugador("Agustina"),
+                new Jugador("Rosario"),
+                new Jugador("Marcos")
+        ));
+
+        assertThrows(SeAlcanzoLaCantidadMaximaException.class, () -> new Juego(jugadores));
+    }
 }

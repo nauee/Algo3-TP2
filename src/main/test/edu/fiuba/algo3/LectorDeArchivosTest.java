@@ -149,4 +149,12 @@ public class LectorDeArchivosTest {
         assertTrue(objetivos.get(5) instanceof ObjetivoDestruccion);
         assertEquals(6, objetivos.size());
     }
+
+    @Test
+    public void enviarUnArchivoDeUnTipoNoImplementadoLanzaUnaExcepcion(){
+        LectorDePaises lectorPaises = new LectorDePaises();
+        assertThrows(NoSePudoLeerExcepcion.class, ()->{
+            lectorPaises.leer("src/main/test/edu/fiuba/algo3/archivos/Paises.csv");
+        });
+    }
 }
