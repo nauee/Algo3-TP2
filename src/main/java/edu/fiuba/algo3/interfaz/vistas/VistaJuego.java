@@ -2,17 +2,19 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Jugador;
+import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VistaJuego extends VBox{
+public class VistaJuego extends BorderPane{
 
     Stage stage;
     Juego juego;
@@ -25,14 +27,15 @@ public class VistaJuego extends VBox{
     private final ArrayList<String> colores = new ArrayList<>(List.of(colorAzul, colorRojo, colorAmarillo, colorVerde, colorRosa, colorNegro));
     private final String rutaImagenFondoJuego= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergamino.jpg";
 
-    public VistaJuego(Stage stage, Juego juego, MenuBarra menuArriba){
+    public VistaJuego(Stage stage, Juego juego, MenuBarra menuArriba) throws PaisNoExisteException {
         super();
         this.stage = stage;
         this.juego = juego;
 
         this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondoJuego));
 
-        Mapa mapa= new Mapa();
+        Mapa mapa= new Mapa(stage, juego, colores);
+        InformacionJuego informacion = new InformacionJuego(juego);
 
         for (int i = 0; i < juego.getCantidadJugadores(); i++) {
             HBox jugador = new HBox();
@@ -46,12 +49,6 @@ public class VistaJuego extends VBox{
             mapa.getChildren().add(jugador);
             AnchorPane.setRightAnchor(jugador, 0.0);
         }
-
-
-
-
-
-
 
 
         int jugadorDeTurnoIndex = juego.getJugadorDeTurno();
@@ -71,8 +68,9 @@ public class VistaJuego extends VBox{
             AnchorPane.setLeftAnchor(cartaBox, 0.0);
         }
 
-        this.getChildren().addAll(menuArriba, mapa);
-
+        this.setTop(menuArriba);
+        this.setCenter(mapa);
+        this.setLeft(informacion);
 
     }
 }

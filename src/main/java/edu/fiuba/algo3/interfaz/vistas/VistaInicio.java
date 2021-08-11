@@ -19,11 +19,10 @@ public class VistaInicio extends VBox {
     Stage stage;
     private final String rutaImagenFondoMenu="/src/main/java/edu/fiuba/algo3/recursos/imagenes/fondoTEG.jpg";
 
-    public VistaInicio(Stage stage){
+    public VistaInicio(Stage stage, MenuBarra menuArriba){
         super();
         this.stage=stage;
 
-        MenuBarra menuArriba= new MenuBarra(stage);
         MenuInicio menu= new MenuInicio(stage, menuArriba);
 
 

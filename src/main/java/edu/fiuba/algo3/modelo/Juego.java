@@ -109,4 +109,8 @@ public class Juego {
     public Jugador getJugador(int index) {
         return jugadores.get(index);
     }
+
+    public String nombreFase(){
+        return (etapa.nombreFase());
+    }
 }

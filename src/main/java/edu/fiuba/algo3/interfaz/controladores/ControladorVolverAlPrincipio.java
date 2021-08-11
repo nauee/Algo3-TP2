@@ -18,7 +18,7 @@ public class ControladorVolverAlPrincipio implements EventHandler<ActionEvent> {
     public ControladorVolverAlPrincipio(Stage stage, MenuBarra menuArriba, VentanaConfirmacion ventana){
         this.ventana= ventana;
         this.stage=stage;
-        this.menuCantidad = new VistaInicio(stage);
+        this.menuCantidad = new VistaInicio(stage, menuArriba);
     }
 
     @Override

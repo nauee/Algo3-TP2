@@ -126,4 +126,8 @@ public class Jugador{
     public ArrayList<Carta> getCartas() {
         return cartas;
     }
+
+    public int getId(){
+        return id;
+    }
 }

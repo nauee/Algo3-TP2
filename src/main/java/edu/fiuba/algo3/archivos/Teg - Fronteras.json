@@ -2,12 +2,12 @@
  {
    "Pais": "Francia",
    "Continente": "Europa",
-   "Limita con": "Alemania,España,Italia"
+   "Limita con": "Alemania,Espania,Italia"
  },
  {
-   "Pais": "Gran Bretaña",
+   "Pais": "Gran Bretania",
    "Continente": "Europa",
-   "Limita con": "Islandia,Alemania,España"
+   "Limita con": "Islandia,Alemania,Espania"
  },
  {
    "Pais": "Tartaria",
@@ -132,7 +132,7 @@
  {
    "Pais": "Sahara",
    "Continente": "Africa",
-   "Limita con": "Brasil,España,Egipto,Etiopia,Zaire"
+   "Limita con": "Brasil,Espania,Egipto,Etiopia,Zaire"
  },
  {
    "Pais": "Yukon",
@@ -180,9 +180,9 @@
    "Limita con": "Alemania,Francia"
  },
  {
-   "Pais": "España",
+   "Pais": "Espania",
    "Continente": "Europa",
-   "Limita con": "Sahara,Francia,Gran Bretaña"
+   "Limita con": "Sahara,Francia,Gran Bretania"
  },
  {
    "Pais": "Colombia",
@@ -227,7 +227,7 @@
  {
    "Pais": "Alemania",
    "Continente": "Europa",
-   "Limita con": "Polonia,Italia,Gran Bretaña,Francia"
+   "Limita con": "Polonia,Italia,Gran Bretania,Francia"
  },
  {
    "Pais": "China",
@@ -242,7 +242,7 @@
  {
    "Pais": "Islandia",
    "Continente": "Europa",
-   "Limita con": "Groenlandia,Suecia,Gran Bretaña"
+   "Limita con": "Groenlandia,Suecia,Gran Bretania"
  },
  {
    "Pais": "Malasia",

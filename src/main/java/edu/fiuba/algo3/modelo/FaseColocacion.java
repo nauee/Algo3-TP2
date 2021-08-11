@@ -14,6 +14,7 @@ public class FaseColocacion implements Fase{
     private int fichasColocadas;
     private final Jugador jugadorDeTurno;
     private int fichasDelJugador;
+    private final String nombre= "colocacion";
 
     public FaseColocacion(Jugador jugadorDeTurno){
         fichasColocadas = 0;
@@ -46,6 +47,11 @@ public class FaseColocacion implements Fase{
     public Fase siguienteFase(ArrayList<Carta> cartas){
         Jugador siguienteJugador= Etapa.siguienteJugador();
         return new FaseColocacion(siguienteJugador);
+    }
+
+    @Override
+    public String nombre() {
+        return nombre;
     }
 
     public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {

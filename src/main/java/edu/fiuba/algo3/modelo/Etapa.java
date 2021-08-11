@@ -40,4 +40,7 @@ public abstract class Etapa {
     public int getJugadorDeTurno() {
         return jugadorDeTurno;
     }
+
+    public abstract String nombreFase();
+
 }
