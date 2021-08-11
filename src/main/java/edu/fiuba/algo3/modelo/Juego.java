@@ -1,13 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.elementos.Carta;
-import edu.fiuba.algo3.elementos.Continente;
-import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.modelo.carta.Carta;
+import edu.fiuba.algo3.modelo.etapa.Etapa;
+import edu.fiuba.algo3.modelo.etapa.EtapaColocacion;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.excepciones.*;
-import edu.fiuba.algo3.lectura.LectorDeCartas;
-import edu.fiuba.algo3.lectura.LectorDeObjetivos;
-import edu.fiuba.algo3.lectura.LectorDePaises;
+import edu.fiuba.algo3.lectura.lector.LectorDeCartas;
+import edu.fiuba.algo3.lectura.lector.LectorDeObjetivos;
+import edu.fiuba.algo3.lectura.lector.LectorDePaises;
+import edu.fiuba.algo3.modelo.objetivo.Objetivo;
 import org.json.simple.parser.ParseException;
 
 import java.util.*;

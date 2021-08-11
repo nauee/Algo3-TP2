@@ -1,16 +1,16 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.elementos.Continente;
-import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.modelo.Continente;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.excepciones.SeAlcanzoLaCantidadMaximaException;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Objetivo;
-import edu.fiuba.algo3.modelo.ObjetivoConquista;
-import edu.fiuba.algo3.modelo.ObjetivoDestruccion;
+import edu.fiuba.algo3.modelo.objetivo.Objetivo;
+import edu.fiuba.algo3.modelo.objetivo.ObjetivoConquista;
+import edu.fiuba.algo3.modelo.objetivo.ObjetivoDestruccion;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;

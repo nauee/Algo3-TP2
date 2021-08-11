@@ -1,11 +1,11 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.excepciones.MovimientoConCantidadInvalidaException;
 import edu.fiuba.algo3.excepciones.PaisNoLimitrofeException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
-import edu.fiuba.algo3.modelo.FaseAgrupamiento;
+import edu.fiuba.algo3.modelo.etapa.FaseAgrupamiento;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

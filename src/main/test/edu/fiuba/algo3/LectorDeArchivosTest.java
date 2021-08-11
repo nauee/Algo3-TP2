@@ -1,12 +1,12 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.elementos.Carta;
-import edu.fiuba.algo3.elementos.Continente;
-import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.modelo.carta.Carta;
+import edu.fiuba.algo3.modelo.Continente;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
-import edu.fiuba.algo3.lectura.LectorDeCartas;
-import edu.fiuba.algo3.lectura.LectorDePaises;
+import edu.fiuba.algo3.lectura.lector.LectorDeCartas;
+import edu.fiuba.algo3.lectura.lector.LectorDePaises;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 

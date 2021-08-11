@@ -1,9 +1,8 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.interfaz.botones.BotonPais;
-import edu.fiuba.algo3.interfaz.botones.ControladorBotonPais;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;

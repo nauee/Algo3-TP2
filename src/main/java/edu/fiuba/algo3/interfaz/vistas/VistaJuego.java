@@ -1,16 +1,13 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.elementos.Carta;
-import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.modelo.carta.Carta;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.excepciones.*;
 import edu.fiuba.algo3.modelo.Juego;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;

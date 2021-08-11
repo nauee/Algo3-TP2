@@ -1,15 +1,13 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.elementos.Carta;
-import edu.fiuba.algo3.elementos.CartaNoActivada;
-import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.modelo.carta.Carta;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.Pais;
 import edu.fiuba.algo3.excepciones.*;
-import edu.fiuba.algo3.modelo.FaseAtaque;
+import edu.fiuba.algo3.modelo.etapa.FaseAtaque;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

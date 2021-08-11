@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.interfaz.botones;
 
-import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.modelo.Pais;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Paint;
 
