@@ -2,21 +2,21 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.elementos.Carta;
 import edu.fiuba.algo3.elementos.Jugador;
-import edu.fiuba.algo3.interfaz.ImagenFondo;
-import edu.fiuba.algo3.interfaz.controladores.ControladorMenuInicioInstrucciones;
-import edu.fiuba.algo3.interfaz.controladores.ControladorSalir;
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.*;
 import edu.fiuba.algo3.modelo.Juego;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VistaJuego extends VBox{
+public class VistaJuego extends BorderPane{
 
     Stage stage;
     Juego juego;
@@ -29,45 +29,24 @@ public class VistaJuego extends VBox{
     private final ArrayList<String> colores = new ArrayList<>(List.of(colorAzul, colorRojo, colorAmarillo, colorVerde, colorRosa, colorNegro));
     private final String rutaImagenFondoJuego= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergamino.jpg";
 
-    public VistaJuego(Stage stage, Juego juego){
+    public VistaJuego(Stage stage, Juego juego, MenuBarra menuArriba) throws PaisNoExisteException {
         super();
         this.stage = stage;
         this.juego = juego;
 
-        //Image imagen = new Image("file:"+System.getProperty("user.dir")+rutaImagenFondoJuego);
-        //BackgroundImage fondoConImagen= new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER,  new BackgroundSize(1.0, 1.0, true, true, false, false));
-        //Background fondo= new Background(fondoConImagen);
-        this.setBackground(ImagenFondo.fondoParcial(rutaImagenFondoJuego));
+        this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondoJuego));
+        ArrayList<Pais> paisesSeleccionados = new ArrayList<>();
+
+        Mapa mapa= new Mapa(stage, juego, colores, paisesSeleccionados);
+        InformacionJuego informacion = new InformacionJuego(juego);
 
 
-        MenuBar menuBar = new MenuBar();
-        MenuItem ayuda = new MenuItem("Ayuda");
-        MenuItem salir = new MenuItem("Salir");
-        Menu opciones = new Menu("Opciones");
-        opciones.getItems().addAll(ayuda, salir);
+        JugadoresEnMapa jugadores = new JugadoresEnMapa(juego, colores);
+        mapa.getChildren().add(jugadores);
+        AnchorPane.setRightAnchor(jugadores, 0.0);
+        mapa.getChildren().add(informacion);
+        AnchorPane.setLeftAnchor(informacion, 0.0);
 
-        salir.setOnAction(new ControladorSalir(stage));
-        ayuda.setOnAction(new ControladorMenuInicioInstrucciones(stage));
-
-
-        MenuMusica musica = new MenuMusica();
-        menuBar.getMenus().addAll(opciones, musica);
-
-
-        Mapa mapa= new Mapa();
-
-        for (int i = 0; i < juego.getCantidadJugadores(); i++) {
-            HBox jugador = new HBox();
-            Label jugadorNombre = new Label(juego.getJugador(i).getNombre());
-            jugadorNombre.setStyle("-fx-border-color: " + colores.get(i) + "; -fx-border-radius: 10%; -fx-font-size: 18px");
-            jugadorNombre.setPadding(new Insets(0,0,0,10));
-            jugadorNombre.setPrefSize(118, 52);
-            jugador.setPrefSize(118, 52);
-            jugador.setLayoutY(50 + i*75);
-            jugador.getChildren().add(jugadorNombre);
-            mapa.getChildren().add(jugador);
-            AnchorPane.setRightAnchor(jugador, 0.0);
-        }
 
         int jugadorDeTurnoIndex = juego.getJugadorDeTurno();
         Jugador jugadorDeTurno = juego.getJugador(jugadorDeTurnoIndex);
@@ -86,8 +65,8 @@ public class VistaJuego extends VBox{
             AnchorPane.setLeftAnchor(cartaBox, 0.0);
         }
 
-        this.getChildren().addAll(menuBar, mapa);
-
+        this.setTop(menuArriba);
+        this.setCenter(mapa);
 
     }
 }

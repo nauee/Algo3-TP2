@@ -36,4 +36,9 @@ public class EtapaBatalla extends Etapa{
     public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException {
         throw new NoSePuedeCanjearEnEtapaBatallaException();
     }
+
+    @Override
+    public String nombreFase(){
+        return fase.nombre();
+    }
 }

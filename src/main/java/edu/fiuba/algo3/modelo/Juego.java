@@ -109,4 +109,16 @@ public class Juego {
     public Jugador getJugador(int index) {
         return jugadores.get(index);
     }
+
+    public String nombreFase(){
+        return (etapa.nombreFase());
+    }
+
+    public ArrayList<Pais> paisesDeJugadorDeTurno(){
+        return(etapa.paisesDeJugadorDeTurno());
+    }
+
+    public String getNombreJugadorDeTurno(){
+        return (etapa.getNombreJugadorDeTurno());
+    }
 }

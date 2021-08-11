@@ -14,6 +14,7 @@ public class FaseAtaque implements Fase{
     private final int posAtacante = 0;
     private final int posAtacado= 1;
     private boolean huboConquista= false;
+    private final String nombre= "ataque";
 
     public FaseAtaque(Jugador jugadorDeTurno, ArrayList<Carta> cartas){
         this.jugadorDeTurno = jugadorDeTurno;
@@ -36,5 +37,9 @@ public class FaseAtaque implements Fase{
             cartas.remove(0);
         }
         return new FaseAgrupamiento(jugadorDeTurno);
+    }
+
+    public String nombre() {
+        return nombre;
     }
 }

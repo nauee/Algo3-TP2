@@ -25,6 +25,11 @@ public class EtapaColocacion extends Etapa{
     }
 
     @Override
+    public String nombreFase() {
+        return fase.nombre();
+    }
+
+    @Override
     public Etapa siguienteFase(){
         fase = (FaseColocacion) fase.siguienteFase(cartas);
         if (jugadorDeTurno >= jugadores.size())

@@ -1,7 +1,14 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
+import edu.fiuba.algo3.elementos.Pais;
+import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.interfaz.botones.BotonPais;
+import edu.fiuba.algo3.interfaz.botones.ControladorBotonPais;
+import edu.fiuba.algo3.modelo.Juego;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class Mapa extends AnchorPane {
 
@@ -9,165 +16,236 @@ public class Mapa extends AnchorPane {
     private final double altura= 695;
     private final double ancho= 1149;
     private final double posicionX= 154;
+    private final Stage stage;
+    private Juego juego;
+    private final ArrayList<String> colores;
+    private ArrayList<Pais> paisesSeleccionados;
+    private ArrayList<BotonPais> botonesPaises = new ArrayList<>();
 
-    public Mapa(){
+
+    public Mapa(Stage stage, Juego juego, ArrayList<String> colores, ArrayList<Pais> paisesSeleccionados) throws PaisNoExisteException {
         super();
         Imagen fotoMapa= new Imagen(rutaImagenMapa, altura, ancho, posicionX);
         this.getChildren().add(fotoMapa);
+        this.stage=stage;
+        this.juego=juego;
+        this.colores= colores;
+        this.paisesSeleccionados= paisesSeleccionados;
 
         this.ponerPaises();
+        this.mostrarBotonesJugadorDeTurno(juego.paisesDeJugadorDeTurno());
     }
 
-    private void ponerPaises(){
-        BotonPais canada = new BotonPais("Canada", 278, 173, 67, 25, 0);
+    private void mostrarBotonesJugadorDeTurno(ArrayList<Pais> paisesDeTurno){
+        for (int j = 0; j<botonesPaises.size(); j++) {
+            for(int i=0; i<paisesDeTurno.size(); i++) {
+                botonesPaises.get(j).activar(paisesDeTurno.get(i));
+            }
+        }
+    }
+
+    private void ponerPaises() throws PaisNoExisteException {
+
+        BotonPais canada = new BotonPais(juego.buscarPais("Canada"), 278, 173, 67, 25, colores, paisesSeleccionados);
         this.getChildren().add(canada.getBoton());
+        botonesPaises.add(canada);
 
-        BotonPais yukon = new BotonPais("Yukon", 224, 231, 50, 25, 0);
+        BotonPais yukon = new BotonPais(juego.buscarPais("Yukon"), 224, 231, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(yukon.getBoton());
+        botonesPaises.add(yukon);
 
-        BotonPais alaska = new BotonPais("Alaksa", 165, 271, 56, 25, -82.4);
+        BotonPais alaska = new BotonPais(juego.buscarPais("Alaska"), 165, 271, 70, 25, colores, paisesSeleccionados);
         this.getChildren().add(alaska.getBoton());
+        botonesPaises.add(alaska);
 
-        BotonPais oregon = new BotonPais("Oregon", 232, 285, 67, 25, -31);
+        BotonPais oregon = new BotonPais(juego.buscarPais("Oregon"), 232, 285, 67, 25, colores, paisesSeleccionados);
         this.getChildren().add(oregon.getBoton());
+        botonesPaises.add(oregon);
 
-        BotonPais nuevaYork = new BotonPais("Nueva York", 318, 263, 67, 25, 34.7);
+        BotonPais nuevaYork = new BotonPais(juego.buscarPais("Nueva York"), 318, 263, 95, 25, colores, paisesSeleccionados);
         this.getChildren().add(nuevaYork.getBoton());
+        botonesPaises.add(nuevaYork);
 
-        BotonPais terranova = new BotonPais("Terranova", 354, 242, 67, 25, 23.4);
+        BotonPais terranova = new BotonPais(juego.buscarPais("Terranova"), 354, 242, 80, 25, colores, paisesSeleccionados);
         this.getChildren().add(terranova.getBoton());
+        botonesPaises.add(terranova);
 
-        BotonPais labrador = new BotonPais("Labrador", 392, 214, 50, 25, 21.8);
+        BotonPais labrador = new BotonPais(juego.buscarPais("Labrador"), 392, 214, 80, 25, colores, paisesSeleccionados);
         this.getChildren().add(labrador.getBoton());
+        botonesPaises.add(labrador);
 
-        BotonPais california = new BotonPais("California", 290, 313, 67, 25, -21);
+        BotonPais california = new BotonPais(juego.buscarPais("California"), 290, 313, 80, 25, colores, paisesSeleccionados);
         this.getChildren().add(california.getBoton());
+        botonesPaises.add(california);
 
-        BotonPais mexico = new BotonPais("Mexico", 347, 345, 56, 25, 32.5);
+        BotonPais mexico = new BotonPais(juego.buscarPais("Mexico"), 347, 345, 75, 25, colores, paisesSeleccionados);
         this.getChildren().add(mexico.getBoton());
+        botonesPaises.add(mexico);
 
-        BotonPais colombia = new BotonPais("Colombia", 436, 395, 56, 25, -27.9);
+        BotonPais colombia = new BotonPais(juego.buscarPais("Colombia"), 436, 395, 80, 25, colores, paisesSeleccionados);
         this.getChildren().add(colombia.getBoton());
+        botonesPaises.add(colombia);
 
-        BotonPais brasil = new BotonPais("Brasil", 512, 433, 83, 25, 0);
+        BotonPais brasil = new BotonPais(juego.buscarPais("Brasil"), 512, 433, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(brasil.getBoton());
+        botonesPaises.add(brasil);
 
-        BotonPais peru = new BotonPais("Peru", 445, 445, 44, 25, 0);
+        BotonPais peru = new BotonPais(juego.buscarPais("Peru"), 445, 445, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(peru.getBoton());
+        botonesPaises.add(peru);
 
-        BotonPais uruguay = new BotonPais("Uruguay", 511, 487, 44, 25, -30.3);
+        BotonPais uruguay = new BotonPais(juego.buscarPais("Uruguay"), 511, 487, 70, 25, colores, paisesSeleccionados);
         this.getChildren().add(uruguay.getBoton());
+        botonesPaises.add(uruguay);
 
-        BotonPais argentina = new BotonPais("Aregtina", 453, 509, 72, 25, -71.6);
+        BotonPais argentina = new BotonPais(juego.buscarPais("Argentina"), 453, 500, 80, 25, colores, paisesSeleccionados);
         this.getChildren().add(argentina.getBoton());
+        botonesPaises.add(argentina);
 
-        BotonPais chile = new BotonPais("Chile", 424, 509, 56, 25, -77);
+        BotonPais chile = new BotonPais(juego.buscarPais("Chile"), 424, 480, 50, 25, colores, paisesSeleccionados);
         this.getChildren().add(chile.getBoton());
+        botonesPaises.add(chile);
 
-        BotonPais groenlandia = new BotonPais("Groenlandia", 444, 150, 83, 25, 39);
+        BotonPais groenlandia = new BotonPais(juego.buscarPais("Groenlandia"), 444, 150, 100, 25,colores, paisesSeleccionados);
         this.getChildren().add(groenlandia.getBoton());
+        botonesPaises.add(groenlandia);
 
-        BotonPais islandia = new BotonPais("Islandia", 557, 268, 44, 25, -29.4);
+        BotonPais islandia = new BotonPais(juego.buscarPais("Islandia"), 557, 268, 80, 25, colores, paisesSeleccionados);
         this.getChildren().add(islandia.getBoton());
+        botonesPaises.add(islandia);
 
-        BotonPais granBretania = new BotonPais("Gran Bretania", 646, 289, 67, 25, -45);
+        BotonPais granBretania = new BotonPais(juego.buscarPais("Gran Bretania"), 646, 289, 100, 25, colores, paisesSeleccionados);
         this.getChildren().add(granBretania.getBoton());
+        botonesPaises.add(granBretania);
 
-        BotonPais espania = new BotonPais("Espania", 636, 387, 56, 25, -23.2);
+        BotonPais espania = new BotonPais(juego.buscarPais("Espania"), 636, 387, 66, 25, colores, paisesSeleccionados);
         this.getChildren().add(espania.getBoton());
+        botonesPaises.add(espania);
 
-        BotonPais francia = new BotonPais("Francia", 696, 345, 61, 25, -39.1);
+        BotonPais francia = new BotonPais(juego.buscarPais("Francia"), 696, 345, 61, 25, colores, paisesSeleccionados);
         this.getChildren().add(francia.getBoton());
+        botonesPaises.add(francia);
 
-        BotonPais suecia = new BotonPais("Suecia", 721, 186, 56, 25, -34.5);
+        BotonPais suecia = new BotonPais(juego.buscarPais("Suecia"), 721, 186, 65, 25, colores, paisesSeleccionados);
         this.getChildren().add(suecia.getBoton());
+        botonesPaises.add(suecia);
 
-        BotonPais rusia = new BotonPais("Rusia", 789, 240, 60, 25, 0);
+        BotonPais rusia = new BotonPais(juego.buscarPais("Rusia"), 789, 230, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(rusia.getBoton());
+        botonesPaises.add(rusia);
 
-        BotonPais alemania = new BotonPais("Alemania", 760, 337, 46, 25, 26.6);
+        BotonPais alemania = new BotonPais(juego.buscarPais("Alemania"), 760, 337, 80, 25, colores, paisesSeleccionados);
         this.getChildren().add(alemania.getBoton());
+        botonesPaises.add(alemania);
 
-        BotonPais italia = new BotonPais("Italia", 756, 395, 46, 25, 48.2);
+        BotonPais italia = new BotonPais(juego.buscarPais("Italia"), 756, 395, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(italia.getBoton());
+        botonesPaises.add(italia);
 
-        BotonPais polonia = new BotonPais("Polonia", 812, 312, 46, 25, 0);
+        BotonPais polonia = new BotonPais(juego.buscarPais("Polonia"), 812, 312, 70, 25, colores, paisesSeleccionados);
         this.getChildren().add(polonia.getBoton());
+        botonesPaises.add(polonia);
 
-        BotonPais sahara = new BotonPais("Sahara", 723, 479, 56, 25, 0);
+        BotonPais sahara = new BotonPais(juego.buscarPais("Sahara"), 723, 479, 70, 25, colores, paisesSeleccionados);
         this.getChildren().add(sahara.getBoton());
+        botonesPaises.add(sahara);
 
-        BotonPais zaire = new BotonPais("Zaire", 774, 515, 49, 25, 0);
+        BotonPais zaire = new BotonPais(juego.buscarPais("Zaire"), 774, 515, 49, 25, colores, paisesSeleccionados);
         this.getChildren().add(zaire.getBoton());
+        botonesPaises.add(zaire);
 
-        BotonPais etiopia = new BotonPais("Etiopia", 809, 487, 56, 25, 18.4);
+        BotonPais etiopia = new BotonPais(juego.buscarPais("Etiopia"), 809, 487, 70, 25, colores, paisesSeleccionados);
         this.getChildren().add(etiopia.getBoton());
+        botonesPaises.add(etiopia);
 
-        BotonPais egipto = new BotonPais("Egipto", 842, 458, 51, 25, 22.6);
+        BotonPais egipto = new BotonPais(juego.buscarPais("Egipto"), 842, 458, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(egipto.getBoton());
+        botonesPaises.add(egipto);
 
-        BotonPais sudafrica = new BotonPais("Sudafrica", 814, 547, 57, 25, -48);
+        BotonPais sudafrica = new BotonPais(juego.buscarPais("Sudafrica"), 814, 547, 80, 25, colores, paisesSeleccionados);
         this.getChildren().add(sudafrica.getBoton());
+        botonesPaises.add(sudafrica);
 
-        BotonPais madagascar = new BotonPais("Madagascar", 881, 528, 83, 25, -68.2);
+        BotonPais madagascar = new BotonPais(juego.buscarPais("Madagascar"), 881, 528, 90, 25, colores, paisesSeleccionados);
         this.getChildren().add(madagascar.getBoton());
+        botonesPaises.add(madagascar);
 
-        BotonPais aral = new BotonPais("Aral", 849, 173, 37, 25, -69.4);
+        BotonPais aral = new BotonPais(juego.buscarPais("Aral"), 849, 173, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(aral.getBoton());
+        botonesPaises.add(aral);
 
-        BotonPais tartaria = new BotonPais("Tartaria", 868, 130, 48, 25, -77);
+        BotonPais tartaria = new BotonPais(juego.buscarPais("Tartaria"), 868, 130, 80, 25, colores , paisesSeleccionados);
         this.getChildren().add(tartaria.getBoton());
+        botonesPaises.add(tartaria);
 
-        BotonPais taymir = new BotonPais("Taymir", 911, 150, 48, 25, -25.2);
+        BotonPais taymir = new BotonPais(juego.buscarPais("Taymir"), 911, 150, 65, 25, colores, paisesSeleccionados);
         this.getChildren().add(taymir.getBoton());
+        botonesPaises.add(taymir);
 
-        BotonPais siberia = new BotonPais("Siberia", 910, 181, 54, 25,-12.1);
+        BotonPais siberia = new BotonPais(juego.buscarPais("Siberia"), 910, 181, 70, 25,colores, paisesSeleccionados);
         this.getChildren().add(siberia.getBoton());
+        botonesPaises.add(siberia);
 
-        BotonPais kamchatka = new BotonPais("Kamchatka", 971, 141, 48, 25, -20);
+        BotonPais kamchatka = new BotonPais(juego.buscarPais("Kamtchatka"), 971, 141, 90, 25, colores, paisesSeleccionados);
         this.getChildren().add(kamchatka.getBoton());
+        botonesPaises.add(kamchatka);
 
-        BotonPais japon = new BotonPais("Japon", 1051, 172, 48, 25, 43.6);
+        BotonPais japon = new BotonPais(juego.buscarPais("Japon"), 1051, 172, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(japon.getBoton());
+        botonesPaises.add(japon);
 
-        BotonPais mongolia = new BotonPais("Mongolia", 913, 222, 66,25, 0);
+        BotonPais mongolia = new BotonPais(juego.buscarPais("Mongolia"), 913, 222, 80,25, colores, paisesSeleccionados);
         this.getChildren().add(mongolia.getBoton());
+        botonesPaises.add(mongolia);
 
-        BotonPais china = new BotonPais("China", 1006, 268, 55, 25, 0);
+        BotonPais china = new BotonPais(juego.buscarPais("China"), 1006, 268, 55, 25, colores, paisesSeleccionados);
         this.getChildren().add(china.getBoton());
+        botonesPaises.add(china);
 
-        BotonPais malasia = new BotonPais("Malasia", 1041, 325, 48, 25, -22.8);
+        BotonPais malasia = new BotonPais(juego.buscarPais("Malasia"), 1041, 325, 78, 25, colores, paisesSeleccionados);
         this.getChildren().add(malasia.getBoton());
+        botonesPaises.add(malasia);
 
-        BotonPais india = new BotonPais("India", 981, 360, 48, 25, -40.2);
+        BotonPais india = new BotonPais(juego.buscarPais("India"), 981, 360, 60, 25, colores, paisesSeleccionados);
         this.getChildren().add(india.getBoton());
+        botonesPaises.add(india);
 
-        BotonPais gobi = new BotonPais("Gobi", 940, 267, 48, 25, 0);
+        BotonPais gobi = new BotonPais(juego.buscarPais("Gobi"), 940, 267, 48, 25, colores, paisesSeleccionados);
         this.getChildren().add(gobi.getBoton());
+        botonesPaises.add(gobi);
 
-        BotonPais iran = new BotonPais("Iran", 890, 270, 48, 25, 43.2);
+        BotonPais iran = new BotonPais(juego.buscarPais("Iran"), 890, 270, 48, 25, colores, paisesSeleccionados);
         this.getChildren().add(iran.getBoton());
+        botonesPaises.add(iran);
 
-        BotonPais turquia = new BotonPais("Turquia", 872, 334, 66, 25, 0);
+        BotonPais turquia = new BotonPais(juego.buscarPais("Turquia"), 872, 334, 66, 25, colores, paisesSeleccionados);
         this.getChildren().add(turquia.getBoton());
+        botonesPaises.add(turquia);
 
-        BotonPais israel = new BotonPais("Israel", 862, 374, 48, 25, -28.3);
+        BotonPais israel = new BotonPais(juego.buscarPais("Israel"), 862, 374, 48, 25, colores, paisesSeleccionados);
         this.getChildren().add(israel.getBoton());
+        botonesPaises.add(israel);
 
-        BotonPais arabia = new BotonPais("Arabia", 901, 385, 55, 25, -43.2);
+        BotonPais arabia = new BotonPais(juego.buscarPais("Arabia"), 901, 385, 65, 25, colores, paisesSeleccionados);
         this.getChildren().add(arabia.getBoton());
+        botonesPaises.add(arabia);
 
-        BotonPais sumatra = new BotonPais("Sumatra", 953, 445, 48, 25, 42.4);
+        BotonPais sumatra = new BotonPais(juego.buscarPais("Sumatra"), 953, 445, 75, 25, colores, paisesSeleccionados);
         this.getChildren().add(sumatra.getBoton());
+        botonesPaises.add(sumatra);
 
-        BotonPais borneo = new BotonPais("Borneo", 1020, 402, 48, 25, 56.3);
+        BotonPais borneo = new BotonPais(juego.buscarPais("Borneo"), 1020, 402, 70, 25, colores, paisesSeleccionados);
         this.getChildren().add(borneo.getBoton());
+        botonesPaises.add(borneo);
 
-        BotonPais java = new BotonPais("Java", 1067, 403, 41, 25, -68.7);
+        BotonPais java = new BotonPais(juego.buscarPais("Java"), 1067, 403, 55, 25, colores, paisesSeleccionados);
         this.getChildren().add(java.getBoton());
+        botonesPaises.add(java);
 
-        BotonPais australia = new BotonPais("Australia", 1034, 502, 71, 25, 0);
+        BotonPais australia = new BotonPais(juego.buscarPais("Australia"), 1034, 502, 71, 25, colores, paisesSeleccionados);
         this.getChildren().add(australia.getBoton());
+        botonesPaises.add(australia);
+
     }
 
 

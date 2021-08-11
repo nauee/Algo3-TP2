@@ -1,16 +1,29 @@
 package edu.fiuba.algo3.interfaz;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Reproductor {
 
     private Cancion cancionActual;
-    private final ArrayList<Cancion> canciones= new ArrayList<>();
+    private final ArrayList<Cancion> canciones=new ArrayList<>();
 
-    public Reproductor(Cancion cancionInicio){
-        cancionActual=cancionInicio;
+    private final File carpetaCanciones=new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica");;
+    private ArrayList<File> rutaCanciones;
+    private final Cancion cancionDefault= new Cancion(new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/Piratas.mp3"));
+
+    public Reproductor(){
+        this.obtenerCanciones();
+        cancionActual = cancionDefault;
         this.reproducir(cancionActual);
 
+    }
+
+    private void obtenerCanciones(){
+        rutaCanciones = new ArrayList<>(List.of((carpetaCanciones.listFiles())));
+        for(int i=0; i<rutaCanciones.size(); i++)
+           canciones.add(new Cancion(rutaCanciones.get(i)));
     }
 
     public void reproducir(Cancion cancion){
@@ -23,18 +36,7 @@ public class Reproductor {
         cancionActual.detener();
     }
 
-    public void agregar(Cancion cancion){
-        canciones.add(cancion);
-    }
-
-    public void reproducirTodo(){
-        for (int i = 0; i < canciones.size(); i++) {
-            final Cancion cancion = canciones.get(i);
-            final Cancion proximaCancion = canciones.get((i + 1) % canciones.size());
-            cancion.proximaCancion(proximaCancion);
-        }
-
-        cancionActual = canciones.get(0);
-        cancionActual.reproducir();
+    public ArrayList<Cancion> canciones (){
+        return (this.canciones);
     }
 }

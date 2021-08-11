@@ -4,12 +4,12 @@
    "Simbolo": "Globo"
  },
  {
-   "Pais": "Gran Bretaña",
+   "Pais": "Gran Bretania",
    "Simbolo": "Barco"
  },
  {
    "Pais": "Tartaria",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Mongolia",
@@ -21,11 +21,11 @@
  },
  {
    "Pais": "Polonia",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Oregon",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Etiopia",
@@ -37,7 +37,7 @@
  },
  {
    "Pais": "Australia",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Kamtchatka",
@@ -57,7 +57,7 @@
  },
  {
    "Pais": "Terranova",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Iran",
@@ -85,7 +85,7 @@
  },
  {
    "Pais": "California",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Taymir",
@@ -93,7 +93,7 @@
  },
  {
    "Pais": "Aral",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Siberia",
@@ -101,11 +101,11 @@
  },
  {
    "Pais": "Canada",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Sahara",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Yukon",
@@ -121,7 +121,7 @@
  },
  {
    "Pais": "Japon",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Sumatra",
@@ -144,7 +144,7 @@
    "Simbolo": "Globo"
  },
  {
-   "Pais": "España",
+   "Pais": "Espania",
    "Simbolo": "Globo"
  },
  {
@@ -157,11 +157,11 @@
  },
  {
    "Pais": "Sudafrica",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Arabia",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "India",
@@ -169,11 +169,11 @@
  },
  {
    "Pais": "Java",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Mexico",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Peru",
@@ -189,7 +189,7 @@
  },
  {
    "Pais": "Labrador",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  },
  {
    "Pais": "Islandia",
@@ -197,6 +197,6 @@
  },
  {
    "Pais": "Malasia",
-   "Simbolo": "Cañon"
+   "Simbolo": "Canion"
  }
 ]
