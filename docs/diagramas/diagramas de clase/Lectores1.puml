@@ -2,6 +2,8 @@
 
 title Lectores
 
+hide empty members
+
 interface Lector {
     + obtener(): ArrayList
     + esDeTipo(tipoArchivo): boolean

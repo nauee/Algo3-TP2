@@ -2,6 +2,8 @@
 
 title Batalla
 
+hide empty members
+
 class Batalla {
     - atacado: Pais
     - atacante: Pais

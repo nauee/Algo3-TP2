@@ -1,5 +1,9 @@
 @startuml
 
+title Fases
+
+hide empty members
+
 interface Fase {
     + jugar(int cantidadEjercitos, paises: Array): void
     + siguienteFase(cartas: ArrayList): Fase

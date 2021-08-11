@@ -3,6 +3,7 @@ package edu.fiuba.algo3.interfaz.botones;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Paint;
+import edu.fiuba.algo3.interfaz.controladores.ControladorBotonPais;
 
 
 import java.util.ArrayList;

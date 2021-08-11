@@ -1,6 +1,6 @@
 @startuml
 
-title Juego, Carta y Objetivo
+title Juego, Carta, Objetivo y Observable
 
 class Juego {
     - etapa: Etapa
@@ -27,5 +27,14 @@ class Objetivo {
     # objetivoComunCumplido(jugador: Jugador): boolean
     + {abstract} cumplido(jugador: Jugador): boolean
 }
+
+interface Observable {
+    + agregarObservador(nuevoObservador: Observador): void
+    + notificar(): void
+}
+
+class Juego
+hide empty members
+Juego ..|> Observable
 
 @enduml

@@ -2,6 +2,8 @@
 
 title Carta y EstadoCarta
 
+hide empty members
+
 class Carta {
     - pais: Pais;
     - simbolo: String;

@@ -2,6 +2,8 @@
 
 title Lectores
 
+hide empty members
+
 class LectorDeCartas {
     # lector: FileReader
     # parser: JSONParser

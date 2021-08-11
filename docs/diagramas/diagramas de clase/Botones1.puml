@@ -1,0 +1,27 @@
+@startuml
+
+title Botones
+
+hide empty members
+
+class BotonCantidad {
+    - cantidad: int
+    + {static} BotonCantidad(cantidad): BotonCantidad
+}
+
+class BotonGrande {
+    - rutaImagenFondo: String
+    + {static} BotonGrande(nombre: String, fuente: String, controlador: EventHandler): BotonGrande
+}
+
+class OpcionesCantidad {
+    + {static} OpcionesCantidad(cantidadMinima, cantidadMaxima): OpcionesCantidad
+    - discriminarOpciones(): void
+    + desactivarOpciones(): void
+}
+
+OpcionesCantidad ..> BotonCantidad
+VistaMenuCantidadJugadores ..> BotonGrande
+VistaNombresJugadores ..> BotonGrande
+
+@enduml
