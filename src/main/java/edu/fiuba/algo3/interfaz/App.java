@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.interfaz;
 
-import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
+import edu.fiuba.algo3.interfaz.menu.MenuBarra;
 import edu.fiuba.algo3.interfaz.vistas.VistaInicio;
 import javafx.application.Application;
 import javafx.scene.Scene;

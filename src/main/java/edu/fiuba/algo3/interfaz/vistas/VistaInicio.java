@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
-import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
-import edu.fiuba.algo3.interfaz.vistas.menu.MenuInicio;
+import edu.fiuba.algo3.interfaz.menu.MenuBarra;
+import edu.fiuba.algo3.interfaz.menu.MenuInicio;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.interfaz.ObservadorJuego;
-import edu.fiuba.algo3.interfaz.vistas.menu.MenuBarra;
+import edu.fiuba.algo3.interfaz.ObservadorPaisesSeleccionados;
+import edu.fiuba.algo3.interfaz.SupervisorJuego;
+import edu.fiuba.algo3.interfaz.menu.MenuBarra;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.excepciones.*;
 import edu.fiuba.algo3.modelo.logica.Juego;
 import javafx.geometry.Pos;
@@ -18,11 +19,12 @@ import java.util.List;
 public class VistaJuego extends BorderPane{
 
     private final ObservadorJuego observador;
+    private final ObservadorPaisesSeleccionados observadorPaisesSeleccionados;
     private final Stage stage;
     private Juego juego;
     private Mapa mapa;
 
-    ArrayList<Pais> paisesSeleccionados = new ArrayList<>();
+    private final SupervisorJuego supervisorJuego;
     private final String colorAzul = "#0077bb";
     private final String colorRojo = "#cc3311";
     private final String colorAmarillo = "#ee7733";
@@ -36,17 +38,12 @@ public class VistaJuego extends BorderPane{
         super();
         this.stage = stage;
         this.juego = juego;
-        this.observador= new ObservadorJuego(juego, this);
-        this.mapa= new Mapa(stage, juego, paisesSeleccionados);
+        supervisorJuego = new SupervisorJuego(juego);
+        observador = new ObservadorJuego(juego, this);
+        observadorPaisesSeleccionados = new ObservadorPaisesSeleccionados(supervisorJuego, this);
+        mapa = new Mapa(stage, juego, supervisorJuego);
 
         this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondoJuego));
-        InformacionJuego informacion = new InformacionJuego(juego);
-        TablaJugadores jugadores = new TablaJugadores(juego, colores);
-
-        mapa.getChildren().add(jugadores);
-        AnchorPane.setRightAnchor(jugadores, 0.0);
-        mapa.getChildren().add(informacion);
-        AnchorPane.setLeftAnchor(informacion, 0.0);
 
         //cartas
         int jugadorDeTurnoIndex = juego.getJugadorDeTurno();
@@ -70,17 +67,20 @@ public class VistaJuego extends BorderPane{
         this.setCenter(mapa);
     }
 
-    public void actualizar(){
-        mapa.actualizar();
-        InformacionJuego informacion = new InformacionJuego(juego);
-        TablaJugadores jugadores = new TablaJugadores(juego, colores);
-
-        mapa.getChildren().add(jugadores);
-        AnchorPane.setRightAnchor(jugadores, 0.0);
-        mapa.getChildren().add(informacion);
-        AnchorPane.setLeftAnchor(informacion, 0.0);
-
-        this.setCenter(mapa);
-
+    public void actualizarCompleto(){
+        try{
+            mapa.actualizar();
+        } catch (PaisNoExisteException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void actualizarInformacion(){
+        try{
+            mapa.actualizar();
+        } catch (PaisNoExisteException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
