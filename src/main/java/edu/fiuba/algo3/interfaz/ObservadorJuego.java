@@ -13,6 +13,6 @@ public class ObservadorJuego implements Observador{
 
     @Override
     public void actualizar() {
-        vista.actualizar();
+        vista.actualizarCompleto();
     }
 }

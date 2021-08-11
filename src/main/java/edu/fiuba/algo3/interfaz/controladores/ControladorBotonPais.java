@@ -1,23 +1,22 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
+import edu.fiuba.algo3.interfaz.SupervisorJuego;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-import java.util.ArrayList;
-
 public class ControladorBotonPais implements EventHandler<ActionEvent> {
 
-    ArrayList<Pais> paisesSeleccionados;
-    private Pais pais;
+    private final SupervisorJuego supervisorJuego;
+    private final Pais pais;
 
-    public ControladorBotonPais(Pais pais, ArrayList<Pais> paisesSeleccionados){
-        this.paisesSeleccionados= paisesSeleccionados;
+    public ControladorBotonPais(Pais pais, SupervisorJuego supervisorJuego){
+        this.supervisorJuego = supervisorJuego;
         this.pais= pais;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        paisesSeleccionados.add(pais);
+        supervisorJuego.agregarPais(pais);
     }
 }

@@ -130,6 +130,9 @@ public class Juego implements Observable {
         return (etapa.getNombreJugadorDeTurno());
     }
 
+    public int getCantidadPaisesNecesarios() {
+        return etapa.getCantidadPaisesNecesarios();
+    }
 
     @Override
     public void agregarObservador(Observador nuevoObservador) {
