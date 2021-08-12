@@ -10,8 +10,9 @@ public class MenuCantidadEjercitos extends VBox {
 
 
     public MenuCantidadEjercitos(String pregunta, int cantidad){
-        if(cantidad>0)
-            mostrarSlide(pregunta, cantidad);
+        mostrarSlide(pregunta, cantidad);
+        if(cantidad<=0)
+            mostrarError();
     }
 
     public int cantidadEjercitos(){
@@ -33,6 +34,13 @@ public class MenuCantidadEjercitos extends VBox {
         cantidades.setStyle("-fx-font-size: 20");
         setSpacing(20);
         getChildren().addAll(instruccion, cantidades);
+    }
+
+    private void mostrarError(){
+        Label mensaje = new Label("No hay ejercitos disponibles para jugar");
+        mensaje.setStyle("-fx-font-family: Gabriola; -fx-font-size: 25");
+        setSpacing(20);
+        getChildren().addAll(mensaje);
     }
 
 }

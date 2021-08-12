@@ -182,7 +182,7 @@ public class CanjeTest {
 
     @Test
     public void intentarCanjearDosCartasIgualesYUnaDistintaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException{
-        Juego juego = new Juego(new ArrayList<>(List.of(new Jugador("Nicolas"))));
+        Juego juego = new Juego(new ArrayList<>(List.of(new Jugador("Nicolas"), new Jugador("Fer"))));
 
         Carta carta1 = new Carta(new Pais("Argentina", new ArrayList<>(List.of("Brasil"))), "Fiat Palio");
         Carta carta2 = new Carta(new Pais("Brasil", new ArrayList<>(List.of("Argentina"))), "Buenarda moto");

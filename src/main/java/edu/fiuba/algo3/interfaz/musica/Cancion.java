@@ -10,7 +10,7 @@ public class Cancion {
     private Media audio;
     private MediaPlayer musica;
     private String nombre;
-    private final double volumen = 0.5;
+    private final double volumen = 0.25;
 
     public Cancion(File rutaCancion){
         nombre= this.obtenerNombre(rutaCancion.getName());
@@ -19,8 +19,8 @@ public class Cancion {
     }
 
     public void reproducirLoop(Reproductor reproductor){
-        musica.play();
         musica.setVolume(volumen);
+        musica.play();
         musica.setOnEndOfMedia(() -> {
             reproductor.reproducir(this);
         });

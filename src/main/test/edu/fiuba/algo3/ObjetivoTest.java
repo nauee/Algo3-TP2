@@ -25,7 +25,7 @@ public class ObjetivoTest {
 
     @Test
     public void seTieneTodosLosPaisesYElObjetivoComunSeCompleta() throws PaisNoTePerteneceException, ParseException, IOException, PaisNoExisteException, NoSePudoLeerExcepcion {
-        ArrayList<Jugador> jugadores = new ArrayList<>(List.of(new Jugador("Pepe")));
+        ArrayList<Jugador> jugadores = new ArrayList<>(List.of(new Jugador("Pepe"),new Jugador("Fer")));
         Juego juego = new Juego(jugadores);
         Continente americaDelSur = new Continente("America del Sur", 0);
         Pais argentina = juego.buscarPais("Argentina");

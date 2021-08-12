@@ -26,9 +26,9 @@ public class ControladorBotonObjetivos implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent){
         Stage ventanaInformacion= new Stage();
-        ventanaInformacion.setTitle("Informacion");
+        ventanaInformacion.setTitle("Objetivos");
         ventanaInformacion.initModality(Modality.APPLICATION_MODAL);
-        //ventanaInformacion.initOwner(stage);
+
         ventanaInformacion.getIcons().add(new Image("file:"+System.getProperty("user.dir")+rutaIcono));
         AnchorPane objetivo= new AnchorPane();
         objetivo.setBackground(ImagenFondo.fondoJuego("/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergaminoPapel.jpg"));
@@ -42,7 +42,7 @@ public class ControladorBotonObjetivos implements EventHandler<ActionEvent> {
         texto.setPadding(new Insets(25,25,25,25));
 
         objetivo.getChildren().add(texto);
-        Scene informacionTexto= new Scene(objetivo, 200, 200);
+        Scene informacionTexto= new Scene(objetivo, 400, 400);
         ventanaInformacion.setScene(informacionTexto);
         ventanaInformacion.show();
     }

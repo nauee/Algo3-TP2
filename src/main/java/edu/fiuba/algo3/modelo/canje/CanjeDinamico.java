@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.canje;
 
-import edu.fiuba.algo3.modelo.canje.Canje;
-
 public class CanjeDinamico implements Canje {
     private final int incremento = 5;
 

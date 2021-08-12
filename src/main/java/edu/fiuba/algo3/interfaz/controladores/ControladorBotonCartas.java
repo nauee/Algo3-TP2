@@ -6,12 +6,16 @@ import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.logica.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 
 public class ControladorBotonCartas implements EventHandler<ActionEvent> {
@@ -33,6 +37,11 @@ public class ControladorBotonCartas implements EventHandler<ActionEvent> {
         //ventanaCartas.initOwner(stage);
         ventanaCartas.getIcons().add(new Image("file:"+System.getProperty("user.dir")+rutaIcono));
         AnchorPane cartas= new AnchorPane();
+        Text instrucciones = new Text("            Selecciona 3 cartas para canjear, o hace doble click en una para activarla");
+        instrucciones.setTextAlignment(TextAlignment.CENTER);
+        cartas.getChildren().add(instrucciones);
+        AnchorPane.setTopAnchor(instrucciones, 100.0);
+        instrucciones.setStyle("-fx-font-family: Gabriola; -fx-font-size: 20; -fx-font-weight: bold");
         cartas.setBackground(ImagenFondo.fondoJuego("/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergaminoPapel.jpg"));
         ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
         for (int i = 0; i < cartasJugador.size(); i++) {

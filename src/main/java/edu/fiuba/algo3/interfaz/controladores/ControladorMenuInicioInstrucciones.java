@@ -35,7 +35,7 @@ public class ControladorMenuInicioInstrucciones implements EventHandler<ActionEv
                 "FASE ATAQUE: Se deben elegir dos países para realizar el ataque. El primer país será el atacante y el segundo el atacado, luego de seleccionar los paises se podran elegir con cuantos ejercitos atacar, en caso de que el ataque resulte en conquista se pasara un ejercito al país conquistado\n\n" +
                 "FASE REAGRUPACION: Dos países propios son seleccionados para pasar fichas de un país a otro, el primer país será el que entregue los ejércitos\n\n" +
                 "FASE COLOCACION: Se mostrara en un cuadro a la izquierda la cantidad de ejércitos disponibles que se tienen para usar en los países, los cuales pueden ser colocados seleccionando el país al que se desea reforzar, los ejercitos seran agregados uno a uno a medida que se vaya apretando el boton.\n\n" +
-                "Cada jugador tendra un objetivo personal que debera tratar de completar durante el transcurso de la partida\n\n"+
+                "Cada jugador tendra una lista de cartas las cuales puede apretar dos veces para activar la carta si posee el pais de esta, o seleccionar tres cartas de simbolos distintos o simbolos iguales para canjearlas por mas fichas\n\n"+
                 "El juego se dara por finalizado cuando se cumpla el objetivo personal, o bien se conquisten treinta paises");
 
         texto.setStyle("-fx-font-family: 'Book Antiqua'; -fx-font-size: 15; -fx-wrap-text: true; -fx-hgap: 2");

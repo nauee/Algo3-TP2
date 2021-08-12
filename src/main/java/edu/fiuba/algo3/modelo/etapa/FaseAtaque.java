@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class FaseAtaque implements Fase {
 
     private final Jugador jugadorDeTurno;
-    private ArrayList<Carta> cartas;
+    private final ArrayList<Carta> cartas;
     private final int posAtacante = 0;
     private final int posAtacado= 1;
     private boolean huboConquista= false;

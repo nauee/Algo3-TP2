@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.interfaz.botones;
 
-import edu.fiuba.algo3.interfaz.vistas.ImagenFondo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
-import edu.fiuba.algo3.interfaz.VentanaConfirmacion;
 import edu.fiuba.algo3.interfaz.menu.MenuBarra;
 import edu.fiuba.algo3.interfaz.vistas.VistaInicio;
 import javafx.event.ActionEvent;
