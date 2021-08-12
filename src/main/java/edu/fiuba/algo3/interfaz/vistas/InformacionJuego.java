@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.interfaz.SupervisorJuego;
+import edu.fiuba.algo3.interfaz.botones.BotonMediano;
 import edu.fiuba.algo3.interfaz.controladores.ControladorBotonCartas;
 import edu.fiuba.algo3.interfaz.controladores.ControladorBotonObjetivos;
 import edu.fiuba.algo3.interfaz.controladores.ControladorPasarFase;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.logica.Juego;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
@@ -53,13 +55,13 @@ public class InformacionJuego extends VBox {
         listaPaises.setMaxHeight(250);
         getChildren().add(listaPaises);
 
-        Button objetivo = new Button("Objetivo");
-        objetivo.setOnAction(new ControladorBotonObjetivos(juego.getJugador(juego.getJugadorDeTurno()).getObjetivoDescripcion()));
-        getChildren().add(objetivo);
-
-        Button cartas = new Button("Cartas");
-        cartas.setOnAction(new ControladorBotonCartas(juego));
-        getChildren().add(cartas);
+        VBox botones = new VBox();
+        BotonMediano objetivo = new BotonMediano("Objetivo", "Gabriola", new ControladorBotonObjetivos(juego.getJugador(juego.getJugadorDeTurno()).getObjetivoDescripcion()));
+        BotonMediano cartas = new BotonMediano("Cartas", "Gabriola", new ControladorBotonCartas(juego));
+        botones.getChildren().addAll(objetivo, cartas);
+        botones.setSpacing(10);
+        botones.setAlignment(Pos.CENTER);
+        getChildren().add(botones);
     }
 
     public void mostrarInformacionPais(Pais pais){

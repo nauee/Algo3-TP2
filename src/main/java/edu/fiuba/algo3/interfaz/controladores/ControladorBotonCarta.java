@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
 import edu.fiuba.algo3.interfaz.AlertaError;
+import edu.fiuba.algo3.interfaz.vistas.VistaCarta;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.logica.Juego;
@@ -16,13 +17,13 @@ import java.util.ArrayList;
 
 public class ControladorBotonCarta implements EventHandler<ActionEvent> {
 
-    private final HBox contenedor;
+    private final VistaCarta contenedor;
     private final Carta carta;
     private final ArrayList<Carta> cartasSeleccionadas;
     private final Juego juego;
     private final Stage stage;
 
-    public ControladorBotonCarta(HBox contenedor, Carta carta, ArrayList<Carta> cartasSeleccionadas, Juego juego, Stage stage){
+    public ControladorBotonCarta(VistaCarta contenedor, Carta carta, ArrayList<Carta> cartasSeleccionadas, Juego juego, Stage stage){
         this.contenedor = contenedor;
         this.carta = carta;
         this.cartasSeleccionadas = cartasSeleccionadas;
@@ -42,7 +43,7 @@ public class ControladorBotonCarta implements EventHandler<ActionEvent> {
             stage.close();
         } else {
             cartasSeleccionadas.add(carta);
-            contenedor.setStyle("-fx-border-radius: 25% 25% 0 0; -fx-border-color: red; -fx-border-width: 2px 2px 0 2px;-fx-text-alignment: center");
+            contenedor.subirCarta();
             if (cartasSeleccionadas.size() == 3) {
                 try {
                     juego.canjearCartas(cartasSeleccionadas.get(0),cartasSeleccionadas.get(1),cartasSeleccionadas.get(2));

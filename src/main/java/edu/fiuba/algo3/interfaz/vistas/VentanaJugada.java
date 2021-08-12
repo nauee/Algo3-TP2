@@ -18,6 +18,9 @@ public class VentanaJugada extends Stage{
     private final ArrayList<Pais> paises;
     private final Stage stage;
     private final SupervisorJuego supervisor;
+    String faseAgrupamiento="agrupamiento";
+    String faseAtaque= "ataque";
+    String faseColocacion = "colocacion";
 
     public VentanaJugada(Juego juego, Stage stage, ArrayList<Pais> paises, SupervisorJuego supervisor){
         super();
@@ -38,11 +41,15 @@ public class VentanaJugada extends Stage{
     }
 
     public VistaJugada determinarVista(){
-        //VistaJugada vista;
-        //if(juego.nombreFase().equals("agrupamiento")){
-        //    vista= new VistaAgrupamiento(juego, paises);
-        //}
-        return (new VistaColocacion(juego, paises, supervisor, this));
+        System.out.println(juego.nombreFase());
+        VistaJugada vista = new VistaAtaque(juego, paises, supervisor, this);
+        if(juego.nombreFase().equals(faseAgrupamiento)){
+            vista= new VistaAgrupamiento(juego, paises, supervisor, this);
+        }
+        if(juego.nombreFase().equals(faseColocacion))
+            vista= new VistaColocacion(juego, paises, supervisor, this);
+
+        return vista;
     }
 
 }

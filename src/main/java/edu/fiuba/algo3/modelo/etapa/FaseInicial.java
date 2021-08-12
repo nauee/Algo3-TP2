@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class FaseInicial implements Fase {
     private int fichasColocadas;
     private final Jugador jugadorDeTurno;
-    private final String nombre= "inicial";
+    private final String nombre= "colocacion";
     private final int fichasIniciales;
     private int fichasDelJugador = 0;
 

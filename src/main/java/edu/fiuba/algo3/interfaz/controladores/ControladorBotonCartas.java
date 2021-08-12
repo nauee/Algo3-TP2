@@ -2,6 +2,7 @@ package edu.fiuba.algo3.interfaz.controladores;
 
 import edu.fiuba.algo3.interfaz.AlertaError;
 import edu.fiuba.algo3.interfaz.vistas.ImagenFondo;
+import edu.fiuba.algo3.interfaz.vistas.VistaCarta;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
@@ -44,18 +45,10 @@ public class ControladorBotonCartas implements EventHandler<ActionEvent> {
         ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();
         for (int i = 0; i < cartasJugador.size(); i++) {
             Carta carta = cartasJugador.get(i);
-            HBox cartaBox = new HBox();
-            Button contenidoCarta = new Button(carta.getPais().getNombre() +"\n"+ carta.getSimbolo());
-            contenidoCarta.setOnAction(new ControladorBotonCarta(cartaBox, carta, cartasSeleccionadas, juego, ventanaCartas));
-            contenidoCarta.setAlignment(Pos.CENTER);
-            cartaBox.setAlignment(Pos.TOP_CENTER);
-            cartaBox.setStyle("-fx-border-radius: 25% 25% 0 0; -fx-border-color: #984202; -fx-border-width: 2px 2px 0 2px;-fx-text-alignment: center");
-            cartaBox.getChildren().add(contenidoCarta);
-            cartaBox.setPrefSize(156, 76);
-            cartaBox.setPadding(new Insets(10,0,0,0));
-            cartas.getChildren().add(cartaBox);
-            AnchorPane.setBottomAnchor(cartaBox, (double) (i/3)*55);
-            AnchorPane.setLeftAnchor(cartaBox, (double) ((i%3)*156) + 25);
+            VistaCarta vistaCarta = new VistaCarta(carta, cartasSeleccionadas, juego, ventanaCartas);
+            cartas.getChildren().add(0, vistaCarta);
+            AnchorPane.setBottomAnchor(vistaCarta, (double) (i/3)*55);
+            AnchorPane.setLeftAnchor(vistaCarta, (double) ((i%3)*156) + 25);
         }
         Scene informacionTexto= new Scene(cartas, 518, 500);
         ventanaCartas.setScene(informacionTexto);

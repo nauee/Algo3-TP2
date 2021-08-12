@@ -14,7 +14,7 @@ public class FaseAgrupamiento implements Fase {
     private Jugador jugadorDeTurno;
     private final int origen = 0;
     private final int destino = 1;
-    private final String nombre= "ccccccc";
+    private final String nombre= "agrupamiento";
 
     public FaseAgrupamiento(Jugador jugadorDeTurno){
         this.jugadorDeTurno = jugadorDeTurno;
