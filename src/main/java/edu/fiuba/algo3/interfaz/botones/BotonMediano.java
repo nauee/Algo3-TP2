@@ -16,10 +16,10 @@ public class BotonMediano extends Button{
     public BotonMediano(String nombre, String fuente, EventHandler<ActionEvent> controlador) {
         super();
         setText(nombre);
-        setFont(new Font(fuente, 20));
+        setFont(new Font(fuente, 25));
         Background fondoNormal = new Background(new BackgroundFill(Color.valueOf("#B5884B"), new CornerRadii(5), Insets.EMPTY));
         Background fondoActivo = new Background(new BackgroundFill(Color.valueOf("#a37b43"), new CornerRadii(5), Insets.EMPTY));
-        setStyle("-fx-border-color: #905A02; -fx-border-width: 4px 4px 4px 4px;-fx-text-alignment: center; -fx-border-radius: 5px");
+        setStyle("-fx-border-color: #905A02; -fx-border-width: 2px 2px 2px 2px;-fx-text-alignment: center; -fx-border-radius: 5px");
         setBackground(fondoNormal);
         setOnMouseEntered(e -> setBackground(fondoActivo));
         setOnMouseExited(e -> setBackground(fondoNormal));

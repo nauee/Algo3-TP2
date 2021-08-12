@@ -1,10 +1,15 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
 import edu.fiuba.algo3.interfaz.VentanaConfirmacion;
+import edu.fiuba.algo3.interfaz.botones.BotonMediano;
 import edu.fiuba.algo3.interfaz.menu.MenuBarra;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ControladorNuevoJuego implements EventHandler<ActionEvent> {
@@ -20,13 +25,19 @@ public class ControladorNuevoJuego implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        Button confirmar= new Button("Si");
-        Button negar= new Button("No");
-
-        VentanaConfirmacion confirmacion= new VentanaConfirmacion(stage, "crear un nuevo juego", confirmar, negar);
-        negar.setOnAction(e-> confirmacion.close());
-        confirmar.setOnAction(new ControladorVolverAlPrincipio(stage, menuArriba, confirmacion));
-        confirmacion.initOwner(stage);
-        confirmacion.show();
+        HBox opciones= new HBox();
+        VentanaConfirmacion confirmacion=new VentanaConfirmacion("Crear un nuevo juego", opciones);
+        Stage ventanaConfirmacion = new Stage();
+        ventanaConfirmacion.setTitle("Crear un nuevo juego");
+        ventanaConfirmacion.initModality(Modality.APPLICATION_MODAL);
+        ventanaConfirmacion.initOwner(stage);
+        opciones.setAlignment(Pos.CENTER);
+        opciones.setSpacing(10);
+        BotonMediano confirmar= new BotonMediano("Si", "Gabriola", new ControladorVolverAlPrincipio(stage, menuArriba, ventanaConfirmacion));
+        BotonMediano negar= new BotonMediano("No", "Gabriola", new ControladorCancelarNuevoJuego(ventanaConfirmacion));
+        opciones.getChildren().addAll(confirmar,negar);
+        Scene escenaConfirmacion = new Scene(confirmacion);
+        ventanaConfirmacion.setScene(escenaConfirmacion);
+        ventanaConfirmacion.show();
     }
 }

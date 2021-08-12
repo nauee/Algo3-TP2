@@ -9,27 +9,28 @@ import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.logica.Juego;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
-public class InformacionJuego extends VBox {
+public class PanelInformacionJuego extends VBox {
 
     private final Juego juego;
     private final SupervisorJuego supervisorJuego;
-    private Text etapa;
+    private Label etapa;
     private Text informacionPais;
 
-    public InformacionJuego(Juego juego, SupervisorJuego supervisorJuego){
+    public PanelInformacionJuego(Juego juego, SupervisorJuego supervisorJuego){
         this.juego=juego;
         this.supervisorJuego = supervisorJuego;
-        this.etapa= new Text("Etapa: " + juego.nombreFase());
-        Text jugadorDeTurno= new Text("Jugador de turno: " + juego.getNombreJugadorDeTurno());
-       // Button jugar = new Button("Jugar");
+        this.etapa= new Label(" ETAPA: " + juego.nombreFase());
+        Label jugadorDeTurno= new Label("Jugador de turno: " + juego.getNombreJugadorDeTurno());
+        jugadorDeTurno.setMaxWidth(100);
         VBox paisesSelect = new VBox();
-        Text titulo = new Text("Paises seleccionados:");
+        Text titulo = new Text(" Paises seleccionados:");
         paisesSelect.getChildren().add(titulo);
         ArrayList<String> paises = supervisorJuego.obtenerNombresPaises();
         for (String pais : paises) {
@@ -37,12 +38,7 @@ public class InformacionJuego extends VBox {
             paisesSelect.getChildren().add(paisText);
         }
         this.getChildren().addAll(etapa, jugadorDeTurno, paisesSelect);
-        this.setStyle("-fx-font-family: Gabriola; -fx-font-size: 25px; -fx-background-color: AB8146");
-        Button pasarDeFase = new Button("Pasar");
-        pasarDeFase.setOnAction(new ControladorPasarFase(juego));
-        pasarDeFase.setLayoutX(278);
-        pasarDeFase.setLayoutY(173);
-        getChildren().add(pasarDeFase);
+        this.setStyle("-fx-font-family: Gabriola; -fx-font-size: 25px; -fx-background-color: #AB8146");
 
         ScrollPane listaPaises = new ScrollPane();
         VBox contenedorPaises = new VBox();
@@ -52,16 +48,10 @@ public class InformacionJuego extends VBox {
             contenedorPaises.getChildren().add(paisNombre);
         }
         listaPaises.setContent(contenedorPaises);
-        listaPaises.setMaxHeight(250);
+        listaPaises.setMaxHeight(300);
         getChildren().add(listaPaises);
+        contenedorPaises.setStyle("-fx-background-color:  #AB8146");
 
-        VBox botones = new VBox();
-        BotonMediano objetivo = new BotonMediano("Objetivo", "Gabriola", new ControladorBotonObjetivos(juego.getJugador(juego.getJugadorDeTurno()).getObjetivoDescripcion()));
-        BotonMediano cartas = new BotonMediano("Cartas", "Gabriola", new ControladorBotonCartas(juego));
-        botones.getChildren().addAll(objetivo, cartas);
-        botones.setSpacing(10);
-        botones.setAlignment(Pos.CENTER);
-        getChildren().add(botones);
     }
 
     public void mostrarInformacionPais(Pais pais){

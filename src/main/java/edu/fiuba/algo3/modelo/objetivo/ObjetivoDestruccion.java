@@ -19,6 +19,10 @@ public class ObjetivoDestruccion extends Objetivo {
         return jugadorADestruir;
     }
 
+    public boolean destruirA(Jugador jugador){
+        return jugador.equals(jugadorADestruir);
+    }
+
     public String getDescripcion(){
         return "Destruye a " + jugadorADestruir.getNombre();
     }

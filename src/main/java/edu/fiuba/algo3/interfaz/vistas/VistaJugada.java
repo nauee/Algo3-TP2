@@ -17,6 +17,7 @@ public class VistaJugada extends VBox {
 
     protected VistaJugada(){
         setBackground(ImagenFondo.fondoJuego("/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergamino.jpg"));
+        setAlignment(Pos.CENTER);
     }
 
     protected MenuCantidadEjercitos agregarOpcionesCantidadEjercitos(String pregunta, int cantidad){

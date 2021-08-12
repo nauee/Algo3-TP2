@@ -1,12 +1,16 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.interfaz.SupervisorJuego;
+import edu.fiuba.algo3.interfaz.botones.BotonMediano;
+import edu.fiuba.algo3.interfaz.controladores.ControladorBotonCartas;
+import edu.fiuba.algo3.interfaz.controladores.ControladorBotonObjetivos;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.interfaz.botones.BotonPais;
 import edu.fiuba.algo3.modelo.logica.Juego;
+import javafx.geometry.Pos;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -19,6 +23,7 @@ public class Mapa extends AnchorPane {
     private final double ancho= 1130;
     private final double posicionX= 154;
     private final Stage stage;
+    private PanelAcciones acciones;
     private Juego juego;
     private final String colorAzul = "#0077bb";
     private final String colorRojo = "#cc3311";
@@ -29,7 +34,7 @@ public class Mapa extends AnchorPane {
     private final ArrayList<String> colores = new ArrayList<>(List.of(colorAzul, colorRojo, colorAmarillo, colorVerde, colorRosa, colorNegro));
     private SupervisorJuego supervisorJuego;
     private ArrayList<BotonPais> botonesPaises = new ArrayList<>();
-    private InformacionJuego informacion;
+    private PanelInformacionJuego informacion;
     private TablaJugadores jugadores;
 
     public Mapa(Stage stage, Juego juego, SupervisorJuego supervisorJuego) throws PaisNoExisteException {
@@ -39,12 +44,12 @@ public class Mapa extends AnchorPane {
         this.stage=stage;
         this.juego=juego;
         this.supervisorJuego = supervisorJuego;
-        this.informacion = new InformacionJuego(juego, supervisorJuego);
-        this.jugadores = new TablaJugadores(juego, colores);
 
-        getChildren().add(jugadores);
-        AnchorPane.setRightAnchor(jugadores, 0.0);
-        getChildren().add(informacion);
+        this.acciones= new PanelAcciones(juego, colores);
+        this.informacion = new PanelInformacionJuego(juego, supervisorJuego);
+        
+        getChildren().addAll(acciones, informacion);
+        AnchorPane.setRightAnchor(acciones, 0.0);
         AnchorPane.setLeftAnchor(informacion, 0.0);
 
         this.ponerPaises();
@@ -63,12 +68,14 @@ public class Mapa extends AnchorPane {
         getChildren().clear();
         Imagen fotoMapa= new Imagen(rutaImagenMapa, altura, ancho, posicionX);
         this.getChildren().add(fotoMapa);
-        informacion = new InformacionJuego(juego, supervisorJuego);
-        jugadores = new TablaJugadores(juego, colores);
-        getChildren().add(jugadores);
-        AnchorPane.setRightAnchor(jugadores, 0.0);
-        getChildren().add(informacion);
+
+        this.acciones= new PanelAcciones(juego, colores);
+        this.informacion = new PanelInformacionJuego(juego, supervisorJuego);
+
+        getChildren().addAll(acciones, informacion);
+        AnchorPane.setRightAnchor(acciones, 0.0);
         AnchorPane.setLeftAnchor(informacion, 0.0);
+
         this.ponerPaises();
     }
 

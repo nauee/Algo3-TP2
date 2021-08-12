@@ -1,10 +1,13 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.interfaz.vistas.Imagen;
+import edu.fiuba.algo3.interfaz.vistas.ImagenFondo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -12,27 +15,16 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class VentanaConfirmacion extends Stage {
+public class VentanaConfirmacion extends VBox {
 
-    public VentanaConfirmacion(Stage stage, String asunto, Button opcion1, Button opcion2){
+    public VentanaConfirmacion(String asunto,HBox opciones){
         super();
-        this.setTitle(asunto);
-        this.initModality(Modality.APPLICATION_MODAL);
-        this.initOwner(stage);
-
-        VBox confirmacion= new VBox();
-        Text pregunta = new Text("¿Estas seguro que queres " + asunto + "?");
-        HBox opciones= new HBox();
-        opciones.getChildren().addAll(opcion1, opcion2);
-        opciones.setAlignment(Pos.CENTER);
-        opciones.setSpacing(10);
-
+        Label pregunta = new Label("¿Estas seguro que queres " + asunto.toLowerCase() + "?");
+        pregunta.setStyle("-fx-font-size: 25; -fx-font-family: Gabriola");
         pregunta.setTextAlignment(TextAlignment.CENTER);
-        confirmacion.setSpacing(20);
-
-        confirmacion.getChildren().addAll(pregunta, opciones);
-        Scene escenaConfirmacion= new Scene(confirmacion, 300, 200);
-        this.setScene(escenaConfirmacion);
+        setSpacing(20);
+        setBackground(ImagenFondo.fondoJuego("/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergamino.jpg"));
+        getChildren().addAll(pregunta, opciones);
     }
 
 }

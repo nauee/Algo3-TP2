@@ -1,17 +1,17 @@
 package edu.fiuba.algo3.interfaz.menu;
 
-import edu.fiuba.algo3.interfaz.vistas.ImagenFondo;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class MenuCantidadEjercitos extends VBox {
 
     Slider cantidades;
 
     public MenuCantidadEjercitos(String pregunta, int cantidad){
-        Text instruccion = new Text(pregunta);
+        Label instruccion = new Label(pregunta);
+        instruccion.setStyle("-fx-font-family: Gabriola; -fx-font-size: 25");
+        instruccion.setMaxWidth(400);
         cantidades = new Slider(0,cantidad,0);
         cantidades.setBlockIncrement(1);
         cantidades.setShowTickLabels(true);
@@ -19,7 +19,10 @@ public class MenuCantidadEjercitos extends VBox {
         cantidades.setMajorTickUnit(1);
         cantidades.setSnapToTicks(true);
         cantidades.setMinWidth(20);
-        cantidades.setMinSize(20, 20);
+        cantidades.setMinSize(50, 50);
+        cantidades.setMaxWidth(450);
+        cantidades.setStyle("-fx-font-size: 20");
+        setSpacing(20);
         getChildren().addAll(instruccion, cantidades);
 
     }

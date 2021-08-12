@@ -73,8 +73,10 @@ public class Pais {
     }
 
     public void serConquistadoPor(Pais paisConquistador) {
+        Jugador conquistado = duenio;
         duenio.perderPais(this);
         paisConquistador.ganarleAPais(this);
+        if (conquistado.seQuedoSinPaises()) conquistado.serDerrotadoPor(duenio);
     }
 
     public void ganarleAPais(Pais pais) {

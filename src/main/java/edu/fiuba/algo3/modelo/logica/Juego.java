@@ -13,6 +13,7 @@ import edu.fiuba.algo3.modelo.lectura.lector.LectorDeCartas;
 import edu.fiuba.algo3.modelo.lectura.lector.LectorDeObjetivos;
 import edu.fiuba.algo3.modelo.lectura.lector.LectorDePaises;
 import edu.fiuba.algo3.modelo.objetivo.Objetivo;
+import edu.fiuba.algo3.modelo.objetivo.ObjetivoDestruccion;
 import org.json.simple.parser.ParseException;
 
 import java.util.*;
@@ -64,15 +65,22 @@ public class Juego implements Observable {
 
     private void distribuirObjetivos(){
         Collections.shuffle(objetivos);
-        for (int i = 0; i < jugadores.size(); i++)
+        boolean objetivosValidos = true;
+        for (int i = 0; i < jugadores.size(); i++){
+
+            if (objetivos.get(i) instanceof ObjetivoDestruccion)
+                if (((ObjetivoDestruccion)objetivos.get(i)).destruirA(jugadores.get(i)))
+                    objetivosValidos = false;
+
             jugadores.get(i).agregarObjetivo(objetivos.get(i));
+        }
+        if (!objetivosValidos) distribuirObjetivos();
     }
 
     private void distribuirPaises() throws PaisNoTePerteneceException{
         ArrayList<Pais> paises = new ArrayList<>();
         continentes.forEach((continente) -> paises.addAll(continente.getPaises()));
         Collections.shuffle(paises);
-
         for(int i = 0; i < paises.size(); i++){
             Jugador jugador = jugadores.get(i % jugadores.size());
             Pais pais = paises.get(i);
@@ -121,12 +129,16 @@ public class Juego implements Observable {
         this.notificar();
     }
 
-    public int getJugadorDeTurno() {
-        return etapa.getJugadorDeTurno();
+    public int getIdJugadorDeTurno() {
+        return etapa.getIdJugadorDeTurno();
     }
 
     public Jugador getJugador(int index) {
         return jugadores.get(index);
+    }
+
+    public Jugador getJugadorDeTurno(){
+        return (etapa.getJugadorDeTurno());
     }
 
     public String nombreFase(){
@@ -163,5 +175,13 @@ public class Juego implements Observable {
 
     public ArrayList<Carta> getCartas() {
         return cartas;
+    }
+
+    public String getObjetivoJugadorDeTurno(){
+        return(getJugadorDeTurno().getObjetivoDescripcion());
+    }
+
+    public String getNombreFase(){
+        return etapa.nombreFase();
     }
 }

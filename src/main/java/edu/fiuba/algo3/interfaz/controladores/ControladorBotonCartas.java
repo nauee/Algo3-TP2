@@ -1,23 +1,14 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
-import edu.fiuba.algo3.interfaz.AlertaError;
 import edu.fiuba.algo3.interfaz.vistas.ImagenFondo;
 import edu.fiuba.algo3.interfaz.vistas.VistaCarta;
 import edu.fiuba.algo3.modelo.carta.Carta;
-import edu.fiuba.algo3.modelo.excepciones.*;
-import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.logica.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -30,7 +21,7 @@ public class ControladorBotonCartas implements EventHandler<ActionEvent> {
 
     public ControladorBotonCartas(Juego juego){
         this.juego = juego;
-        this.cartasJugador = juego.getJugador(juego.getJugadorDeTurno()).getCartas();
+        this.cartasJugador = juego.getJugador(juego.getIdJugadorDeTurno()).getCartas();
     }
 
     @Override

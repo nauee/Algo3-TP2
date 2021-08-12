@@ -28,6 +28,7 @@ public class FaseAtaque implements Fase {
         paisAtacante.atacarPais(paisAtacado,cantidadEjercitos, jugadorDeTurno);
 
         if (paisAtacado.lePerteneceA(jugadorDeTurno)) huboConquista = true;
+        if (jugadorDeTurno.objetivoCumplido()) jugadorDeTurno.ganar();
     }
 
     @Override

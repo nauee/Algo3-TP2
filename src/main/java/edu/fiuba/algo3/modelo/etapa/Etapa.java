@@ -25,7 +25,8 @@ public abstract class Etapa {
     public static Jugador siguienteJugador(){
         jugadorDeTurno++;
         if(jugadorDeTurno >= jugadores.size()) return jugadores.get(0);
-
+        while (jugadores.get(jugadorDeTurno).perdio())
+            jugadorDeTurno = (jugadorDeTurno + 1) % jugadores.size();
         return (jugadores.get(jugadorDeTurno));
     }
 
@@ -37,8 +38,12 @@ public abstract class Etapa {
 
     public abstract void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException;
 
-    public int getJugadorDeTurno() {
+    public static int getIdJugadorDeTurno() {
         return jugadorDeTurno;
+    }
+
+    public static Jugador getJugadorDeTurno(){
+        return jugadores.get(jugadorDeTurno);
     }
 
     public ArrayList<Pais> paisesDeJugadorDeTurno(){

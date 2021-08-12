@@ -20,6 +20,5 @@ public class MenuInicio extends VBox {
         this.getChildren().addAll(jugar, instrucciones, salir);
         this.setAlignment(Pos.CENTER);
         this.setSpacing(10);
-
     }
 }

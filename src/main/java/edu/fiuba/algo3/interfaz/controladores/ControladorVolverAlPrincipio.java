@@ -11,19 +11,20 @@ import javafx.stage.Stage;
 public class ControladorVolverAlPrincipio implements EventHandler<ActionEvent> {
 
     Stage stage;
-    VentanaConfirmacion ventana;
-    VistaInicio menuCantidad;
+    Stage ventana;
+    MenuBarra menuArriba;
 
-    public ControladorVolverAlPrincipio(Stage stage, MenuBarra menuArriba, VentanaConfirmacion ventana){
+    public ControladorVolverAlPrincipio(Stage stage, MenuBarra menuArriba, Stage ventana){
         this.ventana= ventana;
         this.stage=stage;
-        this.menuCantidad = new VistaInicio(stage, menuArriba);
+        this.menuArriba = menuArriba;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        ventana.close();
+        VistaInicio menuCantidad = new VistaInicio(stage, menuArriba);
         Scene scene = new Scene(menuCantidad, 1280, 720);
         stage.setScene(scene);
+        ventana.close();
     }
 }

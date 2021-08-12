@@ -45,6 +45,4 @@ public class ControladorJugada implements EventHandler<ActionEvent> {
         supervisor.limpiar();
         ventana.close();
     }
-
-
 }

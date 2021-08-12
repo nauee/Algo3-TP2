@@ -143,4 +143,8 @@ public class Jugador{
     public String getObjetivoDescripcion(){
         return objetivo.getDescripcion();
     }
+
+    public boolean seQuedoSinPaises(){
+        return paises.size()==0;
+    }
 }

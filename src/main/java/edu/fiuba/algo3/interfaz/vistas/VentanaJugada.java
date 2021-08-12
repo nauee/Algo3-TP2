@@ -35,19 +35,18 @@ public class VentanaJugada extends Stage{
         initModality(Modality.APPLICATION_MODAL);
         initStyle(StageStyle.UNDECORATED);
         initOwner(stage);
-        Scene scene= new Scene(determinarVista(), 400, 400);
+        Scene scene= new Scene(determinarVista(), 500, 300);
         setScene(scene);
         show();
     }
 
     public VistaJugada determinarVista(){
-        System.out.println(juego.nombreFase());
-        VistaJugada vista = new VistaAtaque(juego, paises, supervisor, this);
+        VistaJugada vista = new VistaColocacion(juego, paises, supervisor, this);
         if(juego.nombreFase().equals(faseAgrupamiento)){
             vista= new VistaAgrupamiento(juego, paises, supervisor, this);
         }
-        if(juego.nombreFase().equals(faseColocacion))
-            vista= new VistaColocacion(juego, paises, supervisor, this);
+        else if(juego.nombreFase().equals(faseAtaque))
+            vista= new VistaAtaque(juego, paises, supervisor, this);
 
         return vista;
     }
