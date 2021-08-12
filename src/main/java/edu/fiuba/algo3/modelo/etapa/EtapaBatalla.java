@@ -46,4 +46,9 @@ public class EtapaBatalla extends Etapa {
     public int getCantidadPaisesNecesarios() {
         return 2;
     }
+
+    public int getCantidadFichasDisponibles() {
+        return 0;
+    }
+
 }

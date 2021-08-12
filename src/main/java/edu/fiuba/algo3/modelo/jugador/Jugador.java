@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.jugador;
 
+import edu.fiuba.algo3.modelo.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.excepciones.CartaYaActivadaException;
@@ -56,7 +57,7 @@ public class Jugador{
         cartas.add(carta);
     }
 
-    public void activarCarta(Carta carta) throws CartaYaActivadaException {
+    public void activarCarta(Carta carta) throws CartaYaActivadaException, PaisNoTePerteneceException {
         if (cartas.contains(carta))
             carta.activarse(this);
     }
@@ -137,5 +138,9 @@ public class Jugador{
 
     public boolean objetivoCumplido(){
         return objetivo.cumplido(this);
+    }
+
+    public String getObjetivoDescripcion(){
+        return objetivo.getDescripcion();
     }
 }

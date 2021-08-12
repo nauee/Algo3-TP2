@@ -18,4 +18,8 @@ public class ObjetivoDestruccion extends Objetivo {
     public Jugador getJugador(){
         return jugadorADestruir;
     }
+
+    public String getDescripcion(){
+        return "Destruye a " + jugadorADestruir.getNombre();
+    }
 }

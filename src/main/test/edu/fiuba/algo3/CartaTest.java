@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.logica.Juego;
 import org.json.simple.parser.ParseException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoTePerteneceException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CartaTest {
 
     @Test
-    public void ActivarUnaCartaDeUnPaisQueTePerteneceFuncionaCorrectamente() throws CartaYaActivadaException {
+    public void ActivarUnaCartaDeUnPaisQueTePerteneceFuncionaCorrectamente() throws CartaYaActivadaException, PaisNoTePerteneceException{
         Jugador jugador = new Jugador("Pepe");
         Pais argentina = new Pais("Argentina", new ArrayList<>(List.of("Brasil")));
         Carta carta = new Carta(argentina, "Comodin");
@@ -39,7 +40,7 @@ public class CartaTest {
     }
 
     @Test
-    public void intentarActivarUnaCartaYaActivadaLanzaUnaExcepcion() throws CartaYaActivadaException {
+    public void intentarActivarUnaCartaYaActivadaLanzaUnaExcepcion() throws CartaYaActivadaException, PaisNoTePerteneceException{
         Jugador jugador = new Jugador("Pepe");
         Pais argentina = new Pais("Argentina", new ArrayList<>(List.of("Brasil")));
         Carta carta = new Carta(argentina, "Comodin");
@@ -73,5 +74,20 @@ public class CartaTest {
         juego.pasarDeFase();
 
         assertThrows(NoSePuedeActivarCartaEnLaBatallaException.class, ()->juego.activarCarta(carta));
+    }
+
+    @Test
+    public void intentarActivarUnaCartaDeUnPaisQueNoLePerteneceLanzaUnaExcepcion(){
+        Jugador jugador1 = new Jugador("Nicolas");
+        Jugador jugador2 = new Jugador("Nahuel");
+        Pais argentina = new Pais("Argentina", new ArrayList<>(List.of("Brasil", "Uruguay")));
+        Pais brasil = new Pais("Brasil", new ArrayList<>(List.of("Argentina", "Uruguay")));
+        Carta carta = new Carta(argentina, "Mate");
+
+        jugador1.agregarPais(brasil);
+        jugador1.darleCarta(carta);
+        jugador2.agregarPais(argentina);
+
+        assertThrows(PaisNoTePerteneceException.class, () -> jugador1.activarCarta(carta));
     }
 }

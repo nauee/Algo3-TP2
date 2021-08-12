@@ -57,7 +57,12 @@ public class FaseColocacion implements Fase {
         return nombre;
     }
 
-    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
+    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException, PaisNoTePerteneceException{
         jugadorDeTurno.activarCarta(unaCarta);
     }
+
+    public int getCantidadFichasDisponibles() {
+        return fichasDelJugador - fichasColocadas;
+    }
+
 }

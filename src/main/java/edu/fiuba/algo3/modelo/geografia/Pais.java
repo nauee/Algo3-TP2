@@ -116,5 +116,9 @@ public class Pais {
     public boolean mismoDuenio(Pais pais) {
         return (pais.lePerteneceA(duenio));
     }
+
+    public int getIdDuenio(){
+        return duenio.getId();
+    }
 }
 

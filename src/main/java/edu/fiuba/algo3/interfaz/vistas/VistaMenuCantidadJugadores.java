@@ -37,6 +37,8 @@ public class VistaMenuCantidadJugadores extends BorderPane {
 
         MenuOpcionesCantidad menuCantidad = new MenuOpcionesCantidad(pregunta, minJugadores, maxJugadores, "jugadores", 50);
         BotonGrande comenzar= new BotonGrande("Comenzar partida", "Gabriola",new ControladorCantidadJugadores(stage, menuCantidad.getOpciones(), menuArriba));
+
+
         comenzar.setAlignment(Pos.BOTTOM_CENTER);
         menuCantidad.setBackground(ImagenFondo.fondoParcial(rutaImagenFondoCentro));
         menuCantidad.getChildren().add(comenzar);

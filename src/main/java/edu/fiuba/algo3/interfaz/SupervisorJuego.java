@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.interfaz;
 
+import edu.fiuba.algo3.interfaz.vistas.VentanaJugada;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.logica.Juego;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -11,10 +13,13 @@ public class SupervisorJuego implements Observable{
     private final ArrayList<Pais> paisesSeleccionados;
     private final ArrayList<Observador> observadores;
     private final Juego juego;
+    private VentanaJugada presentacion;
+    private final Stage stage;
 
-    public SupervisorJuego(Juego juego){
-        paisesSeleccionados = new ArrayList<Pais>();
+    public SupervisorJuego(Juego juego, Stage stage){
+        paisesSeleccionados = new ArrayList<>();
         observadores = new ArrayList<>();
+        this.stage=stage;
         this.juego = juego;
     }
 
@@ -22,16 +27,12 @@ public class SupervisorJuego implements Observable{
         paisesSeleccionados.add(pais);
         this.notificar();
         if (paisesSeleccionados.size() == juego.getCantidadPaisesNecesarios()) {
-            try {
-                juego.jugar(1, paisesSeleccionados.get(0), paisesSeleccionados.get(1));
-                limpiar();
-            } catch (PaisNoLimitrofeException | MovimientoConCantidadInvalidaException | PaisNoTePerteneceException | AtaqueConCantidadInvalidaException | FichasInsuficientesException | PaisNoExisteException | AtaqueAPaisPropioException e) {
-                AlertaError.mensajeError(e.getMessage());
-            }
+            presentacion=new VentanaJugada(juego, stage, paisesSeleccionados, this);
+            presentacion.mostrar();
         }
     }
 
-    private void limpiar(){
+    public void limpiar(){
         paisesSeleccionados.clear();
     }
 

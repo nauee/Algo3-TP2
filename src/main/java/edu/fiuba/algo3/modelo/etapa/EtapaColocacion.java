@@ -43,7 +43,13 @@ public class EtapaColocacion extends Etapa {
     }
 
     @Override
-    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
+    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException, PaisNoTePerteneceException{
         fase.activarCarta(unaCarta);
     }
+
+    @Override
+    public int getCantidadFichasDisponibles() {
+        return fase.getCantidadFichasDisponibles();
+    }
+
 }

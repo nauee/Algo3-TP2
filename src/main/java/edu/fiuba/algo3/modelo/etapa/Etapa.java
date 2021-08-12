@@ -52,4 +52,6 @@ public abstract class Etapa {
     }
 
     public abstract int getCantidadPaisesNecesarios();
+
+    public abstract int getCantidadFichasDisponibles();
 }

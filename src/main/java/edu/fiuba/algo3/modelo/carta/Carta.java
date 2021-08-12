@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.carta;
 
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.excepciones.CartaYaActivadaException;
@@ -51,7 +53,7 @@ public class Carta {
         return simbolo;
     }
 
-    public void activarse(Jugador jugador) throws CartaYaActivadaException {
+    public void activarse(Jugador jugador) throws CartaYaActivadaException, PaisNoTePerteneceException {
         estado = estado.activarse(jugador, pais);
     }
 }

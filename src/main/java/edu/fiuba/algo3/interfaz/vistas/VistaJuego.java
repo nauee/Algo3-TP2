@@ -19,7 +19,7 @@ import java.util.List;
 public class VistaJuego extends BorderPane{
 
     private final ObservadorJuego observador;
-    private final ObservadorPaisesSeleccionados observadorPaisesSeleccionados;
+    private final ObservadorPaisesSeleccionados observadorJuego;
     private final Stage stage;
     private Juego juego;
     private Mapa mapa;
@@ -38,9 +38,9 @@ public class VistaJuego extends BorderPane{
         super();
         this.stage = stage;
         this.juego = juego;
-        supervisorJuego = new SupervisorJuego(juego);
+        supervisorJuego = new SupervisorJuego(juego, stage);
         observador = new ObservadorJuego(juego, this);
-        observadorPaisesSeleccionados = new ObservadorPaisesSeleccionados(supervisorJuego, this);
+        observadorJuego = new ObservadorPaisesSeleccionados(supervisorJuego, this);
         mapa = new Mapa(stage, juego, supervisorJuego);
 
         this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondoJuego));

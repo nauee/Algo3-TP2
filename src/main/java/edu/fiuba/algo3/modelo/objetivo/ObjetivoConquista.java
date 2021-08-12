@@ -9,6 +9,7 @@ public class ObjetivoConquista extends Objetivo {
 
     private final ArrayList<Continente> continentes;
     private final ArrayList<Integer> cantidadAConquistarPorContinente;
+    private final int TODOS_LOS_PAISES = 0;
 
     public ObjetivoConquista(ArrayList<Continente> continentes, ArrayList<Integer> cantidadAConquistarPorContinente){
         this.continentes = continentes;
@@ -31,5 +32,16 @@ public class ObjetivoConquista extends Objetivo {
 
     public ArrayList<Integer> getCantidades(){
         return cantidadAConquistarPorContinente;
+    }
+
+    public String getDescripcion(){
+        String descripcion = "";
+        for (int i = 0; i < continentes.size(); i++){
+            descripcion = descripcion.concat("Conquista ");
+            int cantidad = cantidadAConquistarPorContinente.get(i);
+            descripcion = descripcion.concat(cantidad != TODOS_LOS_PAISES ? cantidad + " paises de " : "todo ");
+            descripcion = descripcion.concat(continentes.get(i).getNombre() + "\n");
+        }
+        return descripcion;
     }
 }

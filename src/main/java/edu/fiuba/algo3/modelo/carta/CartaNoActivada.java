@@ -7,12 +7,8 @@ import edu.fiuba.algo3.modelo.excepciones.PaisNoTePerteneceException;
 public class CartaNoActivada implements EstadoCarta {
 
     @Override
-    public EstadoCarta activarse(Jugador jugador, Pais pais){
-        try{
-            pais.agregarEjercitos(2, jugador);
-            return new CartaActivada();
-        }catch(PaisNoTePerteneceException exception){
-            return this;
-        }
+    public EstadoCarta activarse(Jugador jugador, Pais pais) throws PaisNoTePerteneceException{
+        pais.agregarEjercitos(2, jugador);
+        return new CartaActivada();
     }
 }

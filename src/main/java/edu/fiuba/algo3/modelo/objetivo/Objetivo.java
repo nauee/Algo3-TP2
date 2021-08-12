@@ -9,4 +9,6 @@ public abstract class Objetivo {
     }
 
     public abstract boolean cumplido(Jugador jugador);
+
+    public abstract String getDescripcion();
 }

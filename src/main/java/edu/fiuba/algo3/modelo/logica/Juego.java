@@ -141,4 +141,9 @@ public class Juego implements Observable {
             observador.actualizar();
         }
     }
+
+    public int getCantidadFichasDisponibles() {
+        return etapa.getCantidadFichasDisponibles();
+    }
+
 }

@@ -46,11 +46,16 @@ public class FaseInicial implements Fase {
         return nombre;
     }
 
-    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
+    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException, PaisNoTePerteneceException{
         jugadorDeTurno.activarCarta(unaCarta);
     }
 
     public void agregarFichasDelCanje(int fichas){
         fichasDelJugador += fichas;
     }
+
+    public int getCantidadFichasDisponibles() {
+        return fichasIniciales - fichasColocadas;
+    }
+
 }
