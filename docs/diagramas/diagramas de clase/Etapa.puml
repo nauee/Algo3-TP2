@@ -35,4 +35,20 @@ class EtapaColocacion {
     + canjearCartas(carta1, carta2, carta3): void
 }
 
+class PrimeraEtapaInicial {
+    - fase: FaseInicial
+    - fichasIniciales: int
+    + {static} PrimeraEtapaInicial(): PrimeraEtapaInicial
+}
+
+PrimeraEtapaInicial --|> Etapa
+
+class SegundaEtapaInicial {
+    - fase: FaseInicial
+    - fichasIniciales: int
+    + {static} SegundaEtapaInicial(): SegundaEtapaInicial
+}
+
+SegundaEtapaInicial --|> Etapa
+
 @enduml
