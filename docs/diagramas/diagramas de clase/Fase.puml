@@ -5,7 +5,7 @@ title Fases
 hide empty members
 
 interface Fase {
-    + jugar(int cantidadEjercitos, paises: Array): void
+    + jugar(cantidadEjercitos: int, paises: Array): void
     + siguienteFase(cartas: ArrayList): Fase
 }
 
@@ -41,5 +41,16 @@ class FaseColocacion {
     + siguienteFase(cartas: ArrayList): FaseColocacion
     + activarCarta(unaCarta: Carta): void
 }
+
+class FaseInicial {
+    + fichasColocadas: int
+    + jugadorDeTurno: Jugador
+    + nombre: String
+    + fichasIniciales: int
+    + {static} FaseInicial(jugadorDeTurno, fichasIniciales): FaseInicial
+    + agregarFichasDelCanje(fichas: int): void
+}
+
+FaseInicial ..|> Fase
 
 @enduml
