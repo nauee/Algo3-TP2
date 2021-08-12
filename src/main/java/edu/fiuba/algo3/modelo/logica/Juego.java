@@ -29,11 +29,9 @@ public class Juego implements Observable {
     private final ArrayList<Carta> cartas;
     private final ArrayList<Objetivo> objetivos;
 
-    public Juego(ArrayList<Jugador> jugadores) throws SeAlcanzoLaCantidadMaximaException, ParseException, IOException, PaisNoTePerteneceException, NoSePudoLeerExcepcion, PaisNoExisteException {
+    public Juego(ArrayList<Jugador> jugadores) throws ParseException, IOException, PaisNoTePerteneceException, NoSePudoLeerExcepcion, PaisNoExisteException {
 
-        if(jugadores.size() > JUGADORES_MAX)
-            throw new SeAlcanzoLaCantidadMaximaException();
-
+        Jugador.reiniciarID();
         this.jugadores = jugadores;
 
         LectorDePaises lectorPaises = new LectorDePaises();

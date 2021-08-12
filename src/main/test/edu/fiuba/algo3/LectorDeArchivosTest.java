@@ -1,17 +1,23 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.lectura.lector.LectorDeObjetivos;
 import edu.fiuba.algo3.modelo.carta.Carta;
-import edu.fiuba.algo3.modelo.geografia.Continente;
-import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.lectura.lector.LectorDeCartas;
 import edu.fiuba.algo3.lectura.lector.LectorDePaises;
+import edu.fiuba.algo3.modelo.geografia.Continente;
+import edu.fiuba.algo3.modelo.geografia.Pais;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.objetivo.Objetivo;
+import edu.fiuba.algo3.modelo.objetivo.ObjetivoConquista;
+import edu.fiuba.algo3.modelo.objetivo.ObjetivoDestruccion;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +26,7 @@ public class LectorDeArchivosTest {
     @Test
     public void seLeenCorrectamenteLosNombresDeLosPaises() throws ParseException, IOException, NoSePudoLeerExcepcion, PaisNoExisteException {
         LectorDePaises lector = new LectorDePaises();
-        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/FronterasPrueba.json");
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -35,7 +41,7 @@ public class LectorDeArchivosTest {
     @Test
     public void seLeenLasFronterasDeTresPaisesCorrectamente() throws ParseException, IOException, NoSePudoLeerExcepcion, PaisNoExisteException {
         LectorDePaises lector = new LectorDePaises();
-        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/FronterasPrueba.json");
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -54,7 +60,7 @@ public class LectorDeArchivosTest {
     @Test
     public void seLeenCorrectamenteLaCantidadDePaises() throws ParseException, IOException, NoSePudoLeerExcepcion, PaisNoExisteException {
         LectorDePaises lector = new LectorDePaises();
-        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/FronterasPrueba.json");
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -66,7 +72,7 @@ public class LectorDeArchivosTest {
     @Test
     public void seLeenCorrectamenteLaCantidadDeFronterasDeUnPais() throws ParseException, IOException, NoSePudoLeerExcepcion, PaisNoExisteException {
         LectorDePaises lector = new LectorDePaises();
-        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lector.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/FronterasPrueba.json");
         ArrayList<Pais> paises = new ArrayList<>();
 
         continentes.forEach((continente) -> {
@@ -81,7 +87,7 @@ public class LectorDeArchivosTest {
     @Test
     public void seLeenCorrectamenteLosPaisesDeLasCartas() throws ParseException, IOException, NoSePudoLeerExcepcion, PaisNoExisteException {
         LectorDePaises lectorPaises = new LectorDePaises();
-        ArrayList<Continente> continentes = lectorPaises.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
+        ArrayList<Continente> continentes = lectorPaises.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/FronterasPrueba.json");
 
         ArrayList<Pais> paises = new ArrayList<>();
         continentes.forEach((continente)->{
@@ -93,7 +99,7 @@ public class LectorDeArchivosTest {
         Pais tartaria = paises.get(2);
 
         LectorDeCartas lectorCartas = new LectorDeCartas(continentes);
-        ArrayList<Carta> cartas = lectorCartas.leer("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
+        ArrayList<Carta> cartas = lectorCartas.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/CartasPrueba.json");
 
         assertEquals(granBretania, (cartas.get(0)).getPais());
         assertEquals(tartaria, (cartas.get(1)).getPais());
@@ -102,23 +108,74 @@ public class LectorDeArchivosTest {
 
     @Test
     public void seLeeLaCantidadCorrectaDeCartas() throws ParseException, IOException, NoSePudoLeerExcepcion, PaisNoExisteException {
-        LectorDePaises lector1 = new LectorDePaises();
-        ArrayList<Continente> continentes = lector1.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        LectorDeCartas lector2 = new LectorDeCartas(continentes);
-        ArrayList<Carta> cartas = lector2.leer("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
+        LectorDePaises lectorPaises = new LectorDePaises();
+        ArrayList<Continente> continentes = lectorPaises.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/FronterasPrueba.json");
+        LectorDeCartas lectorCartas = new LectorDeCartas(continentes);
+        ArrayList<Carta> cartas = lectorCartas.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/CartasPrueba.json");
 
         assertEquals(3, cartas.size());
     }
 
     @Test
     public void seLeenCorrectamenteElSimboloDeUnaCarta() throws ParseException, IOException, NoSePudoLeerExcepcion, PaisNoExisteException {
-        LectorDePaises lector1 = new LectorDePaises();
-        ArrayList<Continente> continentes = lector1.leer("src/main/test/edu/fiuba/algo3/archivos/FronterasPrueba.json");
-        LectorDeCartas lector2 = new LectorDeCartas(continentes);
-        ArrayList<Carta> cartas = lector2.leer("src/main/test/edu/fiuba/algo3/archivos/CartasPrueba.json");
+        LectorDePaises lectorPaises = new LectorDePaises();
+        ArrayList<Continente> continentes = lectorPaises.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/FronterasPrueba.json");
+        LectorDeCartas lectorCartas = new LectorDeCartas(continentes);
+        ArrayList<Carta> cartas = lectorCartas.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/CartasPrueba.json");
 
         assertEquals("Globo", (cartas.get(0)).getSimbolo());
         assertEquals("Barco", (cartas.get(1)).getSimbolo());
         assertEquals("Cañon", (cartas.get(2)).getSimbolo());
+    }
+
+    @Test
+    public void seLeenCorrectamenteLosObjetivos() throws NoSePudoLeerExcepcion, PaisNoExisteException, IOException, ParseException {
+        LectorDePaises lectorPaises = new LectorDePaises();
+        ArrayList<Continente> continentes = lectorPaises.leer("src/main/java/edu/fiuba/algo3/recursos/archivos/Teg - Fronteras.json");
+        Jugador fernando = new Jugador("Fernando");
+        Jugador nahuel = new Jugador("Nahuel");
+        Jugador nicolas = new Jugador("Nicolas");
+        Jugador agustina = new Jugador("Agustina");
+        Jugador rosario = new Jugador("Rosario");
+        ArrayList<Jugador> jugadores = new ArrayList<>(List.of(fernando, nahuel, nicolas, agustina, rosario));
+        LectorDeObjetivos lectorObjetivos = new LectorDeObjetivos(continentes, jugadores);
+        ArrayList<Objetivo> objetivos = lectorObjetivos.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/ObjetivosPrueba.json");
+
+        assertTrue(objetivos.get(0) instanceof ObjetivoConquista);
+        assertTrue(objetivos.get(1) instanceof ObjetivoConquista);
+        assertTrue(objetivos.get(2) instanceof ObjetivoConquista);
+        assertTrue(objetivos.get(3) instanceof ObjetivoDestruccion);
+        assertTrue(objetivos.get(4) instanceof ObjetivoDestruccion);
+        assertTrue(objetivos.get(5) instanceof ObjetivoDestruccion);
+        assertEquals(6, objetivos.size());
+    }
+
+    @Test
+    public void enviarUnArchivoDeUnTipoNoImplementadoAlLectorDePaisesLanzaUnaExcepcion(){
+        LectorDePaises lectorPaises = new LectorDePaises();
+        assertThrows(NoSePudoLeerExcepcion.class, ()->{
+            lectorPaises.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/Paises.csv");
+        });
+    }
+
+    @Test
+    public void enviarUnArchivoDeUnTipoNoImplementadoAlLectorDeCartasLanzaUnaExcepcion(){
+        LectorDeCartas lectorCartas = new LectorDeCartas(new ArrayList<>(List.of(new Continente("America", 0))));
+
+        assertThrows(NoSePudoLeerExcepcion.class, ()->{
+            lectorCartas.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/Paises.csv");
+        });
+    }
+
+    @Test
+    public void enviarUnArchivoDeUnTipoNoImplementadoAlLectorDeObjetivosLanzaUnaExcepcion(){
+        LectorDeObjetivos lectorObjetivos = new LectorDeObjetivos(
+                new ArrayList<>(List.of(new Continente("America", 0))),
+                new ArrayList<>(List.of(new Jugador("Nicolas")))
+        );
+
+        assertThrows(NoSePudoLeerExcepcion.class, ()->{
+            lectorObjetivos.leer("src/main/test/edu/fiuba/algo3/recursos/archivos/Paises.csv");
+        });
     }
 }

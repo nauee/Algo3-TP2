@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.etapa;
 
+import edu.fiuba.algo3.excepciones.CartaYaActivadaException;
 import edu.fiuba.algo3.excepciones.FichasInsuficientesException;
 import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.excepciones.QuedanFichasPorColocarException;
@@ -14,7 +15,7 @@ public class FaseInicial implements Fase {
     private final Jugador jugadorDeTurno;
     private final String nombre= "inicial";
     private final int fichasIniciales;
-    private final int fichasSiguienteFase = 3;
+    private int fichasDelJugador = 0;
 
     public FaseInicial(Jugador jugadorDeTurno, int cantidadDeFichas){
         this.fichasIniciales = cantidadDeFichas;
@@ -37,11 +38,19 @@ public class FaseInicial implements Fase {
         if(fichasIniciales > fichasColocadas)
             throw new QuedanFichasPorColocarException();
         Jugador siguienteJugador= Etapa.siguienteJugador();
-        return new FaseInicial(siguienteJugador, fichasSiguienteFase);
+        return new FaseInicial(siguienteJugador, fichasIniciales);
     }
 
     @Override
     public String nombre() {
         return nombre;
+    }
+
+    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
+        jugadorDeTurno.activarCarta(unaCarta);
+    }
+
+    public void agregarFichasDelCanje(int fichas){
+        fichasDelJugador += fichas;
     }
 }

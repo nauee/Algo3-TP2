@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Continente {
 
+    private static final int TODOS_LOS_PAISES = 0;
+
     private final String nombre;
     private final int recompensa;
     private final ArrayList<Pais> paises = new ArrayList<>();
@@ -51,5 +53,23 @@ public class Continente {
 
     public int getCantidadPaises(){
         return paises.size();
+    }
+
+    public boolean tieneCantidadPaises(int cantidad){
+        return paises.size()==cantidad;
+    }
+
+    public boolean fueConquistado(ArrayList<Pais> paises, int cantidadPaises){
+        int cantidadConquistada = 0;
+
+        for (Pais pais : paises){
+            if (this.paises.contains(pais))
+                cantidadConquistada++;
+        }
+
+        if (cantidadPaises == TODOS_LOS_PAISES)
+            return cantidadConquistada == this.paises.size();
+
+        return cantidadPaises <= cantidadConquistada;
     }
 }

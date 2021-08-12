@@ -47,7 +47,7 @@ public class ControladorInicio implements EventHandler<ActionEvent> {
                 Scene scene = new Scene(new VistaJuego(stage, juego, menuArriba), 1280, 720);
                 stage.setScene(scene);
                 stage.show();
-            } catch (SeAlcanzoLaCantidadMaximaException | IOException | ParseException | PaisNoTePerteneceException | NoSePudoLeerExcepcion | PaisNoExisteException e) {
+            } catch (IOException | ParseException | PaisNoTePerteneceException | NoSePudoLeerExcepcion | PaisNoExisteException e) {
                 e.printStackTrace();
             }
         }

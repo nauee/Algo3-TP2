@@ -1,0 +1,29 @@
+[
+  {
+    "tipo": "Conquista",
+    "continentes": "Africa,America del Norte,Europa",
+    "cantidad": "0,5,4"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "America del Sur,Europa",
+    "cantidad": "0,7"
+  },
+  {
+    "tipo": "Conquista",
+    "continentes": "Asia,America del Sur",
+    "cantidad": "0,2"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "1"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "2"
+  },
+  {
+    "tipo": "Destruccion",
+    "jugador": "3"
+  }
+]

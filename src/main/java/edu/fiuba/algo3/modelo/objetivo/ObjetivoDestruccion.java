@@ -14,4 +14,8 @@ public class ObjetivoDestruccion extends Objetivo {
     public boolean cumplido(Jugador jugador) {
         return objetivoComunCumplido(jugador) || jugadorADestruir.derrotadoPor(jugador);
     }
+
+    public Jugador getJugador(){
+        return jugadorADestruir;
+    }
 }

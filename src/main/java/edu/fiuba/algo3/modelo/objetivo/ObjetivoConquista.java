@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.objetivo;
 
-import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.geografia.Continente;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 import java.util.ArrayList;
 
@@ -23,5 +23,13 @@ public class ObjetivoConquista extends Objetivo {
                 cumplido = false;
         }
         return cumplido || objetivoComunCumplido(jugador);
+    }
+
+    public ArrayList<Continente> getContinentes(){
+        return continentes;
+    }
+
+    public ArrayList<Integer> getCantidades(){
+        return cantidadAConquistarPorContinente;
     }
 }

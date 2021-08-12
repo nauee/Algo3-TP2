@@ -33,6 +33,10 @@ public class Jugador{
         estado = new EstadoVivo();
     }
 
+    public static void reiniciarID() {
+        proximoId = 1;
+    }
+
     public int getCantidadPaises() { return paises.size(); }
 
     public void agregarPais(Pais nuevoPais){
@@ -92,16 +96,7 @@ public class Jugador{
     }
 
     public boolean conquisto(Continente continente, int cantidadPaises){
-        int cantidadConquistada = 0;
-
-        for (Pais pais : paises) {
-            if (continente.tiene(pais)) cantidadConquistada++;
-        }
-
-        if (cantidadPaises == 0)
-            return cantidadConquistada == continente.getCantidadPaises();
-
-        return cantidadPaises <= cantidadConquistada;
+        return continente.fueConquistado(paises, cantidadPaises);
     }
 
     public boolean gano() {
@@ -138,5 +133,9 @@ public class Jugador{
 
     public ArrayList<Pais> getPaises(){
         return paises;
+    }
+
+    public boolean objetivoCumplido(){
+        return objetivo.cumplido(this);
     }
 }

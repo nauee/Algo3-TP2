@@ -19,13 +19,19 @@ public class SegundaEtapaInicial extends Etapa{
     }
 
     @Override
-    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3) throws NoSePuedeCanjearEnEtapaBatallaException {
-        throw new NoSePuedeCanjearEnEtapaBatallaException();
+    public void canjearCartas(Carta carta1, Carta carta2, Carta carta3){
+        int fichas = jugadores.get(jugadorDeTurno).canjearCartas(carta1, carta2, carta3, cartas);
+        fase.agregarFichasDelCanje(fichas);
     }
 
     @Override
     public String nombreFase() {
         return fase.nombre();
+    }
+
+    @Override
+    public int getCantidadPaisesNecesarios() {
+        return 1;
     }
 
     @Override
@@ -37,7 +43,7 @@ public class SegundaEtapaInicial extends Etapa{
     }
 
     @Override
-    public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException {
-        throw new NoSePuedeActivarCartaEnLaBatallaException();
+    public void activarCarta(Carta unaCarta) throws CartaYaActivadaException {
+        fase.activarCarta(unaCarta);
     }
 }

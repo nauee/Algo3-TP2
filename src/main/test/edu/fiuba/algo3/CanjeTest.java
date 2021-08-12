@@ -1,14 +1,18 @@
 package edu.fiuba.algo3;
-import edu.fiuba.algo3.modelo.geografia.Continente;
-import edu.fiuba.algo3.modelo.geografia.Pais;
+
 import edu.fiuba.algo3.excepciones.*;
 import edu.fiuba.algo3.modelo.etapa.Etapa;
 import edu.fiuba.algo3.modelo.etapa.EtapaColocacion;
 import edu.fiuba.algo3.modelo.carta.Carta;
+import edu.fiuba.algo3.modelo.geografia.Continente;
+import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.logica.Juego;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,12 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-// cantidad correcta de fichas con un canje y con 2, que son los estaticos
-// cantidad correcta de fichas con n canjes
-// dos iguales y una distinta levanta una excepcion
-// cantidad correcta de fichas con n canjes y un continente
-
 
 public class CanjeTest {
 
@@ -180,5 +178,41 @@ public class CanjeTest {
         etapa.canjearCartas(carta1, carta2, carta3);
         etapa.jugar(10, argentina);
         assertEquals(10, argentina.getCantidadEjercitos());
+    }
+
+    @Test
+    public void intentarCanjearDosCartasIgualesYUnaDistintaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException{
+        Juego juego = new Juego(new ArrayList<>(List.of(new Jugador("Nicolas"))));
+
+        Carta carta1 = new Carta(new Pais("Argentina", new ArrayList<>(List.of("Brasil"))), "Fiat Palio");
+        Carta carta2 = new Carta(new Pais("Brasil", new ArrayList<>(List.of("Argentina"))), "Buenarda moto");
+        Carta carta3 = new Carta(new Pais("Ecuador", new ArrayList<>(List.of("Brasil"))), "Buenarda moto");
+
+        assertThrows(SimbolosInvalidosException.class, ()-> juego.canjearCartas(carta1, carta2, carta3));
+    }
+
+    @Test
+    public void intentarCanjearCartasEnEtapaBatallaLanzaUnaExcepcion() throws NoSePudoLeerExcepcion, PaisNoTePerteneceException, PaisNoExisteException, ParseException, IOException, QuedanFichasPorColocarException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException, AtaqueConCantidadInvalidaException, FichasInsuficientesException, AtaqueAPaisPropioException {
+        Jugador nicolas = new Jugador("Nicolas");
+        Jugador fernando = new Jugador("Fernando");
+        Juego juego = new Juego(new ArrayList<>(List.of(nicolas, fernando)));
+        Carta carta1 = new Carta(new Pais("Argentina", new ArrayList<>(List.of("Brasil"))), "Fiat Palio");
+        Carta carta2 = new Carta(new Pais("Brasil", new ArrayList<>(List.of("Argentina"))), "Globo");
+        Carta carta3 = new Carta(new Pais("Ecuador", new ArrayList<>(List.of("Brasil"))), "Barco");
+
+        Pais argentina = juego.buscarPais("Argentina");
+        Pais brasil = juego.buscarPais("Brasil");
+        argentina.asignarDuenio(nicolas);
+        brasil.asignarDuenio(fernando);
+        juego.jugar(5, argentina);
+        juego.pasarDeFase();
+        juego.jugar(5, brasil);
+        juego.pasarDeFase();
+        juego.jugar(3, argentina);
+        juego.pasarDeFase();
+        juego.jugar(3, brasil);
+        juego.pasarDeFase();
+
+        assertThrows(NoSePuedeCanjearEnEtapaBatallaException.class, ()-> juego.canjearCartas(carta1, carta2, carta3));
     }
 }

@@ -35,7 +35,7 @@ public class EtapaColocacion extends Etapa {
     }
 
     @Override
-    public Etapa siguienteFase(){
+    public Etapa siguienteFase() throws QuedanFichasPorColocarException {
         fase = (FaseColocacion) fase.siguienteFase(cartas);
         if (jugadorDeTurno >= jugadores.size())
             return new EtapaBatalla();
