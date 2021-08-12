@@ -2,8 +2,8 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.geografia.Pais;
-import edu.fiuba.algo3.excepciones.AtaqueConCantidadInvalidaException;
-import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
+import edu.fiuba.algo3.modelo.excepciones.AtaqueConCantidadInvalidaException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoTePerteneceException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

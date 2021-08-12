@@ -1,8 +1,8 @@
-package edu.fiuba.algo3.lectura.creador;
+package edu.fiuba.algo3.modelo.lectura.creador;
 
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.geografia.Pais;
-import edu.fiuba.algo3.excepciones.PaisNoExisteException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.modelo.carta.Carta;
 
 import java.util.ArrayList;

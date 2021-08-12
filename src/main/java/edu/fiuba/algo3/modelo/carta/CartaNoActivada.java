@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.carta;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.geografia.Pais;
-import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoTePerteneceException;
 
 public class CartaNoActivada implements EstadoCarta {
 

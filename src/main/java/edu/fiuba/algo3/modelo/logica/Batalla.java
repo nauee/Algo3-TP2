@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.logica;
 
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.elementos.Dado;
-import edu.fiuba.algo3.excepciones.*;
+import edu.fiuba.algo3.modelo.excepciones.*;
 
 import java.util.ArrayList;
 import static java.lang.Math.min;

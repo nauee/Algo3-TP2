@@ -1,9 +1,9 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.excepciones.PaisNoExisteException;
-import edu.fiuba.algo3.lectura.creador.CreadorDeCartas;
-import edu.fiuba.algo3.lectura.creador.CreadorDeObjetivos;
-import edu.fiuba.algo3.lectura.creador.CreadorDePaises;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
+import edu.fiuba.algo3.modelo.lectura.creador.CreadorDeCartas;
+import edu.fiuba.algo3.modelo.lectura.creador.CreadorDeObjetivos;
+import edu.fiuba.algo3.modelo.lectura.creador.CreadorDePaises;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.geografia.Pais;

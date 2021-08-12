@@ -2,9 +2,9 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.geografia.Pais;
-import edu.fiuba.algo3.excepciones.MovimientoConCantidadInvalidaException;
-import edu.fiuba.algo3.excepciones.PaisNoLimitrofeException;
-import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
+import edu.fiuba.algo3.modelo.excepciones.MovimientoConCantidadInvalidaException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoLimitrofeException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoTePerteneceException;
 import edu.fiuba.algo3.modelo.etapa.FaseAgrupamiento;
 import org.junit.jupiter.api.Test;
 

@@ -31,17 +31,16 @@ public class VistaNombresJugadores extends BorderPane {
 
         Label tituloDeCuadroNombres = new Label(" Agregar Nombres");
         tituloDeCuadroNombres.setFont(new Font("Gabriola", 50));
-        //tituloDeCuadroNombres.setTextFill(Paint.valueOf("#B2864B"));
         BorderPane.setMargin(tituloDeCuadroNombres,new Insets(0,0,0,0));
 
-        BotonGrande inicioBoton = new BotonGrande("Iniciar", "Gabriola", new ControladorInicio(stage, cantidad, jugadores.nombres(), menuArriba, this));
+        BotonGrande inicioBoton = new BotonGrande("Iniciar", "Gabriola", new ControladorInicio(stage, jugadores.nombres(), menuArriba));
         inicioBoton.setAlignment(Pos.CENTER);
 
         BotonGrande atrasBoton = new BotonGrande("Volver", "Gabriola", new ControladorVolver(stage, menuArriba));
         atrasBoton.setAlignment(Pos.CENTER);
 
         HBox opciones= new HBox();
-        opciones.getChildren().addAll(inicioBoton, atrasBoton);
+        opciones.getChildren().addAll(atrasBoton, inicioBoton);
         opciones.setAlignment(Pos.CENTER);
         opciones.setSpacing(10);
         this.setBackground(ImagenFondo.fondoTotal(rutaImagenFondo));

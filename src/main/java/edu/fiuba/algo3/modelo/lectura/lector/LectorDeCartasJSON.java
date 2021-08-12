@@ -1,10 +1,8 @@
-package edu.fiuba.algo3.lectura.lector;
+package edu.fiuba.algo3.modelo.lectura.lector;
 
-import edu.fiuba.algo3.lectura.lector.Lector;
-import edu.fiuba.algo3.lectura.lector.LectorDeCartas;
 import edu.fiuba.algo3.modelo.carta.Carta;
-import edu.fiuba.algo3.lectura.creador.CreadorDeCartas;
-import edu.fiuba.algo3.excepciones.PaisNoExisteException;
+import edu.fiuba.algo3.modelo.lectura.creador.CreadorDeCartas;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.lectura.creador;
+package edu.fiuba.algo3.modelo.lectura.creador;
 
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.jugador.Jugador;

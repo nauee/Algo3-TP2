@@ -21,8 +21,6 @@ public class VistaInicio extends VBox {
 
         MenuInicio menu= new MenuInicio(stage, menuArriba);
 
-
-        BorderPane centro= new BorderPane();
         Label titulo= new Label("   A.L.T.E.G.O");
         titulo.setLayoutX(500);
         titulo.setLayoutY(56.0);

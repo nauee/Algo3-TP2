@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.etapa;
 
-import edu.fiuba.algo3.excepciones.*;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 

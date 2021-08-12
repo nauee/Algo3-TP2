@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.geografia;
 
-import edu.fiuba.algo3.excepciones.*;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.logica.Batalla;
 

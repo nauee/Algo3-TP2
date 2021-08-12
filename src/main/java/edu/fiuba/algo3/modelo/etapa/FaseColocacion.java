@@ -1,13 +1,13 @@
 package edu.fiuba.algo3.modelo.etapa;
 
-import edu.fiuba.algo3.excepciones.QuedanFichasPorColocarException;
+import edu.fiuba.algo3.modelo.excepciones.QuedanFichasPorColocarException;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.geografia.Pais;
-import edu.fiuba.algo3.excepciones.CartaYaActivadaException;
-import edu.fiuba.algo3.excepciones.FichasInsuficientesException;
-import edu.fiuba.algo3.excepciones.PaisNoTePerteneceException;
+import edu.fiuba.algo3.modelo.excepciones.CartaYaActivadaException;
+import edu.fiuba.algo3.modelo.excepciones.FichasInsuficientesException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoTePerteneceException;
 
 import java.util.ArrayList;
 

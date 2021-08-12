@@ -2,7 +2,7 @@ package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.interfaz.SupervisorJuego;
 import edu.fiuba.algo3.modelo.geografia.Pais;
-import edu.fiuba.algo3.excepciones.PaisNoExisteException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
 import edu.fiuba.algo3.interfaz.botones.BotonPais;
 import edu.fiuba.algo3.modelo.logica.Juego;
 import javafx.scene.layout.AnchorPane;

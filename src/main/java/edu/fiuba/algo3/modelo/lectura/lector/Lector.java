@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.lectura.lector;
+package edu.fiuba.algo3.modelo.lectura.lector;
 
-import edu.fiuba.algo3.excepciones.PaisNoExisteException;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;

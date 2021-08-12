@@ -8,10 +8,10 @@ import edu.fiuba.algo3.modelo.etapa.PrimeraEtapaInicial;
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.excepciones.*;
-import edu.fiuba.algo3.lectura.lector.LectorDeCartas;
-import edu.fiuba.algo3.lectura.lector.LectorDeObjetivos;
-import edu.fiuba.algo3.lectura.lector.LectorDePaises;
+import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.lectura.lector.LectorDeCartas;
+import edu.fiuba.algo3.modelo.lectura.lector.LectorDeObjetivos;
+import edu.fiuba.algo3.modelo.lectura.lector.LectorDePaises;
 import edu.fiuba.algo3.modelo.objetivo.Objetivo;
 import org.json.simple.parser.ParseException;
 

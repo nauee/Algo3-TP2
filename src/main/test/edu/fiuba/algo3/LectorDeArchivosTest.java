@@ -1,11 +1,11 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.lectura.lector.LectorDeObjetivos;
+import edu.fiuba.algo3.modelo.lectura.lector.LectorDeObjetivos;
 import edu.fiuba.algo3.modelo.carta.Carta;
-import edu.fiuba.algo3.excepciones.NoSePudoLeerExcepcion;
-import edu.fiuba.algo3.excepciones.PaisNoExisteException;
-import edu.fiuba.algo3.lectura.lector.LectorDeCartas;
-import edu.fiuba.algo3.lectura.lector.LectorDePaises;
+import edu.fiuba.algo3.modelo.excepciones.NoSePudoLeerExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
+import edu.fiuba.algo3.modelo.lectura.lector.LectorDeCartas;
+import edu.fiuba.algo3.modelo.lectura.lector.LectorDePaises;
 import edu.fiuba.algo3.modelo.geografia.Continente;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.jugador.Jugador;

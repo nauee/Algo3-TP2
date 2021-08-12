@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.lectura.lector;
+package edu.fiuba.algo3.modelo.lectura.lector;
 
-import edu.fiuba.algo3.lectura.creador.CreadorDeObjetivos;
+import edu.fiuba.algo3.modelo.lectura.creador.CreadorDeObjetivos;
 import edu.fiuba.algo3.modelo.objetivo.Objetivo;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

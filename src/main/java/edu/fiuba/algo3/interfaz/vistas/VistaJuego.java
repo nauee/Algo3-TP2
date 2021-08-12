@@ -6,7 +6,7 @@ import edu.fiuba.algo3.interfaz.SupervisorJuego;
 import edu.fiuba.algo3.interfaz.menu.MenuBarra;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.excepciones.*;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.logica.Juego;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;

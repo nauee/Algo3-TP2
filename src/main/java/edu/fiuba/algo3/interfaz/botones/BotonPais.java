@@ -14,12 +14,12 @@ public class BotonPais {
 
     private final Button boton;
     private final Pais pais;
-    private final ArrayList<String> colores;
+    private final String color;
 
     public BotonPais(Pais pais, int posicionX, int posicionY, int ancho, int alto,  ArrayList<String> colores, SupervisorJuego supervisorJuego){
         this.pais=pais;
         boton = new Button(pais.getNombre());
-        this.colores=colores;
+        this.color=colores.get(pais.getDuenio().getId()-1);
 
         boton.setOnAction(new ControladorBotonPais(pais, supervisorJuego));
         boton.setLayoutX(posicionX);
@@ -40,34 +40,16 @@ public class BotonPais {
     private void determinarComportamiento(){
         boton.setTextFill(Paint.valueOf("#B5884B00"));
         boton.setStyle("-fx-background-color: #B5884B00; -fx-border-width: 2px 2px 2px 2px");
-        boton.setText(pais.getNombre());
-        boton.setOnMouseEntered(e -> {
-            String color= colores.get(pais.getDuenio().getId()-1);
-            boton.setStyle("-fx-border-color: #795523 ;-fx-border-width: 2px 2px 2px 2px;-fx-font-weight: bold ; -fx-background-color:" + color);
-            boton.setTextFill(Paint.valueOf("#000000"));
-        });
-        boton.setOnMouseExited(e-> {
-            boton.setTextFill(Paint.valueOf("#B5884B00"));
-            boton.setStyle("-fx-background-color: #B5884B00; -fx-border-width: 2px 2px 2px 2px");
-            boton.setText(pais.getNombre());
-        });
+        boton.setOnMouseEntered(new ReveladorBoton(boton, color));
+        boton.setOnMouseExited(new OcultadorBoton(boton));
     }
 
     public void activar(Pais pais){
         if(this.pais.getNombre() == pais.getNombre()){
-            String color= colores.get(pais.getDuenio().getId() -1 );
             boton.setStyle("-fx-border-color: #795523 ;-fx-border-width: 2px 2px 2px 2px;-fx-font-weight: bold ; -fx-background-color:" + color);
             boton.setTextFill(Paint.valueOf("#000000"));
-            boton.setOnMouseEntered(e-> {
-                boton.setStyle("-fx-border-color: #795523 ;-fx-border-width: 2px 2px 2px 2px;-fx-font-weight: bold ; -fx-background-color:" + color);
-                boton.setTextFill(Paint.valueOf("#000000"));
-            });
-            boton.setOnMouseExited(e-> {
-                boton.setStyle("-fx-border-color: #795523 ;-fx-border-width: 2px 2px 2px 2px;-fx-font-weight: bold ; -fx-background-color:" + color);
-                boton.setTextFill(Paint.valueOf("#000000"));
-            });
+            boton.setOnMouseEntered(new ReveladorBoton(boton, color));
+            boton.setOnMouseExited(new ReveladorBoton(boton, color));
         }
     }
-
-
 }
