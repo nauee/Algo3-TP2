@@ -23,7 +23,7 @@ public class Juego implements Observable {
 
     static private final int JUGADORES_MAX = 6;
 
-    private ArrayList<Observador> observadores=new ArrayList<>();
+    private final ArrayList<Observador> observadores=new ArrayList<>();
     private Etapa etapa;
     private final ArrayList<Continente> continentes;
     private final ArrayList<Jugador> jugadores;
@@ -184,4 +184,21 @@ public class Juego implements Observable {
     public String getNombreFase(){
         return etapa.nombreFase();
     }
+
+    public boolean hayGanador() {
+        boolean hayGanador = false;
+        for (Jugador jugador : jugadores) {
+            if (jugador.gano()) hayGanador = true;
+        }
+        return hayGanador;
+    }
+
+    public Jugador getGanador() {
+        Jugador ganador = null;
+        for (Jugador jugador : jugadores) {
+            if (jugador.gano()) ganador = jugador;
+        }
+        return ganador;
+    }
+
 }

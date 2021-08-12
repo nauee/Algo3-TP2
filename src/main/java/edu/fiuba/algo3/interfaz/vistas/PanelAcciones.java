@@ -26,7 +26,7 @@ public class PanelAcciones extends AnchorPane {
 
         getChildren().addAll(jugadores, botones);
         AnchorPane.setBottomAnchor(botones, 100.0);
-
+        AnchorPane.setRightAnchor(botones, 0.0);
     }
 
 

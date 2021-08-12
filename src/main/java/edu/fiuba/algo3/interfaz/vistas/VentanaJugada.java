@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
+import edu.fiuba.algo3.interfaz.AlertaError;
 import edu.fiuba.algo3.interfaz.SupervisorJuego;
 import edu.fiuba.algo3.modelo.geografia.Pais;
 import edu.fiuba.algo3.modelo.logica.Juego;
@@ -41,12 +42,13 @@ public class VentanaJugada extends Stage{
     }
 
     public VistaJugada determinarVista(){
-        VistaJugada vista = new VistaColocacion(juego, paises, supervisor, this);
-        if(juego.nombreFase().equals(faseAgrupamiento)){
-            vista= new VistaAgrupamiento(juego, paises, supervisor, this);
-        }
+        VistaJugada vista= null;
+        if(juego.nombreFase().equals(faseColocacion))
+            vista= new VistaColocacion(juego, paises, supervisor, this);
         else if(juego.nombreFase().equals(faseAtaque))
             vista= new VistaAtaque(juego, paises, supervisor, this);
+        else if (juego.nombreFase().equals(faseAgrupamiento))
+            vista = new VistaAgrupamiento(juego, paises, supervisor, this);
 
         return vista;
     }

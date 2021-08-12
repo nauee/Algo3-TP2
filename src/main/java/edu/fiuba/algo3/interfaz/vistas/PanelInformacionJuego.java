@@ -26,8 +26,11 @@ public class PanelInformacionJuego extends VBox {
     public PanelInformacionJuego(Juego juego, SupervisorJuego supervisorJuego){
         this.juego=juego;
         this.supervisorJuego = supervisorJuego;
-        this.etapa= new Label(" ETAPA: " + juego.nombreFase());
-        Label jugadorDeTurno= new Label("Jugador de turno: " + juego.getNombreJugadorDeTurno());
+        this.etapa= new Label("ETAPA:" + juego.nombreFase() + "\n");
+        Label turno= new Label("Turno" + juego.getNombreJugadorDeTurno() + "\n");
+        Label jugadorDeTurno = new Label( juego.getNombreJugadorDeTurno() + "\n");
+        jugadorDeTurno.setStyle("-fx-background-color: #54402F; -fx-text-fill: #FFFFFF");
+
         jugadorDeTurno.setMaxWidth(100);
         VBox paisesSelect = new VBox();
         Text titulo = new Text(" Paises seleccionados:");
@@ -37,7 +40,7 @@ public class PanelInformacionJuego extends VBox {
             Text paisText = new Text(pais);
             paisesSelect.getChildren().add(paisText);
         }
-        this.getChildren().addAll(etapa, jugadorDeTurno, paisesSelect);
+        this.getChildren().addAll(etapa, turno, jugadorDeTurno, paisesSelect);
         this.setStyle("-fx-font-family: Gabriola; -fx-font-size: 25px; -fx-background-color: #AB8146");
 
         ScrollPane listaPaises = new ScrollPane();

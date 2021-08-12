@@ -11,7 +11,7 @@ public class Reproductor {
 
     private final File carpetaCanciones=new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica");;
     private ArrayList<File> rutaCanciones;
-    private final Cancion cancionDefault= new Cancion(new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/Piratas.mp3"));
+    private final Cancion cancionDefault= new Cancion(new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/musica/Tronos.mp3"));
 
     public Reproductor(){
         this.obtenerCanciones();

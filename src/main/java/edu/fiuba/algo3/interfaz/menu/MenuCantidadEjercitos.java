@@ -8,11 +8,20 @@ public class MenuCantidadEjercitos extends VBox {
 
     Slider cantidades;
 
+
     public MenuCantidadEjercitos(String pregunta, int cantidad){
+        if(cantidad>0)
+            mostrarSlide(pregunta, cantidad);
+    }
+
+    public int cantidadEjercitos(){
+        return ((int)cantidades.getValue());
+    }
+
+    private void mostrarSlide(String pregunta, int cantidad){
         Label instruccion = new Label(pregunta);
         instruccion.setStyle("-fx-font-family: Gabriola; -fx-font-size: 25");
-        instruccion.setMaxWidth(400);
-        cantidades = new Slider(0,cantidad,0);
+        cantidades = new Slider(0, cantidad, 0);
         cantidades.setBlockIncrement(1);
         cantidades.setShowTickLabels(true);
         cantidades.setMinorTickCount(0);
@@ -24,11 +33,6 @@ public class MenuCantidadEjercitos extends VBox {
         cantidades.setStyle("-fx-font-size: 20");
         setSpacing(20);
         getChildren().addAll(instruccion, cantidades);
-
-    }
-
-    public int cantidadEjercitos(){
-        return ((int)cantidades.getValue());
     }
 
 }

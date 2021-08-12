@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
 import edu.fiuba.algo3.interfaz.AlertaError;
+import edu.fiuba.algo3.interfaz.AlertaResultado;
 import edu.fiuba.algo3.interfaz.vistas.VistaCarta;
 import edu.fiuba.algo3.modelo.carta.Carta;
 import edu.fiuba.algo3.modelo.excepciones.*;
@@ -36,7 +37,7 @@ public class ControladorBotonCarta implements EventHandler<ActionEvent> {
         if (cartasSeleccionadas.contains(carta)) {
             try {
                 juego.activarCarta(carta);
-                AlertaError.mensajeError("Se activo correctamente");
+                AlertaResultado.mensajeResultado("Se activo correctamente la carta, obtuviste 2 ejercitos en " + carta.getPais().getNombre(), "Carta activada");
             } catch (CartaYaActivadaException | PaisNoTePerteneceException | NoSePuedeActivarCartaEnLaBatallaException ex) {
                 AlertaError.mensajeError(ex.getMessage());
             }
@@ -46,8 +47,10 @@ public class ControladorBotonCarta implements EventHandler<ActionEvent> {
             contenedor.subirCarta();
             if (cartasSeleccionadas.size() == 3) {
                 try {
+                    int fichasActuales = juego.getCantidadFichasDisponibles();
                     juego.canjearCartas(cartasSeleccionadas.get(0),cartasSeleccionadas.get(1),cartasSeleccionadas.get(2));
-                    AlertaError.mensajeError("Se canjearon correctamente");
+                    int fichasNuevas = juego.getCantidadFichasDisponibles() - fichasActuales;
+                    AlertaResultado.mensajeResultado("Se canjearon las cartas correctamente, obtuviste " + fichasNuevas + " fichas", "Canje correcto");
                 } catch (NoSePuedeCanjearEnEtapaBatallaException | SimbolosInvalidosException ex) {
                     AlertaError.mensajeError(ex.getMessage());
                 }

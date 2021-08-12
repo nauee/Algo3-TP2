@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class MenuMusica extends Menu {
 
-    Reproductor reproductor;
+    private Reproductor reproductor;
     private final ArrayList<BotonMusica> botonesCanciones= new ArrayList<>();
 
     public MenuMusica(){
@@ -44,6 +44,9 @@ public class MenuMusica extends Menu {
         this.getItems().add(detener);
     }
 
+    public Reproductor getReproductor(){
+        return reproductor;
+    }
 
 
 }

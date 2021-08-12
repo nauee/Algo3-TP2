@@ -131,4 +131,23 @@ public class BatallaTest {
             new Batalla(atacado, atacante, 5);
         });
     }
+
+    @Test
+    public void batallaEntreDosPaisesConDerrotaDejaUnEjercitoEnElPais() throws AtaqueConCantidadInvalidaException, PaisNoTePerteneceException, AtaqueAPaisPropioException, PaisNoLimitrofeException, MovimientoConCantidadInvalidaException {
+
+        Pais paisAtacante = new Pais("Argentina", new ArrayList<String>(Arrays.asList("Brasil")));
+        Pais paisAtacado = new Pais("Brasil", new ArrayList<String>(Arrays.asList("Argentina")));
+        Jugador jugadorAtacante = new Jugador("Naue");
+        Jugador jugadorAtacado = new Jugador("Fer");
+        paisAtacante.asignarDuenio(jugadorAtacante);
+        paisAtacado.asignarDuenio(jugadorAtacado);
+        paisAtacante.agregarEjercitos(2, jugadorAtacante);
+        paisAtacado.agregarEjercitos(6, jugadorAtacado);
+        Batalla batalla = new Batalla(paisAtacado, paisAtacante, 1);
+        ArrayList<Integer> dadosAtacante = new ArrayList<>(Arrays.asList(1));
+        ArrayList<Integer> dadosAtacado = new ArrayList<>(Arrays.asList(6,6,6));
+        batalla.ataqueEntrePaises(dadosAtacado, dadosAtacante);
+        assertEquals(1, paisAtacante.getCantidadEjercitos());
+    }
+
 }

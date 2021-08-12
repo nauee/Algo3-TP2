@@ -47,18 +47,6 @@ public class Continente {
         return paises;
     }
 
-    public boolean tiene(Pais pais) {
-        return paises.contains(pais);
-    }
-
-    public int getCantidadPaises(){
-        return paises.size();
-    }
-
-    public boolean tieneCantidadPaises(int cantidad){
-        return paises.size()==cantidad;
-    }
-
     public boolean fueConquistado(ArrayList<Pais> paises, int cantidadPaises){
         int cantidadConquistada = 0;
 

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
+import edu.fiuba.algo3.interfaz.AlertaError;
 import edu.fiuba.algo3.interfaz.SupervisorJuego;
 
 import edu.fiuba.algo3.interfaz.controladores.ControladorCancelarJugada;

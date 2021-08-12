@@ -17,6 +17,7 @@ public class ControladorBotonObjetivos implements EventHandler<ActionEvent> {
 
 
     private final String descripcionObjetivo;
+    private final String rutaIcono= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/brujula.jpg";
 
     public ControladorBotonObjetivos(String descripcionObjetivo){
         this.descripcionObjetivo = descripcionObjetivo;
@@ -28,7 +29,7 @@ public class ControladorBotonObjetivos implements EventHandler<ActionEvent> {
         ventanaInformacion.setTitle("Informacion");
         ventanaInformacion.initModality(Modality.APPLICATION_MODAL);
         //ventanaInformacion.initOwner(stage);
-        ventanaInformacion.getIcons().add(new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/imagenes/iconoInformacion.jpg"));
+        ventanaInformacion.getIcons().add(new Image("file:"+System.getProperty("user.dir")+rutaIcono));
         AnchorPane objetivo= new AnchorPane();
         objetivo.setBackground(ImagenFondo.fondoJuego("/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergaminoPapel.jpg"));
         Label texto= new Label(descripcionObjetivo);
@@ -41,7 +42,7 @@ public class ControladorBotonObjetivos implements EventHandler<ActionEvent> {
         texto.setPadding(new Insets(25,25,25,25));
 
         objetivo.getChildren().add(texto);
-        Scene informacionTexto= new Scene(objetivo, 550, 550);
+        Scene informacionTexto= new Scene(objetivo, 200, 200);
         ventanaInformacion.setScene(informacionTexto);
         ventanaInformacion.show();
     }

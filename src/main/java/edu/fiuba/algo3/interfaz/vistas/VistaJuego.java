@@ -38,7 +38,7 @@ public class VistaJuego extends BorderPane{
         super();
         this.stage = stage;
         this.juego = juego;
-        supervisorJuego = new SupervisorJuego(juego, stage);
+        supervisorJuego = new SupervisorJuego(juego, stage, menuArriba);
         observador = new ObservadorJuego(juego, this);
         observadorJuego = new ObservadorPaisesSeleccionados(supervisorJuego, this);
         mapa = new Mapa(stage, juego, supervisorJuego);

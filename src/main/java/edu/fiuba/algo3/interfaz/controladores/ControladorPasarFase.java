@@ -13,6 +13,11 @@ public class ControladorPasarFase implements EventHandler<ActionEvent> {
 
     private final Juego juego;
     ArrayList<File> sonidos = new ArrayList<>();
+    private final String rutaSonidoColocacion = System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/sonidos/FaseColocacion.mp3";
+    private final String rutaSonidoAtaque = System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/sonidos/pasarAFaseBatalla.mp3";
+    private final String rutaSonidoReagrupacion = System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/sonidos/FaseReagrupacion2.mp3";
+    private final String faseColocacion = "colocacion";
+    private final String faseAtaque = "ataque";
 
     public ControladorPasarFase(Juego juego){
         this.juego = juego;
@@ -31,16 +36,16 @@ public class ControladorPasarFase implements EventHandler<ActionEvent> {
     }
 
     private void inicializarSonidos(){
-        sonidos.add(new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/sonidos/FaseColocacion.mp3"));
-        sonidos.add(new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/sonidos/pasarAFaseBatalla.mp3"));
-        sonidos.add(new File(System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/sonidos/FaseReagrupacion2.mp3"));
+        sonidos.add(new File(rutaSonidoColocacion));
+        sonidos.add(new File(rutaSonidoAtaque));
+        sonidos.add(new File(rutaSonidoReagrupacion));
     }
 
     private File obtenerSonido(String nombreFase){
         switch(nombreFase){
-            case "colocacion":
+            case faseColocacion:
                 return sonidos.get(0);
-            case "ataque":
+            case faseAtaque:
                 return sonidos.get(1);
             default:
                 return sonidos.get(2);

@@ -18,6 +18,7 @@ public class ControladorBotonCartas implements EventHandler<ActionEvent> {
 
     private final Juego juego;
     private final ArrayList<Carta> cartasJugador;
+    private final String rutaIcono= "/src/main/java/edu/fiuba/algo3/recursos/imagenes/brujula.jpg";
 
     public ControladorBotonCartas(Juego juego){
         this.juego = juego;
@@ -30,7 +31,7 @@ public class ControladorBotonCartas implements EventHandler<ActionEvent> {
         ventanaCartas.setTitle("Cartas");
         ventanaCartas.initModality(Modality.APPLICATION_MODAL);
         //ventanaCartas.initOwner(stage);
-        ventanaCartas.getIcons().add(new Image("file:"+System.getProperty("user.dir")+"/src/main/java/edu/fiuba/algo3/recursos/imagenes/iconoInformacion.jpg"));
+        ventanaCartas.getIcons().add(new Image("file:"+System.getProperty("user.dir")+rutaIcono));
         AnchorPane cartas= new AnchorPane();
         cartas.setBackground(ImagenFondo.fondoJuego("/src/main/java/edu/fiuba/algo3/recursos/imagenes/pergaminoPapel.jpg"));
         ArrayList<Carta> cartasSeleccionadas = new ArrayList<>();

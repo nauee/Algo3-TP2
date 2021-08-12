@@ -91,7 +91,7 @@ public class Pais {
         if (cantidadEjercitos <= cantidadAtacantes)
             throw new AtaqueConCantidadInvalidaException();
 
-        return min(cantidadEjercitos, cantidadMaximaDeEjercitos);
+        return min(cantidadAtacantes, cantidadMaximaDeEjercitos);
     }
 
     public void atacarPais(Pais paisAtacado, int cantidadEjercito, Jugador jugador) throws PaisNoLimitrofeException, PaisNoTePerteneceException, AtaqueConCantidadInvalidaException, AtaqueAPaisPropioException, MovimientoConCantidadInvalidaException {

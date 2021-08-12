@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.interfaz.controladores;
 
+import edu.fiuba.algo3.interfaz.vistas.VistaGanador;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.excepciones.NoSePudoLeerExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.PaisNoExisteException;
