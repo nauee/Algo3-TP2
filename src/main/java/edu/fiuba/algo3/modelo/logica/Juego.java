@@ -47,6 +47,19 @@ public class Juego implements Observable {
         distribuirObjetivos();
         Etapa.asignarValores(continentes, jugadores, cartas);
         etapa = new PrimeraEtapaInicial();
+        jugadores.get(0).darleCarta(cartas.get(0));
+        jugadores.get(0).darleCarta(cartas.get(1));
+        jugadores.get(0).darleCarta(cartas.get(2));
+        jugadores.get(0).darleCarta(cartas.get(3));
+        jugadores.get(0).darleCarta(cartas.get(4));
+        jugadores.get(0).darleCarta(cartas.get(5));
+        jugadores.get(0).darleCarta(cartas.get(6));
+        jugadores.get(0).darleCarta(cartas.get(7));
+        jugadores.get(1).darleCarta(cartas.get(8));
+        jugadores.get(1).darleCarta(cartas.get(9));
+        jugadores.get(1).darleCarta(cartas.get(10));
+        jugadores.get(1).darleCarta(cartas.get(11));
+        jugadores.get(1).darleCarta(cartas.get(12));
     }
 
     private void distribuirObjetivos(){
@@ -100,10 +113,12 @@ public class Juego implements Observable {
         if(!Carta.canjeables(carta1, carta2, carta3))
             throw new SimbolosInvalidosException();
         etapa.canjearCartas(carta1, carta2, carta3);
+        this.notificar();
     }
 
     public void activarCarta(Carta unaCarta) throws NoSePuedeActivarCartaEnLaBatallaException, PaisNoTePerteneceException, CartaYaActivadaException {
         etapa.activarCarta(unaCarta);
+        this.notificar();
     }
 
     public int getJugadorDeTurno() {
@@ -146,4 +161,7 @@ public class Juego implements Observable {
         return etapa.getCantidadFichasDisponibles();
     }
 
+    public ArrayList<Carta> getCartas() {
+        return cartas;
+    }
 }

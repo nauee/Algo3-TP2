@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.interfaz.vistas;
 
 import edu.fiuba.algo3.interfaz.SupervisorJuego;
+import edu.fiuba.algo3.interfaz.controladores.ControladorBotonCartas;
 import edu.fiuba.algo3.interfaz.controladores.ControladorBotonObjetivos;
 import edu.fiuba.algo3.interfaz.controladores.ControladorPasarFase;
 import edu.fiuba.algo3.modelo.geografia.Pais;
@@ -55,6 +56,10 @@ public class InformacionJuego extends VBox {
         Button objetivo = new Button("Objetivo");
         objetivo.setOnAction(new ControladorBotonObjetivos(juego.getJugador(juego.getJugadorDeTurno()).getObjetivoDescripcion()));
         getChildren().add(objetivo);
+
+        Button cartas = new Button("Cartas");
+        cartas.setOnAction(new ControladorBotonCartas(juego));
+        getChildren().add(cartas);
     }
 
     public void mostrarInformacionPais(Pais pais){

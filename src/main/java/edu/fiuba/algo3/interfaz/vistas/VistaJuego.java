@@ -45,24 +45,6 @@ public class VistaJuego extends BorderPane{
 
         this.setBackground(ImagenFondo.fondoJuego(rutaImagenFondoJuego));
 
-        //cartas
-        int jugadorDeTurnoIndex = juego.getJugadorDeTurno();
-        Jugador jugadorDeTurno = juego.getJugador(jugadorDeTurnoIndex);
-        ArrayList<Carta> cartasJugador = jugadorDeTurno.getCartas();
-        for (int i = 0; i < cartasJugador.size(); i++) {
-            Carta carta = cartasJugador.get(i);
-            HBox cartaBox = new HBox();
-            Label contenidoCarta = new Label(carta.getPais().getNombre() +"\n"+ carta.getSimbolo());
-            contenidoCarta.setAlignment(Pos.CENTER);
-            contenidoCarta.setPrefSize(156, 76);
-            contenidoCarta.setStyle("-fx-border-radius: 25% 25% 0 0; -fx-border-color: red; -fx-border-width: 2px 2px 0 2px;-fx-text-alignment: center");
-            cartaBox.getChildren().add(contenidoCarta);
-            cartaBox.setPrefSize(156, 76);
-            mapa.getChildren().add(cartaBox);
-            AnchorPane.setBottomAnchor(cartaBox, (double) i*55);
-            AnchorPane.setLeftAnchor(cartaBox, 0.0);
-        }
-
         this.setTop(menuArriba);
         this.setCenter(mapa);
     }
